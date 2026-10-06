@@ -1,0 +1,463 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #000;
+  --color-fg: #f2f2ef;
+  --color-muted: #a3a9b2;
+  --color-faint: #7c838d;
+  --color-line: rgb(255 255 255 / 0.09);
+  --color-line-strong: rgb(255 255 255 / 0.16);
+  --color-panel: #0a0b0d;
+  --color-panel-2: #121418;
+  --color-accent: #60cdff;
+  --color-accent-ink: #00141f;
+  --color-warn: #ffb454;
+  --color-ok: #7ee2a8;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-serif), ui-serif, Georgia, serif;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: dark;
+  interpolate-size: allow-keywords;
+}
+
+html {
+  background: #000;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background: #000;
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgb(96 205 255 / 0.3);
+  color: #fff;
+}
+
+/* Language: both texts are in the page, CSS shows one. */
+html[data-lang="pt"] [data-l="en"],
+html:not([data-lang="pt"]) [data-l="pt"] {
+  display: none !important;
+}
+
+/* Download variants by operating system and architecture, set by the boot script. */
+.os-variant {
+  display: none;
+}
+html[data-os="windows"] .os-variant[data-for~="windows"],
+html[data-os="linux"] .os-variant[data-for~="linux"],
+html[data-os="mac"] .os-variant[data-for~="mac"],
+html[data-os="mobile"] .os-variant[data-for~="other"],
+html[data-os="other"] .os-variant[data-for~="other"],
+html:not([data-os]) .os-variant[data-for~="other"] {
+  display: block;
+}
+.arch-variant {
+  display: none;
+}
+html[data-arch="arm64"] .arch-variant[data-for="arm64"],
+html[data-arch="x64"] .arch-variant[data-for="x64"],
+html:not([data-arch]) .arch-variant[data-for="arm64"] {
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.5rem 0.875rem;
+  border-radius: 8px;
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-weight: 600;
+}
+.skip:focus {
+  top: 1rem;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+@media (min-width: 640px) {
+  .wrap {
+    padding-inline: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  .wrap {
+    padding-inline: 40px;
+  }
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.35rem;
+  border-radius: 5px;
+  border: 1px solid var(--color-line-strong);
+  border-bottom-width: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+  background: var(--color-panel-2);
+}
+
+/* Buttons that feel pressed: a short travel down on :active, as a physical key would. */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 12px;
+  font-weight: 550;
+  transition:
+    transform 140ms var(--ease-out-soft),
+    background-color 160ms,
+    box-shadow 160ms,
+    border-color 160ms;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active {
+  transform: translateY(1px) scale(0.985);
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    inset 0 -2px 0 rgb(0 0 0 / 0.18),
+    0 8px 30px -10px rgb(96 205 255 / 0.55);
+}
+.btn-primary:hover {
+  background: #7ad6ff;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.5),
+    inset 0 -2px 0 rgb(0 0 0 / 0.18),
+    0 10px 40px -10px rgb(96 205 255 / 0.75);
+}
+.btn-primary:active {
+  box-shadow:
+    inset 0 2px 3px rgb(0 0 0 / 0.25),
+    0 4px 16px -8px rgb(96 205 255 / 0.5);
+}
+.btn-ghost {
+  border: 1px solid var(--color-line-strong);
+  background: rgb(255 255 255 / 0.02);
+  color: var(--color-fg);
+}
+.btn-ghost:hover {
+  background: rgb(255 255 255 / 0.06);
+  border-color: rgb(255 255 255 / 0.24);
+}
+
+/* Segmented control (language toggle and tabs). */
+.seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border-radius: 10px;
+  border: 1px solid var(--color-line);
+  background: var(--color-panel);
+}
+.seg > button {
+  padding: 0.3rem 0.6rem;
+  border-radius: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-faint);
+  transition:
+    color 150ms,
+    background-color 150ms;
+}
+.seg > button:hover {
+  color: var(--color-fg);
+}
+.seg > button[aria-pressed="true"],
+.seg > button[aria-selected="true"] {
+  background: var(--color-panel-2);
+  color: var(--color-fg);
+  box-shadow: inset 0 0 0 1px var(--color-line-strong);
+}
+html[data-lang="pt"] .seg > button[lang="pt-BR"],
+html:not([data-lang="pt"]) .seg > button[lang="en"] {
+  background: var(--color-panel-2);
+  color: var(--color-fg);
+  box-shadow: inset 0 0 0 1px var(--color-line-strong);
+}
+
+/*
+ * Spotlight cards: a soft light and a lit border follow the pointer (the "card spotlight" /
+ * "magic card" pattern of Aceternity UI and Magic UI, and Linear's feature grid). Position comes
+ * from --mx/--my, set by one shared pointer listener.
+ */
+.card {
+  position: relative;
+  isolation: isolate;
+  border-radius: 20px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+}
+.card[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    520px circle at var(--mx, -999px) var(--my, -999px),
+    rgb(96 205 255 / 0.075),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 300ms;
+  pointer-events: none;
+}
+.card[data-spotlight] > .rim {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    320px circle at var(--mx, -999px) var(--my, -999px),
+    rgb(96 205 255 / 0.7),
+    rgb(96 205 255 / 0.12) 40%,
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 300ms;
+  pointer-events: none;
+}
+.card[data-spotlight]:hover::after,
+.card[data-spotlight]:hover > .rim,
+.card[data-spotlight]:focus-within > .rim {
+  opacity: 1;
+}
+
+/* Scroll-linked reveals, with CSS scroll-driven animations where supported. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Reading progress under the header. */
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, transparent, var(--color-accent));
+  opacity: 0.8;
+}
+@supports (animation-timeline: scroll()) {
+  .progress {
+    animation: progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* FAQ: <details> that open with a height transition (::details-content + interpolate-size). */
+.faq details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 320ms var(--ease-out-soft),
+    content-visibility 320ms allow-discrete;
+}
+.faq details[open]::details-content {
+  block-size: auto;
+}
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq .chev {
+  transition: transform 260ms var(--ease-out-soft);
+}
+.faq details[open] .chev {
+  transform: rotate(45deg);
+}
+
+/* The live dot of the controller check. */
+.pulse {
+  position: relative;
+}
+.pulse::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pulse::after {
+    animation: pulse 2s var(--ease-out-soft) infinite;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Pad drawing. */
+.pad-part {
+  transition:
+    fill 90ms,
+    stroke 90ms,
+    filter 90ms;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Feature visuals. */
+@media (prefers-reduced-motion: no-preference) {
+  .gyro-dot {
+    animation: gyro 6s ease-in-out infinite;
+  }
+  .blink {
+    animation: blink 1s steps(1, end) infinite;
+  }
+}
+@keyframes gyro {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(18px, -8px);
+  }
+  45% {
+    transform: translate(-6px, 14px);
+  }
+  70% {
+    transform: translate(-20px, -6px);
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0.15;
+    box-shadow: none;
+  }
+}
+
+/* The search field shows focus on its whole box. */
+.searchbox input:focus-visible {
+  outline: none;
+}
+.searchbox:focus-within {
+  border-color: rgb(96 205 255 / 0.55);
+  box-shadow: 0 0 0 4px rgb(96 205 255 / 0.12);
+}

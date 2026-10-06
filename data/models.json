@@ -1,0 +1,4818 @@
+[
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Venom Arcade Stick",
+    "product": "181a",
+    "vendor": "0079"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Firestorm Dual Analog 3",
+    "product": "b315",
+    "vendor": "044f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Thrustmaster wireless 3-1",
+    "product": "d007",
+    "vendor": "044f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Logitech Chillstream",
+    "product": "cad1",
+    "vendor": "046d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Sony PS3 Controller",
+    "product": "0268",
+    "vendor": "054c"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "JC-U4113SBK",
+    "product": "2013",
+    "vendor": "056e"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "JC-U3412SBK",
+    "product": "1006",
+    "vendor": "05b8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Cyborg V3",
+    "product": "f622",
+    "vendor": "06a3"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Mad Catz Alpha PS3 mode",
+    "product": "3180",
+    "vendor": "0738"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "madcats fightpad pro ps3",
+    "product": "3250",
+    "vendor": "0738"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Mad Catz FightStick TE 2+ PS3",
+    "product": "3481",
+    "vendor": "0738"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Mad Catz Alpha PS4 mode (no touchpad on device)",
+    "product": "8180",
+    "vendor": "0738"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Madcatz Fightstick Pro",
+    "product": "8838",
+    "vendor": "0738"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "Twin USB Joystick (PS1/PS2 dual adapter)",
+    "product": "0001",
+    "vendor": "0810"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "PS2 to USB adapter",
+    "product": "0003",
+    "vendor": "0810"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Sony PS3 Controller",
+    "product": "0005",
+    "vendor": "0925"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "MP-8866 Super Dual Box",
+    "product": "8866",
+    "vendor": "0925"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "WiseGroup PS2 adapter",
+    "product": "8888",
+    "vendor": "0925"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PDP Versus Fighting Pad",
+    "product": "0109",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Rock Candy PS4",
+    "product": "011e",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Rock Candy PS3",
+    "product": "0128",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "afterglow ps3",
+    "product": "0214",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PDP Afterglow Wireless PS3 controller",
+    "product": "1314",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Green Asia",
+    "product": "0008",
+    "vendor": "0e8f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "GreenAsia PS1 adapter",
+    "product": "3075",
+    "vendor": "0e8f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "HORI BDA GP1",
+    "product": "0009",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Horipad 3",
+    "product": "004d",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "HORI Fighting Commander 4 PS3",
+    "product": "005f",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Real Arcade Pro 4",
+    "product": "006a",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "HORI horipad4 ps3",
+    "product": "006e",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "HORI Fighting Commander PS3",
+    "product": "0085",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "HORI Fighting Commander PC",
+    "product": "0086",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "HORI Fighting Stick mini 4",
+    "product": "0088",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Qanba Q1 fight stick",
+    "product": "1100",
+    "vendor": "0f30"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "SRXJ-PH2400",
+    "product": "3331",
+    "vendor": "11ff"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Guitar Hero Guitar",
+    "product": "0100",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Guitar Hero Drums",
+    "product": "0120",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 DJ Hero Turntable",
+    "product": "0140",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Rock Band Guitar",
+    "product": "0200",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Rock Band Drums",
+    "product": "0210",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Midi Pro Adapter",
+    "product": "0218",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 / Wii U Guitar Hero Live Guitar",
+    "product": "074b",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Rock Band Keyboard",
+    "product": "2330",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Midi Pro Adapter",
+    "product": "2338",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Mustang Guitar",
+    "product": "2430",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Midi Pro Adapter",
+    "product": "2438",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Squire Guitar",
+    "product": "2530",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PS3 Midi Pro Adapter",
+    "product": "2538",
+    "vendor": "12ba"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "PS2 ACME GA-D5",
+    "product": "1000",
+    "vendor": "1345"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "ps2 maybe break out later",
+    "product": "6005",
+    "vendor": "1345"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Afterglow PS3",
+    "product": "0836",
+    "vendor": "1a34"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB1 Guitar",
+    "product": "0004",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB1 Drums",
+    "product": "0005",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB2 Guitar",
+    "product": "3010",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB2 Drums",
+    "product": "3110",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB3 Midi Pro Adapter",
+    "product": "3138",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB3 Keyboard",
+    "product": "3330",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB3 Midi Pro Adapter",
+    "product": "3338",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB3 Mustang Guitar",
+    "product": "3430",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB3 Midi Pro Adapter",
+    "product": "3438",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB3 Squire Guitar",
+    "product": "3530",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Wii RB3 Midi Pro Adapter",
+    "product": "3538",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "ShanWan PS3",
+    "product": "5500",
+    "vendor": "20bc"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Power A PS3",
+    "product": "576d",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "BDA Pro Ex",
+    "product": "ca6d",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Digiflip GP006",
+    "product": "0523",
+    "vendor": "2563"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "SWITCH CO., LTD. Retro-bit, Retro Fighters Controllers",
+    "product": "0575",
+    "vendor": "2563"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "gioteck vx2",
+    "product": "83c3",
+    "vendor": "25f0"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Unnamed",
+    "product": "c121",
+    "vendor": "25f0"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Qanba Drone",
+    "product": "2003",
+    "vendor": "2c22"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Qanba Obsidian",
+    "product": "2302",
+    "vendor": "2c22"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Qanba Dragon",
+    "product": "2502",
+    "vendor": "2c22"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "BTP 2163",
+    "product": "0003",
+    "vendor": "8380"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Sony PS3 Controller",
+    "product": "0308",
+    "vendor": "8888"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Venom Arcade Stick",
+    "product": "181b",
+    "vendor": "0079"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Thrustmaster Eswap Pro",
+    "product": "d00e",
+    "vendor": "044f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Sony PS4 Controller",
+    "product": "05c4",
+    "vendor": "054c"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "STRIKEPAD PS4 Grip Add-on",
+    "product": "05c5",
+    "vendor": "054c"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Sony PS4 Slim Controller",
+    "product": "09cc",
+    "vendor": "054c"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Sony PS4 Controller (Wireless dongle)",
+    "product": "0ba0",
+    "vendor": "054c"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Mad Catz FightPad Pro PS4",
+    "product": "8250",
+    "vendor": "0738"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Mad Catz FightStick TE S+ PS4",
+    "product": "8384",
+    "vendor": "0738"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Mad Catz FightStick TE 2 PS4",
+    "product": "8480",
+    "vendor": "0738"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Mad Catz FightStick TE 2+ PS4",
+    "product": "8481",
+    "vendor": "0738"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Armor Armor 3 Pad PS4",
+    "product": "0e10",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "ZEROPLUS P4 Wired Gamepad",
+    "product": "0e13",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Game:Pad 4",
+    "product": "0e15",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Brook Mars Controller",
+    "product": "0e20",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Hitbox Arcade Stick",
+    "product": "0ef6",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "EMIO PS4 Elite Controller",
+    "product": "1cf6",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "P4 Wired Gamepad generic knock off",
+    "product": "1e10",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "ZEROPLUS P4 Wired Gamepad",
+    "product": "2e18",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Victrix Pro FS (PS4 peripheral but no trackpad/lightbar)",
+    "product": "0203",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Victrix Pro FS V2 w/ Touchpad for PS4",
+    "product": "0207",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Victrix Pro FS PS4/PS5 (PS4 mode)",
+    "product": "020a",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORIPAD 4 FPS",
+    "product": "0055",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Fighting Commander 4 PS4",
+    "product": "005e",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORIPAD 4 FPS Plus",
+    "product": "0066",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Fighting Commander PS4",
+    "product": "0084",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Fighting Stick mini 4",
+    "product": "0087",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Real Arcade Pro 4",
+    "product": "008a",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI TAC PRO mousething",
+    "product": "009c",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI TAC4 mousething",
+    "product": "00a0",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Hori Fighting Stick mini 4 kai",
+    "product": "00ed",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Hori mini wired",
+    "product": "00ee",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Hori Fighting Stick α",
+    "product": "011c",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Wireless Controller Light (Japan only)",
+    "product": "0123",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Fighting Commander OCTA",
+    "product": "0162",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Fighting Commander OCTA (Xbox/PC mode)",
+    "product": "0164",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "PS4 Fun Controller",
+    "product": "4001",
+    "vendor": "11c0"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Nacon PS4 Compact Controller (Xbox/PC mode)",
+    "product": "0603",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Daija Arcade Stick (Xbox/PC mode)",
+    "product": "0604",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON PS4 controller in Xbox mode",
+    "product": "0605",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Unknown Controller (Xbox/PC mode)",
+    "product": "0606",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Wireless Controller for PS4 (Xbox/PC mode)",
+    "product": "0609",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Nacon Revolution Pro Controller",
+    "product": "0d01",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Nacon Revolution Pro Controller v2",
+    "product": "0d02",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Asymmetric Controller Wireless Dongle",
+    "product": "0d06",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Revolution Unlimited Wireless Dongle",
+    "product": "0d08",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Daija Fight Stick",
+    "product": "0d09",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Revolution Infinite",
+    "product": "0d10",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Revolution Pro Controller 3",
+    "product": "0d13",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Asymmetric Controller",
+    "product": "1103",
+    "vendor": "146b"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Razer Raiju PS4 Controller",
+    "product": "1000",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Razer Raiju 2 Ultimate USB",
+    "product": "1004",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Razer Raiju 2 Tournament edition USB",
+    "product": "1007",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Razer Panthera Evo Fightstick",
+    "product": "1008",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Razer Raiju 2 Ultimate BT",
+    "product": "1009",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Razer Raiju 2 Tournament edition BT",
+    "product": "100a",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Razer RAION Fightpad",
+    "product": "1100",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "PowerA Fusion Fight Pad",
+    "product": "792a",
+    "vendor": "20d6"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Qanba Drone",
+    "product": "2000",
+    "vendor": "2c22"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Qanba Obsidian",
+    "product": "2300",
+    "vendor": "2c22"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Qanba Obsidian Arcade Joystick (Xbox/PC mode)",
+    "product": "2303",
+    "vendor": "2c22"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Qanba Dragon",
+    "product": "2500",
+    "vendor": "2c22"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Qanba Dragon Arcade Joystick (Xbox/PC mode)",
+    "product": "2503",
+    "vendor": "2c22"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Revolution 5 Pro (PS4 mode with dongle)",
+    "product": "0d16",
+    "vendor": "3285"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "NACON Revolution 5 Pro (PS4 mode wired)",
+    "product": "0d17",
+    "vendor": "3285"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Armor 3 or Level Up Cobra",
+    "product": "0104",
+    "vendor": "7545"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Astro C40 in Xbox 360 mode (Xbox/PC mode)",
+    "product": "0024",
+    "vendor": "9886"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Astro C40",
+    "product": "0025",
+    "vendor": "9886"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Sony DualSense Controller",
+    "product": "0ce6",
+    "vendor": "054c"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Access Controller for PS5",
+    "product": "0e5f",
+    "vendor": "054c"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Victrix Pro FS PS4/PS5 (PS5 mode)",
+    "product": "0209",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "HORI Fighting Commander OCTA",
+    "product": "0163",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Hori Fighting Stick α",
+    "product": "0184",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Razer Wolverine V2 Pro (Wired)",
+    "product": "100b",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Razer Wolverine V2 Pro (Wireless)",
+    "product": "100c",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Razer Kitsune",
+    "product": "1012",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Razer Raiju V3 Pro (PS5 mode wired)",
+    "product": "1024",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Razer Raiju V3 Pro (PS5 mode with dongle)",
+    "product": "1026",
+    "vendor": "1532"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "NACON Revolution 5 Pro (PS5 mode with dongle)",
+    "product": "0d18",
+    "vendor": "3285"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "NACON Revolution 5 Pro (PS5 mode wired)",
+    "product": "0d19",
+    "vendor": "3285"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Backbone One PlayStation Edition for iOS",
+    "product": "0104",
+    "vendor": "358a"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "Backbone One PlayStation Edition Gen 2",
+    "product": "0304",
+    "vendor": "358a"
+  },
+  {
+    "art": "JoyCons",
+    "family": "JoyCons",
+    "hint": null,
+    "name": "Nintendo Switch Joy-Con (Left)",
+    "product": "2006",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "Switch2",
+    "hint": "Switch2Unsupported",
+    "name": "Nintendo Switch 2 Joy-Con (Left)",
+    "product": "2067",
+    "vendor": "057e"
+  },
+  {
+    "art": "JoyCons",
+    "family": "JoyCons",
+    "hint": null,
+    "name": "Nintendo Switch Joy-Con (Right)",
+    "product": "2007",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "Switch2",
+    "hint": "Switch2Unsupported",
+    "name": "Nintendo Switch 2 Joy-Con (Right)",
+    "product": "2066",
+    "vendor": "057e"
+  },
+  {
+    "art": "JoyCons",
+    "family": "JoyCons",
+    "hint": null,
+    "name": "Nintendo Switch Joy-Con (Left+Right Combined)",
+    "product": "2008",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "Switch2",
+    "hint": "Switch2Unsupported",
+    "name": "Nintendo Switch 2 Joy-Con (Left+Right Combined)",
+    "product": "2068",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "Nintendo Switch Pro Controller",
+    "product": "2009",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "Switch2",
+    "hint": "Switch2Unsupported",
+    "name": "Nintendo Switch 2 Pro Controller",
+    "product": "2069",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "HORIPAD for Nintendo Switch",
+    "product": "00c1",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "HORI Pokken Tournament DX Pro Pad",
+    "product": "0092",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "HORI Wireless Switch Pad",
+    "product": "00f6",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "HORIPAD for Nintendo Switch, XInput mode",
+    "product": "00dc",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP Faceoff Wired Pro Controller for Nintendo Switch",
+    "product": "0180",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP Faceoff Deluxe Wired Pro Controller for Nintendo Switch",
+    "product": "0181",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP Faceoff Wired Deluxe+ Audio Controller",
+    "product": "0184",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP Wired Fight Pad Pro for Nintendo Switch",
+    "product": "0185",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP Afterglow Wireless Switch Controller",
+    "product": "0186",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP Rockcandy Wired Controller",
+    "product": "0187",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP Afterglow Wired Deluxe+ Audio Controller",
+    "product": "0188",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP Afterglow Wave Wireless Controller for Switch",
+    "product": "018b",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PDP REALMz Wireless Controller for Switch",
+    "product": "018c",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "HORI Real Arcade Pro V Hayabusa in Switch Mode",
+    "product": "00aa",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PowerA Wired Controller Plus/PowerA Wired Controller Nintendo GameCube Style",
+    "product": "a711",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PowerA Nintendo Switch Fusion Fight Pad",
+    "product": "a712",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PowerA Super Mario Controller",
+    "product": "a713",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PowerA Nintendo Switch Spectra Controller",
+    "product": "a714",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "Power A Fusion Wireless Arcade Stick (USB Mode)",
+    "product": "a715",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PowerA Nintendo Switch Fusion Pro Controller",
+    "product": "a716",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "PowerA Nintendo Switch Nano Wired Controller",
+    "product": "a718",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "ZUIKI MasCon for Nintendo Switch Black",
+    "product": "0001",
+    "vendor": "33dd"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "ZUIKI MasCon for Nintendo Switch ??",
+    "product": "0002",
+    "vendor": "33dd"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "ZUIKI MasCon for Nintendo Switch Red",
+    "product": "0003",
+    "vendor": "33dd"
+  },
+  {
+    "art": "Offset",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "HORI Taiko Controller For Switch",
+    "product": "00f0",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSenseEdge",
+    "hint": null,
+    "name": "Sony DualSense Edge Controller",
+    "product": "0df2",
+    "vendor": "054c"
+  },
+  {
+    "art": "Offset",
+    "family": "XboxElite",
+    "hint": "XboxPaddlesHidden",
+    "name": "Microsoft Xbox One Elite Controller",
+    "product": "02e3",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "XboxElite",
+    "hint": "XboxPaddlesHidden",
+    "name": "Microsoft Xbox One Elite Series 2 Controller",
+    "product": "0b00",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "XboxElite",
+    "hint": "XboxPaddlesHidden",
+    "name": "Microsoft Xbox One Elite Series 2 Controller (Bluetooth)",
+    "product": "0b05",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "XboxElite",
+    "hint": "XboxPaddlesHidden",
+    "name": "Microsoft Xbox One Elite Series 2 Controller (BLE)",
+    "product": "0b22",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamController",
+    "hint": "SteamInput",
+    "name": "Valve Legacy Steam Controller (CHELL)",
+    "product": "1101",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamController",
+    "hint": "SteamInput",
+    "name": "Valve wired Steam Controller (D0G)",
+    "product": "1102",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamController",
+    "hint": "SteamInput",
+    "name": "Valve Bluetooth Steam Controller (D0G)",
+    "product": "1105",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamController",
+    "hint": "SteamInput",
+    "name": "Valve Bluetooth Steam Controller (D0G)",
+    "product": "1106",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamController",
+    "hint": "SteamInput",
+    "name": "Valve wireless Steam Controller",
+    "product": "1142",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamController",
+    "hint": "SteamInput",
+    "name": "Valve wired Steam Controller (HEADCRAB)",
+    "product": "1201",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamController",
+    "hint": "SteamInput",
+    "name": "Valve Bluetooth Steam Controller (HEADCRAB)",
+    "product": "1202",
+    "vendor": "28de"
+  },
+  {
+    "art": "Handheld",
+    "family": "SteamDeck",
+    "hint": "SteamInput",
+    "name": "Valve Steam Deck Builtin Controller",
+    "product": "1205",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamDeck",
+    "hint": "SteamInput",
+    "name": "Valve Steam Triton Controller",
+    "product": "1302",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamDeck",
+    "hint": "SteamInput",
+    "name": "Valve Steam Triton Controller (BLE)",
+    "product": "1303",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamDeck",
+    "hint": "SteamInput",
+    "name": "Valve Steam Proteus Dongle (Proprietary)",
+    "product": "1304",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamDeck",
+    "hint": "SteamInput",
+    "name": "Valve Steam Nereid Dongle (Proprietary)",
+    "product": "1305",
+    "vendor": "28de"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamDeck",
+    "hint": "SteamInput",
+    "name": "HORI Wireless HORIPAD for Steam",
+    "product": "01ab",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "SteamDeck",
+    "hint": "SteamInput",
+    "name": "HORI Wireless HORIPAD for Steam ( BT )",
+    "product": "0196",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox 360 Wired",
+    "product": "028e",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox 360 Wireless Receiver",
+    "product": "0719",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox One (2013)",
+    "product": "02d1",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox One (2015 fw)",
+    "product": "02dd",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox One S (USB)",
+    "product": "02ea",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox One S (BT rev1)",
+    "product": "02e0",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox One S (BT rev2)",
+    "product": "02fd",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox One S (BLE)",
+    "product": "0b20",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox Series X|S (USB)",
+    "product": "0b12",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox Series X|S (BLE)",
+    "product": "0b13",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox Adaptive (USB)",
+    "product": "0b0a",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox Adaptive (BT)",
+    "product": "0b0c",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox Adaptive (BLE)",
+    "product": "0b21",
+    "vendor": "045e"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech F310",
+    "product": "c21d",
+    "vendor": "046d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech F310",
+    "product": "c216",
+    "vendor": "046d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech F710",
+    "product": "c21f",
+    "vendor": "046d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech F710",
+    "product": "c219",
+    "vendor": "046d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech F510",
+    "product": "c21e",
+    "vendor": "046d"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech F510",
+    "product": "c218",
+    "vendor": "046d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Turtle Beach Recon",
+    "product": "7009",
+    "vendor": "10f5"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Turtle Beach REACT-R",
+    "product": "7013",
+    "vendor": "10f5"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Turtle Beach Stealth Ultra (wired)",
+    "product": "7073",
+    "vendor": "10f5"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine Ultimate",
+    "product": "0a14",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine TE",
+    "product": "0a15",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine V2 Pro (Xbox, wired)",
+    "product": "1010",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine V2 Pro (Xbox, wireless)",
+    "product": "1011",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine V2",
+    "product": "0a29",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine V2 Chroma",
+    "product": "0a2e",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine V3 Pro",
+    "product": "0a3f",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA Fusion Pro 2",
+    "product": "4001",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA FUSION Pro",
+    "product": "551a",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Victrix Gambit",
+    "product": "02d6",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "GameSir dongle (XInput mode)",
+    "product": "103e",
+    "vendor": "3537"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SF30 Pro",
+    "product": "6000",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SF30 Pro",
+    "product": "6100",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30 Pro",
+    "product": "6001",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30 Pro",
+    "product": "6101",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30 Pro+",
+    "product": "6002",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30 Pro+",
+    "product": "6102",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDoPro2",
+    "hint": null,
+    "name": "8BitDo Pro 2",
+    "product": "6003",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDoPro2",
+    "hint": null,
+    "name": "8BitDo Pro 2",
+    "product": "6006",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDoFour",
+    "hint": null,
+    "name": "8BitDo Pro 3",
+    "product": "6009",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoFour",
+    "hint": "EightBitDoDInput",
+    "name": "8BitDo Pro 3 / Ultimate 2 Wireless",
+    "product": "310b",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDoFour",
+    "hint": "EightBitDoDInput",
+    "name": "8BitDo Pro 3 or Ultimate, XInput mode",
+    "product": "3109",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoFour",
+    "hint": null,
+    "name": "8BitDo Ultimate 2 Wireless",
+    "product": "6012",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoFour",
+    "hint": null,
+    "name": "8BitDo Ultimate 3",
+    "product": "202f",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDoPro2",
+    "hint": "EightBitDoSwitchD",
+    "name": "8BitDo Ultimate 2.4G / Pro 2 wired",
+    "product": "3106",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoUltimate",
+    "hint": null,
+    "name": "8BitDo Ultimate Wired",
+    "product": "3011",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoUltimate",
+    "hint": null,
+    "name": "8BitDo Ultimate 2.4G",
+    "product": "3013",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoUltimate",
+    "hint": null,
+    "name": "8BitDo Ultimate Bluetooth",
+    "product": "3012",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Ultimate C 2.4G",
+    "product": "3015",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Ultimate C",
+    "product": "3016",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Ultimate C",
+    "product": "3017",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoUltimate2C",
+    "hint": "EightBitDo2CBluetooth",
+    "name": "8BitDo Ultimate 2C Wireless",
+    "product": "310a",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoUltimate2C",
+    "hint": null,
+    "name": "8BitDo Ultimate 2C Wireless (BT)",
+    "product": "301b",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoUltimate2C",
+    "hint": null,
+    "name": "8BitDo Ultimate 2C variant",
+    "product": "301c",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDoUltimate2C",
+    "hint": null,
+    "name": "8BitDo Ultimate 2C variant",
+    "product": "301d",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": "EightBitDoForXbox",
+    "name": "8BitDo Ultimate Wired for Xbox",
+    "product": "2002",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": "EightBitDoForXbox",
+    "name": "8BitDo Ultimate 3-mode for Xbox",
+    "product": "200f",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDoPro2",
+    "hint": null,
+    "name": "8BitDo Pro 2 Wired for Xbox",
+    "product": "2000",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30 Pro for Xbox",
+    "product": "2100",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30 Pro for Xbox",
+    "product": "2101",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo 64 (BT)",
+    "product": "3019",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo 64",
+    "product": "2869",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo GameCube-style",
+    "product": "286a",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Zero 2",
+    "product": "3230",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Zero 2",
+    "product": "9018",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Micro",
+    "product": "9020",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo M30 (wired/2.4G)",
+    "product": "0651",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo M30 (BT)",
+    "product": "5006",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Lite SE",
+    "product": "5111",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Lite 2",
+    "product": "5112",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30",
+    "product": "2862",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30",
+    "product": "9012",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo N30 Pro 2",
+    "product": "2865",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo N30 Pro 2",
+    "product": "9015",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo FC30 Pro",
+    "product": "3810",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo NES30 Pro",
+    "product": "3820",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo FC30 Pro",
+    "product": "9000",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SN30 / SF30",
+    "product": "ab20",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo SFC30",
+    "product": "ab21",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo NES30",
+    "product": "ab12",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo F30 / FC30 Arcade",
+    "product": "ab11",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Wireless USB Adapter",
+    "product": "3100",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo Wireless USB Adapter 2",
+    "product": "3105",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "Zero (original)",
+    "product": "3232",
+    "vendor": "05a0"
+  },
+  {
+    "art": "Retro",
+    "family": "EightBitDo",
+    "hint": null,
+    "name": "8BitDo NEOGEO Wireless",
+    "product": "9025",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "family": "Luna",
+    "hint": null,
+    "name": "Amazon Luna Controller (USB)",
+    "product": "0419",
+    "vendor": "1949"
+  },
+  {
+    "art": "Offset",
+    "family": "Luna",
+    "hint": null,
+    "name": "Amazon Luna Controller (BT)",
+    "product": "0419",
+    "vendor": "0171"
+  },
+  {
+    "art": "Offset",
+    "family": "Stadia",
+    "hint": null,
+    "name": "Google Stadia Controller",
+    "product": "9400",
+    "vendor": "18d1"
+  },
+  {
+    "art": "Offset",
+    "family": "Shield",
+    "hint": null,
+    "name": "NVIDIA SHIELD Controller (2015)",
+    "product": "7210",
+    "vendor": "0955"
+  },
+  {
+    "art": "Offset",
+    "family": "Shield",
+    "hint": null,
+    "name": "NVIDIA SHIELD Controller (2017)",
+    "product": "7214",
+    "vendor": "0955"
+  },
+  {
+    "art": "Offset",
+    "family": "GameCube",
+    "hint": null,
+    "name": "Nintendo Wii U GameCube Adapter",
+    "product": "0337",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "GameCube",
+    "hint": null,
+    "name": "EVORETRO/Mayflash GC adapter (PC mode)",
+    "product": "1843",
+    "vendor": "0079"
+  },
+  {
+    "art": "Offset",
+    "family": "GameCube",
+    "hint": null,
+    "name": "EVORETRO/Mayflash GC adapter (PC mode)",
+    "product": "1844",
+    "vendor": "0079"
+  },
+  {
+    "art": "Offset",
+    "family": "GameCube",
+    "hint": null,
+    "name": "EVORETRO GC adapter",
+    "product": "1846",
+    "vendor": "0079"
+  },
+  {
+    "art": "Offset",
+    "family": "Switch2",
+    "hint": "Switch2Unsupported",
+    "name": "NSO GameCube Controller (Switch 2)",
+    "product": "2073",
+    "vendor": "057e"
+  },
+  {
+    "art": "Retro",
+    "family": "NintendoClassic",
+    "hint": null,
+    "name": "NSO SNES Controller",
+    "product": "2017",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "NintendoClassic",
+    "hint": null,
+    "name": "NSO N64 Controller",
+    "product": "2019",
+    "vendor": "057e"
+  },
+  {
+    "art": "Retro",
+    "family": "NintendoClassic",
+    "hint": null,
+    "name": "NSO SEGA Genesis/Mega Drive",
+    "product": "201e",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "Wii",
+    "hint": null,
+    "name": "Wii Remote",
+    "product": "0306",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "Wii",
+    "hint": null,
+    "name": "Wii Remote Plus / Wii U Pro",
+    "product": "0330",
+    "vendor": "057e"
+  },
+  {
+    "art": "Offset",
+    "family": "Flydigi",
+    "hint": "FlydigiThirdParty",
+    "name": "Flydigi Vader 2/3 dongle (V1 protocol)",
+    "product": "2412",
+    "vendor": "04b4"
+  },
+  {
+    "art": "Offset",
+    "family": "Flydigi",
+    "hint": "FlydigiThirdParty",
+    "name": "Flydigi Vader 4 Pro / 5 Pro",
+    "product": "2401",
+    "vendor": "37d7"
+  },
+  {
+    "art": "Offset",
+    "family": "FlydigiApex",
+    "hint": "FlydigiThirdParty",
+    "name": "Flydigi Apex 5",
+    "product": "2501",
+    "vendor": "37d7"
+  },
+  {
+    "art": "Offset",
+    "family": "FlydigiApex",
+    "hint": "FlydigiThirdParty",
+    "name": "Flydigi Apex 6",
+    "product": "2502",
+    "vendor": "37d7"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "SInput generic (Handheld Legend)",
+    "product": "10c6",
+    "vendor": "2e8a"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Handheld Legend ProGCC",
+    "product": "10df",
+    "vendor": "2e8a"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Handheld Legend GC Ultimate",
+    "product": "10dd",
+    "vendor": "2e8a"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "BonziriChannel Firebird",
+    "product": "10e0",
+    "vendor": "2e8a"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Void Gaming PS4 Firebird",
+    "product": "10e5",
+    "vendor": "2e8a"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Void Gaming Genesis (SInput)",
+    "product": "1014",
+    "vendor": "38d2"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Void Gaming Genesis (DInput)",
+    "product": "1010",
+    "vendor": "38d2"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "ZUIKI MasCon Pro",
+    "product": "0006",
+    "vendor": "33dd"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "ZUIKI EVOTOP (PC, D-input)",
+    "product": "001d",
+    "vendor": "33dd"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "ZUIKI EVOTOP (UWB dongle)",
+    "product": "001c",
+    "vendor": "33dd"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "ZUIKI EVOTOP (BT)",
+    "product": "0017",
+    "vendor": "33dd"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "ZUIKI EVOTOP AXIS",
+    "product": "0020",
+    "vendor": "33dd"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "ASUS ROG Kunai 3",
+    "product": "7906",
+    "vendor": "0b05"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Retro Fighters D6",
+    "product": "0578",
+    "vendor": "2563"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "GameSir G5",
+    "product": "057a",
+    "vendor": "05ac"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "Generic PS2 adapter",
+    "product": "0667",
+    "vendor": "6666"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "TigerGame PS/PS2 adapter",
+    "product": "8804",
+    "vendor": "6666"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "TwinShock PS2 adapter",
+    "product": "0002",
+    "vendor": "04d9"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "Bigben PS2 adapter",
+    "product": "0303",
+    "vendor": "146b"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "PS2 adapter",
+    "product": "3013",
+    "vendor": "0d9d"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "DragonRise generic PCB (PC Twin Shock)",
+    "product": "0006",
+    "vendor": "0079"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "GPD Win 2",
+    "product": "18d4",
+    "vendor": "0079"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "CRKD LP Blueberry Burst Pro Edition (Xbox)",
+    "product": "1000",
+    "vendor": "0351"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "CRKD LP Black Tribal Edition (Xbox)",
+    "product": "2000",
+    "vendor": "0351"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting One (Legacy)",
+    "product": "ff01",
+    "vendor": "03eb"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting Two (Legacy)",
+    "product": "ff02",
+    "vendor": "03eb"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HyperX Clutch",
+    "product": "038d",
+    "vendor": "03f0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HyperX Clutch (wireless)",
+    "product": "048d",
+    "vendor": "03f0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Thrustmaster Gamepad GP XID",
+    "product": "b326",
+    "vendor": "044f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox 360 Controller (v2)",
+    "product": "028f",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Logitech Chillstream Controller",
+    "product": "c242",
+    "vendor": "046d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Logitech DriveFx Racing Wheel",
+    "product": "caa3",
+    "vendor": "046d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Acer NGR200",
+    "product": "1305",
+    "vendor": "0502"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Elecom JC-U3613M",
+    "product": "2004",
+    "vendor": "056e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Saitek P3600",
+    "product": "f51a",
+    "vendor": "06a3"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Wired Xbox 360 Controller",
+    "product": "4716",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Street Fighter IV FightStick SE",
+    "product": "4718",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Xbox 360 Controller",
+    "product": "4726",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Street Fighter IV FightPad",
+    "product": "4728",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz MicroCon Gamepad",
+    "product": "4736",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Wired Xbox 360 Controller (SFIV)",
+    "product": "4738",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Beat Pad",
+    "product": "4740",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Arcade Game Stick",
+    "product": "4758",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Portable Drum",
+    "product": "9871",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Xbox controller - MW2",
+    "product": "b726",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz MVC2TE Stick 2",
+    "product": "b738",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz JOYTECH NEO SE Advanced GamePad",
+    "product": "beef",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Saitek Cyborg Rumble Pad",
+    "product": "cb02",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Saitek P3200 Rumble Pad",
+    "product": "cb03",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Saitek Aviator Stick AV8R02",
+    "product": "cb29",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Super SFIV FightStick TE S",
+    "product": "f738",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz GamePad",
+    "product": "ffff",
+    "vendor": "07ff"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ASUS ROG Raikiri II",
+    "product": "1c91",
+    "vendor": "0b05"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ASUS ROG Raikiri II Wireless",
+    "product": "1c92",
+    "vendor": "0b05"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "MSI Claw",
+    "product": "1901",
+    "vendor": "0db0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HSM3 Xbox 360 dancepad",
+    "product": "0105",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Afterglow AX.1 Gamepad for Xbox 360",
+    "product": "0113",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Rock Candy Gamepad Wired Controller",
+    "product": "011f",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP EA Sports Controller",
+    "product": "0131",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox 360 Wired Controller",
+    "product": "0133",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Marvel Xbox 360 Controller",
+    "product": "0147",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Pelican PL-3601 'TSZ' Wired Xbox 360 Controller",
+    "product": "0201",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Afterglow Gamepad for Xbox 360",
+    "product": "0213",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Rock Candy Gamepad for Xbox 360",
+    "product": "021f",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Logic3 Controller",
+    "product": "0301",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Logic3 Controller",
+    "product": "0401",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Afterglow AX.1 Gamepad for Xbox 360",
+    "product": "0413",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox 360 Controller",
+    "product": "0501",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Afterglow AX.1",
+    "product": "f900",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Co. DOA4 FightStick",
+    "product": "000a",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori PadEX Turbo",
+    "product": "000c",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Fighting Stick EX2",
+    "product": "000d",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro.EX",
+    "product": "0016",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro VX",
+    "product": "001b",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "SteelSeries Stratus Duo",
+    "product": "1430",
+    "vendor": "1038"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "SteelSeries Stratus Duo",
+    "product": "1431",
+    "vendor": "1038"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Nacon GC-100XF",
+    "product": "55f0",
+    "vendor": "11c9"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PXN V900",
+    "product": "0511",
+    "vendor": "11ff"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Ardwiino Controller",
+    "product": "2882",
+    "vendor": "1209"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Honey Bee Xbox 360 dancepad",
+    "product": "0004",
+    "vendor": "12ab"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Afterglow AX.1",
+    "product": "0301",
+    "vendor": "12ab"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mortal Kombat Klassic FightStick",
+    "product": "0303",
+    "vendor": "12ab"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "RedOctane Guitar Hero X-plorer",
+    "product": "4748",
+    "vendor": "1430"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "RedOctane Controller",
+    "product": "f801",
+    "vendor": "1430"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "BigBen Interactive Xbox 360 Controller",
+    "product": "0601",
+    "vendor": "146b"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine V3 Pro (wired)",
+    "product": "0a57",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wolverine V3 Pro (dongle)",
+    "product": "0a59",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Power A Mini Pro Elite",
+    "product": "3f00",
+    "vendor": "15e4"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox Airflo wired controller",
+    "product": "3f0a",
+    "vendor": "15e4"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Batarang Xbox 360 controller",
+    "product": "3f10",
+    "vendor": "15e4"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Joytech Neo-Se Take2",
+    "product": "beef",
+    "vendor": "162e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Onza Tournament Edition",
+    "product": "fd00",
+    "vendor": "1689"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Onza Classic Edition",
+    "product": "fd01",
+    "vendor": "1689"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Sabertooth",
+    "product": "fe00",
+    "vendor": "1689"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Azeron Cyro",
+    "product": "1103",
+    "vendor": "16d0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Azeron Cyborg",
+    "product": "113c",
+    "vendor": "16d0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Azeron Classic/Compact",
+    "product": "1192",
+    "vendor": "16d0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Azeron Cyro Lefty",
+    "product": "1212",
+    "vendor": "16d0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Azeron Cyborg II",
+    "product": "12f7",
+    "vendor": "16d0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Azeron Keyzen",
+    "product": "13ea",
+    "vendor": "16d0"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "Lenovo Legion Go",
+    "product": "6182",
+    "vendor": "17ef"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Amazon Game Controller",
+    "product": "041a",
+    "vendor": "1949"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "Lenovo Legion Go S",
+    "product": "e310",
+    "vendor": "1a86"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Harmonix Rock Band Guitar",
+    "product": "0002",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Harmonix Rock Band Drumkit",
+    "product": "0003",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Ion Drum Rocker",
+    "product": "0130",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Xbox 360 Controller",
+    "product": "f016",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Street Fighter IV SE Fighting Stick",
+    "product": "f018",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Brawlstick for Xbox 360",
+    "product": "f019",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Ghost Recon FS GamePad",
+    "product": "f021",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "MLG Pro Circuit Controller (Xbox)",
+    "product": "f023",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Call Of Duty",
+    "product": "f025",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz FPS Pro",
+    "product": "f027",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Street Fighter IV FightPad",
+    "product": "f028",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Fightpad",
+    "product": "f02e",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Xbox 360 MC2 MicroCon Racing Wheel",
+    "product": "f030",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz MicroCon GamePad Pro",
+    "product": "f036",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Street Fighter IV FightStick TE",
+    "product": "f038",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz MvC2 TE",
+    "product": "f039",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz SFxT Fightstick Pro",
+    "product": "f03a",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Street Fighter IV Arcade Stick TE - Chun Li",
+    "product": "f03d",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz MLG FightStick TE",
+    "product": "f03e",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz FightStick SoulCaliber",
+    "product": "f03f",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz FightStick TES+",
+    "product": "f042",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz FightStick TE2",
+    "product": "f080",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HoriPad EX2 Turbo",
+    "product": "f501",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro.VX SA",
+    "product": "f502",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Fighting Stick VX",
+    "product": "f503",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro. EX",
+    "product": "f504",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Fighting Stick EX2B",
+    "product": "f505",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro.EX Premium VLX",
+    "product": "f506",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Harmonix Xbox 360 Controller",
+    "product": "f900",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Gamestop Xbox 360 Controller",
+    "product": "f901",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Tron Xbox 360 controller",
+    "product": "f903",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Versus Fighting Pad",
+    "product": "f904",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mortal Kombat FightStick",
+    "product": "f906",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz GamePad",
+    "product": "fa01",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Onza TE",
+    "product": "fd00",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Onza",
+    "product": "fd01",
+    "vendor": "1bad"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "ZOTAC Gaming Zone",
+    "product": "1590",
+    "vendor": "1ee9"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "BETOP BTP-KP50B dongle",
+    "product": "5134",
+    "vendor": "20bc"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "BETOP BTP-KP50C dongle",
+    "product": "514a",
+    "vendor": "20bc"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA Wired Controller For Xbox 360",
+    "product": "281f",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Machenike G5 Pro",
+    "product": "e00b",
+    "vendor": "2345"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Atrox Arcade Stick",
+    "product": "5000",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA MINI PROEX Controller",
+    "product": "5300",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox Airflo wired controller",
+    "product": "5303",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox 360 Pro EX Controller",
+    "product": "530a",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA Pro Ex",
+    "product": "531a",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA FUS1ON Tournament",
+    "product": "5397",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Xbox 360 EX 2 with Turbo",
+    "product": "5500",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro VX-SA",
+    "product": "5501",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Fighting Stick VX Alt",
+    "product": "5502",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Fighting Edge",
+    "product": "5503",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori SOULCALIBUR V Stick",
+    "product": "5506",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori GEM Xbox controller",
+    "product": "550d",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro V Kai 360",
+    "product": "550e",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Fighting Commander ONE (Xbox 360/PC Mode)",
+    "product": "5510",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ThrustMaster Ferrari 458 Racing Wheel",
+    "product": "5b00",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Thrustmaster GPX Controller",
+    "product": "5b02",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Thrustmaster Ferrari 458 Racing Wheel",
+    "product": "5b03",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Sabertooth",
+    "product": "5d04",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Rock Candy Gamepad for Xbox 360",
+    "product": "fafe",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "OneXPlayer",
+    "product": "058d",
+    "vendor": "2563"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "TECNO Pocket Go",
+    "product": "2001",
+    "vendor": "2993"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting One",
+    "product": "1100",
+    "vendor": "31e3"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting Two",
+    "product": "1200",
+    "vendor": "31e3"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting Lekker",
+    "product": "1210",
+    "vendor": "31e3"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting Two HE",
+    "product": "1220",
+    "vendor": "31e3"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting Two HE (ARM)",
+    "product": "1230",
+    "vendor": "31e3"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting 60HE (AVR)",
+    "product": "1300",
+    "vendor": "31e3"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Wooting 60HE (ARM)",
+    "product": "1310",
+    "vendor": "31e3"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Nacon GC-100",
+    "product": "0607",
+    "vendor": "3285"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Nacon Revolution 5 Pro (Xbox)",
+    "product": "0662",
+    "vendor": "3285"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ZENAIM Leverless",
+    "product": "000b",
+    "vendor": "3507"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "GameSir T4 Kaleid",
+    "product": "1004",
+    "vendor": "3537"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "GameSir Nova 2 Lite",
+    "product": "100f",
+    "vendor": "3537"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "CRKD SG",
+    "product": "1000",
+    "vendor": "3651"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Black Shark Green Ghost",
+    "product": "2104",
+    "vendor": "413d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox 360 Wireless Receiver (third-party)",
+    "product": "0291",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Xbox 360 Wireless Receiver (unofficial)",
+    "product": "02a9",
+    "vendor": "045e"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HyperX Clutch Gladiate",
+    "product": "0495",
+    "vendor": "03f0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HyperX Clutch Gladiate RGB",
+    "product": "07a0",
+    "vendor": "03f0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HyperX Clutch Gladiate (v2)",
+    "product": "08b6",
+    "vendor": "03f0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HyperX Clutch Tanto",
+    "product": "09b4",
+    "vendor": "03f0"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Thrustmaster eSwap X 2 Elden Ring Edition",
+    "product": "d01e",
+    "vendor": "044f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz Racing Wheel",
+    "product": "4503",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Mad Catz FightStick TE 2",
+    "product": "4a01",
+    "vendor": "0738"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ASUS ROG Raikiri",
+    "product": "1a38",
+    "vendor": "0b05"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ASUS ROG Raikiri Pro",
+    "product": "1abb",
+    "vendor": "0b05"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ASUS ROG Raikiri II Xbox",
+    "product": "1c96",
+    "vendor": "0b05"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ASUS ROG Raikiri II Xbox Wireless",
+    "product": "1d04",
+    "vendor": "0b05"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Afterglow Prismatic Wired Controller",
+    "product": "0139",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Controller",
+    "product": "013a",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Rock Candy Wired Controller for Xbox One",
+    "product": "0146",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Arcade Stick",
+    "product": "015c",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Mirror's Edge Official Wired Controller for Xbox One",
+    "product": "015d",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Controller",
+    "product": "0161",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Controller",
+    "product": "0162",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Controller",
+    "product": "0163",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Battlefield One",
+    "product": "0164",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Titanfall 2",
+    "product": "0165",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Rock Candy Gamepad for Xbox One 2015",
+    "product": "0246",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Victrix Pro BFG for Xbox",
+    "product": "024c",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Controller",
+    "product": "02a0",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Controller",
+    "product": "02a1",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Wired Controller for Xbox One - Crimson Red",
+    "product": "02a2",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Wired Controller for Xbox One - Stealth Series",
+    "product": "02a4",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Wired Controller for Xbox One - Camo Series",
+    "product": "02a6",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Controller",
+    "product": "02a7",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Xbox One Controller",
+    "product": "02a8",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Controller for Xbox One",
+    "product": "02ab",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PDP Wired Controller for Xbox One - Stealth Series",
+    "product": "02ad",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Afterglow Prismatic Wired Controller",
+    "product": "02b3",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Afterglow Prismatic Wired Controller",
+    "product": "02b8",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Rock Candy Gamepad for Xbox One 2016",
+    "product": "0346",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro Hayabusa (USA) Xbox One",
+    "product": "0063",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HORIPAD ONE",
+    "product": "0067",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Real Arcade Pro V Kai Xbox One",
+    "product": "0078",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Fighting Commander ONE",
+    "product": "00c5",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Racing Wheel Overdrive for Xbox Series X",
+    "product": "0151",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hori Racing Wheel Overdrive for Xbox Series X",
+    "product": "0152",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "HORI Taiko No Tatsujin Drum Controller",
+    "product": "01b2",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Turtle Beach Recon Controller",
+    "product": "7005",
+    "vendor": "10f5"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Turtle Beach Recon Controller",
+    "product": "7008",
+    "vendor": "10f5"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Atrox Arcade Stick",
+    "product": "0a00",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Razer Wildcat",
+    "product": "0a03",
+    "vendor": "1532"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "BDA Xbox Series X Wired Controller",
+    "product": "2001",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA Enhanced Wired Controller for Xbox Series X|S",
+    "product": "2009",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA Wired Controller for Xbox",
+    "product": "2064",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA FUSION Pro 4",
+    "product": "400b",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA MOGA XP-Ultra",
+    "product": "890b",
+    "vendor": "20d6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA Xbox One Mini Wired Controller",
+    "product": "541a",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA Spectra for Xbox One",
+    "product": "542a",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA Xbox One wired controller",
+    "product": "543a",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "PowerA FUSION Controller",
+    "product": "561a",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ThrustMaster XB1 Classic Controller",
+    "product": "581a",
+    "vendor": "24c6"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Snakebyte GAMEPAD BASE X",
+    "product": "3303",
+    "vendor": "294b"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Snakebyte GAMEPAD RGB X",
+    "product": "3404",
+    "vendor": "294b"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hyperkin DuchesS",
+    "product": "0423",
+    "vendor": "2e24"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hyperkin Duke",
+    "product": "0652",
+    "vendor": "2e24"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Hyperkin X91 Xbox One Controller",
+    "product": "1688",
+    "vendor": "2e24"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "SCUF Gaming Controller",
+    "product": "0504",
+    "vendor": "2e95"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Nacon Pro Compact controller for Xbox",
+    "product": "0603",
+    "vendor": "3285"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Nacon Pro Compact",
+    "product": "0614",
+    "vendor": "3285"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Nacon Pro Compact",
+    "product": "0646",
+    "vendor": "3285"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "Nacon Evol-X",
+    "product": "0663",
+    "vendor": "3285"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "GameSir G7 SE",
+    "product": "1010",
+    "vendor": "3537"
+  },
+  {
+    "art": "Offset",
+    "family": "Xbox",
+    "hint": null,
+    "name": "ByoWave Proteus",
+    "product": "0005",
+    "vendor": "366c"
+  },
+  {
+    "art": "JoyCons",
+    "family": "JoyCons",
+    "hint": null,
+    "name": "Nintendo Switch Charging Grip",
+    "product": "200e",
+    "vendor": "057e"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "PlayStation Move Navigation Controller",
+    "product": "042f",
+    "vendor": "054c"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "PlayStation Move Motion Controller",
+    "product": "03d5",
+    "vendor": "054c"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Buzz! Controller",
+    "product": "0002",
+    "vendor": "054c"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Buzz! Wireless Controller",
+    "product": "1000",
+    "vendor": "054c"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Sino Lite PS3-style Controller",
+    "product": "3008",
+    "vendor": "1345"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "RedOctane Guitar Hero dongle (PS3)",
+    "product": "474c",
+    "vendor": "1430"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Guitar Hero Live dongle (PS4)",
+    "product": "07bb",
+    "vendor": "1430"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "PDP Jaguar Guitar (PS4)",
+    "product": "0173",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "PDP Riffmaster Guitar (PS4)",
+    "product": "024a",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "PDP Riffmaster Guitar (PS5)",
+    "product": "0249",
+    "vendor": "0e6f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "CRKD Gibson SG Guitar (PS4)",
+    "product": "1500",
+    "vendor": "3651"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "CRKD Gibson SG Guitar dongle (PS4)",
+    "product": "5500",
+    "vendor": "3651"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "CRKD Gibson SG Guitar (PS5)",
+    "product": "1600",
+    "vendor": "3651"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualSense",
+    "hint": null,
+    "name": "CRKD Gibson SG Guitar dongle (PS5)",
+    "product": "5600",
+    "vendor": "3651"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Mad Catz Stratocaster Guitar (PS4)",
+    "product": "8261",
+    "vendor": "0738"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "GreenAsia Dual USB Joypad",
+    "product": "3013",
+    "vendor": "0e8f"
+  },
+  {
+    "art": "Symmetric",
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "WiseGroup Quad USB Joypad",
+    "product": "8800",
+    "vendor": "0925"
+  },
+  {
+    "art": "Offset",
+    "family": "Other",
+    "hint": null,
+    "name": "Mayflash Wii U Pro Controller adapter",
+    "product": "1800",
+    "vendor": "0079"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "Mayflash PS3 Controller adapter",
+    "product": "1801",
+    "vendor": "0079"
+  },
+  {
+    "art": "Offset",
+    "family": "Wii",
+    "hint": null,
+    "name": "Mayflash DolphinBar",
+    "product": "1803",
+    "vendor": "0079"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "SCUF Vantage",
+    "product": "7725",
+    "vendor": "2e95"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Warrior Joypad JS083",
+    "product": "57ab",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Steel Play MetalTech",
+    "product": "0e16",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Snakebyte Game:Pad 4S",
+    "product": "1e1c",
+    "vendor": "0c12"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Gamo2 Divaller",
+    "product": "1114",
+    "vendor": "0e8f"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Mini Hatsune Miku FT",
+    "product": "0101",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "HORI Taiko Controller (PS4)",
+    "product": "00c9",
+    "vendor": "0f0d"
+  },
+  {
+    "art": "PlayStation",
+    "family": "DualShock4",
+    "hint": null,
+    "name": "Gioteck VX4",
+    "product": "1122",
+    "vendor": "7545"
+  },
+  {
+    "art": "Symmetric",
+    "family": "DualShock3",
+    "hint": null,
+    "name": "DualShock 3 via DsHidMini (DS4 mode)",
+    "product": "0001",
+    "vendor": "7331"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "ASUS ROG Ally X",
+    "product": "1b4c",
+    "vendor": "0b05"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "Lenovo Legion Go (D-input)",
+    "product": "6184",
+    "vendor": "17ef"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "Lenovo Legion Go 2",
+    "product": "61eb",
+    "vendor": "17ef"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "Lenovo Legion Go 2 (D-input)",
+    "product": "61ec",
+    "vendor": "17ef"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "Lenovo Legion Go 2 (D-input)",
+    "product": "61ed",
+    "vendor": "17ef"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "Lenovo Legion Go 2 (FPS mode)",
+    "product": "61ee",
+    "vendor": "17ef"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "Lenovo Legion Go S (D-input)",
+    "product": "e311",
+    "vendor": "1a86"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "MSI Claw (D-input)",
+    "product": "1902",
+    "vendor": "0db0"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "MSI Claw (desktop mode)",
+    "product": "1903",
+    "vendor": "0db0"
+  },
+  {
+    "art": "Handheld",
+    "family": "Handheld",
+    "hint": null,
+    "name": "ASUS ROG Ally",
+    "product": "1abe",
+    "vendor": "0b05"
+  }
+]

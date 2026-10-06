@@ -1,41 +1,34 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { glyphsFor, shapeFor, type Glyphs, type Shape } from "@/lib/drawings";
 import { FAMILIES, HINTS, SHORT, type Family } from "@/lib/families";
-import { gamepadName, lookup, parseGamepadId, type Art, type IndexedModel } from "@/lib/models";
-import { PadDrawing, type Glyphs } from "./PadDrawing";
+import { gamepadName, lookup, parseGamepadId } from "@/lib/models";
+import { ISSUES_URL } from "@/lib/site";
+import { PadDrawing } from "./PadDrawing";
 import { useHtmlData } from "./lang";
 import { T } from "./T";
 
 type Snap = { index: number; id: string; mapping: string; buttons: number[]; axes: number[] };
 
 const EXAMPLES = [
+  { id: "054c:0ce6", label: "DualSense" },
   { id: "054c:0df2", label: "DualSense Edge" },
-  { id: "057e:2009", label: "Switch Pro" },
-  { id: "2dc8:6012", label: "8BitDo Ultimate 2" },
+  { id: "054c:09cc", label: "DualShock 4" },
+  { id: "054c:0268", label: "DualShock 3" },
   { id: "045e:0b12", label: "Xbox Series" },
+  { id: "057e:2009", label: "Switch Pro" },
+  { id: "057e:2008", label: "Joy-Con" },
+  { id: "2dc8:6012", label: "8BitDo Ultimate 2" },
+  { id: "2dc8:6003", label: "8BitDo Pro 2" },
+  { id: "2dc8:2862", label: "8BitDo SN30" },
 ];
 
 const PHYSICAL: Record<Glyphs, string[]> = {
-  xbox: ["A", "B", "X", "Y", "LB", "RB", "LT", "RT", "View", "Menu", "LS", "RS", "↑", "↓", "←", "→", "Guide"],
+  xbox: ["A", "B", "X", "Y", "LB", "RB", "LT", "RT", "View", "Menu", "LS", "RS", "↑", "↓", "←", "→", "Home"],
   ps: ["Cross", "Circle", "Square", "Triangle", "L1", "R1", "L2", "R2", "Share", "Options", "L3", "R3", "↑", "↓", "←", "→", "PS", "Touchpad"],
   nintendo: ["B", "A", "Y", "X", "L", "R", "ZL", "ZR", "−", "+", "L stick", "R stick", "↑", "↓", "←", "→", "Home", "Capture"],
 };
-const XBOX_OUT = ["A", "B", "X", "Y", "LB", "RB", "LT", "RT", "Back", "Start", "LS", "RS", "D-pad ↑", "D-pad ↓", "D-pad ←", "D-pad →", "Guide"];
-
-const PS_FAMILIES = new Set(["DualShock3", "DualShock4", "DualSense", "DualSenseEdge", "Ps2Adapter"]);
-const NINTENDO_FAMILIES = new Set(["SwitchPro", "JoyCons", "NintendoClassic", "Switch2"]);
-
-function glyphsFor(model: IndexedModel | null, vendor: string | null): Glyphs {
-  if (model) {
-    if (PS_FAMILIES.has(model.family)) return "ps";
-    if (NINTENDO_FAMILIES.has(model.family)) return "nintendo";
-    return "xbox";
-  }
-  if (vendor === "054c") return "ps";
-  if (vendor === "057e") return "nintendo";
-  return "xbox";
-}
 
 function q(n: number) {
   return Math.round(n * 50) / 50;
@@ -55,8 +48,9 @@ function noop() {
   return () => {};
 }
 
-function physicalName(glyphs: Glyphs, i: number, family: string | null) {
+function physicalName(glyphs: Glyphs, shape: Shape, i: number, family: string | null) {
   if (glyphs === "ps" && i === 8 && (family === "DualSense" || family === "DualSenseEdge")) return "Create";
+  if (glyphs === "xbox" && i === 16 && shape === "xbox") return "Xbox";
   return PHYSICAL[glyphs][i] ?? `#${i + 1}`;
 }
 
@@ -71,37 +65,37 @@ function Verdict({ family, os, hint }: { family: Family; os: string; hint: strin
   if (hint === "EightBitDoDInput" && os !== "mac")
     return (
       <T
-        en="In this mode it is an XInput controller: games read it directly and Open Controller leaves it alone. Its extra buttons need D-input mode."
-        pt="Neste modo ele é um controle XInput: os jogos o leem diretamente e o Open Controller não mexe nele. Os botões extras precisam do modo D-input."
+        en="It works in games as it is right now, in its Xbox mode. To use its extra buttons and motion aiming, switch it to D-input mode, as explained below."
+        pt="Ele já funciona nos jogos assim, no modo Xbox. Para usar os botões extras e a mira com movimento, mude para o modo D-input, como explicado abaixo."
       />
     );
   if (family.unsupported)
-    return <T en="Not read by this version. Switch 2 controllers need libusb, which this build of SDL leaves out." pt="Não é lido nesta versão. Controles do Switch 2 precisam de libusb, que esta versão do SDL não inclui." />;
+    return <T en="Not supported yet. Switch 2 controllers need a part this version leaves out." pt="Ainda não é suportado. Controles do Switch 2 precisam de uma peça que esta versão não inclui." />;
   if (family.id === "Handheld")
     return (
       <T
-        en="Games read the built-in pad directly. On Windows its back and menu buttons can become keys and macros."
-        pt="Os jogos leem o controle embutido diretamente. No Windows, os botões traseiros e de menu podem virar teclas e macros."
+        en="Games already support the built-in controller. On Windows, its back and menu buttons can be set to keys and macros."
+        pt="Os jogos já aceitam o controle embutido. No Windows, os botões traseiros e de menu podem virar teclas e macros."
       />
     );
   if (family.passthrough)
     return (
       <T
-        en="Left as it is. Games already read Xbox controllers, so it keeps its own slot and adds no latency."
-        pt="Fica como está. Os jogos já leem controles de Xbox, então ele mantém o próprio slot e não ganha latência."
+        en="Games already support it, so Open Controller leaves it as it is and lists it with the others."
+        pt="Os jogos já aceitam esse controle, então o Open Controller deixa ele como está e o mostra junto com os outros."
       />
     );
   if (os === "mac")
     return (
       <T
-        en="On macOS games read it as it is. Open Controller adds its extra buttons as keys and macros, and its light bar and battery where it has them."
-        pt="No macOS os jogos o leem como ele é. O Open Controller adiciona os botões extras como teclas e macros, e a barra de luz e a bateria quando ele tem."
+        en="On a Mac, games already read it. Open Controller adds its extra buttons as keys and macros, and its light bar and battery where it has them."
+        pt="No Mac, os jogos já leem esse controle. O Open Controller acrescenta os botões extras como teclas e macros, e a barra de luz e a bateria quando ele tem."
       />
     );
   return (
     <T
-      en="Games see an Xbox 360 controller, with a player number that stays through reconnects."
-      pt="Os jogos veem um controle de Xbox 360, com um número de jogador que continua o mesmo ao reconectar."
+      en="Works in your games, as its own player, and keeps that player number if it reconnects."
+      pt="Funciona nos seus jogos, como um jogador próprio, e mantém o número do jogador se reconectar."
     />
   );
 }
@@ -110,36 +104,85 @@ function Capabilities({ family }: { family: Family }) {
   const rows: [React.ReactNode, React.ReactNode][] = [
     [
       <T key="e" en="Extra buttons" pt="Botões extras" />,
-      family.extras ? <Yes><T en={family.extras.en} pt={family.extras.pt} /></Yes> : <No><T en="None beyond the Xbox set" pt="Nenhum além dos do Xbox" /></No>,
+      family.extras ? <Yes><T en={family.extras.en} pt={family.extras.pt} /></Yes> : <No><T en="None beyond the usual ones" pt="Nenhum além dos de sempre" /></No>,
     ],
     [
-      <T key="g" en="Gyro aim" pt="Mira por giroscópio" />,
+      <T key="g" en="Aim by moving it" pt="Mira com movimento" />,
       family.gyro === "yes" ? (
-        <Yes><T en="Yes, added to the right stick" pt="Sim, somado ao analógico direito" /></Yes>
+        <Yes><T en="Yes" pt="Sim" /></Yes>
       ) : family.gyro === "dinput" ? (
         <Yes><T en="Yes, in D-input mode" pt="Sim, no modo D-input" /></Yes>
       ) : (
-        <No><T en="Not listed" pt="Não listado" /></No>
+        <No><T en="No" pt="Não" /></No>
       ),
     ],
     [
       <T key="l" en="Light bar" pt="Barra de luz" />,
-      family.lightBar ? <Yes><T en="Player colour, your colour or battery" pt="Cor do jogador, a sua cor ou bateria" /></Yes> : <No><T en="No" pt="Não" /></No>,
+      family.lightBar ? <Yes><T en="Player colour, your colour or battery" pt="Cor do jogador, a sua cor ou a bateria" /></Yes> : <No><T en="No" pt="Não" /></No>,
     ],
     [
-      <T key="t" en="Touchpad buttons" pt="Botões no touchpad" />,
+      <T key="t" en="Touchpad as buttons" pt="Touchpad como botões" />,
       family.touchpad ? <Yes><T en="Left half, right half, two fingers" pt="Metade esquerda, metade direita, dois dedos" /></Yes> : <No><T en="No" pt="Não" /></No>,
     ],
   ];
   return (
-    <dl className="mt-6 divide-y divide-line border-y border-line text-[14px]">
+    <dl className="mt-6 divide-y divide-line border-y border-line text-[14.5px]">
       {rows.map(([k, val], i) => (
-        <div key={i} className="grid grid-cols-[8.5rem_1fr] gap-3 py-2.5 sm:grid-cols-[10rem_1fr]">
+        <div key={i} className="grid grid-cols-[9rem_1fr] gap-3 py-3 sm:grid-cols-[11rem_1fr]">
           <dt className="text-muted">{k}</dt>
           <dd>{val}</dd>
         </div>
       ))}
     </dl>
+  );
+}
+
+const HELP: { en: string; pt: string }[] = [
+  {
+    en: "Click anywhere on this page, then press a button on the controller. Browsers only show a controller after a press, and only to the page in front.",
+    pt: "Clique em qualquer lugar desta página e aperte um botão no controle. O navegador só mostra o controle depois de um toque, e só para a página em primeiro plano.",
+  },
+  {
+    en: "A Bluetooth controller has to be paired with the computer first, in your system's Bluetooth settings.",
+    pt: "Um controle Bluetooth precisa estar pareado com o computador antes, nas configurações de Bluetooth do sistema.",
+  },
+  {
+    en: "Safari shows the controller but never says which one it is. Chrome, Edge, Brave and Firefox do.",
+    pt: "O Safari mostra o controle, mas nunca diz qual é. Chrome, Edge, Brave e Firefox dizem.",
+  },
+  {
+    en: "If Open Controller is running with hiding on, the browser sees the Xbox controller it shows to games instead of yours. Quit it to test the controller itself.",
+    pt: "Se o Open Controller estiver aberto com a ocultação ligada, o navegador vê o controle de Xbox que ele mostra aos jogos, e não o seu. Feche-o para testar o próprio controle.",
+  },
+];
+
+type State = "idle" | "known" | "unknown" | "xinput" | "anon";
+
+function StatusPill({ state, example }: { state: State; example: boolean }) {
+  const tone = example
+    ? "border-accent/40 bg-accent/10 text-accent"
+    : state === "idle"
+      ? "border-line-strong bg-white/[0.03] text-muted"
+      : state === "known"
+        ? "border-ok/40 bg-ok/10 text-ok"
+        : "border-warn/40 bg-warn/10 text-warn";
+  return (
+    <span className={`inline-flex h-8 items-center gap-2.5 rounded-full border px-3.5 text-[14px] font-medium ${tone}`}>
+      <span className="pulse inline-block size-2 rounded-full bg-current" aria-hidden />
+      {example ? (
+        <T en="Example" pt="Exemplo" />
+      ) : state === "idle" ? (
+        <T en="Waiting for a controller" pt="Esperando um controle" />
+      ) : state === "known" ? (
+        <T en="Recognised" pt="Reconhecido" />
+      ) : state === "unknown" ? (
+        <T en="Connected, not in the list" pt="Conectado, fora da lista" />
+      ) : state === "xinput" ? (
+        <T en="Connected as an Xbox controller" pt="Conectado como controle de Xbox" />
+      ) : (
+        <T en="Connected, model not shown" pt="Conectado, modelo não informado" />
+      )}
+    </span>
   );
 }
 
@@ -224,8 +267,9 @@ export function ControllerCheck() {
     return parsed ? lookup(parsed.vendor, parsed.product) : null;
   }, [example, parsed]);
   const family = model ? (FAMILIES[model.family] ?? FAMILIES.Other) : null;
-  const glyphs = glyphsFor(model, parsed?.vendor ?? null);
-  const art: Art = model?.art ?? (parsed?.vendor === "054c" ? "PlayStation" : "Offset");
+  // A pad Windows hands over as XInput has no ids, and is an Xbox controller as far as anyone can tell.
+  const shape: Shape = !model && !parsed && pad && /xinput/i.test(pad.id) ? "xbox" : shapeFor(model, parsed?.vendor ?? null);
+  const glyphs = glyphsFor(model, parsed?.vendor ?? null, shape);
   const buttons = example ? Array.from({ length: 18 }, (_, i) => (exampleDown.includes(i) ? 1 : 0)) : (pad?.buttons ?? []);
   const axes = pad?.axes ?? [0, 0, 0, 0];
   const pressed = buttons.map((b, i) => [b, i] as const).filter(([b]) => b > 0.1).map(([, i]) => i);
@@ -247,231 +291,219 @@ export function ControllerCheck() {
     document.getElementById("controllers")?.scrollIntoView({ block: "start" });
   };
 
-  const live = state !== "idle" && !example;
+  const link = "text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg";
 
   return (
     <div ref={rootRef}>
-      <div className="card grid lg:grid-cols-[1.12fr_1fr]">
-        <div className="relative border-b border-line p-5 sm:p-8 lg:border-b-0 lg:border-r">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:18px_18px] [mask-image:radial-gradient(ellipse_at_center,#000_30%,transparent_75%)]"
-          />
-          <div className="relative flex min-h-8 flex-wrap items-center gap-x-3 gap-y-2">
-            <span className={`pulse inline-block size-2 rounded-full ${live ? "bg-ok text-ok" : example ? "bg-accent text-accent" : "bg-faint text-faint"}`} aria-hidden />
-            <p className="text-[13px] text-muted" role="status" aria-live="polite">
-              {example ? (
-                <T en="Example. Click the buttons on the drawing." pt="Exemplo. Clique nos botões do desenho." />
-              ) : pad ? (
-                <>
-                  <T en="Connected:" pt="Conectado:" /> <span className="text-fg">{gamepadName(pad.id)}</span>
-                </>
+      <div className="card">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 border-b border-line px-5 py-4 sm:px-8">
+          <p role="status" aria-live="polite" className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2">
+            <StatusPill state={state} example={!!example} />
+            {pad ? <span className="min-w-0 truncate text-[14px] text-muted">{gamepadName(pad.id)}</span> : null}
+          </p>
+          {pads.length > 1 && !example ? (
+            <div role="tablist" aria-label="Controllers" className="seg ml-auto">
+              {pads.map((p) => (
+                <button key={p.index} role="tab" aria-selected={p.index === (pad?.index ?? -1)} onClick={() => setActive(p.index)} type="button">
+                  {p.index + 1}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="grid lg:grid-cols-[1.1fr_1fr]">
+          <div className="relative flex flex-col justify-center border-b border-line px-5 py-8 sm:px-10 sm:py-10 lg:border-b-0 lg:border-r">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:18px_18px] [mask-image:radial-gradient(ellipse_at_center,#000_30%,transparent_75%)]"
+            />
+            <div className="relative mx-auto w-full max-w-[560px]">
+              <PadDrawing
+                shape={shape}
+                glyphs={glyphs}
+                buttons={buttons}
+                axes={axes}
+                dim={state === "idle" && !example}
+                onPress={
+                  example
+                    ? (i, down) => setExampleDown((d) => (down ? [...d.filter((x) => x !== i), i] : d.filter((x) => x !== i)))
+                    : undefined
+                }
+              />
+            </div>
+
+            <div className="relative mt-6 min-h-[60px]">
+              <p className="label mb-2.5">
+                <T en="Pressed" pt="Apertado" />
+              </p>
+              {pressed.length ? (
+                <ul className="flex flex-wrap gap-1.5">
+                  {pressed.map((i) => (
+                    <li key={i} className="flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[13px] text-fg">
+                      {physicalName(glyphs, shape, i, model?.family ?? null)}
+                      {i > 16 ? (
+                        <span className="text-accent">
+                          <T en="· extra" pt="· extra" />
+                        </span>
+                      ) : null}
+                    </li>
+                  ))}
+                </ul>
               ) : (
-                <T en="Waiting for a controller" pt="Esperando um controle" />
+                <p className="text-[14px] text-faint">
+                  {example ? (
+                    <T en="Click or tap the buttons on the drawing." pt="Clique ou toque nos botões do desenho." />
+                  ) : state === "idle" ? (
+                    <T en="Buttons light up on the drawing as you press them." pt="Os botões acendem no desenho conforme você aperta." />
+                  ) : (
+                    <T en="Press any button, move the sticks, pull the triggers." pt="Aperte qualquer botão, mexa os analógicos, puxe os gatilhos." />
+                  )}
+                </p>
               )}
-            </p>
-            {pads.length > 1 && !example ? (
-              <div role="tablist" aria-label="Controllers" className="seg ml-auto">
-                {pads.map((p) => (
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-8 px-5 py-8 sm:px-8 sm:py-10">
+            <div aria-live="polite">
+              {state === "idle" ? (
+                <div>
+                  <h3 className="text-balance text-[26px] font-semibold leading-[1.15] tracking-[-0.025em] sm:text-[30px]">
+                    <T en="Connect your controller and press any button." pt="Conecte seu controle e aperte qualquer botão." />
+                  </h3>
+                  <p className="mt-3 text-[16px] leading-relaxed text-muted">
+                    <T
+                      en="By cable or Bluetooth. It shows up here with its name and what Open Controller can do with it. Nothing leaves this page."
+                      pt="Por cabo ou Bluetooth. Ele aparece aqui com o nome e o que o Open Controller consegue fazer com ele. Nada sai desta página."
+                    />
+                  </p>
+                  {!supported ? (
+                    <p className="mt-5 rounded-lg border border-warn/30 bg-warn/5 p-3 text-[14px] text-warn">
+                      <T en="This browser cannot read controllers. Try Chrome, Edge, Brave or Firefox, or the examples below." pt="Este navegador não lê controles. Tente Chrome, Edge, Brave ou Firefox, ou os exemplos abaixo." />
+                    </p>
+                  ) : null}
+                  <div className="mt-7 rounded-xl border border-line bg-white/[0.02] p-4 sm:p-5">
+                    <p className="text-[15px] font-medium text-fg">
+                      <T en="Nothing showing up?" pt="Não aparece nada?" />
+                    </p>
+                    <ul className="mt-3 space-y-2.5 text-[14px] leading-relaxed text-muted">
+                      {HELP.map((h) => (
+                        <li key={h.en} className="grid grid-cols-[0.875rem_1fr] gap-2">
+                          <span aria-hidden className="mt-[0.6rem] size-1 rounded-full bg-faint" />
+                          <T en={h.en} pt={h.pt} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : state === "known" && model && family ? (
+                <div>
+                  <h3 className="text-[26px] font-semibold leading-tight tracking-[-0.025em] sm:text-[30px]">{model.name}</h3>
+                  <p className="mt-2 flex flex-wrap items-baseline gap-x-2 text-[13px] text-faint">
+                    {model.brand ? (
+                      <>
+                        <span>{model.brand}</span>
+                        <span aria-hidden>·</span>
+                      </>
+                    ) : null}
+                    <span>
+                      <T en={(SHORT[family.id] ?? family.label).en} pt={(SHORT[family.id] ?? family.label).pt} />
+                    </span>
+                    <span aria-hidden>·</span>
+                    <span className="font-mono">{model.id}</span>
+                  </p>
+                  <p className="mt-5 text-[17px] leading-snug text-fg">
+                    <Verdict family={family} os={os} hint={model.hint} />
+                  </p>
+                  <Capabilities family={family} />
+                  {model.hint && HINTS[model.hint] ? (
+                    <p className="mt-4 border-l-2 border-warn/70 pl-3 text-[14px] leading-relaxed text-muted">
+                      <T en={HINTS[model.hint].en} pt={HINTS[model.hint].pt} />
+                    </p>
+                  ) : null}
+                  {family.note ? (
+                    <p className="mt-3 text-[13.5px] leading-relaxed text-faint">
+                      <T en={family.note.en} pt={family.note.pt} />
+                    </p>
+                  ) : null}
+                  {pad && pad.mapping !== "standard" ? (
+                    <p className="mt-3 text-[13.5px] leading-relaxed text-faint">
+                      <T
+                        en="Your browser does not know this controller's layout, so the lights may not match its buttons. Open Controller reads it its own way, not through the browser."
+                        pt="O navegador não conhece o layout deste controle, então as luzes podem não bater com os botões. O Open Controller lê de outro jeito, não pelo navegador."
+                      />
+                    </p>
+                  ) : null}
+                  <button type="button" onClick={() => showFamily(family.id)} className="mt-5 text-[14px] text-muted underline decoration-line-strong underline-offset-4 hover:text-fg">
+                    <T en="See every controller like this one" pt="Ver todos os controles parecidos" />
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <h3 className="text-[26px] font-semibold leading-tight tracking-[-0.025em] sm:text-[30px]">{pad ? gamepadName(pad.id) : ""}</h3>
+                  {parsed ? <p className="mt-2 font-mono text-[13px] text-faint">{`${parsed.vendor}:${parsed.product}`}</p> : null}
+                  <p className="mt-5 text-[16px] leading-relaxed">
+                    {state === "unknown" ? (
+                      <T
+                        en={
+                          <>
+                            It is not in the list of 602 controllers Open Controller knows by name, but it may still work: most controllers are read without one. If you try it,{" "}
+                            <a href={ISSUES_URL} className={link}>
+                              tell us how it went
+                            </a>
+                            .
+                          </>
+                        }
+                        pt={
+                          <>
+                            Ele não está na lista de 602 controles que o Open Controller conhece pelo nome, mas ainda pode funcionar: a maioria dos controles é lida mesmo sem nome. Se você testar,{" "}
+                            <a href={ISSUES_URL} className={link}>
+                              conte como foi
+                            </a>
+                            .
+                          </>
+                        }
+                      />
+                    ) : state === "xinput" ? (
+                      <T
+                        en="The browser only sees an Xbox controller here, so it cannot tell which model this is. A real Xbox controller already works in games, and Open Controller leaves it alone. An 8BitDo or similar in its Xbox mode hides its extra buttons; switch it to D-input mode to use them. And if Open Controller is running, this may be the controller it shows to games."
+                        pt="O navegador só vê um controle de Xbox aqui, então não sabe qual é o modelo. Um controle de Xbox de verdade já funciona nos jogos, e o Open Controller não mexe nele. Um 8BitDo ou parecido no modo Xbox esconde os botões extras; mude para o modo D-input para usá-los. E se o Open Controller estiver aberto, este pode ser o controle que ele mostra aos jogos."
+                      />
+                    ) : (
+                      <T
+                        en="Your browser does not say which controller this is. Safari never does. Open this page in Chrome, Edge, Brave or Firefox to see the details."
+                        pt="Seu navegador não informa qual controle é este. O Safari nunca informa. Abra esta página no Chrome, Edge, Brave ou Firefox para ver os detalhes."
+                      />
+                    )}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-auto border-t border-line pt-5">
+              <p className="text-[14px] text-muted">
+                <T en="No controller at hand? Try one:" pt="Sem controle por perto? Experimente um:" />
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {EXAMPLES.map((e) => (
                   <button
-                    key={p.index}
-                    role="tab"
-                    aria-selected={p.index === (pad?.index ?? -1)}
-                    onClick={() => setActive(p.index)}
+                    key={e.id}
                     type="button"
+                    aria-pressed={example === e.id}
+                    onClick={() => {
+                      setExampleDown([]);
+                      setExample((cur) => (cur === e.id ? null : e.id));
+                    }}
+                    className="btn rounded-full border border-line px-3 py-1.5 text-[13px] text-muted hover:border-line-strong hover:text-fg aria-pressed:border-accent/60 aria-pressed:bg-accent/10 aria-pressed:text-fg"
                   >
-                    {p.index + 1}
+                    {e.label}
                   </button>
                 ))}
               </div>
-            ) : null}
-          </div>
-
-          <div className="relative mx-auto mt-6 max-w-[520px]">
-            <PadDrawing
-              art={art}
-              glyphs={glyphs}
-              buttons={buttons}
-              axes={axes}
-              dim={state === "idle" && !example}
-              onPress={
-                example
-                  ? (i, down) => setExampleDown((d) => (down ? [...d.filter((x) => x !== i), i] : d.filter((x) => x !== i)))
-                  : undefined
-              }
-            />
-          </div>
-
-          <div className="relative mt-6 min-h-[64px]">
-            <p className="label mb-2">
-              <T en="What games see" pt="O que os jogos veem" />
-            </p>
-            {pressed.length ? (
-              <ul className="flex flex-wrap gap-1.5">
-                {pressed.map((i) => {
-                  const phys = physicalName(glyphs, i, model?.family ?? null);
-                  const out = XBOX_OUT[i];
-                  const passthrough = family?.passthrough;
-                  return (
-                    <li key={i} className="flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-2 py-1 font-mono text-[12px] text-fg">
-                      <span>{phys}</span>
-                      <span className="text-accent" aria-hidden>
-                        →
-                      </span>
-                      {out && !passthrough ? (
-                        <span>{out}</span>
-                      ) : out ? (
-                        <span>{out}</span>
-                      ) : (
-                        <span className="text-accent">
-                          <T en="yours to assign" pt="livre para atribuir" />
-                        </span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              <p className="text-[13px] text-faint">
-                {state === "idle" && !example ? (
-                  <T en="Press a button and it lights up here, with the Xbox button it becomes." pt="Aperte um botão e ele acende aqui, com o botão de Xbox em que ele vira." />
-                ) : (
-                  <T en="Press something." pt="Aperte algum botão." />
-                )}
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-8 p-5 sm:p-8">
-          <div aria-live="polite">
-          {state === "idle" ? (
-            <div>
-              <p className="label">
-                <T en="How it works" pt="Como funciona" />
-              </p>
-              <ol className="mt-5 space-y-5 text-[15px] leading-relaxed">
-                <li className="grid grid-cols-[2rem_1fr]">
-                  <span className="font-mono text-[13px] text-faint">01</span>
-                  <span>
-                    <T en="Connect a controller by USB or Bluetooth." pt="Conecte um controle por USB ou Bluetooth." />
-                  </span>
-                </li>
-                <li className="grid grid-cols-[2rem_1fr]">
-                  <span className="font-mono text-[13px] text-faint">02</span>
-                  <span>
-                    <T
-                      en="Press any button. Browsers only show a controller to a page after a press."
-                      pt="Aperte qualquer botão. O navegador só mostra o controle para a página depois de um toque."
-                    />
-                  </span>
-                </li>
-                <li className="grid grid-cols-[2rem_1fr]">
-                  <span className="font-mono text-[13px] text-faint">03</span>
-                  <span>
-                    <T
-                      en="The page reads its USB id, finds it in the same table of 602 models the app uses, and says what Open Controller does with it."
-                      pt="A página lê o id USB, procura na mesma tabela de 602 modelos que o app usa e diz o que o Open Controller faz com ele."
-                    />
-                  </span>
-                </li>
-              </ol>
-              {!supported ? (
-                <p className="mt-6 rounded-lg border border-warn/30 bg-warn/5 p-3 text-[13px] text-warn">
-                  <T en="This browser has no Gamepad API. Try the examples below." pt="Este navegador não tem a Gamepad API. Veja os exemplos abaixo." />
-                </p>
-              ) : null}
-              <p className="mt-6 text-[13px] text-faint">
-                <T en="Nothing leaves this page." pt="Nada sai desta página." />
-              </p>
             </div>
-          ) : state === "known" && model && family ? (
-            <div>
-              <p className="label">{example ? <T en="Example" pt="Exemplo" /> : <T en="Found in the table" pt="Encontrado na tabela" />}</p>
-              <h3 className="mt-3 text-[22px] font-semibold leading-tight tracking-tight sm:text-[26px]">{model.name}</h3>
-              <p className="mt-1.5 flex flex-wrap gap-x-2 font-mono text-[12px] text-faint">
-                <span className="text-muted">{model.id}</span>
-                {model.brand ? <span>· {model.brand}</span> : null}
-                <span>
-                  · <T en={(SHORT[family.id] ?? family.label).en} pt={(SHORT[family.id] ?? family.label).pt} />
-                </span>
-              </p>
-              <p className="mt-5 text-[17px] leading-snug text-fg">
-                <Verdict family={family} os={os} hint={model.hint} />
-              </p>
-              <Capabilities family={family} />
-              {model.hint && HINTS[model.hint] ? (
-                <p className="mt-4 border-l-2 border-warn/70 pl-3 text-[13.5px] leading-relaxed text-muted">
-                  <T en={HINTS[model.hint].en} pt={HINTS[model.hint].pt} />
-                </p>
-              ) : null}
-              {family.note ? (
-                <p className="mt-3 text-[13px] leading-relaxed text-faint">
-                  <T en={family.note.en} pt={family.note.pt} />
-                </p>
-              ) : null}
-              {pad && pad.mapping !== "standard" ? (
-                <p className="mt-3 text-[13px] leading-relaxed text-faint">
-                  <T
-                    en="Your browser has no standard layout for it, so the lights may not match its buttons. Open Controller reads it through SDL, not the browser."
-                    pt="O navegador não tem um layout padrão para ele, então as luzes podem não bater com os botões. O Open Controller lê pelo SDL, não pelo navegador."
-                  />
-                </p>
-              ) : null}
-              <button type="button" onClick={() => showFamily(family.id)} className="mt-5 text-[13px] text-muted underline decoration-line-strong underline-offset-4 hover:text-fg">
-                <T en="See every model in this family" pt="Ver todos os modelos desta família" />
-              </button>
-            </div>
-          ) : (
-            <div>
-              <p className="label">
-                <T en="Connected" pt="Conectado" />
-              </p>
-              <h3 className="mt-3 text-[22px] font-semibold leading-tight tracking-tight sm:text-[26px]">{pad ? gamepadName(pad.id) : ""}</h3>
-              {parsed ? <p className="mt-1.5 font-mono text-[12px] text-muted">{`${parsed.vendor}:${parsed.product}`}</p> : null}
-              <p className="mt-5 text-[16px] leading-relaxed">
-                {state === "unknown" ? (
-                  <T
-                    en="Not in the table of 602 known models. SDL may still read it with its own drivers or the community database of generic pads, and the window says what it found."
-                    pt="Não está na tabela de 602 modelos conhecidos. O SDL ainda pode lê-lo com os próprios drivers ou o banco de dados da comunidade para controles genéricos, e a janela diz o que encontrou."
-                  />
-                ) : state === "xinput" ? (
-                  <T
-                    en="Windows shows this one as an XInput controller, which hides its USB id. If it is an Xbox controller, games already read it and Open Controller leaves it alone. If it is an 8BitDo or another pad in XInput mode, its extra buttons are hidden: switch it to D-input to use them."
-                    pt="O Windows mostra este como um controle XInput, que esconde o id USB. Se for um controle de Xbox, os jogos já o leem e o Open Controller não mexe nele. Se for um 8BitDo ou outro controle no modo XInput, os botões extras ficam ocultos: mude para D-input para usá-los."
-                  />
-                ) : (
-                  <T
-                    en="Your browser does not say which controller this is. Chrome, Edge, Brave and Firefox do."
-                    pt="Seu navegador não informa que controle é este. Chrome, Edge, Brave e Firefox informam."
-                  />
-                )}
-              </p>
-            </div>
-          )}
           </div>
-        <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-line pt-5">
-          <span className="mr-1 w-full text-[13px] text-faint">
-            <T en="No controller at hand? Try one:" pt="Sem controle por perto? Experimente:" />
-          </span>
-          {EXAMPLES.map((e) => (
-            <button
-              key={e.id}
-              type="button"
-              aria-pressed={example === e.id}
-              onClick={() => {
-                setExampleDown([]);
-                setExample((cur) => (cur === e.id ? null : e.id));
-              }}
-              className="btn rounded-full border border-line px-3 py-1.5 text-[13px] text-muted hover:border-line-strong hover:text-fg aria-pressed:border-accent/60 aria-pressed:bg-accent/10 aria-pressed:text-fg"
-            >
-              {e.label}
-            </button>
-          ))}
-        </div>
         </div>
       </div>
-
     </div>
   );
 }

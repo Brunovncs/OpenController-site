@@ -46,6 +46,11 @@ What each family can do (extra buttons, gyro, light bar, touchpad) lives in `lib
 mirrors `extras.rs` and the README's compatibility table and has to be updated by hand when those
 change.
 
+Each controller is drawn by `components/PadDrawing.tsx`, by hand on a 400 by 280 grid. `lib/drawings.ts`
+picks the drawing from the model's family and art: DualSense (and Edge), DualShock 4, DualShock 3,
+Xbox, Switch Pro, Joy-Con, 8BitDo Ultimate, 8BitDo SN30 Pro and Pro 2, SNES-style pads without
+sticks, handheld PCs, and a generic pad for the rest.
+
 ## Languages
 
 English and Brazilian Portuguese. Static text is written as `<T en="…" pt="…" />`: both are in the

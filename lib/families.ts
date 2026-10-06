@@ -131,13 +131,13 @@ export const FAMILIES: Record<string, Family> = {
     id: "GameCube",
     group: "nintendo",
     label: { en: "GameCube adapters", pt: "Adaptadores de GameCube" },
-    extras: { en: "Trigger clicks, where SDL reports them", pt: "Clique dos gatilhos, onde o SDL informa" },
+    extras: { en: "Trigger clicks, where the adapter reports them", pt: "Clique dos gatilhos, quando o adaptador informa" },
     gyro: "no",
     lightBar: false,
     touchpad: false,
     note: {
-      en: "The official Wii U adapter needs libusb, which this build of SDL leaves out.",
-      pt: "O adaptador oficial do Wii U precisa de libusb, que esta versão do SDL não inclui.",
+      en: "The official Wii U adapter needs a USB library (libusb) this version leaves out.",
+      pt: "O adaptador oficial do Wii U precisa de uma biblioteca USB (libusb) que esta versão não inclui.",
     },
   },
   Wii: {
@@ -298,7 +298,7 @@ export const FAMILIES: Record<string, Family> = {
     id: "Other",
     group: "more",
     label: { en: "PowerA, Hori, Razer, Nacon, Logitech and other pads", pt: "PowerA, Hori, Razer, Nacon, Logitech e outros controles" },
-    extras: { en: "Those SDL reports", pt: "Os que o SDL informar" },
+    extras: { en: "Those the controller reports", pt: "Os que o controle informar" },
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -337,12 +337,12 @@ export const FAMILY_ORDER = [
 
 export const HINTS: Record<string, L> = {
   EightBitDoDInput: {
-    en: "In XInput mode its extra buttons send nothing any program can read. Turn it on while holding B for D-input mode, where they and the gyro work.",
-    pt: "No modo XInput os botões extras não enviam nada que um programa consiga ler. Ligue segurando B para o modo D-input, onde eles e o giroscópio funcionam.",
+    en: "In its default Xbox mode (XInput), its extra buttons send nothing any program can read. Turn it on while holding B to switch it to D-input mode, where they and motion aiming work.",
+    pt: "No modo Xbox padrão (XInput), os botões extras não enviam nada que um programa consiga ler. Ligue o controle segurando B para mudar para o modo D-input, onde eles e a mira com movimento funcionam.",
   },
   EightBitDoSwitchD: {
-    en: "Set the mode switch on its back to D. That is D-input, where PL and PR work.",
-    pt: "Coloque a chave de modo atrás dele em D. É o D-input, onde PL e PR funcionam.",
+    en: "Set the mode switch on its back to D. That is D-input mode, where PL and PR work.",
+    pt: "Coloque a chave de modo atrás dele em D. É o modo D-input, onde PL e PR funcionam.",
   },
   EightBitDo2CBluetooth: {
     en: "On its receiver L4 and R4 are hidden. Over Bluetooth they work.",
@@ -365,8 +365,8 @@ export const HINTS: Record<string, L> = {
     pt: "Os botões extras precisam de \"Allow third-party apps to take over mappings\" ligado no Flydigi Space Station.",
   },
   Switch2Unsupported: {
-    en: "Switch 2 controllers need libusb, which this build of SDL leaves out.",
-    pt: "Controles do Switch 2 precisam de libusb, que esta versão do SDL não inclui.",
+    en: "Switch 2 controllers need a USB library (libusb) this version leaves out.",
+    pt: "Controles do Switch 2 precisam de uma biblioteca USB (libusb) que esta versão não inclui.",
   },
 };
 

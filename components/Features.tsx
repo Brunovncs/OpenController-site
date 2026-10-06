@@ -10,7 +10,7 @@ function Card({ className = "", title, children, visual }: { className?: string;
       <span className="rim" aria-hidden />
       <div className="p-6 sm:p-7">
         <h3 className="text-[19px] font-semibold tracking-tight">{title}</h3>
-        <div className="mt-2.5 max-w-[38rem] text-pretty text-[14.5px] leading-relaxed text-muted">{children}</div>
+        <div className="mt-2.5 max-w-[38rem] text-pretty text-[15px] leading-relaxed text-muted">{children}</div>
       </div>
       {visual ? <div className="mt-auto">{visual}</div> : null}
     </article>
@@ -23,9 +23,29 @@ function Key({ children }: { children: ReactNode }) {
 
 function Assignments() {
   const rows: [string, ReactNode, ReactNode][] = [
-    ["R4", <T key="a" en="Back, right" pt="Traseiro, direito" />, <span key="b" className="flex items-center gap-1.5 text-muted">Xbox <Key>A</Key></span>],
-    ["PR", <T key="a" en="Back, right 2" pt="Traseiro, direito 2" />, <span key="b" className="flex gap-1"><Key>Ctrl</Key><Key>Shift</Key><Key>M</Key></span>],
-    ["L4", <T key="a" en="Back, left" pt="Traseiro, esquerdo" />, <span key="b" className="text-muted"><T en="Macro, 2 steps" pt="Macro, 2 passos" /></span>],
+    [
+      "R4",
+      <T key="a" en="Back, right" pt="Traseiro, direito" />,
+      <span key="b" className="flex items-center gap-1.5 text-muted">
+        <T en="Button" pt="Botão" /> <Key>A</Key>
+      </span>,
+    ],
+    [
+      "PR",
+      <T key="a" en="Back, right 2" pt="Traseiro, direito 2" />,
+      <span key="b" className="flex gap-1">
+        <Key>Ctrl</Key>
+        <Key>Shift</Key>
+        <Key>M</Key>
+      </span>,
+    ],
+    [
+      "L4",
+      <T key="a" en="Back, left" pt="Traseiro, esquerdo" />,
+      <span key="b" className="text-muted">
+        <T en="Macro, 2 steps" pt="Macro, 2 passos" />
+      </span>,
+    ],
   ];
   return (
     <ul className="space-y-2">
@@ -51,17 +71,17 @@ function GyroVisual() {
           <circle cx="60" cy="60" r="15" fill="#1a1d22" stroke="#60cdff" strokeWidth="1.5" />
         </g>
       </svg>
-      <ul className="space-y-1.5 font-mono text-[12px] text-muted">
+      <ul className="space-y-1.5 text-[13px] text-muted">
         <li className="flex items-center gap-2">
-          <span className="size-1.5 rounded-full bg-accent" />
+          <span className="size-1.5 shrink-0 rounded-full bg-accent" />
           <T en="Always" pt="Sempre" />
         </li>
         <li className="flex items-center gap-2">
-          <span className="size-1.5 rounded-full bg-line-strong" />
-          <T en="While LT is pulled" pt="Com LT puxado" />
+          <span className="size-1.5 shrink-0 rounded-full bg-line-strong" />
+          <T en="Only while aiming" pt="Só enquanto mira" />
         </li>
         <li className="flex items-center gap-2">
-          <span className="size-1.5 rounded-full bg-line-strong" />
+          <span className="size-1.5 shrink-0 rounded-full bg-line-strong" />
           <T en="While a button is held" pt="Com um botão segurado" />
         </li>
       </ul>
@@ -74,7 +94,7 @@ function LightVisual() {
     { k: { en: "Player", pt: "Jogador" }, bar: "#3d7bff" },
     { k: { en: "Your colour", pt: "Sua cor" }, bar: "#b18cff" },
     { k: { en: "Battery", pt: "Bateria" }, bar: "#3ddc84" },
-    { k: { en: "Below 15 %", pt: "Abaixo de 15 %" }, bar: "#ff4d5e", blink: true },
+    { k: { en: "Low battery", pt: "Bateria fraca" }, bar: "#ff4d5e", blink: true },
   ];
   return (
     <ul className="grid grid-cols-2 gap-2 px-6 pb-7 sm:grid-cols-4 sm:px-7">
@@ -113,8 +133,8 @@ function ProfilesVisual() {
           </span>
           {r.prog ? <span className="ml-auto font-mono text-[11.5px] text-faint">{r.prog}</span> : null}
           {r.on ? (
-            <span className="font-mono text-[11px] text-accent">
-              <T en="in front" pt="em foco" />
+            <span className="text-[11.5px] text-accent">
+              <T en="in use" pt="em uso" />
             </span>
           ) : null}
         </li>
@@ -132,21 +152,21 @@ function SticksVisual() {
         <circle cx="60" cy="60" r="20" fill="none" stroke="rgba(255,255,255,0.12)" />
         <circle cx="66" cy="57" r="2.5" fill="#60cdff" />
       </svg>
-      <dl className="space-y-2 text-[12.5px]">
+      <dl className="space-y-2 text-[13px]">
         <div>
-          <dt className="font-mono text-[11px] text-faint">
-            <T en="Deadzone" pt="Zona morta" />
+          <dt className="text-[12px] text-faint">
+            <T en="Dead zone" pt="Zona morta" />
           </dt>
           <dd className="text-muted">
-            <T en="Radial, so diagonals are not cut short" pt="Radial, sem cortar as diagonais" />
+            <T en="Ignores the small movements of a worn stick" pt="Ignora os movimentos pequenos de um analógico gasto" />
           </dd>
         </div>
         <div>
-          <dt className="font-mono text-[11px] text-faint">
-            <T en="Anti-deadzone" pt="Antizona morta" />
+          <dt className="text-[12px] text-faint">
+            <T en="Anti dead zone" pt="Antizona morta" />
           </dt>
           <dd className="text-muted">
-            <T en="Games react to the first movement" pt="O jogo reage ao primeiro movimento" />
+            <T en="The game reacts as soon as you move" pt="O jogo reage assim que você mexe" />
           </dd>
         </div>
       </dl>
@@ -156,20 +176,20 @@ function SticksVisual() {
 
 const MEASURES = [
   {
-    k: { en: "Controller to what a game reads", pt: "Do controle ao que o jogo lê" },
-    v: { en: "median 0.55 to 0.62 ms, p99 1.2 to 1.6 ms", pt: "mediana de 0,55 a 0,62 ms, p99 de 1,2 a 1,6 ms" },
+    k: { en: "Delay it adds", pt: "Atraso que ele acrescenta" },
+    v: { en: "About 0.6 milliseconds", pt: "Cerca de 0,6 milissegundo" },
   },
   {
-    k: { en: "Poll loop", pt: "Ciclo de leitura" },
-    v: { en: "1000 per second, median period 1.006 ms", pt: "1000 por segundo, período mediano de 1,006 ms" },
+    k: { en: "Memory in the background", pt: "Memória em segundo plano" },
+    v: { en: "3.2 MB", pt: "3,2 MB" },
   },
   {
-    k: { en: "Resident process", pt: "Processo residente" },
-    v: { en: "3.2 MB private memory, 0.00 % CPU with nothing connected", pt: "3,2 MB de memória privada, 0,00 % de CPU sem nada conectado" },
+    k: { en: "Processor, with no controller connected", pt: "Processador, sem controle conectado" },
+    v: { en: "0 %", pt: "0 %" },
   },
   {
-    k: { en: "The window", pt: "A janela" },
-    v: { en: "A separate program, nothing once closed", pt: "Um programa separado, nada depois de fechada" },
+    k: { en: "The app window", pt: "A janela do app" },
+    v: { en: "Uses nothing once you close it", pt: "Não usa nada depois de fechada" },
   },
 ];
 
@@ -181,27 +201,27 @@ export function Features() {
         label={<T en="What it does" pt="O que ele faz" />}
         title={
           <span id="features-title">
-            <T en="One Xbox controller per player. The rest is yours." pt="Um controle de Xbox por jogador. O resto é seu." />
+            <T en="Plug it in and play." pt="Conecte e jogue." />
           </span>
         }
       >
         <T
-          en="Buttons follow their position, so the bottom face button is A whether it says Cross, B or A. Sticks, triggers and rumble pass through untouched. Xbox controllers are left alone, since games already read them."
-          pt="Os botões seguem a posição, então o botão de baixo é A esteja escrito Cross, B ou A. Analógicos, gatilhos e vibração passam intactos. Controles de Xbox ficam como estão, já que os jogos os leem."
+          en="Open Controller runs quietly in the background. Connect a controller and it works in your games, with every button where you expect it, the sticks and triggers as they are, and vibration. There are no buttons to set up first. Xbox controllers already work in games, so it leaves those alone."
+          pt="O Open Controller fica quieto em segundo plano. Conecte um controle e ele funciona nos seus jogos, com cada botão onde você espera, os analógicos e gatilhos como são, e vibração. Não há botões para configurar antes. Controles de Xbox já funcionam nos jogos, então ele não mexe neles."
         />
       </SectionHead>
 
       <div className="mt-14 grid gap-3 lg:grid-cols-6">
         <Card
           className="lg:col-span-4"
-          title={<T en="Extra buttons that do something" pt="Botões extras que fazem algo" />}
+          title={<T en="Support for extra buttons" pt="Suporte a botões extras" />}
           visual={
             <div className="grid gap-5 px-6 pb-7 sm:px-7 md:grid-cols-[1fr_1.15fr] md:items-end">
               <Assignments />
               <div className="overflow-hidden rounded-xl border border-line">
                 <Image
                   src="/controller.png"
-                  alt="A controller's page in Open Controller: the 8BitDo drawn with its live input and its four extra buttons, one assigned to Xbox A, one to Ctrl+Shift+M and one to a macro."
+                  alt="A controller's page in Open Controller: the 8BitDo drawn with its live input and its four extra buttons, one set to button A, one to Ctrl+Shift+M and one to a macro."
                   width={1468}
                   height={1047}
                   sizes="(min-width: 1024px) 30vw, 90vw"
@@ -212,54 +232,54 @@ export function Features() {
           }
         >
           <T
-            en="Back paddles, L4 and R4, Capture, the mic button and the touchpad's halves never reach games through an Xbox controller. So each one can press an Xbox button, hold a key or shortcut, or type a macro recorded with the gaps you left. Press it on the controller to pick it in the window."
-            pt="Paletas traseiras, L4 e R4, Capture, o botão do microfone e as metades do touchpad nunca chegam aos jogos por um controle de Xbox. Então cada um pode apertar um botão do Xbox, segurar uma tecla ou atalho, ou digitar uma macro gravada com as pausas que você fez. Aperte no controle para escolher na janela."
+            en="Back paddles, L4 and R4, the Capture and mic buttons and the touchpad usually do nothing in PC games. Here each one can work as another button, hold a key or shortcut, or type a macro. To pick one in the app, just press it on the controller."
+            pt="Paletas traseiras, L4 e R4, os botões Capture e de microfone e o touchpad normalmente não fazem nada nos jogos de PC. Aqui cada um pode funcionar como outro botão, segurar uma tecla ou atalho, ou digitar uma macro. Para escolher um no app, é só apertar no controle."
           />
         </Card>
 
         <Card
           className="lg:col-span-2"
-          title={<T en="Players that stay put" pt="Jogadores que não mudam" />}
+          title={<T en="Several players at once" pt="Vários jogadores ao mesmo tempo" />}
           visual={
             <div className="px-6 pb-7 sm:px-7">
               <SwapDemo />
-              <p className="mt-3 font-mono text-[11px] text-faint">
-                <T en="Drag one onto another, or pick two." pt="Arraste um sobre outro, ou escolha dois." />
+              <p className="mt-3 text-[12.5px] text-faint">
+                <T en="Try it: drag one onto another, or tap two." pt="Experimente: arraste um sobre o outro, ou toque em dois." />
               </p>
             </div>
           }
         >
           <T
-            en="A slot belongs to the controller, not the cable. Plug a cable into a DualSense on Bluetooth and the game does not notice; a controller that drops keeps its slot for 15 seconds."
-            pt="O slot pertence ao controle, não ao cabo. Ligue um cabo num DualSense no Bluetooth e o jogo nem percebe; um controle que cai mantém o slot por 15 segundos."
+            en="Each friend's controller is its own player. If one disconnects for a moment, or you switch it from Bluetooth to a cable, it comes back as the same player. Drag one onto another to change who is player 1."
+            pt="O controle de cada amigo é um jogador. Se um desconectar por um instante, ou você trocar do Bluetooth para o cabo, ele volta como o mesmo jogador. Arraste um sobre o outro para mudar quem é o jogador 1."
           />
         </Card>
 
-        <Card className="lg:col-span-2" title={<T en="Aim by turning it" pt="Mire girando o controle" />} visual={<GyroVisual />}>
+        <Card className="lg:col-span-2" title={<T en="Aim by moving the controller" pt="Mire movendo o controle" />} visual={<GyroVisual />}>
           <T
-            en="On a controller with a gyro, its rotation is added to the right stick. Each friend aims with their own controller, which a gyro mapped to the mouse would not allow."
-            pt="Num controle com giroscópio, a rotação é somada ao analógico direito. Cada amigo mira com o próprio controle, o que um giroscópio ligado ao mouse não permitiria."
+            en="On controllers with motion sensors, like the DualSense, DualShock 4 and Switch Pro, turning the controller moves your aim. Each friend aims with their own."
+            pt="Em controles com sensor de movimento, como DualSense, DualShock 4 e Switch Pro, girar o controle move a mira. Cada amigo mira com o seu."
           />
         </Card>
 
-        <Card className="lg:col-span-4" title={<T en="The light bar says something useful" pt="A barra de luz diz algo útil" />} visual={<LightVisual />}>
+        <Card className="lg:col-span-4" title={<T en="A light bar that tells you something" pt="Uma barra de luz que informa algo" />} visual={<LightVisual />}>
           <T
-            en="On a DualShock 4 or DualSense: the player's colour as a PlayStation shows it, a colour you pick, the battery from green to red, or nothing, in four steps of brightness. Below 15 % on battery it blinks once a second."
-            pt="Num DualShock 4 ou DualSense: a cor do jogador como o PlayStation mostra, uma cor que você escolhe, a bateria do verde ao vermelho, ou nada, em quatro níveis de brilho. Abaixo de 15 % de bateria ela pisca uma vez por segundo."
+            en="On a DualShock 4 or DualSense, the light can show your player's colour, a colour you pick, or how much battery is left, at the brightness you choose. When the battery runs low, it blinks."
+            pt="Num DualShock 4 ou DualSense, a luz pode mostrar a cor do seu jogador, uma cor que você escolhe ou quanto resta de bateria, no brilho que você quiser. Quando a bateria fica fraca, ela pisca."
           />
         </Card>
 
-        <Card className="lg:col-span-3" title={<T en="Profiles that follow the game" pt="Perfis que seguem o jogo" />} visual={<ProfilesVisual />}>
+        <Card className="lg:col-span-3" title={<T en="Profiles for each game" pt="Perfis para cada jogo" />} visual={<ProfilesVisual />}>
           <T
-            en="Up to eight per controller, each with its own buttons, light, gyro and sticks. A profile can name programs and takes over while one of them is in front. Players never change behind your back."
-            pt="Até oito por controle, cada um com seus botões, luz, giroscópio e analógicos. Um perfil pode citar programas e assume enquanto um deles está em primeiro plano. Os jogadores nunca mudam sem você saber."
+            en="Keep a different setup for each game, up to eight per controller. A profile can switch on by itself while its game is open, and off again when you leave it."
+            pt="Tenha uma configuração para cada jogo, até oito por controle. Um perfil pode entrar sozinho enquanto o jogo dele está aberto, e sair quando você sai do jogo."
           />
         </Card>
 
-        <Card className="lg:col-span-3" title={<T en="Sticks, untouched unless asked" pt="Analógicos intactos, a menos que você peça" />} visual={<SticksVisual />}>
+        <Card className="lg:col-span-3" title={<T en="A fix for drifting sticks" pt="Um jeito de corrigir drift" />} visual={<SticksVisual />}>
           <T
-            en="Sticks pass through with no deadzone, as a real Xbox controller's do; the game applies its own. A worn stick that drifts can get one here."
-            pt="Os analógicos passam sem zona morta, como num controle de Xbox de verdade; o jogo aplica a dele. Um analógico gasto que deriva pode ganhar uma aqui."
+            en="Sticks reach the game exactly as you move them, and the game handles the rest. If an old stick moves on its own, you can give it a dead zone."
+            pt="Os analógicos chegam ao jogo exatamente como você mexe, e o jogo cuida do resto. Se um analógico velho anda sozinho, dá para colocar uma zona morta nele."
           />
         </Card>
       </div>
@@ -267,13 +287,10 @@ export function Features() {
       <div className="reveal mt-16 grid gap-x-10 gap-y-6 lg:grid-cols-12">
         <div className="lg:col-span-3">
           <h3 className="text-[19px] font-semibold tracking-tight">
-            <T en="Quiet in the background" pt="Discreto em segundo plano" />
+            <T en="Light in the background" pt="Leve em segundo plano" />
           </h3>
           <p className="mt-2 text-[14px] leading-relaxed text-muted">
-            <T
-              en="Measured on Windows 11 with ViGEmBus 1.22.0. The method for each number is in the README."
-              pt="Medido no Windows 11 com ViGEmBus 1.22.0. O método de cada número está no README."
-            />
+            <T en="Measured on Windows 11. How each number was measured is in the README." pt="Medido no Windows 11. Como cada número foi medido está no README." />
           </p>
         </div>
         <dl className="grid border-t border-line sm:grid-cols-2 lg:col-span-9">
@@ -282,7 +299,7 @@ export function Features() {
               <dt className="text-[13px] text-faint">
                 <T en={m.k.en} pt={m.k.pt} />
               </dt>
-              <dd className="mt-1 font-mono text-[13.5px] text-fg">
+              <dd className="mt-1 text-[15px] text-fg">
                 <T en={m.v.en} pt={m.v.pt} />
               </dd>
             </div>

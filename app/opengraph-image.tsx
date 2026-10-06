@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Open Controller: any controller, as an Xbox controller";
+export const alt = "Open Controller: your controller in every PC game";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -19,7 +19,7 @@ export default async function Image() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={`data:image/png;base64,${icon}`} width={112} height={112} alt="" />
           <div style={{ marginTop: 44, fontSize: 64, lineHeight: 1.04, letterSpacing: -1.5, fontWeight: 600 }}>
-            Any controller, as an Xbox controller.
+            Your controller in every PC game.
           </div>
           <div style={{ marginTop: "auto", display: "flex", fontSize: 24, color: "#a3a9b2" }}>
             Windows, Linux, macOS · MIT

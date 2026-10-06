@@ -35,16 +35,16 @@ export default async function Page() {
         <section id="check" aria-labelledby="check-title" className="wrap pt-24 sm:pt-32">
           <SectionHead
             n="01"
-            label={<T en="Check your controller" pt="Teste seu controle" />}
+            label={<T en="Test your controller" pt="Teste seu controle" />}
             title={
               <span id="check-title">
-                <T en="Plug it in and press a button." pt="Conecte e aperte um botão." />
+                <T en="Test your controller here." pt="Teste seu controle aqui." />
               </span>
             }
           >
             <T
-              en="Your browser can see controllers too. This page reads the one you press, looks it up in the app's own table and tells you what Open Controller will do with it."
-              pt="O navegador também enxerga controles. Esta página lê o que você apertar, procura na própria tabela do app e diz o que o Open Controller vai fazer com ele."
+              en="Before you download anything, see if Open Controller knows your controller and what you can do with it. Your browser reads it live, right on this page."
+              pt="Antes de baixar qualquer coisa, veja se o Open Controller conhece seu controle e o que dá para fazer com ele. O navegador lê o controle ao vivo, aqui mesmo nesta página."
             />
           </SectionHead>
           <div className="mt-12">
@@ -60,23 +60,23 @@ export default async function Page() {
             label={<T en="Controllers" pt="Controles" />}
             title={
               <span id="controllers-title">
-                <T en="602 known models, and what each can do." pt="602 modelos conhecidos, e o que cada um faz." />
+                <T en="Find your controller." pt="Procure seu controle." />
               </span>
             }
           >
             <T
               en={
                 <>
-                  Controllers are read through SDL 3, which speaks each one&apos;s own protocol. The table names them, draws them and knows their extra buttons. On hardware it has been tested with an 8BitDo Ultimate 2 Wireless so far; the rest is SDL&apos;s support, so{" "}
+                  Open Controller knows 602 models by name, and reads many more without one. Search for yours to see what works with it. So far it has been tested on real hardware with an 8BitDo Ultimate 2 Wireless; the rest is expected to work through SDL, the library it reads controllers with, so please{" "}
                   <a href={ISSUES_URL} className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
-                    report how yours does
+                    tell us how yours does
                   </a>
                   .
                 </>
               }
               pt={
                 <>
-                  Os controles são lidos pelo SDL 3, que fala o protocolo de cada um. A tabela dá nome, desenho e sabe os botões extras de cada um. No hardware, até agora foi testado com um 8BitDo Ultimate 2 Wireless; o resto é suporte do SDL, então{" "}
+                  O Open Controller conhece 602 modelos pelo nome, e lê muitos outros sem nome. Procure o seu para ver o que funciona com ele. Até agora foi testado em hardware de verdade com um 8BitDo Ultimate 2 Wireless; o resto deve funcionar pelo SDL, a biblioteca que ele usa para ler os controles, então por favor{" "}
                   <a href={ISSUES_URL} className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
                     conte como foi com o seu
                   </a>

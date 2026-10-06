@@ -41,7 +41,7 @@ function FamilyDetail({ family, hint }: { family: Family; hint: string | null })
           <T en="Extra buttons: " pt="Botões extras: " />
         </span>
         {family.passthrough && !family.extras ? (
-          <T en="none, games read it directly" pt="nenhum, os jogos o leem diretamente" />
+          <T en="none, games already support it" pt="nenhum, os jogos já aceitam esse controle" />
         ) : family.extras ? (
           <T en={family.extras.en} pt={family.extras.pt} />
         ) : (
@@ -50,9 +50,9 @@ function FamilyDetail({ family, hint }: { family: Family; hint: string | null })
       </p>
       <p>
         <span className="text-faint">
-          <T en="Gyro aim: " pt="Mira por giroscópio: " />
+          <T en="Aim by moving it: " pt="Mira com movimento: " />
         </span>
-        {family.gyro === "yes" ? <T en="yes" pt="sim" /> : family.gyro === "dinput" ? <T en="in D-input mode" pt="no modo D-input" /> : <T en="not listed" pt="não listado" />}
+        {family.gyro === "yes" ? <T en="yes" pt="sim" /> : family.gyro === "dinput" ? <T en="in D-input mode" pt="no modo D-input" /> : <T en="no" pt="não" />}
       </p>
       <p>
         <span className="text-faint">
@@ -61,13 +61,13 @@ function FamilyDetail({ family, hint }: { family: Family; hint: string | null })
         {family.lightBar ? <T en="yes" pt="sim" /> : <T en="no" pt="não" />}
         <span className="text-faint">
           {" · "}
-          <T en="Touchpad buttons: " pt="Botões no touchpad: " />
+          <T en="Touchpad as buttons: " pt="Touchpad como botões: " />
         </span>
         {family.touchpad ? <T en="yes" pt="sim" /> : <T en="no" pt="não" />}
       </p>
       {family.unsupported ? (
         <p className="text-warn">
-          <T en="Not read by this version." pt="Não é lido nesta versão." />
+          <T en="Not supported yet." pt="Ainda não é suportado." />
         </p>
       ) : null}
       {hint && HINTS[hint] ? (
@@ -151,7 +151,7 @@ export function Compat() {
           </button>
         </div>
         <p className="text-[12.5px] text-faint">
-          <T en="Plus the 869 Windows entries of SDL's community database for generic pads." pt="Mais as 869 entradas para Windows do banco de dados da comunidade do SDL para controles genéricos." />
+          <T en="On Windows it also reads 869 generic controllers from a list kept by the community." pt="No Windows ele também lê 869 controles genéricos de uma lista mantida pela comunidade." />
         </p>
       </div>
 
@@ -254,7 +254,7 @@ export function Compat() {
                       <span className="hidden gap-1 lg:flex">
                         {f.passthrough ? (
                           <span className="inline-flex h-5 items-center rounded bg-white/[0.06] px-1.5 font-mono text-[10.5px] text-muted">
-                            <T en="read directly" pt="lido direto" />
+                            <T en="works as is" pt="funciona direto" />
                           </span>
                         ) : f.unsupported ? (
                           <span className="inline-flex h-5 items-center rounded bg-warn/10 px-1.5 font-mono text-[10.5px] text-warn">
@@ -282,12 +282,12 @@ export function Compat() {
           ) : (
             <div className="border-y border-line py-10 text-center text-[14px] text-muted">
               <p>
-                <T en="Not in the table of 602 known models." pt="Não está na tabela de 602 modelos conhecidos." />
+                <T en="Not in the list of 602 known models." pt="Não está na lista de 602 modelos conhecidos." />
               </p>
               <p className="mx-auto mt-2 max-w-md text-[13px] text-faint">
                 <T
-                  en="SDL may still read it with its own drivers or through the community database of generic pads. Plug it in above to see what your browser reports."
-                  pt="O SDL ainda pode lê-lo com os próprios drivers ou pelo banco de dados da comunidade para controles genéricos. Conecte-o acima para ver o que o navegador informa."
+                  en="It may still work: most controllers are read even without a name. Test it in the section above to see what your browser finds."
+                  pt="Ainda pode funcionar: a maioria dos controles é lida mesmo sem nome. Teste na seção acima para ver o que o navegador encontra."
                 />
               </p>
             </div>
@@ -316,7 +316,7 @@ export function Compat() {
                   <T en="Extra buttons" pt="Botões extras" />
                 </th>
                 <th scope="col" className="py-2.5 pr-4 font-normal">
-                  <T en="Gyro aim" pt="Giroscópio" />
+                  <T en="Motion aim" pt="Mira com movimento" />
                 </th>
                 <th scope="col" className="py-2.5 pr-4 font-normal">
                   <T en="Light bar" pt="Luz" />
@@ -354,10 +354,10 @@ export function Compat() {
                         <td className="py-3 pr-4 text-muted">
                           {f.unsupported ? (
                             <span className="text-warn">
-                              <T en="Not read by this version" pt="Não é lido nesta versão" />
+                              <T en="Not supported yet" pt="Ainda não é suportado" />
                             </span>
                           ) : f.passthrough && !f.extras ? (
-                            <T en="Read by games directly" pt="Lido pelos jogos diretamente" />
+                            <T en="Games already support it" pt="Os jogos já aceitam" />
                           ) : f.extras ? (
                             <T en={f.extras.en} pt={f.extras.pt} />
                           ) : (

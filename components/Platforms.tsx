@@ -9,15 +9,15 @@ import { T } from "./T";
 type Cell = true | false | { en: string; pt: string };
 
 const ROWS: { k: { en: string; pt: string }; w: Cell; l: Cell; m: Cell }[] = [
-  { k: { en: "Games see an Xbox controller", pt: "Jogos veem um controle de Xbox" }, w: { en: "ViGEmBus", pt: "ViGEmBus" }, l: { en: "uinput", pt: "uinput" }, m: false },
-  { k: { en: "Fixed player numbers", pt: "Números de jogador fixos" }, w: true, l: true, m: false },
-  { k: { en: "Original hidden from games", pt: "Original oculto dos jogos" }, w: { en: "HidHide", pt: "HidHide" }, l: { en: "evdev grab", pt: "evdev grab" }, m: false },
-  { k: { en: "Extra buttons as Xbox buttons", pt: "Botões extras como botões de Xbox" }, w: true, l: true, m: false },
+  { k: { en: "Your controller works in games", pt: "Seu controle funciona nos jogos" }, w: true, l: true, m: { en: "By macOS", pt: "Pelo macOS" } },
+  { k: { en: "Each controller keeps its player", pt: "Cada controle mantém seu jogador" }, w: true, l: true, m: false },
+  { k: { en: "Games don't see a controller twice", pt: "Os jogos não veem o controle duas vezes" }, w: true, l: true, m: false },
+  { k: { en: "Extra buttons as other buttons", pt: "Botões extras como outros botões" }, w: true, l: true, m: false },
   { k: { en: "Extra buttons as keys and macros", pt: "Botões extras como teclas e macros" }, w: true, l: true, m: true },
-  { k: { en: "Gyro aim and stick deadzones", pt: "Mira por giroscópio e zona morta" }, w: true, l: true, m: false },
+  { k: { en: "Aim by moving, fix for drifting sticks", pt: "Mira com movimento, correção de drift" }, w: true, l: true, m: false },
   { k: { en: "Light bar, low battery blink", pt: "Barra de luz, aviso de bateria" }, w: true, l: true, m: true },
-  { k: { en: "Profiles per controller", pt: "Perfis por controle" }, w: true, l: true, m: true },
-  { k: { en: "Handheld PC buttons", pt: "Botões de PCs portáteis" }, w: true, l: false, m: false },
+  { k: { en: "Profiles for each game", pt: "Perfis para cada jogo" }, w: true, l: true, m: true },
+  { k: { en: "Buttons of handheld PCs", pt: "Botões de PCs portáteis" }, w: true, l: false, m: false },
 ];
 
 function CellView({ c }: { c: Cell }) {
@@ -40,7 +40,7 @@ function CellView({ c }: { c: Cell }) {
       </span>
     );
   return (
-    <span className="font-mono text-[11px] text-fg sm:text-[12px]">
+    <span className="text-[12.5px] text-muted sm:text-[13px]">
       <T en={c.en} pt={c.pt} />
     </span>
   );
@@ -101,13 +101,13 @@ export function Platforms({ release }: { release: Release | null }) {
         label={<T en="Platforms" pt="Sistemas" />}
         title={
           <span id="platforms-title">
-            <T en="Windows, Linux and macOS, each as far as it allows." pt="Windows, Linux e macOS, cada um até onde permite." />
+            <T en="Download for Windows, Linux or Mac." pt="Baixe para Windows, Linux ou Mac." />
           </span>
         }
       >
         <T
-          en="Each system lets a program do different things with a controller. Same window, same profiles, same table of models."
-          pt="Cada sistema deixa um programa fazer coisas diferentes com um controle. A mesma janela, os mesmos perfis, a mesma tabela de modelos."
+          en="The same app on all three. What it can do depends on what each system lets an app do with a controller."
+          pt="O mesmo app nos três. O que ele consegue fazer depende do que cada sistema deixa um app fazer com um controle."
         />
       </SectionHead>
 
@@ -159,42 +159,42 @@ export function Platforms({ release }: { release: Release | null }) {
         <Req title="Windows 10, 11" foot={<PlatformDownload platform="windows-x64" release={release} />}>
           <p>
             <T
-              en="x64. Two free drivers by Nefarius, the same ones DS4Windows uses: ViGEmBus, which creates the virtual Xbox controllers, and HidHide, which hides the originals so a game does not see a controller twice. Settings, Requirements in the window installs them when you click."
-              pt="x64. Dois drivers gratuitos da Nefarius, os mesmos que o DS4Windows usa: ViGEmBus, que cria os controles de Xbox virtuais, e HidHide, que esconde os originais para o jogo não ver o controle duas vezes. Em Configurações, Requisitos, a janela instala os dois quando você clica."
+              en="64-bit. It needs two free drivers by Nefarius, the same ones DS4Windows uses: ViGEmBus, so games can see your controller, and HidHide, so they don't see it twice. The app installs them for you from Settings, Requirements, with one click."
+              pt="64 bits. Precisa de dois drivers gratuitos da Nefarius, os mesmos que o DS4Windows usa: ViGEmBus, para os jogos verem seu controle, e HidHide, para não o verem duas vezes. O app instala os dois para você em Configurações, Requisitos, com um clique."
             />
           </p>
           <p>
             <T
-              en="No administrator rights for the app. It is not code-signed yet, so SmartScreen warns on the first start: More info, then Run anyway."
-              pt="O app não precisa de administrador. Ele ainda não tem assinatura de código, então o SmartScreen avisa na primeira vez: Mais informações, depois Executar assim mesmo."
+              en="It does not need administrator rights. It is not signed yet, so Windows warns the first time you open it: click More info, then Run anyway."
+              pt="Não precisa de administrador. Ele ainda não é assinado, então o Windows avisa na primeira vez que você abre: clique em Mais informações, depois em Executar assim mesmo."
             />
           </p>
         </Req>
         <Req title="Linux" foot={<PlatformDownload platform="linux-x64" release={release} />}>
           <p>
             <T
-              en="x64. Virtual Xbox 360 controllers through the kernel's uinput, with the physical controller hidden from games by an exclusive evdev grab. Same window and features, without handheld buttons."
-              pt="x64. Controles de Xbox 360 virtuais pelo uinput do kernel, com o controle físico escondido dos jogos por um evdev grab exclusivo. A mesma janela e os mesmos recursos, sem os botões de portáteis."
+              en="64-bit, on any distribution as recent as Ubuntu 22.04. The same app and features as on Windows, except the buttons of handheld PCs. It works with native games and with games under Wine and Proton."
+              pt="64 bits, em qualquer distribuição tão recente quanto o Ubuntu 22.04. O mesmo app e os mesmos recursos do Windows, menos os botões de PCs portáteis. Funciona com jogos nativos e com jogos no Wine e no Proton."
             />
           </p>
           <p>
             <T
-              en="It needs a udev rule once, which the app installs, asking for your password through pkexec. Profiles switch with the program in front on X11."
-              pt="Precisa de uma regra udev uma vez, que o app instala pedindo sua senha pelo pkexec. Os perfis trocam com o programa em foco no X11."
+              en="The installer adds a permission rule once and asks for your password. Profiles switch by themselves for X11 programs, which includes games under Wine and Proton."
+              pt="O instalador adiciona uma regra de permissão uma vez e pede sua senha. Os perfis trocam sozinhos para programas X11, o que inclui jogos no Wine e no Proton."
             />
           </p>
         </Req>
         <Req title="macOS 13+" foot={<div className="space-y-2"><PlatformDownload platform="macos-arm64" release={release} /><PlatformDownload platform="macos-x64" release={release} /></div>}>
           <p>
             <T
-              en="Apple silicon and Intel. macOS does not let apps create game controllers without a special entitlement from Apple, and games there already read DualSense, DualShock 4, Xbox and Switch Pro controllers."
-              pt="Apple silicon e Intel. O macOS não deixa apps criarem controles de jogo sem uma permissão especial da Apple, e os jogos lá já leem DualSense, DualShock 4, Xbox e Switch Pro."
+              en="Apple silicon and Intel. Games on a Mac already support PlayStation, Xbox and Switch Pro controllers, and macOS does not let apps add controllers of their own."
+              pt="Apple silicon e Intel. Os jogos no Mac já aceitam controles de PlayStation, Xbox e Switch Pro, e o macOS não deixa apps criarem controles próprios."
             />
           </p>
           <p>
             <T
-              en="So here Open Controller is a companion: extra buttons as keys and macros, light bar, battery and profiles, without virtual controllers or player numbers. It needs the Accessibility permission to type keys."
-              pt="Então aqui o Open Controller é um complemento: botões extras como teclas e macros, barra de luz, bateria e perfis, sem controles virtuais nem números de jogador. Precisa da permissão de Acessibilidade para digitar teclas."
+              en="So on a Mac, Open Controller adds what is missing: extra buttons as keys and macros, the light bar, battery and profiles. It asks for the Accessibility permission to type keys. The first time, open it with a right-click and Open."
+              pt="Então no Mac o Open Controller acrescenta o que falta: botões extras como teclas e macros, a barra de luz, a bateria e os perfis. Ele pede a permissão de Acessibilidade para digitar teclas. Na primeira vez, abra com o botão direito e Abrir."
             />
           </p>
         </Req>

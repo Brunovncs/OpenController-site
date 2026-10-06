@@ -5,10 +5,10 @@ import { LangToggle } from "./lang";
 import { T } from "./T";
 
 export const NAV = [
-  { id: "check", en: "Check", pt: "Testar" },
+  { id: "check", en: "Test", pt: "Testar" },
   { id: "features", en: "Features", pt: "Recursos" },
   { id: "controllers", en: "Controllers", pt: "Controles" },
-  { id: "platforms", en: "Platforms", pt: "Sistemas" },
+  { id: "platforms", en: "Download", pt: "Baixar" },
   { id: "faq", en: "FAQ", pt: "Dúvidas" },
 ];
 

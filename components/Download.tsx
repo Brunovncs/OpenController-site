@@ -38,7 +38,7 @@ export function MissingBuild({ platform, release }: { platform: Platform; releas
   );
 }
 
-function Primary({ platform, release, children }: { platform: Platform; release: Release | null; children?: ReactNode }) {
+function Primary({ platform, release, quiet, children }: { platform: Platform; release: Release | null; quiet?: boolean; children?: ReactNode }) {
   const os = PLATFORM_LABEL[platform];
 
   if (!release) {
@@ -65,7 +65,7 @@ function Primary({ platform, release, children }: { platform: Platform; release:
         </div>
         <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-muted">
           <a href={BUILD_URL} className="underline decoration-line-strong underline-offset-4 hover:text-fg hover:decoration-fg">
-            <T en="Build it from source" pt="Compile a partir do código" />
+            <T en="Build it yourself" pt="Compile você mesmo" />
           </a>
           <a href={RELEASES_URL} className="underline decoration-line-strong underline-offset-4 hover:text-fg hover:decoration-fg">
             <T en="All releases" pt="Todas as versões" />
@@ -86,7 +86,7 @@ function Primary({ platform, release, children }: { platform: Platform; release:
         <span>
           {release.version} · {fileKind(asset.name)} · {formatSize(asset.size)}
         </span>
-        {asset.shaUrl ? (
+        {asset.shaUrl && !quiet ? (
           <>
             <span aria-hidden>·</span>
             <a href={asset.shaUrl} className="underline decoration-line-strong underline-offset-4 hover:text-fg">
@@ -96,7 +96,7 @@ function Primary({ platform, release, children }: { platform: Platform; release:
         ) : null}
         <span aria-hidden>·</span>
         <a href={release.url} className="underline decoration-line-strong underline-offset-4 hover:text-fg">
-          <T en="Release notes" pt="Notas da versão" />
+          <T en="What's new" pt="Novidades" />
         </a>
       </p>
       {children}
@@ -126,34 +126,34 @@ function OtherArch({ platform, release }: { platform: Platform; release: Release
 }
 
 /** The download that already knows the visitor's system, from <html data-os/data-arch>. */
-export function Download({ release }: { release: Release | null }) {
+export function Download({ release, quiet }: { release: Release | null; quiet?: boolean }) {
   return (
     <div>
       <div className="os-variant" data-for="windows">
-        <Primary platform="windows-x64" release={release} />
+        <Primary platform="windows-x64" release={release} quiet={quiet} />
       </div>
       <div className="os-variant" data-for="linux">
-        <Primary platform="linux-x64" release={release} />
+        <Primary platform="linux-x64" release={release} quiet={quiet} />
       </div>
       <div className="os-variant" data-for="mac">
         <div className="arch-variant" data-for="arm64">
-          <Primary platform="macos-arm64" release={release}>
+          <Primary platform="macos-arm64" release={release} quiet={quiet}>
             <OtherArch platform="macos-x64" release={release} />
           </Primary>
         </div>
         <div className="arch-variant" data-for="x64">
-          <Primary platform="macos-x64" release={release}>
+          <Primary platform="macos-x64" release={release} quiet={quiet}>
             <OtherArch platform="macos-arm64" release={release} />
           </Primary>
         </div>
       </div>
       <div className="os-variant" data-for="other">
         <a href="#platforms" className="btn btn-primary h-12 px-5 text-[15px]">
-          <T en="Downloads for Windows, Linux and macOS" pt="Downloads para Windows, Linux e macOS" />
+          <T en="Download for Windows, Linux or Mac" pt="Baixar para Windows, Linux ou Mac" />
           <ArrowIcon />
         </a>
         <p className="mt-3 text-[13px] text-faint">
-          <T en="Open Controller runs on a computer. Open this page there to get the right build." pt="O Open Controller roda no computador. Abra esta página nele para pegar a versão certa." />
+          <T en="Open Controller runs on a computer. Open this page there to get the right download." pt="O Open Controller roda no computador. Abra esta página nele para baixar a versão certa." />
         </p>
       </div>
     </div>

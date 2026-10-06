@@ -9,8 +9,8 @@ export function SectionHead({ n, label, title, children }: { n: string; label: R
         {label}
       </p>
       <div className="lg:col-span-9">
-        <h2 className="display text-balance text-[38px] sm:text-[48px] lg:text-[56px]">{title}</h2>
-        {children ? <div className="mt-5 max-w-[44rem] text-pretty text-[16.5px] leading-relaxed text-muted">{children}</div> : null}
+        <h2 className="display text-balance text-[32px] sm:text-[40px] lg:text-[46px]">{title}</h2>
+        {children ? <div className="mt-5 max-w-[44rem] text-pretty text-[17px] leading-relaxed text-muted">{children}</div> : null}
       </div>
     </div>
   );

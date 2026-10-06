@@ -12,21 +12,21 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Open Controller: your controller in every PC game",
+  title: "OpenController: your controller in every PC game",
   description,
-  applicationName: "Open Controller",
+  applicationName: "OpenController",
   keywords: ["controller", "gamepad", "PC games", "PlayStation controller on PC", "DualSense", "DualShock 4", "Switch Pro", "8BitDo", "DS4Windows alternative"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    siteName: "Open Controller",
-    title: "Open Controller",
+    siteName: "OpenController",
+    title: "OpenController",
     description,
     locale: "en_US",
     alternateLocale: ["pt_BR"],
   },
-  twitter: { card: "summary_large_image", title: "Open Controller", description },
+  twitter: { card: "summary_large_image", title: "OpenController", description },
 };
 
 export const viewport: Viewport = {

@@ -115,8 +115,8 @@ export function Features() {
         }
       >
         <T
-          en="Most PC games are made for the Xbox controller. Open Controller makes yours work in them too, with nothing to set up."
-          pt="A maioria dos jogos de PC foi feita pensando no controle de Xbox. O Open Controller faz o seu funcionar neles também, sem precisar configurar nada."
+          en="Most PC games are made for the Xbox controller. OpenController makes yours work in them too, with nothing to set up."
+          pt="A maioria dos jogos de PC foi feita pensando no controle de Xbox. O OpenController faz o seu funcionar neles também, sem precisar configurar nada."
         />
       </SectionHead>
 

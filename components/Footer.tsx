@@ -13,7 +13,7 @@ export function Footer({ version }: { version: string | null }) {
           <div className="flex items-center gap-3">
             <Image src="/brand/icon.svg" alt="" width={40} height={40} />
             <div>
-              <p className="text-[15px] font-semibold">Open Controller</p>
+              <p className="text-[15px] font-semibold">OpenController</p>
               <p className="font-mono text-[11.5px] text-faint">{version ? `v${version} · ` : ""}MIT</p>
             </div>
           </div>

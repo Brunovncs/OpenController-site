@@ -1,5 +1,5 @@
 /**
- * What Open Controller does with each controller family. Mirrors `Family`, `printed_name`, `kind`
+ * What OpenController does with each controller family. Mirrors `Family`, `printed_name`, `kind`
  * and `Hint` in crates/open-controller-core/src/extras.rs and the README's compatibility table.
  */
 
@@ -31,7 +31,7 @@ export type Family = {
   lightBar: boolean;
   /** Touchpad halves and two-finger touch as buttons of their own. */
   touchpad: boolean;
-  /** Games read it directly; Open Controller lists it and leaves it alone. */
+  /** Games read it directly; OpenController lists it and leaves it alone. */
   passthrough?: boolean;
   /** Not read by this build. */
   unsupported?: boolean;
@@ -290,8 +290,8 @@ export const FAMILIES: Record<string, Family> = {
     touchpad: false,
     passthrough: true,
     note: {
-      en: "Windows only, and not tried on a machine yet. ROG Ally and MSI Claw buttons need settings written to the controller, which Open Controller does not do.",
-      pt: "Só no Windows, e ainda não testado num aparelho. Os botões do ROG Ally e do MSI Claw precisam de configuração gravada no controle, o que o Open Controller não faz.",
+      en: "Windows only, and not tried on a machine yet. ROG Ally and MSI Claw buttons need settings written to the controller, which OpenController does not do.",
+      pt: "Só no Windows, e ainda não testado num aparelho. Os botões do ROG Ally e do MSI Claw precisam de configuração gravada no controle, o que o OpenController não faz.",
     },
   },
   Other: {

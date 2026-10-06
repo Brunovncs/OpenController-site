@@ -19,7 +19,7 @@ const FACTS = [
   },
   {
     k: { en: "Sends", pt: "Envia" },
-    v: { en: "Nothing about you. No account, no tracking", pt: "Nada sobre você. Sem conta, sem rastreamento" },
+    v: { en: "Fully private.", pt: "Totalmente privado." },
   },
 ];
 
@@ -32,7 +32,7 @@ export function Hero({ release }: { release: Release | null }) {
             <Image src="/brand/icon.svg" alt="" width={88} height={88} priority className="size-16 shrink-0 sm:size-[88px]" />
             <div className="min-w-0 pt-1">
               <h1 id="hero-title" className="text-[32px] font-semibold leading-none tracking-[-0.035em] sm:text-[44px]">
-                Open Controller
+                OpenController
               </h1>
               <p className="mt-3 text-[18px] leading-snug text-fg sm:text-[21px]">
                 <T en="Your controller in every PC game." pt="Seu controle em qualquer jogo de PC." />
@@ -63,7 +63,7 @@ export function Hero({ release }: { release: Release | null }) {
           <div className="relative aspect-[1468/700] overflow-hidden rounded-[14px] border border-line-strong bg-panel shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9),0_0_0_1px_rgba(0,0,0,1)]">
             <Image
               src="/window.png"
-              alt="The Open Controller app with eight connected controllers, each drawn in its own shape."
+              alt="The OpenController app with eight connected controllers, each drawn in its own shape."
               width={1468}
               height={1047}
               priority

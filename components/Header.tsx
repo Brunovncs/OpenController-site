@@ -37,7 +37,7 @@ export function Header({ stars, version }: { stars: number | null; version: stri
       <div className="wrap flex h-14 items-center gap-4">
         <a href="#top" className="flex items-center gap-2.5 rounded-md">
           <Image src="/brand/icon-small.svg" alt="" width={26} height={26} priority />
-          <span className="text-[15px] font-semibold tracking-tight">Open Controller</span>
+          <span className="text-[15px] font-semibold tracking-tight">OpenController</span>
           {version ? <span className="hidden font-mono text-[11px] text-faint sm:inline">{version}</span> : null}
         </a>
         <nav aria-label="Main" className="ml-6 hidden md:block">

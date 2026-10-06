@@ -74,22 +74,22 @@ function Verdict({ family, os, hint }: { family: Family; os: string; hint: strin
   if (family.id === "Handheld")
     return (
       <T
-        en="Games already work with the built-in controller. On Windows, Open Controller can also give its extra buttons something to do."
-        pt="Os jogos já funcionam com o controle embutido. No Windows, o Open Controller também dá função aos botões extras dele."
+        en="Games already work with the built-in controller. On Windows, OpenController can also give its extra buttons something to do."
+        pt="Os jogos já funcionam com o controle embutido. No Windows, o OpenController também dá função aos botões extras dele."
       />
     );
   if (family.passthrough)
     return (
       <T
-        en="Games already support it, so Open Controller leaves it as it is and lists it with the others."
-        pt="Os jogos já aceitam esse controle, então o Open Controller deixa ele como está e o mostra junto com os outros."
+        en="Games already support it, so OpenController leaves it as it is and lists it with the others."
+        pt="Os jogos já aceitam esse controle, então o OpenController deixa ele como está e o mostra junto com os outros."
       />
     );
   if (os === "mac")
     return (
       <T
-        en="On a Mac, games already work with it. Open Controller adds the extra buttons, the light and the battery level."
-        pt="No Mac, os jogos já funcionam com esse controle. O Open Controller acrescenta os botões extras, a luz e o nível de bateria."
+        en="On a Mac, games already work with it. OpenController adds the extra buttons, the light and the battery level."
+        pt="No Mac, os jogos já funcionam com esse controle. O OpenController acrescenta os botões extras, a luz e o nível de bateria."
       />
     );
   return (
@@ -155,8 +155,8 @@ const HELP: { en: string; pt: string }[] = [
     pt: "O Safari mostra o controle, mas nunca diz qual é.",
   },
   {
-    en: "If Open Controller is running with hiding on, the browser sees the Xbox controller it shows to games instead of yours. Quit it to test the controller itself.",
-    pt: "Se o Open Controller estiver aberto com a ocultação ligada, o navegador vê o controle de Xbox que ele mostra aos jogos, e não o seu. Feche-o para testar o próprio controle.",
+    en: "If OpenController is running with hiding on, the browser sees the Xbox controller it shows to games instead of yours. Quit it to test the controller itself.",
+    pt: "Se o OpenController estiver aberto com a ocultação ligada, o navegador vê o controle de Xbox que ele mostra aos jogos, e não o seu. Feche-o para testar o próprio controle.",
   },
 ];
 
@@ -386,8 +386,8 @@ export function ControllerCheck() {
                   </h3>
                   <p className="mt-3 text-[16px] leading-relaxed text-muted">
                     <T
-                      en="By cable or Bluetooth. It shows up here with its name and what Open Controller can do with it. Nothing leaves this page."
-                      pt="Por cabo ou Bluetooth. Ele aparece aqui com o nome e o que o Open Controller consegue fazer com ele. Nada sai desta página."
+                      en="By cable or Bluetooth. It shows up here with its name and what OpenController can do with it. Nothing leaves this page."
+                      pt="Por cabo ou Bluetooth. Ele aparece aqui com o nome e o que o OpenController consegue fazer com ele. Nada sai desta página."
                     />
                   </p>
                   {!supported || brave ? (
@@ -449,8 +449,8 @@ export function ControllerCheck() {
                   {pad && pad.mapping !== "standard" ? (
                     <p className="mt-3 text-[13.5px] leading-relaxed text-faint">
                       <T
-                        en="Your browser does not know this controller's layout, so the lights may not match its buttons. Open Controller reads it its own way, not through the browser."
-                        pt="O navegador não conhece o layout deste controle, então as luzes podem não bater com os botões. O Open Controller lê de outro jeito, não pelo navegador."
+                        en="Your browser does not know this controller's layout, so the lights may not match its buttons. OpenController reads it its own way, not through the browser."
+                        pt="O navegador não conhece o layout deste controle, então as luzes podem não bater com os botões. O OpenController lê de outro jeito, não pelo navegador."
                       />
                     </p>
                   ) : null}
@@ -486,8 +486,8 @@ export function ControllerCheck() {
                       />
                     ) : state === "xinput" ? (
                       <T
-                        en="It works, and games see it as an Xbox controller. Windows presents it that way, so the browser cannot tell the exact model. If it is an 8BitDo or another controller in its Xbox mode, its extra buttons stay hidden in that mode: switch it to D-input (for 8BitDo, turn it on holding B) or connect it by Bluetooth to use them. If Open Controller is running, this may also be the Xbox controller it shows to games."
-                        pt="Funciona, e os jogos o veem como controle de Xbox. O Windows o apresenta assim, então o navegador não sabe o modelo exato. Se for um 8BitDo ou outro controle no modo Xbox, os botões extras ficam escondidos nesse modo: mude para D-input (no 8BitDo, ligue segurando B) ou conecte por Bluetooth para usá-los. Se o Open Controller estiver aberto, este também pode ser o controle de Xbox que ele mostra aos jogos."
+                        en="It works, and games see it as an Xbox controller. Windows presents it that way, so the browser cannot tell the exact model. If it is an 8BitDo or another controller in its Xbox mode, its extra buttons stay hidden in that mode: switch it to D-input (for 8BitDo, turn it on holding B) or connect it by Bluetooth to use them. If OpenController is running, this may also be the Xbox controller it shows to games."
+                        pt="Funciona, e os jogos o veem como controle de Xbox. O Windows o apresenta assim, então o navegador não sabe o modelo exato. Se for um 8BitDo ou outro controle no modo Xbox, os botões extras ficam escondidos nesse modo: mude para D-input (no 8BitDo, ligue segurando B) ou conecte por Bluetooth para usá-los. Se o OpenController estiver aberto, este também pode ser o controle de Xbox que ele mostra aos jogos."
                       />
                     ) : (
                       <T

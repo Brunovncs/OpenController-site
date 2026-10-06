@@ -43,8 +43,8 @@ export default async function Page() {
             }
           >
             <T
-              en="Before you download anything, see if Open Controller knows your controller. Connect it and press a button. It all happens right here in your browser."
-              pt="Antes de baixar, veja se o Open Controller reconhece seu controle. Conecte e aperte um botão. Tudo acontece aqui mesmo, no navegador."
+              en="Before you download anything, see if OpenController knows your controller. Connect it and press a button. It all happens right here in your browser."
+              pt="Antes de baixar, veja se o OpenController reconhece seu controle. Conecte e aperte um botão. Tudo acontece aqui mesmo, no navegador."
             />
           </SectionHead>
           <div className="mt-12">

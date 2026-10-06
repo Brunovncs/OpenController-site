@@ -1,6 +1,6 @@
-# Open Controller site
+# OpenController site
 
-The website for [Open Controller](https://github.com/Brunovncs/OpenController). Next.js (App Router)
+The website for [OpenController](https://github.com/Brunovncs/OpenController). Next.js (App Router)
 and Tailwind CSS v4, one static page that Vercel rebuilds in the background at most once an hour.
 Live at [open-controller-site.vercel.app](https://open-controller-site.vercel.app); every push to
 `main` deploys it.

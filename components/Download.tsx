@@ -154,7 +154,7 @@ export function Download({ release, quiet }: { release: Release | null; quiet?: 
           <ArrowIcon />
         </a>
         <p className="mt-3 text-[13px] text-faint">
-          <T en="Open Controller runs on a computer. Open this page there to get the right download." pt="O Open Controller roda no computador. Abra esta página nele para baixar a versão certa." />
+          <T en="OpenController runs on a computer. Open this page there to get the right download." pt="O OpenController roda no computador. Abra esta página nele para baixar a versão certa." />
         </p>
       </div>
     </div>

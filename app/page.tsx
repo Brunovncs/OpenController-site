@@ -43,8 +43,8 @@ export default async function Page() {
             }
           >
             <T
-              en="Before you download anything, see if Open Controller knows your controller and what you can do with it. Your browser reads it live, right on this page."
-              pt="Antes de baixar qualquer coisa, veja se o Open Controller conhece seu controle e o que dá para fazer com ele. O navegador lê o controle ao vivo, aqui mesmo nesta página."
+              en="Before you download anything, see if Open Controller knows your controller. Connect it and press a button. It all happens right here in your browser."
+              pt="Antes de baixar, veja se o Open Controller reconhece seu controle. Conecte e aperte um botão. Tudo acontece aqui mesmo, no navegador."
             />
           </SectionHead>
           <div className="mt-12">
@@ -67,7 +67,7 @@ export default async function Page() {
             <T
               en={
                 <>
-                  Open Controller knows 602 models by name, and reads many more without one. Search for yours to see what works with it. So far it has been tested on real hardware with an 8BitDo Ultimate 2 Wireless; the rest is expected to work through SDL, the library it reads controllers with, so please{" "}
+                  Search for yours to see what works with it. Most controllers work even if they are not on the list. So far it has only been tried with an 8BitDo Ultimate 2 Wireless, so please{" "}
                   <a href={ISSUES_URL} className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
                     tell us how yours does
                   </a>
@@ -76,9 +76,9 @@ export default async function Page() {
               }
               pt={
                 <>
-                  O Open Controller conhece 602 modelos pelo nome, e lê muitos outros sem nome. Procure o seu para ver o que funciona com ele. Até agora foi testado em hardware de verdade com um 8BitDo Ultimate 2 Wireless; o resto deve funcionar pelo SDL, a biblioteca que ele usa para ler os controles, então por favor{" "}
+                  Procure o seu para ver o que funciona com ele. A maioria dos controles funciona mesmo sem estar na lista. Até agora ele só foi testado com um 8BitDo Ultimate 2 Wireless, então{" "}
                   <a href={ISSUES_URL} className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
-                    conte como foi com o seu
+                    conte para a gente como foi com o seu
                   </a>
                   .
                 </>

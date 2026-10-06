@@ -8,14 +8,14 @@ const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 const description =
-  "Use your PlayStation, Switch, 8BitDo or almost any other controller in PC games. Several players at once, support for extra buttons like back paddles, and aiming by moving the controller. Free and open source for Windows, Linux and macOS.";
+  "Use your PlayStation, Switch, 8BitDo and hundreds of other controllers in PC games, alone or with friends. Free and open source for Windows, Linux and Mac.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Open Controller: your controller in every PC game",
   description,
   applicationName: "Open Controller",
-  keywords: ["controller", "gamepad", "DualSense", "DualShock 4", "Switch Pro", "8BitDo", "XInput", "ViGEmBus", "DS4Windows alternative", "gyro"],
+  keywords: ["controller", "gamepad", "PC games", "PlayStation controller on PC", "DualSense", "DualShock 4", "Switch Pro", "8BitDo", "DS4Windows alternative"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

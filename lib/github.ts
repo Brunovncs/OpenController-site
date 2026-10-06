@@ -42,8 +42,10 @@ export function parseRelease(r: ApiRelease): Release {
   const byName = new Map(r.assets.map((a) => [a.name, a]));
   for (const a of r.assets) {
     if (a.name.endsWith(".sha256")) continue;
-    const platform = PLATFORMS.find((p) => a.name.includes(`-${p}.`));
-    if (!platform || assets[platform]) continue;
+    // Windows has an installer and a zip to run without installing; the installer comes first.
+    const setup = PLATFORMS.find((p) => a.name.includes(`-${p}-setup.`));
+    const platform = setup ?? PLATFORMS.find((p) => a.name.includes(`-${p}.`));
+    if (!platform || (assets[platform] && !setup)) continue;
     const sha = byName.get(`${a.name}.sha256`);
     assets[platform] = {
       name: a.name,

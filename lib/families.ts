@@ -337,8 +337,8 @@ export const FAMILY_ORDER = [
 
 export const HINTS: Record<string, L> = {
   EightBitDoDInput: {
-    en: "In its default Xbox mode (XInput), its extra buttons send nothing any program can read. Turn it on while holding B to switch it to D-input mode, where they and motion aiming work.",
-    pt: "No modo Xbox padrão (XInput), os botões extras não enviam nada que um programa consiga ler. Ligue o controle segurando B para mudar para o modo D-input, onde eles e a mira com movimento funcionam.",
+    en: "In Xbox mode, the default, the extra buttons do not work. Turn the controller on while holding B to use D-input mode, where they and motion aiming work.",
+    pt: "No modo Xbox, que é o padrão, os botões extras não funcionam. Ligue o controle segurando B para usar o modo D-input, onde eles e a mira com movimento funcionam.",
   },
   EightBitDoSwitchD: {
     en: "Set the mode switch on its back to D. That is D-input mode, where PL and PR work.",
@@ -365,8 +365,8 @@ export const HINTS: Record<string, L> = {
     pt: "Os botões extras precisam de \"Allow third-party apps to take over mappings\" ligado no Flydigi Space Station.",
   },
   Switch2Unsupported: {
-    en: "Switch 2 controllers need a USB library (libusb) this version leaves out.",
-    pt: "Controles do Switch 2 precisam de uma biblioteca USB (libusb) que esta versão não inclui.",
+    en: "Switch 2 controllers do not work in this version yet.",
+    pt: "Os controles do Switch 2 ainda não funcionam nesta versão.",
   },
 };
 

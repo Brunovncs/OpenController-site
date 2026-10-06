@@ -151,7 +151,7 @@ export function Compat() {
           </button>
         </div>
         <p className="text-[12.5px] text-faint">
-          <T en="On Windows it also reads 869 generic controllers from a list kept by the community." pt="No Windows ele também lê 869 controles genéricos de uma lista mantida pela comunidade." />
+          <T en="Many controllers that are not on this list work too." pt="Muitos controles que não estão nesta lista também funcionam." />
         </p>
       </div>
 
@@ -177,7 +177,7 @@ export function Compat() {
                     setFamily(null);
                   }
                 }}
-                placeholder={lang === "pt" ? "Tente DualSense, 8BitDo ou 054c:0ce6" : "Try DualSense, 8BitDo or 054c:0ce6"}
+                placeholder={lang === "pt" ? "Tente DualSense ou 8BitDo" : "Try DualSense or 8BitDo"}
                 autoComplete="off"
                 spellCheck={false}
                 className="h-full min-w-0 flex-1 bg-transparent text-[15px] text-fg outline-none placeholder:text-faint [&::-webkit-search-cancel-button]:hidden"
@@ -263,7 +263,7 @@ export function Compat() {
                         ) : (
                           <>
                             <Dot on={!!f.extras} label={lang === "pt" ? "extras" : "extras"} />
-                            <Dot on={f.gyro !== "no"} label="gyro" />
+                            <Dot on={f.gyro !== "no"} label={lang === "pt" ? "movimento" : "motion"} />
                             <Dot on={f.lightBar} label={lang === "pt" ? "luz" : "light"} />
                           </>
                         )}
@@ -282,12 +282,12 @@ export function Compat() {
           ) : (
             <div className="border-y border-line py-10 text-center text-[14px] text-muted">
               <p>
-                <T en="Not in the list of 602 known models." pt="Não está na lista de 602 modelos conhecidos." />
+                <T en="Not on the list yet." pt="Ainda não está na lista." />
               </p>
               <p className="mx-auto mt-2 max-w-md text-[13px] text-faint">
                 <T
-                  en="It may still work: most controllers are read even without a name. Test it in the section above to see what your browser finds."
-                  pt="Ainda pode funcionar: a maioria dos controles é lida mesmo sem nome. Teste na seção acima para ver o que o navegador encontra."
+                  en="It may still work, since most controllers do. Test it in the section above."
+                  pt="Pode funcionar mesmo assim, como a maioria dos controles. Teste na seção acima."
                 />
               </p>
             </div>

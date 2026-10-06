@@ -19,8 +19,8 @@ export function Footer({ version }: { version: string | null }) {
           </div>
           <p className="mt-5 max-w-sm text-[13.5px] leading-relaxed text-faint">
             <T
-              en="Written in Rust, with SDL 3 for reading controllers and GPUI for the window."
-              pt="Escrito em Rust, com o SDL 3 para ler os controles e o GPUI para a janela."
+              en="Free and open source, so you can play on PC with the controller you already have."
+              pt="Gratuito e de código aberto, para você jogar no PC com o controle que já tem."
             />
           </p>
         </div>
@@ -33,22 +33,17 @@ export function Footer({ version }: { version: string | null }) {
             </li>
             <li>
               <a className={LINK} href={RELEASES_URL}>
-                <T en="Releases" pt="Versões" />
+                <T en="All versions" pt="Todas as versões" />
               </a>
             </li>
             <li>
               <a className={LINK} href={ISSUES_URL}>
-                <T en="Report a controller" pt="Relatar um controle" />
+                <T en="Report a problem" pt="Relatar um problema" />
               </a>
             </li>
             <li>
               <a className={LINK} href={LICENSE_URL}>
                 <T en="MIT License" pt="Licença MIT" />
-              </a>
-            </li>
-            <li>
-              <a className={LINK} href={`${REPO_URL}/blob/main/docs/design.md`}>
-                <T en="Design notes" pt="Notas de design" />
               </a>
             </li>
             <li>

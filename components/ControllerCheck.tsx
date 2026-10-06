@@ -70,12 +70,12 @@ function Verdict({ family, os, hint }: { family: Family; os: string; hint: strin
       />
     );
   if (family.unsupported)
-    return <T en="Not supported yet. Switch 2 controllers need a part this version leaves out." pt="Ainda não é suportado. Controles do Switch 2 precisam de uma peça que esta versão não inclui." />;
+    return <T en="Switch 2 controllers do not work in this version yet." pt="Os controles do Switch 2 ainda não funcionam nesta versão." />;
   if (family.id === "Handheld")
     return (
       <T
-        en="Games already support the built-in controller. On Windows, its back and menu buttons can be set to keys and macros."
-        pt="Os jogos já aceitam o controle embutido. No Windows, os botões traseiros e de menu podem virar teclas e macros."
+        en="Games already work with the built-in controller. On Windows, Open Controller can also give its extra buttons something to do."
+        pt="Os jogos já funcionam com o controle embutido. No Windows, o Open Controller também dá função aos botões extras dele."
       />
     );
   if (family.passthrough)
@@ -88,8 +88,8 @@ function Verdict({ family, os, hint }: { family: Family; os: string; hint: strin
   if (os === "mac")
     return (
       <T
-        en="On a Mac, games already read it. Open Controller adds its extra buttons as keys and macros, and its light bar and battery where it has them."
-        pt="No Mac, os jogos já leem esse controle. O Open Controller acrescenta os botões extras como teclas e macros, e a barra de luz e a bateria quando ele tem."
+        en="On a Mac, games already work with it. Open Controller adds the extra buttons, the light and the battery level."
+        pt="No Mac, os jogos já funcionam com esse controle. O Open Controller acrescenta os botões extras, a luz e o nível de bateria."
       />
     );
   return (
@@ -122,7 +122,7 @@ function Capabilities({ family }: { family: Family }) {
     ],
     [
       <T key="t" en="Touchpad as buttons" pt="Touchpad como botões" />,
-      family.touchpad ? <Yes><T en="Left half, right half, two fingers" pt="Metade esquerda, metade direita, dois dedos" /></Yes> : <No><T en="No" pt="Não" /></No>,
+      family.touchpad ? <Yes><T en="Yes, as extra buttons" pt="Sim, como botões extras" /></Yes> : <No><T en="No" pt="Não" /></No>,
     ],
   ];
   return (
@@ -143,12 +143,16 @@ const HELP: { en: string; pt: string }[] = [
     pt: "Clique em qualquer lugar desta página e aperte um botão no controle. O navegador só mostra o controle depois de um toque, e só para a página em primeiro plano.",
   },
   {
+    en: "Some browsers and ad blockers keep controllers from websites. Brave does. Open this page in Chrome or Edge, or turn the blocker off for this page.",
+    pt: "Alguns navegadores e bloqueadores de anúncio escondem os controles dos sites. O Brave faz isso. Abra esta página no Chrome ou no Edge, ou desligue o bloqueador nesta página.",
+  },
+  {
     en: "A Bluetooth controller has to be paired with the computer first, in your system's Bluetooth settings.",
     pt: "Um controle Bluetooth precisa estar pareado com o computador antes, nas configurações de Bluetooth do sistema.",
   },
   {
-    en: "Safari shows the controller but never says which one it is. Chrome, Edge, Brave and Firefox do.",
-    pt: "O Safari mostra o controle, mas nunca diz qual é. Chrome, Edge, Brave e Firefox dizem.",
+    en: "Safari shows the controller but never says which one it is.",
+    pt: "O Safari mostra o controle, mas nunca diz qual é.",
   },
   {
     en: "If Open Controller is running with hiding on, the browser sees the Xbox controller it shows to games instead of yours. Quit it to test the controller itself.",
@@ -197,6 +201,12 @@ export function ControllerCheck() {
     noop,
     () => typeof navigator.getGamepads === "function",
     () => true,
+  );
+  // Brave has the Gamepad API but hands websites no controllers.
+  const brave = useSyncExternalStore(
+    noop,
+    () => "brave" in navigator,
+    () => false,
   );
 
   useEffect(() => {
@@ -267,8 +277,11 @@ export function ControllerCheck() {
     return parsed ? lookup(parsed.vendor, parsed.product) : null;
   }, [example, parsed]);
   const family = model ? (FAMILIES[model.family] ?? FAMILIES.Other) : null;
-  // A pad Windows hands over as XInput has no ids, and is an Xbox controller as far as anyone can tell.
-  const shape: Shape = !model && !parsed && pad && /xinput/i.test(pad.id) ? "xbox" : shapeFor(model, parsed?.vendor ?? null);
+  // A pad Windows hands over as XInput has no ids ("Xbox 360 Controller (XInput STANDARD GAMEPAD)",
+  // or the device's own name in the system's language), and is an Xbox controller as far as anyone
+  // can tell.
+  const xboxOnly = !model && !parsed && !!pad && /xinput|xbox/i.test(pad.id);
+  const shape: Shape = xboxOnly ? "xbox" : shapeFor(model, parsed?.vendor ?? null);
   const glyphs = glyphsFor(model, parsed?.vendor ?? null, shape);
   const buttons = example ? Array.from({ length: 18 }, (_, i) => (exampleDown.includes(i) ? 1 : 0)) : (pad?.buttons ?? []);
   const axes = pad?.axes ?? [0, 0, 0, 0];
@@ -282,7 +295,7 @@ export function ControllerCheck() {
         ? "known"
         : parsed
           ? "unknown"
-          : /xinput/i.test(pad.id)
+          : xboxOnly
             ? "xinput"
             : "anon";
 
@@ -377,14 +390,21 @@ export function ControllerCheck() {
                       pt="Por cabo ou Bluetooth. Ele aparece aqui com o nome e o que o Open Controller consegue fazer com ele. Nada sai desta página."
                     />
                   </p>
-                  {!supported ? (
-                    <p className="mt-5 rounded-lg border border-warn/30 bg-warn/5 p-3 text-[14px] text-warn">
-                      <T en="This browser cannot read controllers. Try Chrome, Edge, Brave or Firefox, or the examples below." pt="Este navegador não lê controles. Tente Chrome, Edge, Brave ou Firefox, ou os exemplos abaixo." />
+                  {!supported || brave ? (
+                    <p className="mt-5 rounded-lg border border-warn/30 bg-warn/5 p-3 text-[15px] leading-relaxed text-warn">
+                      {brave ? (
+                        <T
+                          en="You are using Brave, which keeps controllers from websites. Open this page in Chrome or Edge to test yours, or try the examples below."
+                          pt="Você está usando o Brave, que esconde os controles dos sites. Abra esta página no Chrome ou no Edge para testar o seu, ou experimente os exemplos abaixo."
+                        />
+                      ) : (
+                        <T en="This browser cannot read controllers. Open this page in Chrome or Edge, or try the examples below." pt="Este navegador não lê controles. Abra esta página no Chrome ou no Edge, ou experimente os exemplos abaixo." />
+                      )}
                     </p>
                   ) : null}
                   <div className="mt-7 rounded-xl border border-line bg-white/[0.02] p-4 sm:p-5">
                     <p className="text-[15px] font-medium text-fg">
-                      <T en="Nothing showing up?" pt="Não aparece nada?" />
+                      <T en="Not detected? It is usually one of these." pt="Não detecta? Geralmente é um destes motivos." />
                     </p>
                     <ul className="mt-3 space-y-2.5 text-[14px] leading-relaxed text-muted">
                       {HELP.map((h) => (
@@ -447,7 +467,7 @@ export function ControllerCheck() {
                       <T
                         en={
                           <>
-                            It is not in the list of 602 controllers Open Controller knows by name, but it may still work: most controllers are read without one. If you try it,{" "}
+                            It is not on our list yet, but it will probably work: most controllers do. If you try it,{" "}
                             <a href={ISSUES_URL} className={link}>
                               tell us how it went
                             </a>
@@ -456,7 +476,7 @@ export function ControllerCheck() {
                         }
                         pt={
                           <>
-                            Ele não está na lista de 602 controles que o Open Controller conhece pelo nome, mas ainda pode funcionar: a maioria dos controles é lida mesmo sem nome. Se você testar,{" "}
+                            Ele ainda não está na nossa lista, mas provavelmente funciona: a maioria dos controles funciona. Se você testar,{" "}
                             <a href={ISSUES_URL} className={link}>
                               conte como foi
                             </a>
@@ -466,13 +486,13 @@ export function ControllerCheck() {
                       />
                     ) : state === "xinput" ? (
                       <T
-                        en="The browser only sees an Xbox controller here, so it cannot tell which model this is. A real Xbox controller already works in games, and Open Controller leaves it alone. An 8BitDo or similar in its Xbox mode hides its extra buttons; switch it to D-input mode to use them. And if Open Controller is running, this may be the controller it shows to games."
-                        pt="O navegador só vê um controle de Xbox aqui, então não sabe qual é o modelo. Um controle de Xbox de verdade já funciona nos jogos, e o Open Controller não mexe nele. Um 8BitDo ou parecido no modo Xbox esconde os botões extras; mude para o modo D-input para usá-los. E se o Open Controller estiver aberto, este pode ser o controle que ele mostra aos jogos."
+                        en="It works, and games see it as an Xbox controller. Windows presents it that way, so the browser cannot tell the exact model. If it is an 8BitDo or another controller in its Xbox mode, its extra buttons stay hidden in that mode: switch it to D-input (for 8BitDo, turn it on holding B) or connect it by Bluetooth to use them. If Open Controller is running, this may also be the Xbox controller it shows to games."
+                        pt="Funciona, e os jogos o veem como controle de Xbox. O Windows o apresenta assim, então o navegador não sabe o modelo exato. Se for um 8BitDo ou outro controle no modo Xbox, os botões extras ficam escondidos nesse modo: mude para D-input (no 8BitDo, ligue segurando B) ou conecte por Bluetooth para usá-los. Se o Open Controller estiver aberto, este também pode ser o controle de Xbox que ele mostra aos jogos."
                       />
                     ) : (
                       <T
-                        en="Your browser does not say which controller this is. Safari never does. Open this page in Chrome, Edge, Brave or Firefox to see the details."
-                        pt="Seu navegador não informa qual controle é este. O Safari nunca informa. Abra esta página no Chrome, Edge, Brave ou Firefox para ver os detalhes."
+                        en="Your browser did not say which controller this is. Safari never does. Open this page in Chrome or Edge to see the details."
+                        pt="Seu navegador não informou qual controle é este. O Safari nunca informa. Abra esta página no Chrome ou no Edge para ver os detalhes."
                       />
                     )}
                   </p>

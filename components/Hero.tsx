@@ -7,11 +7,11 @@ import { T } from "./T";
 const FACTS = [
   {
     k: { en: "Runs on", pt: "Roda em" },
-    v: { en: "Windows 10 and 11, Linux, and macOS 13 or later", pt: "Windows 10 e 11, Linux e macOS 13 ou mais novo" },
+    v: { en: "Windows, Linux and Mac", pt: "Windows, Linux e Mac" },
   },
   {
-    k: { en: "Recognises", pt: "Reconhece" },
-    v: { en: "602 controller models by name, and reads many more", pt: "602 modelos de controle pelo nome, e lê muitos outros" },
+    k: { en: "Works with", pt: "Funciona com" },
+    v: { en: "Hundreds of controllers", pt: "Centenas de controles" },
   },
   {
     k: { en: "Costs", pt: "Custa" },
@@ -19,7 +19,7 @@ const FACTS = [
   },
   {
     k: { en: "Sends", pt: "Envia" },
-    v: { en: "Nothing. No account, no tracking, no update checks", pt: "Nada. Sem conta, sem rastreio, sem checar atualizações" },
+    v: { en: "Nothing about you. No account, no tracking", pt: "Nada sobre você. Sem conta, sem rastreamento" },
   },
 ];
 
@@ -39,8 +39,8 @@ export function Hero({ release }: { release: Release | null }) {
               </p>
               <p className="mt-2 max-w-[38rem] text-pretty text-[15px] leading-relaxed text-muted sm:text-[16px]">
                 <T
-                  en="PlayStation, Switch, 8BitDo and hundreds of other controllers. Several friends can play at once, and extra buttons like back paddles work too."
-                  pt="PlayStation, Switch, 8BitDo e centenas de outros controles. Vários amigos podem jogar juntos, e botões extras como as paletas traseiras também funcionam."
+                  en="Use PlayStation, Switch, 8BitDo and hundreds of other controllers in your PC games, alone or with friends."
+                  pt="Use controles de PlayStation, Switch, 8BitDo e centenas de outros nos seus jogos de PC, sozinho ou com amigos."
                 />
               </p>
             </div>
@@ -63,7 +63,7 @@ export function Hero({ release }: { release: Release | null }) {
           <div className="relative aspect-[1468/700] overflow-hidden rounded-[14px] border border-line-strong bg-panel shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9),0_0_0_1px_rgba(0,0,0,1)]">
             <Image
               src="/window.png"
-              alt="The Open Controller app with eight controllers, each drawn in its own shape and lit as it is used: an 8BitDo Ultimate 2, a DualSense Edge, a Switch Pro Controller, Joy-Cons, a DualShock 3, an Xbox controller, a DualShock 4 reconnecting and another 8BitDo."
+              alt="The Open Controller app with eight connected controllers, each drawn in its own shape."
               width={1468}
               height={1047}
               priority
@@ -74,8 +74,8 @@ export function Hero({ release }: { release: Release | null }) {
           </div>
           <figcaption className="mt-3 text-[13px] text-faint">
             <T
-              en="The app: every connected controller, drawn as it is and lit as you use it, with its player number, connection and battery."
-              pt="O app: cada controle conectado, desenhado como ele é e aceso conforme você usa, com o número do jogador, a conexão e a bateria."
+              en="The app, showing every controller you connect."
+              pt="O app mostrando cada controle conectado."
             />
           </figcaption>
         </figure>

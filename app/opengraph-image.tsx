@@ -22,7 +22,7 @@ export default async function Image() {
             Your controller in every PC game.
           </div>
           <div style={{ marginTop: "auto", display: "flex", fontSize: 24, color: "#a3a9b2" }}>
-            Windows, Linux, macOS · MIT
+            Free for Windows, Linux and Mac
           </div>
         </div>
         <div

@@ -19,6 +19,7 @@ function older(a: string, b: string): boolean {
 }
 
 function fileKind(name: string) {
+  if (name.endsWith("-setup.exe")) return "installer";
   return name.endsWith(".tar.gz") ? "tar.gz" : name.split(".").pop() ?? "";
 }
 

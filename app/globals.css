@@ -422,37 +422,6 @@ html:not([data-lang="pt"]) .seg > button[lang="en"] {
   display: none;
 }
 
-/* Feature visuals. */
-@media (prefers-reduced-motion: no-preference) {
-  .gyro-dot {
-    animation: gyro 6s ease-in-out infinite;
-  }
-  .blink {
-    animation: blink 1s steps(1, end) infinite;
-  }
-}
-@keyframes gyro {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  20% {
-    transform: translate(18px, -8px);
-  }
-  45% {
-    transform: translate(-6px, 14px);
-  }
-  70% {
-    transform: translate(-20px, -6px);
-  }
-}
-@keyframes blink {
-  50% {
-    opacity: 0.15;
-    box-shadow: none;
-  }
-}
-
 /* The search field shows focus on its whole box. */
 .searchbox input:focus-visible {
   outline: none;

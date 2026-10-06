@@ -9,15 +9,10 @@ import { T } from "./T";
 type Cell = true | false | { en: string; pt: string };
 
 const ROWS: { k: { en: string; pt: string }; w: Cell; l: Cell; m: Cell }[] = [
-  { k: { en: "Your controller works in games", pt: "Seu controle funciona nos jogos" }, w: true, l: true, m: { en: "By macOS", pt: "Pelo macOS" } },
-  { k: { en: "Each controller keeps its player", pt: "Cada controle mantém seu jogador" }, w: true, l: true, m: false },
-  { k: { en: "Games don't see a controller twice", pt: "Os jogos não veem o controle duas vezes" }, w: true, l: true, m: false },
-  { k: { en: "Extra buttons as other buttons", pt: "Botões extras como outros botões" }, w: true, l: true, m: false },
-  { k: { en: "Extra buttons as keys and macros", pt: "Botões extras como teclas e macros" }, w: true, l: true, m: true },
-  { k: { en: "Aim by moving, fix for drifting sticks", pt: "Mira com movimento, correção de drift" }, w: true, l: true, m: false },
-  { k: { en: "Light bar, low battery blink", pt: "Barra de luz, aviso de bateria" }, w: true, l: true, m: true },
-  { k: { en: "Profiles for each game", pt: "Perfis para cada jogo" }, w: true, l: true, m: true },
-  { k: { en: "Buttons of handheld PCs", pt: "Botões de PCs portáteis" }, w: true, l: false, m: false },
+  { k: { en: "Works in your games", pt: "Funciona nos seus jogos" }, w: true, l: true, m: { en: "Built into macOS", pt: "Já vem no macOS" } },
+  { k: { en: "Each friend stays the same player", pt: "Cada amigo continua sendo o mesmo jogador" }, w: true, l: true, m: false },
+  { k: { en: "Extra buttons and a setup per game", pt: "Botões extras e configuração por jogo" }, w: true, l: true, m: { en: "As keys", pt: "Como teclas" } },
+  { k: { en: "Controller light and battery", pt: "Luz do controle e bateria" }, w: true, l: true, m: true },
 ];
 
 function CellView({ c }: { c: Cell }) {
@@ -106,8 +101,8 @@ export function Platforms({ release }: { release: Release | null }) {
         }
       >
         <T
-          en="The same app on all three. What it can do depends on what each system lets an app do with a controller."
-          pt="O mesmo app nos três. O que ele consegue fazer depende do que cada sistema deixa um app fazer com um controle."
+          en="The same app on all three. A Mac already handles controllers on its own, so there it does a little less."
+          pt="O mesmo app nos três. O Mac já cuida dos controles sozinho, então lá ele faz um pouco menos."
         />
       </SectionHead>
 
@@ -159,42 +154,42 @@ export function Platforms({ release }: { release: Release | null }) {
         <Req title="Windows 10, 11" foot={<PlatformDownload platform="windows-x64" release={release} />}>
           <p>
             <T
-              en="64-bit. It needs two free drivers by Nefarius, the same ones DS4Windows uses: ViGEmBus, so games can see your controller, and HidHide, so they don't see it twice. The app installs them for you from Settings, Requirements, with one click."
-              pt="64 bits. Precisa de dois drivers gratuitos da Nefarius, os mesmos que o DS4Windows usa: ViGEmBus, para os jogos verem seu controle, e HidHide, para não o verem duas vezes. O app instala os dois para você em Configurações, Requisitos, com um clique."
+              en="64-bit. It installs without administrator rights and updates without reinstalling. It needs two free drivers, the same ones DS4Windows uses, and installs them for you with one click."
+              pt="64 bits. Instala sem precisar de administrador e se atualiza sem reinstalar. Precisa de dois drivers gratuitos, os mesmos do DS4Windows, e instala os dois para você com um clique."
             />
           </p>
           <p>
             <T
-              en="It does not need administrator rights. It is not signed yet, so Windows warns the first time you open it: click More info, then Run anyway."
-              pt="Não precisa de administrador. Ele ainda não é assinado, então o Windows avisa na primeira vez que você abre: clique em Mais informações, depois em Executar assim mesmo."
+              en="The installer is not signed yet, so the first time Windows may show a blue “Windows protected your PC” warning. Click More info, then Run anyway."
+              pt="Como o instalador ainda não é assinado, na primeira vez o Windows pode mostrar um aviso azul, “O Windows protegeu o computador”. Clique em Mais informações e depois em Executar assim mesmo."
             />
           </p>
         </Req>
         <Req title="Linux" foot={<PlatformDownload platform="linux-x64" release={release} />}>
           <p>
             <T
-              en="64-bit, on any distribution as recent as Ubuntu 22.04. The same app and features as on Windows, except the buttons of handheld PCs. It works with native games and with games under Wine and Proton."
-              pt="64 bits, em qualquer distribuição tão recente quanto o Ubuntu 22.04. O mesmo app e os mesmos recursos do Windows, menos os botões de PCs portáteis. Funciona com jogos nativos e com jogos no Wine e no Proton."
+              en="64-bit, Ubuntu 22.04 or newer, or any other distribution as recent. The same app as on Windows. It works with native games and with games running through Proton or Wine."
+              pt="64 bits, Ubuntu 22.04 ou mais novo, ou outra distribuição tão recente quanto. O mesmo app do Windows. Funciona com jogos nativos e com os que rodam pelo Proton ou pelo Wine."
             />
           </p>
           <p>
             <T
-              en="The installer adds a permission rule once and asks for your password. Profiles switch by themselves for X11 programs, which includes games under Wine and Proton."
-              pt="O instalador adiciona uma regra de permissão uma vez e pede sua senha. Os perfis trocam sozinhos para programas X11, o que inclui jogos no Wine e no Proton."
+              en="The installer asks for your password once, to let the app use your controllers."
+              pt="O instalador pede sua senha uma vez, para o app poder usar seus controles."
             />
           </p>
         </Req>
         <Req title="macOS 13+" foot={<div className="space-y-2"><PlatformDownload platform="macos-arm64" release={release} /><PlatformDownload platform="macos-x64" release={release} /></div>}>
           <p>
             <T
-              en="Apple silicon and Intel. Games on a Mac already support PlayStation, Xbox and Switch Pro controllers, and macOS does not let apps add controllers of their own."
-              pt="Apple silicon e Intel. Os jogos no Mac já aceitam controles de PlayStation, Xbox e Switch Pro, e o macOS não deixa apps criarem controles próprios."
+              en="For Macs with an Apple or Intel chip. On a Mac, games already work with PlayStation, Xbox and Switch Pro controllers, and the system doesn't let apps add controllers of their own."
+              pt="Para Mac com chip da Apple ou Intel. No Mac, os jogos já aceitam controles de PlayStation, Xbox e Switch Pro, e o sistema não deixa outros apps criarem controles."
             />
           </p>
           <p>
             <T
-              en="So on a Mac, Open Controller adds what is missing: extra buttons as keys and macros, the light bar, battery and profiles. It asks for the Accessibility permission to type keys. The first time, open it with a right-click and Open."
-              pt="Então no Mac o Open Controller acrescenta o que falta: botões extras como teclas e macros, a barra de luz, a bateria e os perfis. Ele pede a permissão de Acessibilidade para digitar teclas. Na primeira vez, abra com o botão direito e Abrir."
+              en="So on a Mac it adds what is missing: extra buttons as keys, the controller light, the battery and a setup for each game. The first time, right-click the app and choose Open."
+              pt="Por isso, no Mac ele completa o que falta: botões extras como teclas, a luz do controle, a bateria e uma configuração para cada jogo. Na primeira vez, clique no app com o botão direito e escolha Abrir."
             />
           </p>
         </Req>

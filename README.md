@@ -29,8 +29,8 @@ the `.sha256` file next to it. The page renders a button for every platform, and
 `<head>` (`lib/boot.ts`) marks the visitor's system on `<html>` before the first paint, so CSS
 shows the right one with no flash. Chromium on a Mac also reports Apple silicon or Intel
 (`components/PlatformRefine.tsx`); other browsers get the Apple silicon build with the Intel one
-next to it. A platform without an asset in the latest release says when its build arrives
-(`NEXT_VERSION` in `lib/site.ts`) and links to the source and the releases page. If GitHub does not
+next to it. A platform without an asset in the latest release says so and links to the source and the
+releases page. If GitHub does not
 answer, the button links to the releases page.
 
 ## The controller table

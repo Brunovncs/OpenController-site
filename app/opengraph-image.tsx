@@ -38,7 +38,7 @@ export default async function Image() {
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`data:image/png;base64,${shot}`} width={760} height={542} alt="" />
+          <img src={`data:image/png;base64,${shot}`} width={760} height={686} alt="" />
         </div>
       </div>
     ),

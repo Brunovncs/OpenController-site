@@ -14,6 +14,8 @@ const recent = new Map<string, number[]>();
 
 function tooMany(ip: string) {
   const now = Date.now();
+  // Networks that have not written for an hour are forgotten, so the map stays small.
+  for (const [k, v] of recent) if (now - v[v.length - 1] >= 3_600_000) recent.delete(k);
   const times = (recent.get(ip) ?? []).filter((t) => now - t < 3_600_000);
   if (times.length >= HOURLY) return true;
   recent.set(ip, [...times, now]);
@@ -31,7 +33,9 @@ export async function POST(request: Request) {
 
   let body: Record<string, unknown>;
   try {
-    body = await request.json();
+    const json: unknown = await request.json();
+    if (!json || typeof json !== "object" || Array.isArray(json)) throw new Error("not an object");
+    body = json as Record<string, unknown>;
   } catch {
     return Response.json({ error: "invalid" }, { status: 400 });
   }

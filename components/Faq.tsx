@@ -32,6 +32,13 @@ const QA: { q: { en: string; pt: string }; a: { en: ReactNode; pt: ReactNode } }
     },
   },
   {
+    q: { en: "Is the app in Portuguese?", pt: "O app está em português?" },
+    a: {
+      en: "Yes. It opens in English, and you can switch to Portuguese in Settings, under Language. Your choice stays across updates.",
+      pt: "Sim. Ele abre em inglês, e você troca para português em Configurações, na opção Idioma. A escolha continua depois das atualizações.",
+    },
+  },
+  {
     q: { en: "How do I update?", pt: "Como eu atualizo?" },
     a: {
       en: "The app lets you know when a new version is out. On Windows, click Update now and it installs it for you, keeping your settings. On Linux and Mac, it opens the download page.",

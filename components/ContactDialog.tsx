@@ -34,7 +34,7 @@ const COPY = {
     systemDetail: "Version or distribution",
     systemDetailHint: "e.g. 23H2, Ubuntu 24.04, Sonoma",
     version: "OpenController version",
-    versionHint: "Shown at the top of its window, e.g. 0.6.0",
+    versionHint: "Shown at the top of its window",
     controller: "Controller",
     controllerHint: "The exact model, e.g. 8BitDo Ultimate 2 Wireless",
     connection: "Connected by",
@@ -69,7 +69,7 @@ const COPY = {
     systemDetail: "Versão ou distribuição",
     systemDetailHint: "ex.: 23H2, Ubuntu 24.04, Sonoma",
     version: "Versão do OpenController",
-    versionHint: "Aparece no topo da janela, ex.: 0.6.0",
+    versionHint: "Aparece no topo da janela",
     controller: "Controle",
     controllerHint: "O modelo exato, ex.: 8BitDo Ultimate 2 Wireless",
     connection: "Conectado por",
@@ -126,7 +126,9 @@ export function ContactDialog({ version }: { version: string | null }) {
       setSystem((s) => s || (DEFAULT_SYSTEM[document.documentElement.getAttribute("data-os") ?? ""] ?? ""));
       setStatus("idle");
       setError(null);
-      opened.current = Date.now();
+      // From the first time it opened: a message typed, closed by a stray click and sent right
+      // after reopening is still a person's.
+      if (!opened.current) opened.current = Date.now();
       dialog.current?.showModal();
     };
     window.addEventListener(OPEN, open);
@@ -158,6 +160,7 @@ export function ContactDialog({ version }: { version: string | null }) {
         }),
       });
       if (res.ok) {
+        opened.current = 0;
         setStatus("sent");
         return;
       }

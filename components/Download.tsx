@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { formatSize, type Platform, type Release } from "@/lib/github";
-import { BUILD_URL, LATEST_URL, NEXT_VERSION, RELEASES_URL } from "@/lib/site";
+import { BUILD_URL, LATEST_URL, RELEASES_URL } from "@/lib/site";
 import { ArrowIcon, DownloadIcon } from "./icons";
 import { T } from "./T";
 
@@ -11,32 +11,15 @@ export const PLATFORM_LABEL: Record<Platform, { en: string; pt: string; short: s
   "macos-x64": { en: "Mac, Intel", pt: "Mac, Intel", short: "macOS Intel" },
 };
 
-function older(a: string, b: string): boolean {
-  const pa = a.split(".").map((n) => parseInt(n, 10) || 0);
-  const pb = b.split(".").map((n) => parseInt(n, 10) || 0);
-  for (let i = 0; i < 3; i++) if ((pa[i] ?? 0) !== (pb[i] ?? 0)) return (pa[i] ?? 0) < (pb[i] ?? 0);
-  return false;
-}
-
 function fileKind(name: string) {
   if (name.endsWith("-setup.exe")) return "installer";
   return name.endsWith(".tar.gz") ? "tar.gz" : name.split(".").pop() ?? "";
 }
 
-function formatDate(iso: string | null, locale: string) {
-  if (!iso) return null;
-  return new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeZone: "UTC" }).format(new Date(iso));
-}
-
 /** What to say when a platform has no build in the latest release. */
 export function MissingBuild({ platform, release }: { platform: Platform; release: Release }) {
   const os = PLATFORM_LABEL[platform];
-  const soon = older(release.version, NEXT_VERSION);
-  return soon ? (
-    <T en={`${os.en} build arrives in ${NEXT_VERSION}`} pt={`Versão para ${os.pt} chega na ${NEXT_VERSION}`} />
-  ) : (
-    <T en={`No ${os.en} build in ${release.version}`} pt={`Sem versão para ${os.pt} na ${release.version}`} />
-  );
+  return <T en={`No ${os.en} build in ${release.version}`} pt={`Sem versão para ${os.pt} na ${release.version}`} />;
 }
 
 function Primary({ platform, release, quiet, children }: { platform: Platform; release: Release | null; quiet?: boolean; children?: ReactNode }) {
@@ -160,45 +143,3 @@ export function Download({ release, quiet }: { release: Release | null; quiet?: 
     </div>
   );
 }
-
-/** Every platform's build, as plain links: the secondary row under the main button. */
-export function AllBuilds({ release }: { release: Release | null }) {
-  const platforms: Platform[] = ["windows-x64", "linux-x64", "macos-arm64", "macos-x64"];
-  return (
-    <div className="text-[13px]">
-      <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
-        {platforms.map((p) => {
-          const a = release?.assets[p];
-          return (
-            <li key={p}>
-              {a ? (
-                <a href={a.url} className="text-muted underline decoration-line-strong underline-offset-4 hover:text-fg hover:decoration-fg">
-                  {PLATFORM_LABEL[p].short}
-                </a>
-              ) : (
-                <span className="text-faint">
-                  {PLATFORM_LABEL[p].short}
-                  {release && older(release.version, NEXT_VERSION) ? (
-                    <span className="ml-1 font-mono text-[11px]">({NEXT_VERSION})</span>
-                  ) : null}
-                </span>
-              )}
-            </li>
-          );
-        })}
-        <li>
-          <a href={RELEASES_URL} className="text-muted underline decoration-line-strong underline-offset-4 hover:text-fg hover:decoration-fg">
-            <T en="All releases" pt="Todas as versões" />
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
-}
-
-export function ReleaseDate({ release }: { release: Release | null }) {
-  if (!release?.publishedAt) return null;
-  return <T en={formatDate(release.publishedAt, "en-GB")} pt={formatDate(release.publishedAt, "pt-BR")} />;
-}
-
-export { older };

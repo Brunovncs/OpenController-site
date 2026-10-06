@@ -19,7 +19,7 @@ const FACTS = [
   },
   {
     k: { en: "Sends", pt: "Envia" },
-    v: { en: "Fully private.", pt: "Totalmente privado." },
+    v: { en: "Nothing about you", pt: "Nada sobre você" },
   },
 ];
 
@@ -60,15 +60,31 @@ export function Hero({ release }: { release: Release | null }) {
             aria-hidden
             className="pointer-events-none absolute -inset-x-10 -top-16 bottom-0 -z-10 opacity-80 [background:radial-gradient(55%_60%_at_50%_30%,rgba(96,205,255,0.12),transparent_70%)]"
           />
-          <div className="relative aspect-[1468/700] overflow-hidden rounded-[14px] border border-line-strong bg-panel shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9),0_0_0_1px_rgba(0,0,0,1)]">
-            <Image
-              src="/window.png"
-              alt="The OpenController app with eight connected controllers, each drawn in its own shape."
-              width={1468}
-              height={1047}
-              priority
-              sizes="(min-width: 1240px) 1160px, 100vw"
-              className="h-auto w-full"
+          {/* Made by scripts/screenshot.ps1 in the app's repository, in each language. */}
+          <div className="relative mx-auto aspect-[1125/760] max-w-[900px] overflow-hidden rounded-[14px] border border-line-strong bg-panel shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9),0_0_0_1px_rgba(0,0,0,1)]">
+            <T
+              en={
+                <Image
+                  src="/window.png"
+                  alt="The OpenController app with six connected controllers, each drawn in its own shape."
+                  width={1125}
+                  height={1015}
+                  priority
+                  sizes="(min-width: 960px) 900px, 100vw"
+                  className="block h-auto w-full"
+                />
+              }
+              pt={
+                <Image
+                  src="/window-pt.png"
+                  alt="O app OpenController com seis controles conectados, cada um desenhado no seu formato."
+                  width={1125}
+                  height={1015}
+                  priority
+                  sizes="(min-width: 960px) 900px, 100vw"
+                  className="block h-auto w-full"
+                />
+              }
             />
             <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-black/85" />
           </div>

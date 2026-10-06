@@ -86,7 +86,7 @@ function UpdateVisual() {
 const MEASURES = [
   {
     k: { en: "Delay it adds to your controller", pt: "Atraso que ele adiciona ao controle" },
-    v: { en: "Less than a millisecond", pt: "Menos de um milésimo de segundo" },
+    v: { en: "Usually under a millisecond", pt: "Normalmente menos de um milésimo de segundo" },
   },
   {
     k: { en: "Memory", pt: "Memória" },
@@ -148,8 +148,8 @@ export function Features() {
 
         <Card className="lg:col-span-3" title={<T en="Your way" pt="Do seu jeito" />} visual={<SetupsVisual />}>
           <T
-            en="If you want, give your controller's extra buttons something to do and save a setup for each game. It's all optional: your controller works without any of it."
-            pt="Se quiser, dê uma função aos botões extras do controle e salve uma configuração para cada jogo. É tudo opcional: o controle já funciona sem mexer em nada."
+            en="If you want, give your controller's extra buttons something to do, aim with the gyro, and save a setup for each game that switches on by itself when the game opens. It's all optional: your controller works without any of it."
+            pt="Se quiser, dê uma função aos botões extras, mire com o giroscópio e salve uma configuração para cada jogo, que entra sozinha quando o jogo abre. É tudo opcional: o controle já funciona sem mexer em nada."
           />
         </Card>
 

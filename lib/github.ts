@@ -26,6 +26,8 @@ type ApiRelease = {
 };
 
 const REVALIDATE = 3600;
+/** Cleared by app/api/revalidate when the app's release workflow publishes a version. */
+export const RELEASE_TAG = "release";
 
 function headers(): HeadersInit {
   const h: Record<string, string> = {
@@ -66,7 +68,7 @@ export async function getLatestRelease(): Promise<Release | null> {
   try {
     const res = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`, {
       headers: headers(),
-      next: { revalidate: REVALIDATE },
+      next: { revalidate: REVALIDATE, tags: [RELEASE_TAG] },
     });
     if (!res.ok) return null;
     return parseRelease((await res.json()) as ApiRelease);
@@ -79,7 +81,7 @@ export async function getStars(): Promise<number | null> {
   try {
     const res = await fetch(`https://api.github.com/repos/${REPO}`, {
       headers: headers(),
-      next: { revalidate: REVALIDATE },
+      next: { revalidate: REVALIDATE, tags: [RELEASE_TAG] },
     });
     if (!res.ok) return null;
     const json = (await res.json()) as { stargazers_count?: number };

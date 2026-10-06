@@ -7,7 +7,4 @@ export const LICENSE_URL = `${REPO_URL}/blob/main/LICENSE`;
 export const BUILD_URL = `${REPO_URL}#building-and-testing`;
 export const OFFICIAL_DOMAIN = "opencontroller.com.br";
 
-/** The release that brings Linux and macOS builds. */
-export const NEXT_VERSION = "0.2.0";
-
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? `https://${OFFICIAL_DOMAIN}`).replace(/\/$/, "");

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "OpenController: your controller in every PC game",
   description,
   applicationName: "OpenController",
-  keywords: ["controller", "gamepad", "PC games", "PlayStation controller on PC", "DualSense", "DualShock 4", "Switch Pro", "8BitDo", "DS4Windows alternative"],
+  keywords: ["controller", "gamepad", "PC games", "PlayStation controller on PC", "DualSense", "DualShock 4", "Switch Pro", "8BitDo"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

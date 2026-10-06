@@ -154,8 +154,8 @@ export function Platforms({ release }: { release: Release | null }) {
         <Req title="Windows 10, 11" foot={<PlatformDownload platform="windows-x64" release={release} />}>
           <p>
             <T
-              en="64-bit. It installs without administrator rights and updates without reinstalling. It needs two free drivers, the same ones DS4Windows uses, and installs them for you with one click."
-              pt="64 bits. Instala sem precisar de administrador e se atualiza sem reinstalar. Precisa de dois drivers gratuitos, os mesmos do DS4Windows, e instala os dois para você com um clique."
+              en="64-bit. It installs without administrator rights and updates without reinstalling. It needs two free drivers and installs them for you with one click."
+              pt="64 bits. Instala sem precisar de administrador e se atualiza sem reinstalar. Precisa de dois drivers gratuitos e instala os dois para você com um clique."
             />
           </p>
           <p>

@@ -10,6 +10,7 @@ export const NAV = [
   { id: "controllers", en: "Controllers", pt: "Controles" },
   { id: "platforms", en: "Download", pt: "Baixar" },
   { id: "faq", en: "FAQ", pt: "Dúvidas" },
+  { id: "contact", en: "Contact", pt: "Contato" },
 ];
 
 export function GitHubButton({ stars }: { stars: number | null }) {

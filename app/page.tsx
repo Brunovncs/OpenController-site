@@ -1,4 +1,5 @@
 import { Compat } from "@/components/Compat";
+import { Contact } from "@/components/Contact";
 import { ControllerCheck } from "@/components/ControllerCheck";
 import { Faq } from "@/components/Faq";
 import { Features } from "@/components/Features";
@@ -12,7 +13,6 @@ import { SectionHead } from "@/components/SectionHead";
 import { Spotlight } from "@/components/Spotlight";
 import { T } from "@/components/T";
 import { getLatestRelease, getStars } from "@/lib/github";
-import { ISSUES_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -67,18 +67,18 @@ export default async function Page() {
             <T
               en={
                 <>
-                  Search for yours to see what works with it. Most controllers work even if they are not on the list. So far it has only been tried with an 8BitDo Ultimate 2 Wireless, so please{" "}
-                  <a href={ISSUES_URL} className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
-                    tell us how yours does
+                  Search for yours to see what works with it. Most controllers work even if they are not on the list. If yours gives you trouble,{" "}
+                  <a href="#contact" className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
+                    let us know
                   </a>
                   .
                 </>
               }
               pt={
                 <>
-                  Procure o seu para ver o que funciona com ele. A maioria dos controles funciona mesmo sem estar na lista. Até agora ele só foi testado com um 8BitDo Ultimate 2 Wireless, então{" "}
-                  <a href={ISSUES_URL} className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
-                    conte para a gente como foi com o seu
+                  Procure o seu para ver o que funciona com ele. A maioria dos controles funciona mesmo sem estar na lista. Se o seu der algum problema,{" "}
+                  <a href="#contact" className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
+                    avise a gente
                   </a>
                   .
                 </>
@@ -92,6 +92,7 @@ export default async function Page() {
 
         <Platforms release={release} />
         <Faq />
+        <Contact />
       </main>
 
       <Footer version={release?.version ?? null} />

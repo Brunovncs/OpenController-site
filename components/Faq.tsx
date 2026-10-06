@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { ISSUES_URL } from "@/lib/site";
 import { PlusIcon } from "./icons";
 import { SectionHead } from "./SectionHead";
 import { T } from "./T";
@@ -40,10 +39,10 @@ const QA: { q: { en: string; pt: string }; a: { en: ReactNode; pt: ReactNode } }
     },
   },
   {
-    q: { en: "How is it different from DS4Windows or Steam Input?", pt: "Qual a diferença para o DS4Windows ou o Steam Input?" },
+    q: { en: "Does it work with Steam?", pt: "Funciona junto com a Steam?" },
     a: {
-      en: "It does for hundreds of controllers what DS4Windows does for PlayStation ones, and your normal buttons stay where they are. If you use Steam, turn off Steam Input for PlayStation and Switch controllers in Steam's settings, or Steam reads them too.",
-      pt: "Ele faz por centenas de controles o que o DS4Windows faz pelos de PlayStation, e seus botões normais ficam onde estão. Se você usa a Steam, desligue o Steam Input para controles de PlayStation e Switch nas configurações da Steam, senão a Steam também vai ler esses controles.",
+      en: "Yes. Turn off Steam Input for PlayStation and Switch controllers in Steam's settings, or Steam reads them too and the game may see the same button twice.",
+      pt: "Sim. Desligue o Steam Input para controles de PlayStation e Switch nas configurações da Steam, senão a Steam também lê esses controles e o jogo pode ver o mesmo botão duas vezes.",
     },
   },
   {
@@ -63,8 +62,8 @@ const QA: { q: { en: string; pt: string }; a: { en: ReactNode; pt: ReactNode } }
   {
     q: { en: "A button I set to a key does nothing in my game.", pt: "Um botão que configurei como tecla não faz nada no jogo." },
     a: {
-      en: "Some games ignore keys pressed by other programs, especially games with anti-cheat. Windows also blocks them in games opened as administrator.",
-      pt: "Alguns jogos ignoram teclas apertadas por outros programas, principalmente os que têm anti-cheat. O Windows também bloqueia essas teclas em jogos abertos como administrador.",
+      en: "Some games ignore keys pressed by other programs, especially games with anti-cheat. Windows also blocks them in games opened as administrator. Some games also forbid macros in their rules, so check before using them; what happens to your account is up to the game.",
+      pt: "Alguns jogos ignoram teclas apertadas por outros programas, principalmente os que têm anti-cheat. O Windows também bloqueia essas teclas em jogos abertos como administrador. Alguns jogos também proíbem macros nas regras, então confira antes de usar; o que acontece com a sua conta depende do jogo.",
     },
   },
   {
@@ -72,12 +71,12 @@ const QA: { q: { en: string; pt: string }; a: { en: ReactNode; pt: ReactNode } }
     a: {
       en: (
         <>
-          Not yet, it is in development. So far it has been tried on real hardware with an 8BitDo Ultimate 2 Wireless on Windows. The other controllers should work, but have not been tried yet, and neither have the Linux and Mac versions. Think of it as a beta, and please <A href={ISSUES_URL}>tell us what you plug in</A>.
+          Not yet, it is in beta. With so many controllers out there, some may not work as they should yet and some features are still missing. If something goes wrong, <A href="#contact">let us know</A>.
         </>
       ),
       pt: (
         <>
-          Ainda não, está em desenvolvimento. Até agora foi testado em hardware de verdade com um 8BitDo Ultimate 2 Wireless no Windows. Os outros controles devem funcionar, mas ainda não foram testados, nem as versões para Linux e Mac. Considere uma versão beta, e por favor <A href={ISSUES_URL}>conte para a gente o que você conectou</A>.
+          Ainda não, está em beta. Com tantos controles por aí, alguns podem ainda não funcionar como deveriam e alguns recursos ainda faltam. Se algo der errado, <A href="#contact">avise a gente</A>.
         </>
       ),
     },
@@ -91,8 +90,8 @@ export function Faq() {
       <div className="faq mt-12 grid gap-x-10 lg:grid-cols-12">
         <p className="mb-8 text-[14px] leading-relaxed text-muted lg:col-span-3 lg:mb-0 lg:pt-5">
           <T
-            en={<>Another question, or a controller that isn’t working right? <A href={ISSUES_URL}>Tell us on GitHub</A>.</>}
-            pt={<>Ficou com outra dúvida, ou algum controle não funcionou direito? <A href={ISSUES_URL}>Conte para a gente no GitHub</A>.</>}
+            en={<>Another question, or a controller that isn’t working right? <A href="#contact">Get in touch</A>.</>}
+            pt={<>Ficou com outra dúvida, ou algum controle não funcionou direito? <A href="#contact">Fale com a gente</A>.</>}
           />
         </p>
         <div className="border-t border-line lg:col-span-9">

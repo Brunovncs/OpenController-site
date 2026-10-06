@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "reac
 import { glyphsFor, shapeFor, type Glyphs, type Shape } from "@/lib/drawings";
 import { FAMILIES, HINTS, SHORT, type Family } from "@/lib/families";
 import { gamepadName, lookup, parseGamepadId } from "@/lib/models";
-import { ISSUES_URL } from "@/lib/site";
 import { PadDrawing } from "./PadDrawing";
 import { useHtmlData } from "./lang";
 import { T } from "./T";
@@ -468,7 +467,7 @@ export function ControllerCheck() {
                         en={
                           <>
                             It is not on our list yet, but it will probably work: most controllers do. If you try it,{" "}
-                            <a href={ISSUES_URL} className={link}>
+                            <a href="#contact" className={link}>
                               tell us how it went
                             </a>
                             .
@@ -477,7 +476,7 @@ export function ControllerCheck() {
                         pt={
                           <>
                             Ele ainda não está na nossa lista, mas provavelmente funciona: a maioria dos controles funciona. Se você testar,{" "}
-                            <a href={ISSUES_URL} className={link}>
+                            <a href="#contact" className={link}>
                               conte como foi
                             </a>
                             .

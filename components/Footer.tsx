@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ISSUES_URL, LICENSE_URL, RELEASES_URL, REPO_URL } from "@/lib/site";
+import { CONTACT_EMAIL, LICENSE_URL, OFFICIAL_DOMAIN, RELEASES_URL, REPO_URL } from "@/lib/site";
 import { LangToggle } from "./lang";
 import { T } from "./T";
 
@@ -37,8 +37,13 @@ export function Footer({ version }: { version: string | null }) {
               </a>
             </li>
             <li>
-              <a className={LINK} href={ISSUES_URL}>
-                <T en="Report a problem" pt="Relatar um problema" />
+              <a className={LINK} href="#contact">
+                <T en="Report a problem" pt="Reportar um problema" />
+              </a>
+            </li>
+            <li>
+              <a className={LINK} href={`mailto:${CONTACT_EMAIL}`}>
+                <T en="Contact" pt="Contato" />
               </a>
             </li>
             <li>
@@ -58,11 +63,17 @@ export function Footer({ version }: { version: string | null }) {
         </div>
       </div>
       <div className="wrap">
-        <div className="border-t border-line py-6">
+        <div className="space-y-3 border-t border-line py-6">
+        <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
+          <T
+            en={<>{OFFICIAL_DOMAIN} is the only official OpenController website. Download it only from here or from GitHub.</>}
+            pt={<>O {OFFICIAL_DOMAIN} é o único site oficial do OpenController. Baixe só por aqui ou pelo GitHub.</>}
+          />
+        </p>
         <p className="max-w-4xl text-[12px] leading-relaxed text-faint">
           <T
-            en="Not affiliated with Sony, Microsoft, Nintendo, Valve, 8BitDo or any other controller maker; their names identify compatible hardware only. ViGEmBus, HidHide, DsHidMini and BthPS3 are by Nefarius Software Solutions and are downloaded from their releases, not bundled."
-            pt="Sem vínculo com Sony, Microsoft, Nintendo, Valve, 8BitDo ou qualquer outro fabricante de controles; os nomes só identificam hardware compatível. ViGEmBus, HidHide, DsHidMini e BthPS3 são da Nefarius Software Solutions e são baixados das páginas deles, não incluídos."
+            en="Not affiliated with Sony, Microsoft, Nintendo, Valve, 8BitDo or any other controller maker; their names identify compatible hardware only. ViGEmBus, HidHide, DsHidMini and BthPS3 are by Nefarius Software Solutions and are downloaded from their releases, not bundled. Use it at your own risk: the authors are not responsible for bans or other penalties from how it is used, such as macros in games that forbid them."
+            pt="Sem vínculo com Sony, Microsoft, Nintendo, Valve, 8BitDo ou qualquer outro fabricante de controles; os nomes só identificam hardware compatível. ViGEmBus, HidHide, DsHidMini e BthPS3 são da Nefarius Software Solutions e são baixados das páginas deles, não incluídos. O uso é por sua conta: os autores não se responsabilizam por banimentos ou outras punições causadas pelo uso, como macros em jogos que as proíbem."
           />
         </p>
         </div>

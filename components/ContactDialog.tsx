@@ -220,7 +220,7 @@ export function ContactDialog({ version }: { version: string | null }) {
                 <>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <Field label={c.system}>
-                      <select name="system" value={system} onChange={(e) => setSystem(e.target.value)} className={`${FIELD} h-11`}>
+                      <select name="system" value={system} onChange={(e) => setSystem(e.target.value)} className={`${FIELD} select h-11`}>
                         <option value="">—</option>
                         {SYSTEMS.map((s) => (
                           <option key={s} value={s}>
@@ -239,7 +239,7 @@ export function ContactDialog({ version }: { version: string | null }) {
                       <input name="controller" className={`${FIELD} h-11`} maxLength={120} />
                     </Field>
                     <Field label={c.connection}>
-                      <select name="connection" defaultValue="" className={`${FIELD} h-11`}>
+                      <select name="connection" defaultValue="" className={`${FIELD} select h-11`}>
                         <option value="">—</option>
                         {c.connections.map((s) => (
                           <option key={s} value={s}>

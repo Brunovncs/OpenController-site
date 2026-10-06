@@ -422,6 +422,89 @@ html:not([data-lang="pt"]) .seg > button[lang="en"] {
   display: none;
 }
 
+/*
+ * Selects: the closed field matches the inputs, and the open list matches the panels. Where
+ * customizable selects exist (appearance: base-select) the whole picker is styled; elsewhere the
+ * options at least get the dark panel colors instead of the browser's white list.
+ */
+.select {
+  appearance: none;
+  padding-right: 2.25rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%237c838d' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  cursor: pointer;
+}
+.select option {
+  background-color: var(--color-panel-2);
+  color: var(--color-fg);
+}
+@supports (appearance: base-select) {
+  .select,
+  .select::picker(select) {
+    appearance: base-select;
+  }
+  .select {
+    display: flex;
+    align-items: center;
+  }
+  .select::picker-icon {
+    display: none;
+  }
+  .select::picker(select) {
+    margin-block: 6px;
+    padding: 4px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 12px;
+    background: var(--color-panel-2);
+    color: var(--color-fg);
+    box-shadow: 0 18px 50px -12px rgb(0 0 0 / 0.8);
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 160ms var(--ease-out-soft),
+      transform 160ms var(--ease-out-soft),
+      overlay 160ms allow-discrete,
+      display 160ms allow-discrete;
+  }
+  .select:not(:open)::picker(select) {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  @starting-style {
+    .select:open::picker(select) {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  }
+  .select option {
+    gap: 0.5rem;
+    padding: 0.5rem 0.65rem;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--color-muted);
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background-color 120ms,
+      color 120ms;
+  }
+  .select option:hover,
+  .select option:focus-visible {
+    outline: none;
+    background: rgb(255 255 255 / 0.06);
+    color: var(--color-fg);
+  }
+  .select option:checked {
+    color: var(--color-fg);
+  }
+  .select option::checkmark {
+    order: 1;
+    margin-left: auto;
+    color: var(--color-accent);
+  }
+}
+
 /* The search field shows focus on its whole box. */
 .searchbox input:focus-visible {
   outline: none;

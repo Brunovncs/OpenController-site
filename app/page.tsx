@@ -1,5 +1,6 @@
 import { Compat } from "@/components/Compat";
 import { Contact } from "@/components/Contact";
+import { ContactDialog } from "@/components/ContactDialog";
 import { ControllerCheck } from "@/components/ControllerCheck";
 import { Faq } from "@/components/Faq";
 import { Features } from "@/components/Features";
@@ -94,6 +95,7 @@ export default async function Page() {
         <Faq />
         <Contact />
       </main>
+      <ContactDialog version={release?.version ?? null} />
 
       <Footer version={release?.version ?? null} />
     </>

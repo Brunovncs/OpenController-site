@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { CONTACT_EMAIL, LICENSE_URL, OFFICIAL_DOMAIN, RELEASES_URL, REPO_URL } from "@/lib/site";
+import { LICENSE_URL, OFFICIAL_DOMAIN, RELEASES_URL, REPO_URL } from "@/lib/site";
+import { ContactButton } from "./ContactDialog";
 import { LangToggle } from "./lang";
 import { T } from "./T";
 
@@ -42,9 +43,9 @@ export function Footer({ version }: { version: string | null }) {
               </a>
             </li>
             <li>
-              <a className={LINK} href={`mailto:${CONTACT_EMAIL}`}>
-                <T en="Contact" pt="Contato" />
-              </a>
+              <ContactButton kind="other" className={LINK}>
+                <T en="Contact us" pt="Fale conosco" />
+              </ContactButton>
             </li>
             <li>
               <a className={LINK} href={LICENSE_URL}>

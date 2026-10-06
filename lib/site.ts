@@ -5,7 +5,6 @@ export const LATEST_URL = `${REPO_URL}/releases/latest`;
 export const ISSUES_URL = `${REPO_URL}/issues`;
 export const LICENSE_URL = `${REPO_URL}/blob/main/LICENSE`;
 export const BUILD_URL = `${REPO_URL}#building-and-testing`;
-export const CONTACT_EMAIL = "brunoviniciusrp.contato@gmail.com";
 export const OFFICIAL_DOMAIN = "opencontroller.com.br";
 
 /** The release that brings Linux and macOS builds. */

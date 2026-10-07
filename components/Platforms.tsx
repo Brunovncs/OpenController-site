@@ -92,7 +92,7 @@ export function Platforms({ release }: { release: Release | null }) {
   return (
     <section id="platforms" aria-labelledby="platforms-title" className="wrap py-20 sm:py-24">
       <SectionHead
-        n="04"
+        n="05"
         label={<T en="Platforms" pt="Sistemas" />}
         title={
           <span id="platforms-title">

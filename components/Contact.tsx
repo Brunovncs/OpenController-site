@@ -27,7 +27,7 @@ export function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="wrap py-20 sm:py-24">
       <SectionHead
-        n="06"
+        n="07"
         label={<T en="Contact" pt="Contato" />}
         title={
           <span id="contact-title">

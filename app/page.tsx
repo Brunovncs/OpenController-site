@@ -8,6 +8,7 @@ import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import { Header, NAV } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { Performance } from "@/components/Performance";
 import { PlatformRefine } from "@/components/PlatformRefine";
 import { Platforms } from "@/components/Platforms";
 import { RailToc } from "@/components/RailToc";
@@ -55,10 +56,11 @@ export default async function Page() {
         </section>
 
         <Features />
+        <Performance />
 
         <section id="controllers" aria-labelledby="controllers-title" className="wrap py-20 sm:py-24">
           <SectionHead
-            n="03"
+            n="04"
             label={<T en="Controllers" pt="Controles" />}
             title={
               <span id="controllers-title">

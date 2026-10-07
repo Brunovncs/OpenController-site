@@ -513,3 +513,38 @@ html:not([data-lang="pt"]) .seg > button[lang="en"] {
   border-color: rgb(96 205 255 / 0.55);
   box-shadow: 0 0 0 4px rgb(96 205 255 / 0.12);
 }
+
+/*
+ * Memory bar: it starts at the open window's length and shrinks to its own as --p goes from 0 to
+ * 1, grey on the way and accent once there (MemoryBars sets --p and data-run only when motion is
+ * allowed; without them the end state shows).
+ */
+.mem-shrink {
+  width: calc((1 - var(--p, 1) * (1 - var(--w))) * 100%);
+  box-shadow: 0 0 18px -2px rgb(96 205 255 / 0.65);
+  transition:
+    background-color 500ms,
+    box-shadow 700ms;
+}
+.mem-num {
+  transition: color 500ms;
+}
+.mem-punch {
+  transition:
+    opacity 600ms var(--ease-out-soft) 250ms,
+    transform 600ms var(--ease-out-soft) 250ms;
+}
+.mem[data-run="idle"] :is(.mem-shrink, .mem-num, .mem-punch) {
+  transition: none;
+}
+.mem:is([data-run="idle"], [data-run="play"]) .mem-shrink {
+  background-color: rgb(124 131 141 / 0.7);
+  box-shadow: none;
+}
+.mem:is([data-run="idle"], [data-run="play"]) .mem-num {
+  color: rgb(242 242 239 / 0.85);
+}
+.mem:is([data-run="idle"], [data-run="play"]) .mem-punch {
+  opacity: 0;
+  transform: translateY(8px);
+}

@@ -7,6 +7,7 @@ import { T } from "./T";
 export const NAV = [
   { id: "check", en: "Test", pt: "Testar" },
   { id: "features", en: "Features", pt: "Recursos" },
+  { id: "performance", en: "Performance", pt: "Desempenho" },
   { id: "controllers", en: "Controllers", pt: "Controles" },
   { id: "platforms", en: "Download", pt: "Baixar" },
   { id: "faq", en: "FAQ", pt: "Dúvidas" },
@@ -41,7 +42,7 @@ export function Header({ stars, version }: { stars: number | null; version: stri
           <span className="text-[15px] font-semibold tracking-tight">OpenController</span>
           {version ? <span className="hidden font-mono text-[11px] text-faint sm:inline">{version}</span> : null}
         </a>
-        <nav aria-label="Main" className="ml-6 hidden md:block">
+        <nav aria-label="Main" className="ml-6 hidden min-[1100px]:block">
           <ul className="flex items-center gap-1 text-[13.5px] text-muted">
             {NAV.map((n) => (
               <li key={n.id}>

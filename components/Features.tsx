@@ -83,25 +83,6 @@ function UpdateVisual() {
   );
 }
 
-const MEASURES = [
-  {
-    k: { en: "Delay it adds to your controller", pt: "Atraso que ele adiciona ao controle" },
-    v: { en: "Usually under a millisecond", pt: "Normalmente menos de um milésimo de segundo" },
-  },
-  {
-    k: { en: "Memory", pt: "Memória" },
-    v: { en: "About 3 MB", pt: "Cerca de 3 MB" },
-  },
-  {
-    k: { en: "Processor, with no controller connected", pt: "Processador, sem nenhum controle conectado" },
-    v: { en: "0 %", pt: "0 %" },
-  },
-  {
-    k: { en: "The app's window", pt: "A janela do app" },
-    v: { en: "Uses nothing once you close it", pt: "Depois de fechada, não gasta nada" },
-  },
-];
-
 export function Features() {
   return (
     <section id="features" aria-labelledby="features-title" className="wrap py-20 sm:py-24">
@@ -159,29 +140,6 @@ export function Features() {
             pt="Quando sai uma versão nova, o app avisa. No Windows, um clique instala tudo e mantém suas configurações."
           />
         </Card>
-      </div>
-
-      <div className="reveal mt-16 grid gap-x-10 gap-y-6 lg:grid-cols-12">
-        <div className="lg:col-span-3">
-          <h3 className="text-[19px] font-semibold tracking-tight">
-            <T en="Light on your PC" pt="Leve no seu PC" />
-          </h3>
-          <p className="mt-2 text-[14px] leading-relaxed text-muted">
-            <T en="It runs in the background without getting in the way of your games." pt="Roda em segundo plano, sem atrapalhar seus jogos." />
-          </p>
-        </div>
-        <dl className="grid border-t border-line sm:grid-cols-2 lg:col-span-9">
-          {MEASURES.map((m) => (
-            <div key={m.k.en} className="border-b border-line py-4 sm:odd:pr-6 sm:even:border-l sm:even:pl-6">
-              <dt className="text-[13px] text-faint">
-                <T en={m.k.en} pt={m.k.pt} />
-              </dt>
-              <dd className="mt-1 text-[15px] text-fg">
-                <T en={m.v.en} pt={m.v.pt} />
-              </dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   );

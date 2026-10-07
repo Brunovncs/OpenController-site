@@ -127,7 +127,7 @@ export function Faq({ appReports }: { appReports: boolean }) {
     : QA;
   return (
     <section id="faq" aria-labelledby="faq-title" className="wrap py-20 sm:py-24">
-      <SectionHead n="05" label={<T en="Questions" pt="Dúvidas" />} title={<span id="faq-title"><T en="Common questions." pt="Perguntas frequentes." /></span>} />
+      <SectionHead n="06" label={<T en="Questions" pt="Dúvidas" />} title={<span id="faq-title"><T en="Common questions." pt="Perguntas frequentes." /></span>} />
       <div className="faq mt-12 grid gap-x-10 lg:grid-cols-12">
         <p className="mb-8 text-[14px] leading-relaxed text-muted lg:col-span-3 lg:mb-0 lg:pt-5">
           <T

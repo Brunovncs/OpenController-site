@@ -9,6 +9,8 @@ export type Shape =
   | "xbox"
   | "switchPro"
   | "joycons"
+  | "ultimate2"
+  | "ultimate2c"
   | "ultimate"
   | "sn30pro"
   | "retro"
@@ -50,14 +52,16 @@ export function shapeFor(model: Pick<IndexedModel, "family" | "art" | "name"> | 
       if (/Pro Controller/i.test(name)) return "switchPro";
       return "generic";
     case "EightBitDoUltimate":
-    case "EightBitDoUltimate2C":
       return "ultimate";
+    case "EightBitDoUltimate2C":
+      return "ultimate2c";
     case "EightBitDoFour":
     case "EightBitDoPro2":
-      return art === "Offset" || /^8BitDo Ultimate/i.test(name) ? "ultimate" : "sn30pro";
+      return art === "Offset" || /^8BitDo Ultimate/i.test(name) ? "ultimate2" : "sn30pro";
     case "EightBitDo":
       if (art === "Retro") return "retro";
       if (art === "Symmetric") return "sn30pro";
+      if (/Ultimate 2C/i.test(name)) return "ultimate2c";
       return ULTIMATE.test(name) ? "ultimate" : "generic";
   }
   if (art === "Retro") return "retro";

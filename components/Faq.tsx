@@ -55,15 +55,22 @@ const QA: { q: { en: string; pt: string }; a: { en: ReactNode; pt: ReactNode } }
   {
     q: { en: "Will games show PlayStation button icons?", pt: "Os jogos vão mostrar os ícones do PlayStation?" },
     a: {
-      en: "No. Games show Xbox button icons, since that is the controller they see. For the same reason, special features like the DualSense's adaptive triggers don't reach games.",
-      pt: "Não. Os jogos mostram os ícones do Xbox, já que é esse o controle que eles veem. Pelo mesmo motivo, recursos especiais como os gatilhos adaptáveis do DualSense não chegam aos jogos.",
+      en: "Not by default. Games show Xbox button icons, since that is the controller they see, and special features like the DualSense's adaptive triggers don't reach them. If a game supports your controller, open it in the app and turn on Keep native. The game then sees the real controller, with its own icons, adaptive triggers and, over the cable, haptic feedback. This also lets the app work alongside a DS5Dongle. While a controller is native, its profiles, gyro aiming and remapped buttons are off. Close the game before switching.",
+      pt: "Não por padrão. Os jogos mostram os ícones do Xbox, já que é esse o controle que eles veem, e recursos especiais como os gatilhos adaptáveis do DualSense não chegam a eles. Se o jogo aceita o seu controle, abra-o no app e ligue Deixar nativo. Aí o jogo vê o controle de verdade, com os próprios ícones, os gatilhos adaptáveis e, no cabo, a vibração háptica. Isso também permite usar o app junto com um DS5Dongle. Enquanto o controle está nativo, os perfis, a mira com giroscópio e os botões remapeados ficam desligados. Feche o jogo antes de trocar.",
     },
   },
   {
     q: { en: "Can more than four people play?", pt: "Dá para jogar com mais de quatro pessoas?" },
     a: {
-      en: "Most PC games accept up to four controllers. Some newer games accept more, and the app lets you know when that happens.",
-      pt: "A maioria dos jogos de PC aceita até quatro controles. Alguns jogos mais novos aceitam mais, e o app avisa quando é o caso.",
+      en: "Most PC games accept up to four controllers. Some newer games accept more, and the app lets you know when that happens. On Linux, players past the fourth get their own number too.",
+      pt: "A maioria dos jogos de PC aceita até quatro controles. Alguns jogos mais novos aceitam mais, e o app avisa quando é o caso. No Linux, os jogadores depois do quarto também ganham o próprio número.",
+    },
+  },
+  {
+    q: { en: "A game doesn't see my controller, or my PC gets blue screens.", pt: "Um jogo não vê meu controle, ou o PC dá tela azul." },
+    a: {
+      en: "On Windows, you can try VIIPER. In Settings, under Advanced, the virtual controllers can be made with VIIPER instead of ViGEmBus. It is experimental and off by default, and ViGEmBus is still the recommended choice, but switching can help. Close your games first. Requirements then installs what VIIPER needs when you click, which can ask for administrator rights and a restart. If VIIPER doesn't start, the app goes back to ViGEmBus and tells you.",
+      pt: "No Windows, dá para experimentar o VIIPER. Em Configurações, em Avançado, os controles virtuais podem ser criados pelo VIIPER em vez do ViGEmBus. Ele é experimental e vem desligado, e o ViGEmBus continua sendo o recomendado, mas trocar pode ajudar. Feche os jogos antes. Depois, em Requisitos, o app instala com um clique o que o VIIPER precisa, o que pode pedir permissão de administrador e reiniciar o PC. Se o VIIPER não iniciar, o app volta para o ViGEmBus e avisa.",
     },
   },
   {

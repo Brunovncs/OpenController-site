@@ -104,8 +104,8 @@ export function Features() {
       <div className="mt-14 grid gap-3 lg:grid-cols-6">
         <Card className="lg:col-span-3" title={<T en="Works in your games" pt="Funciona nos seus jogos" />} visual={<StepsVisual />}>
           <T
-            en="Connect your controller and open a game. Buttons, sticks, triggers and vibration work the way you expect. Xbox controllers already work in games, so it leaves those alone."
-            pt="Conecte o controle e abra o jogo. Botões, analógicos, gatilhos e vibração funcionam do jeito que você espera. Controle de Xbox já funciona nos jogos, então ele nem mexe nesses."
+            en="Connect your controller and open a game. Buttons, sticks, triggers and vibration work the way you expect. Xbox controllers already work in games, so it leaves those alone. If a game supports your controller as it is, you can keep it native and the game sees the real one."
+            pt="Conecte o controle e abra o jogo. Botões, analógicos, gatilhos e vibração funcionam do jeito que você espera. Controle de Xbox já funciona nos jogos, então ele nem mexe nesses. Se um jogo aceita o seu controle do jeito que ele é, dá para deixá-lo nativo e o jogo vê o controle de verdade."
           />
         </Card>
 
@@ -129,8 +129,8 @@ export function Features() {
 
         <Card className="lg:col-span-3" title={<T en="Your way" pt="Do seu jeito" />} visual={<SetupsVisual />}>
           <T
-            en="If you want, give your controller's extra buttons something to do, aim with the gyro, and save a setup for each game that switches on by itself when the game opens. It's all optional: your controller works without any of it."
-            pt="Se quiser, dê uma função aos botões extras, mire com o giroscópio e salve uma configuração para cada jogo, que entra sozinha quando o jogo abre. É tudo opcional: o controle já funciona sem mexer em nada."
+            en="If you want, give your controller's extra buttons something to do, aim with the gyro, tuned the way you like, and save a setup for each game that switches on by itself when the game opens. It's all optional: your controller works without any of it."
+            pt="Se quiser, dê uma função aos botões extras, mire com o giroscópio no ajuste que preferir e salve uma configuração para cada jogo, que entra sozinha quando o jogo abre. É tudo opcional: o controle já funciona sem mexer em nada."
           />
         </Card>
 

@@ -43,8 +43,8 @@ export function Performance() {
           <MemoryBars />
           <p className="mt-8 font-mono text-[11.5px] leading-relaxed text-faint">
             <T
-              en="Measured on version 0.8.0, Windows 11, as Task Manager shows it, with no controller connected. With the window open it ranged from 30 to 35 MB. On macOS the window exits when closed starting with the version after 0.8.0."
-              pt="Medido na versão 0.8.0, no Windows 11, como aparece no Gerenciador de Tarefas, sem controle conectado. Com a janela aberta ficou entre 30 e 35 MB. No macOS a janela sai ao fechar a partir da versão seguinte à 0.8.0."
+              en="Measured on version 0.8.0, Windows 11, as Task Manager shows it, with no controller connected. With the window open it ranged from 30 to 35 MB. On macOS the window exits when closed starting with version 0.8.1."
+              pt="Medido na versão 0.8.0, no Windows 11, como aparece no Gerenciador de Tarefas, sem controle conectado. Com a janela aberta ficou entre 30 e 35 MB. No macOS a janela sai ao fechar a partir da versão 0.8.1."
             />
           </p>
         </article>

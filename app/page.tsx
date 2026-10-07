@@ -1,6 +1,7 @@
 import { Compat } from "@/components/Compat";
 import { Contact } from "@/components/Contact";
 import { ContactDialog } from "@/components/ContactDialog";
+import { RequestDialog } from "@/components/RequestDialog";
 import { ControllerCheck } from "@/components/ControllerCheck";
 import { Faq } from "@/components/Faq";
 import { Features } from "@/components/Features";
@@ -13,7 +14,7 @@ import { RailToc } from "@/components/RailToc";
 import { SectionHead } from "@/components/SectionHead";
 import { Spotlight } from "@/components/Spotlight";
 import { T } from "@/components/T";
-import { getLatestRelease, getStars } from "@/lib/github";
+import { SINCE, getLatestRelease, getStars, hasFeature } from "@/lib/github";
 
 export const revalidate = 3600;
 
@@ -92,10 +93,11 @@ export default async function Page() {
         </section>
 
         <Platforms release={release} />
-        <Faq />
+        <Faq appReports={hasFeature(release?.version, SINCE.reports)} />
         <Contact />
       </main>
       <ContactDialog version={release?.version ?? null} />
+      <RequestDialog appReports={hasFeature(release?.version, SINCE.reports)} />
 
       <Footer version={release?.version ?? null} />
     </>

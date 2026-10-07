@@ -91,6 +91,18 @@ export async function getStars(): Promise<number | null> {
   }
 }
 
+/** The first version of the app with a feature, so the site mentions it only once it is out. */
+export const SINCE = { reports: "0.8.0" } as const;
+
+/** Whether `version` (the latest release) is `since` or later. */
+export function hasFeature(version: string | null | undefined, since: string): boolean {
+  if (!version) return false;
+  const a = version.split(/[.-]/).map((n) => parseInt(n, 10) || 0);
+  const b = since.split(".").map((n) => parseInt(n, 10) || 0);
+  for (let i = 0; i < 3; i++) if ((a[i] ?? 0) !== (b[i] ?? 0)) return (a[i] ?? 0) > (b[i] ?? 0);
+  return true;
+}
+
 export function formatSize(bytes: number): string {
   const mb = bytes / (1024 * 1024);
   return `${mb.toFixed(1)} MB`;

@@ -2,10 +2,58 @@
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { FAMILIES, FAMILY_ORDER, GROUPS, HINTS, SHORT, type Family, type GroupId } from "@/lib/families";
-import { MODELS, search } from "@/lib/models";
+import { MODELS, search, type Rating } from "@/lib/models";
 import { CheckIcon, DashIcon, SearchIcon } from "./icons";
 import { useHtmlData, useLang } from "./lang";
+import { openRequest } from "./RequestDialog";
 import { T } from "./T";
+
+/** The grades, as the app shows them next to a controller (`rating.rs`). */
+const RATINGS: Record<Rating, { en: string; pt: string; hintEn: string; hintPt: string; tone: string; mark: string }> = {
+  Verified: {
+    en: "Verified",
+    pt: "Verificado",
+    hintEn: "Tested with OpenController on the controller itself. Everything it has works.",
+    hintPt: "Testado com o OpenController no próprio controle. Tudo o que ele tem funciona.",
+    tone: "border-ok/40 bg-ok/10 text-ok",
+    mark: "✓✓",
+  },
+  Compatible: {
+    en: "Compatible",
+    pt: "Compatível",
+    hintEn: "A known model. It should work in full, but it has not been tested here yet.",
+    hintPt: "Um modelo conhecido. Deve funcionar por completo, mas ainda não foi testado aqui.",
+    tone: "border-accent/40 bg-accent/10 text-accent",
+    mark: "✓",
+  },
+  Caveats: {
+    en: "With a note",
+    pt: "Com ressalva",
+    hintEn: "It works, with one thing to know first: a mode to switch to, or buttons the system keeps to itself.",
+    hintPt: "Funciona, com um detalhe para saber antes: um modo para trocar, ou botões que o sistema guarda para si.",
+    tone: "border-warn/40 bg-warn/10 text-warn",
+    mark: "!",
+  },
+  Unsupported: {
+    en: "Not yet",
+    pt: "Ainda não",
+    hintEn: "Recognised, but OpenController cannot read it yet.",
+    hintPt: "Reconhecido, mas o OpenController ainda não consegue lê-lo.",
+    tone: "border-line-strong bg-white/[0.03] text-faint",
+    mark: "✕",
+  },
+};
+const RATING_ORDER: Rating[] = ["Verified", "Compatible", "Caveats", "Unsupported"];
+
+function RatingBadge({ rating }: { rating: Rating }) {
+  const r = RATINGS[rating];
+  return (
+    <span className={`inline-flex h-5 shrink-0 items-center gap-1 rounded border px-1.5 font-mono text-[10.5px] ${r.tone}`}>
+      <span aria-hidden>{r.mark}</span>
+      <T en={r.en} pt={r.pt} />
+    </span>
+  );
+}
 
 const PAGE = 40;
 
@@ -91,15 +139,22 @@ export function Compat() {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<GroupId | "all">("all");
   const [family, setFamily] = useState<string | null>(null);
+  const [rating, setRating] = useState<Rating | null>(null);
   const [limit, setLimit] = useState(PAGE);
   const [open, setOpen] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const deferred = useDeferredValue(query);
 
   const results = useMemo(() => {
-    const r = search(MODELS, deferred, group);
+    const r = search(MODELS, deferred, group).filter((m) => !rating || m.rating === rating);
     return family ? r.filter((m) => m.family === family) : r;
-  }, [deferred, group, family]);
+  }, [deferred, group, family, rating]);
+
+  const ratingCounts = useMemo(() => {
+    const c: Partial<Record<Rating, number>> = {};
+    for (const m of MODELS) c[m.rating] = (c[m.rating] ?? 0) + 1;
+    return c;
+  }, []);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
@@ -217,6 +272,30 @@ export function Compat() {
             </div>
           </div>
 
+          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4" role="group" aria-label={lang === "pt" ? "Filtrar por compatibilidade" : "Filter by compatibility"}>
+            {RATING_ORDER.filter((r) => ratingCounts[r]).map((r) => (
+              <button
+                key={r}
+                type="button"
+                aria-pressed={rating === r}
+                onClick={() => {
+                  setRating(rating === r ? null : r);
+                  setLimit(PAGE);
+                  setOpen(null);
+                }}
+                className="btn flex flex-col items-start gap-1.5 rounded-xl border border-line px-3 py-2.5 text-left transition-colors hover:bg-white/[0.03] aria-pressed:border-accent/60 aria-pressed:bg-accent/[0.06]"
+              >
+                <span className="flex w-full items-center justify-between gap-2">
+                  <RatingBadge rating={r} />
+                  <span className="font-mono text-[11.5px] text-faint">{ratingCounts[r]}</span>
+                </span>
+                <span className="text-[12.5px] leading-snug text-muted">
+                  <T en={RATINGS[r].hintEn} pt={RATINGS[r].hintPt} />
+                </span>
+              </button>
+            ))}
+          </div>
+
           <p className="mt-4 mb-2 font-mono text-[12px] text-faint" aria-live="polite">
             {results.length === 1 ? (
               <T en="1 model" pt="1 modelo" />
@@ -238,10 +317,15 @@ export function Compat() {
                       type="button"
                       aria-expanded={isOpen}
                       onClick={() => setOpen(isOpen ? null : m.id)}
-                      className="grid w-full grid-cols-[1fr_auto] items-center gap-x-4 gap-y-0.5 px-1 py-3 text-left transition-colors hover:bg-white/[0.025] sm:px-3 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_auto_auto]"
+                      className="grid w-full grid-cols-[1fr_auto] items-center gap-x-4 gap-y-0.5 px-1 py-3 text-left transition-colors hover:bg-white/[0.025] sm:px-3 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_auto_auto] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_auto_auto_auto]"
                     >
                       <span className="min-w-0">
-                        <span className="block truncate text-[14.5px] text-fg">{m.name}</span>
+                        <span className="flex min-w-0 items-center gap-2">
+                          <span className="truncate text-[14.5px] text-fg">{m.name}</span>
+                          <span className="md:hidden">
+                            <RatingBadge rating={m.rating} />
+                          </span>
+                        </span>
                         <span className="block truncate text-[12.5px] text-faint md:hidden">
                           {m.brand ? `${m.brand} · ` : ""}
                           <T en={short.en} pt={short.pt} />
@@ -250,6 +334,9 @@ export function Compat() {
                       <span className="hidden min-w-0 truncate text-[13px] text-muted md:block">
                         {m.brand ? <span className="text-fg/80">{m.brand} · </span> : null}
                         <T en={short.en} pt={short.pt} />
+                      </span>
+                      <span className="hidden items-center md:flex">
+                        <RatingBadge rating={m.rating} />
                       </span>
                       <span className="hidden gap-1 lg:flex">
                         {f.passthrough ? (
@@ -272,6 +359,10 @@ export function Compat() {
                     </button>
                     {isOpen ? (
                       <div className="px-1 pb-4 pt-1 sm:px-3">
+                        <p className="mb-3 flex flex-wrap items-center gap-2 text-[13px] text-muted">
+                          <RatingBadge rating={m.rating} />
+                          <T en={RATINGS[m.rating].hintEn} pt={RATINGS[m.rating].hintPt} />
+                        </p>
                         <FamilyDetail family={f} hint={m.hint} />
                       </div>
                     ) : null}
@@ -290,10 +381,36 @@ export function Compat() {
                   pt="Pode funcionar mesmo assim, como a maioria dos controles. Teste na seção acima."
                 />
               </p>
+              <p className="mx-auto mt-2 max-w-md text-[13px] text-faint">
+                <T
+                  en="Tell us which one it is and it goes on the list."
+                  pt="Diga qual é o seu e ele entra na lista."
+                />
+              </p>
+              <button
+                type="button"
+                onClick={() => openRequest({ model: query.trim(), query: query.trim() })}
+                className="btn btn-primary mt-6 h-10 px-5 text-[13.5px]"
+              >
+                <T en="Ask for this controller" pt="Pedir este controle" />
+              </button>
             </div>
           )}
 
           </div>
+
+          {results.length ? (
+            <p className="mt-4 text-center text-[13px] text-faint">
+              <T en="Missing yours? " pt="Não achou o seu? " />
+              <button
+                type="button"
+                onClick={() => openRequest({ model: query.trim(), query: query.trim() })}
+                className="text-muted underline decoration-line-strong underline-offset-4 hover:text-fg"
+              >
+                <T en="Ask for it" pt="Peça para incluirmos" />
+              </button>
+            </p>
+          ) : null}
 
           {results.length > limit ? (
             <div className="mt-4 flex justify-center">

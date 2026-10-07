@@ -90,7 +90,41 @@ const QA: { q: { en: string; pt: string }; a: { en: ReactNode; pt: ReactNode } }
   },
 ];
 
-export function Faq() {
+type Item = (typeof QA)[number];
+
+/** Once the app can send a controller report: what that sends, and where to find it. */
+const WITH_REPORTS: { replace: string; item: Item }[] = [
+  {
+    replace: "Does it send any of my data?",
+    item: {
+      q: { en: "Does it send any of my data?", pt: "Ele envia algum dado meu?" },
+      a: {
+        en: "Nothing about you: no account, no tracking. When you open its window, it checks GitHub for a new version. You can turn that off in Settings, under Check for updates. On Windows it also downloads the updates and drivers you choose to install, and checks each file before running it. If you report a problem with a controller, it sends that controller's technical details, which you can read before pressing Send, and nothing else.",
+        pt: "Nada sobre você: sem conta, sem rastreamento. Quando você abre a janela, ele consulta o GitHub para ver se saiu uma versão nova. Dá para desligar isso em Configurações, na opção Procurar atualizações. No Windows ele também baixa as atualizações e os drivers que você escolher instalar, e confere cada arquivo antes de rodar. Se você reportar um problema com um controle, ele envia os dados técnicos desse controle, que você pode ler antes de apertar Enviar, e mais nada.",
+      },
+    },
+  },
+  {
+    replace: "Is it finished?",
+    item: {
+      q: { en: "My controller is not on the list, or misbehaves.", pt: "Meu controle não está na lista, ou funciona errado." },
+      a: {
+        en: "Most controllers work even off the list. To get yours added or fixed, open it in OpenController's window, go to Information and press Report a problem. It sends the controller's ids and how the system sees it, which is what it takes to support it without having it in hand. You can add the model and what goes wrong.",
+        pt: "A maioria dos controles funciona mesmo fora da lista. Para incluir ou corrigir o seu, abra-o na janela do OpenController, vá em Informações e aperte Reportar um problema. Ele envia os IDs do controle e como o sistema o enxerga, que é o que basta para dar suporte sem ter o controle em mãos. Você pode dizer o modelo e o que está errado.",
+      },
+    },
+  },
+];
+
+export function Faq({ appReports }: { appReports: boolean }) {
+  const items: Item[] = appReports
+    ? QA.flatMap((item) => {
+        const w = WITH_REPORTS.find((x) => x.replace === item.q.en);
+        if (!w) return [item];
+        // The data answer is replaced; the new question goes before "Is it finished?".
+        return w.item.q.en === item.q.en ? [w.item] : [w.item, item];
+      })
+    : QA;
   return (
     <section id="faq" aria-labelledby="faq-title" className="wrap py-20 sm:py-24">
       <SectionHead n="05" label={<T en="Questions" pt="Dúvidas" />} title={<span id="faq-title"><T en="Common questions." pt="Perguntas frequentes." /></span>} />
@@ -102,7 +136,7 @@ export function Faq() {
           />
         </p>
         <div className="border-t border-line lg:col-span-9">
-          {QA.map((item) => (
+          {items.map((item) => (
             <details key={item.q.en} className="group border-b border-line">
               <summary className="flex items-center justify-between gap-6 py-5 text-[16.5px] text-fg transition-colors hover:text-white">
                 <T en={item.q.en} pt={item.q.pt} />

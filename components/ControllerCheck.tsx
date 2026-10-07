@@ -5,6 +5,7 @@ import { glyphsFor, shapeFor, type Glyphs, type Shape } from "@/lib/drawings";
 import { FAMILIES, HINTS, SHORT, type Family } from "@/lib/families";
 import { gamepadName, lookup, parseGamepadId } from "@/lib/models";
 import { PadDrawing } from "./PadDrawing";
+import { openRequest } from "./RequestDialog";
 import { useHtmlData } from "./lang";
 import { T } from "./T";
 
@@ -27,6 +28,7 @@ const PHYSICAL: Record<Glyphs, string[]> = {
   xbox: ["A", "B", "X", "Y", "LB", "RB", "LT", "RT", "View", "Menu", "LS", "RS", "↑", "↓", "←", "→", "Home"],
   ps: ["Cross", "Circle", "Square", "Triangle", "L1", "R1", "L2", "R2", "Share", "Options", "L3", "R3", "↑", "↓", "←", "→", "PS", "Touchpad"],
   nintendo: ["B", "A", "Y", "X", "L", "R", "ZL", "ZR", "−", "+", "L stick", "R stick", "↑", "↓", "←", "→", "Home", "Capture"],
+  numbers: ["3", "2", "4", "1", "L1", "R1", "L2", "R2", "Select", "Start", "L3", "R3", "↑", "↓", "←", "→", "Home"],
 };
 
 function q(n: number) {
@@ -304,6 +306,12 @@ export function ControllerCheck() {
   };
 
   const link = "text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg";
+  const askForIt = () =>
+    openRequest({
+      model: pad ? gamepadName(pad.id) : "",
+      ids: parsed ? `${parsed.vendor}:${parsed.product}` : "",
+      browserId: pad?.id ?? "",
+    });
 
   return (
     <div ref={rootRef}>
@@ -466,20 +474,20 @@ export function ControllerCheck() {
                       <T
                         en={
                           <>
-                            It is not on our list yet, but it will probably work: most controllers do. If you try it,{" "}
-                            <a href="#contact" className={link}>
-                              tell us how it went
-                            </a>
-                            .
+                            It is not on our list yet, but it will probably work: most controllers do.{" "}
+                            <button type="button" onClick={askForIt} className={link}>
+                              Ask for it to be added
+                            </button>
+                            : the ids your browser just read go with the request.
                           </>
                         }
                         pt={
                           <>
-                            Ele ainda não está na nossa lista, mas provavelmente funciona: a maioria dos controles funciona. Se você testar,{" "}
-                            <a href="#contact" className={link}>
-                              conte como foi
-                            </a>
-                            .
+                            Ele ainda não está na nossa lista, mas provavelmente funciona: a maioria dos controles funciona.{" "}
+                            <button type="button" onClick={askForIt} className={link}>
+                              Peça para incluirmos
+                            </button>
+                            : os IDs que o navegador acabou de ler vão junto com o pedido.
                           </>
                         }
                       />

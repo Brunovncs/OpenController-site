@@ -3,6 +3,9 @@ import { FAMILIES, FAMILY_ORDER, GROUPS, type GroupId } from "./families";
 
 export type Art = "Offset" | "Symmetric" | "PlayStation" | "Retro" | "JoyCons" | "Handheld";
 
+/** How sure OpenController is that a model works (`rating.rs` in the app). */
+export type Rating = "Verified" | "Compatible" | "Caveats" | "Unsupported";
+
 export type Model = {
   vendor: string;
   product: string;
@@ -10,6 +13,9 @@ export type Model = {
   family: string;
   art: Art;
   hint: string | null;
+  rating: Rating;
+  /** A drawing of its own in `data/pads.json`, traced from this model's pictures. */
+  drawing: string | null;
 };
 
 export type IndexedModel = Model & {
@@ -80,6 +86,26 @@ const BRANDS: Record<string, string> = {
   "38d2": "Void Gaming",
   "20bc": "BETOP",
   "2563": "ShanWan",
+  "1b1c": "Corsair",
+  "3250": "Atari",
+  "0ca3": "Sega",
+  "0d22": "MSI",
+  "2f24": "EasySMX",
+  "11c1": "EasySMX",
+  "1dd8": "Buffalo",
+  "0411": "Buffalo",
+  "0428": "Gravis",
+  "047d": "Gravis",
+  "1c59": "Retro Games",
+  "1c5a": "Capcom",
+  "1c5b": "Capcom",
+  "0ae4": "Taito",
+  "289b": "raphnet",
+  "2836": "OUYA",
+  "07b5": "Thrustmaster",
+  "0e6a": "Atari",
+  "1d79": "Mayflash",
+  "0e8f": "GreenAsia",
 };
 
 const groupRank = new Map(GROUPS.map((g, i) => [g.id, i]));

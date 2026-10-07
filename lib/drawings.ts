@@ -1,3 +1,4 @@
+import pads from "@/data/pads.json";
 import type { IndexedModel } from "./models";
 
 /** Which drawing a controller gets. */
@@ -15,14 +16,17 @@ export type Shape =
   | "sn30pro"
   | "retro"
   | "handheld"
-  | "generic";
+  | "generic"
+  // A model's own drawing, by its key in pads.json (`models::DRAWINGS` in the app).
+  | (string & {});
 
 /** How the face buttons are labelled. */
-export type Glyphs = "xbox" | "ps" | "nintendo";
+export type Glyphs = "xbox" | "ps" | "nintendo" | "numbers";
 
 const ULTIMATE = /\bUltimate\b/i;
 
-export function shapeFor(model: Pick<IndexedModel, "family" | "art" | "name"> | null, vendor: string | null): Shape {
+export function shapeFor(model: Pick<IndexedModel, "family" | "art" | "name" | "drawing"> | null, vendor: string | null): Shape {
+  if (model?.drawing && model.drawing in pads) return model.drawing;
   if (!model) {
     if (vendor === "054c") return "dualsense";
     if (vendor === "045e") return "xbox";
@@ -75,7 +79,10 @@ export function shapeFor(model: Pick<IndexedModel, "family" | "art" | "name"> | 
 const PS_FAMILIES = new Set(["DualShock3", "DualShock4", "DualSense", "DualSenseEdge", "Ps2Adapter"]);
 const NINTENDO_FAMILIES = new Set(["SwitchPro", "JoyCons", "NintendoClassic", "Switch2"]);
 
-export function glyphsFor(model: Pick<IndexedModel, "family" | "name"> | null, vendor: string | null, shape: Shape): Glyphs {
+export function glyphsFor(model: Pick<IndexedModel, "family" | "name" | "drawing"> | null, vendor: string | null, shape: Shape): Glyphs {
+  // A model's own drawing says what is printed on it.
+  const own = model?.drawing ? (pads as Record<string, { glyphs?: string }>)[model.drawing]?.glyphs : undefined;
+  if (own === "xbox" || own === "ps" || own === "nintendo" || own === "numbers") return own;
   if (model) {
     if (PS_FAMILIES.has(model.family)) return "ps";
     if (NINTENDO_FAMILIES.has(model.family)) return "nintendo";

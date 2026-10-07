@@ -13,7 +13,7 @@ export type { Glyphs, Shape };
  * standard mapping's indices, so the same props light any drawing.
  */
 
-type Btn = { input: string; circle?: [number, number, number]; d?: string; icon?: string };
+type Btn = { input: string; circle?: [number, number, number]; d?: string; icon?: string; label?: string };
 type Stick = { circle: [number, number, number]; well?: number; ring?: [number, number] };
 type Pad = {
   body: string;
@@ -35,6 +35,10 @@ const INDEX: Record<string, number> = {
   east: 1,
   west: 2,
   north: 3,
+  lb: 4,
+  rb: 5,
+  lt: 6,
+  rt: 7,
   back: 8,
   start: 9,
   lstick: 10,
@@ -63,6 +67,7 @@ const FACE_LABELS: Record<Glyphs, [string, string, string, string]> = {
   xbox: ["A", "B", "X", "Y"],
   nintendo: ["B", "A", "Y", "X"],
   ps: ["", "", "", ""],
+  numbers: ["3", "2", "4", "1"],
 };
 
 /** The top and bottom of a path, for filling a trigger from the bottom up. */
@@ -169,7 +174,7 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
         }
       : {};
 
-  const tint = (i: number) => (P.tint ? (glyphs === "ps" ? PS_TINT[i] : glyphs === "xbox" ? XBOX_TINT[i] : GLYPH) : GLYPH);
+  const tint = (i: number) => (P.tint ? (glyphs === "ps" ? PS_TINT[i] : glyphs === "xbox" || glyphs === "numbers" ? XBOX_TINT[i] : GLYPH) : GLYPH);
 
   const trigger = (d: string, i: number, k: number) => {
     const val = Math.max(0, Math.min(1, v(i)));
@@ -218,10 +223,10 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
     return (
       <g key={k} {...press(i)}>
         <circle cx={x} cy={y} r={r} fill={fill(i)} stroke={stroke(i)} filter={glow(i)} className="pad-part" />
-        {face >= 0 && glyphs === "ps" ? <PsGlyph i={face} x={x} y={y} r={r} color={symbol} /> : null}
-        {face >= 0 && glyphs !== "ps" ? (
+        {face >= 0 && glyphs === "ps" && !b.label ? <PsGlyph i={face} x={x} y={y} r={r} color={symbol} /> : null}
+        {b.label || (face >= 0 && glyphs !== "ps") ? (
           <text x={x} y={y + r * 0.36} textAnchor="middle" fontSize={r * 0.98} fontWeight={650} fontFamily="var(--font-geist), system-ui, sans-serif" fill={symbol}>
-            {FACE_LABELS[glyphs][face]}
+            {b.label ?? FACE_LABELS[glyphs][face]}
           </text>
         ) : null}
         {face < 0 && b.icon ? <Icon name={b.icon} x={x} y={y} r={r} color={symbol} /> : null}

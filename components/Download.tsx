@@ -28,7 +28,7 @@ function Primary({ platform, release, quiet, children }: { platform: Platform; r
   if (!release) {
     return (
       <div>
-        <a href={LATEST_URL} className="btn btn-primary h-12 px-5 text-[15px]">
+        <a href={LATEST_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-12 px-5 text-[15px]">
           <DownloadIcon width={18} height={18} />
           <T en="Download from GitHub" pt="Baixar no GitHub" />
         </a>
@@ -48,10 +48,10 @@ function Primary({ platform, release, quiet, children }: { platform: Platform; r
           <MissingBuild platform={platform} release={release} />
         </div>
         <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-muted">
-          <a href={BUILD_URL} className="underline decoration-line-strong underline-offset-4 hover:text-fg hover:decoration-fg">
+          <a href={BUILD_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-line-strong underline-offset-4 hover:text-fg hover:decoration-fg">
             <T en="Build it yourself" pt="Compile você mesmo" />
           </a>
-          <a href={RELEASES_URL} className="underline decoration-line-strong underline-offset-4 hover:text-fg hover:decoration-fg">
+          <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-line-strong underline-offset-4 hover:text-fg hover:decoration-fg">
             <T en="All releases" pt="Todas as versões" />
           </a>
         </p>
@@ -79,7 +79,7 @@ function Primary({ platform, release, quiet, children }: { platform: Platform; r
           </>
         ) : null}
         <span aria-hidden>·</span>
-        <a href={release.url} className="underline decoration-line-strong underline-offset-4 hover:text-fg">
+        <a href={release.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line-strong underline-offset-4 hover:text-fg">
           <T en="What's new" pt="Novidades" />
         </a>
       </p>
@@ -101,7 +101,7 @@ function OtherArch({ platform, release }: { platform: Platform; release: Release
       ) : release ? (
         <MissingBuild platform={platform} release={release} />
       ) : (
-        <a href={LATEST_URL} className="text-fg underline decoration-line-strong underline-offset-4">
+        <a href={LATEST_URL} target="_blank" rel="noopener noreferrer" className="text-fg underline decoration-line-strong underline-offset-4">
           GitHub
         </a>
       )}

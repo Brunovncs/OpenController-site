@@ -17,7 +17,7 @@ export const NAV = [
 export function GitHubButton({ stars }: { stars: number | null }) {
   return (
     <a
-      href={REPO_URL}
+      href={REPO_URL} target="_blank" rel="noopener noreferrer"
       className="btn btn-ghost h-9 gap-2 rounded-[10px] px-3 text-[13px]"
       aria-label={stars ? `GitHub, ${stars} stars` : "GitHub"}
     >

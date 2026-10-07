@@ -28,12 +28,12 @@ export function Footer({ version }: { version: string | null }) {
         <nav aria-label="Project" className="text-[14px] lg:col-span-4">
           <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5">
             <li>
-              <a className={LINK} href={REPO_URL}>
+              <a className={LINK} href={REPO_URL} target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
             </li>
             <li>
-              <a className={LINK} href={RELEASES_URL}>
+              <a className={LINK} href={RELEASES_URL} target="_blank" rel="noopener noreferrer">
                 <T en="All versions" pt="Todas as versões" />
               </a>
             </li>
@@ -48,12 +48,12 @@ export function Footer({ version }: { version: string | null }) {
               </ContactButton>
             </li>
             <li>
-              <a className={LINK} href={LICENSE_URL}>
+              <a className={LINK} href={LICENSE_URL} target="_blank" rel="noopener noreferrer">
                 <T en="MIT License" pt="Licença MIT" />
               </a>
             </li>
             <li>
-              <a className={LINK} href={`${REPO_URL}/blob/main/THIRD_PARTY_NOTICES.md`}>
+              <a className={LINK} href={`${REPO_URL}/blob/main/THIRD_PARTY_NOTICES.md`} target="_blank" rel="noopener noreferrer">
                 <T en="Third-party notices" pt="Avisos de terceiros" />
               </a>
             </li>

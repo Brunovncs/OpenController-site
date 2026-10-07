@@ -45,7 +45,7 @@ function PlatformDownload({ platform, release }: { platform: Platform; release: 
   const asset = release?.assets[platform];
   if (!release)
     return (
-      <a href={LATEST_URL} className="btn btn-ghost h-10 px-4 text-[13.5px]">
+      <a href={LATEST_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost h-10 px-4 text-[13.5px]">
         <DownloadIcon /> GitHub
       </a>
     );

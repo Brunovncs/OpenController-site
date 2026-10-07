@@ -50,7 +50,7 @@ export function Contact() {
                 <ContactButton className="btn btn-primary h-11 px-5 text-[14px]">
                   <T en="Contact us" pt="Fale conosco" />
                 </ContactButton>
-                <a className="btn btn-ghost h-11 px-5 text-[14px]" href={ISSUES_URL}>
+                <a className="btn btn-ghost h-11 px-5 text-[14px]" href={ISSUES_URL} target="_blank" rel="noopener noreferrer">
                   <GitHubIcon />
                   <T en="Open an issue" pt="Abrir uma issue" />
                 </a>

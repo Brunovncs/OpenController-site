@@ -81,6 +81,13 @@ const QA: { q: { en: string; pt: string }; a: { en: ReactNode; pt: ReactNode } }
     },
   },
   {
+    q: { en: "The app shows my controller with another one's name.", pt: "O app mostra meu controle com o nome de outro." },
+    a: {
+      en: "Some controllers copy another one's USB id, like the Onikuma C1, which says it is a Switch Pro Controller. The app can't tell them apart, so open your controller, go to Information and pick yours under Model. It then shows with its own name and drawing.",
+      pt: "Alguns controles copiam o ID USB de outro, como o Onikuma C1, que diz ser um Switch Pro Controller. O app não consegue diferenciá-los, então abra o seu controle, vá em Informações e escolha o modelo certo em Modelo. Aí ele aparece com o nome e o desenho dele.",
+    },
+  },
+  {
     q: { en: "Is it finished?", pt: "Já está pronto?" },
     a: {
       en: (

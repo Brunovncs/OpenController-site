@@ -9218,5 +9218,17 @@
     "product": "00f1",
     "rating": "Compatible",
     "vendor": "f000"
+  },
+  {
+    "alias_of": "Nintendo Switch Pro Controller",
+    "art": "Offset",
+    "brand": "Onikuma",
+    "drawing": "onikumaC1",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "Onikuma C1",
+    "product": "2009",
+    "rating": "Compatible",
+    "vendor": "057e"
   }
 ]

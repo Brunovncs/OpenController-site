@@ -310,13 +310,13 @@ export function Compat() {
               {shown.map((m) => {
                 const f = FAMILIES[m.family] ?? FAMILIES.Other;
                 const short = SHORT[m.family] ?? SHORT.Other;
-                const isOpen = open === m.id;
+                const isOpen = open === m.key;
                 return (
-                  <li key={m.id}>
+                  <li key={m.key}>
                     <button
                       type="button"
                       aria-expanded={isOpen}
-                      onClick={() => setOpen(isOpen ? null : m.id)}
+                      onClick={() => setOpen(isOpen ? null : m.key)}
                       className="grid w-full grid-cols-[1fr_auto] items-center gap-x-4 gap-y-0.5 px-1 py-3 text-left transition-colors hover:bg-white/[0.025] sm:px-3 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_auto_auto] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_auto_auto_auto]"
                     >
                       <span className="min-w-0">
@@ -363,6 +363,14 @@ export function Compat() {
                           <RatingBadge rating={m.rating} />
                           <T en={RATINGS[m.rating].hintEn} pt={RATINGS[m.rating].hintPt} />
                         </p>
+                        {m.alias_of ? (
+                          <p className="mb-3 text-[13px] text-muted">
+                            <T
+                              en={`It reports itself as a ${m.alias_of}, so the app shows it as one at first. Pick ${m.name} under Model, on its Information page, to see it by name.`}
+                              pt={`Ele se apresenta como ${m.alias_of}, então o app mostra esse nome no começo. Escolha ${m.name} em Modelo, na página Informações dele, para vê-lo com o nome certo.`}
+                            />
+                          </p>
+                        ) : null}
                         <FamilyDetail family={f} hint={m.hint} />
                       </div>
                     ) : null}

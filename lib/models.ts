@@ -16,10 +16,16 @@ export type Model = {
   rating: Rating;
   /** A drawing of its own in `data/pads.json`, traced from this model's pictures. */
   drawing: string | null;
+  /** Set on a model that copies another's ids: its maker, where the vendor id names another. */
+  brand?: string;
+  /** The model whose ids it copies, which is what the app sees until its owner picks it. */
+  alias_of?: string;
 };
 
-export type IndexedModel = Model & {
+export type IndexedModel = Omit<Model, "brand"> & {
   id: string;
+  /** Unique per row: two models can share an id. */
+  key: string;
   brand: string | null;
   group: GroupId;
   haystack: string;
@@ -118,11 +124,12 @@ function fold(s: string): string {
 export const MODELS: IndexedModel[] = (raw as Model[])
   .map((m) => {
     const family = FAMILIES[m.family] ?? FAMILIES.Other;
-    const brand = BRANDS[m.vendor] ?? null;
+    const brand = m.brand ?? BRANDS[m.vendor] ?? null;
     const id = `${m.vendor}:${m.product}`;
     return {
       ...m,
       id,
+      key: m.alias_of ? `${id}:${m.name}` : id,
       brand,
       group: family.group,
       order: 0,
@@ -141,7 +148,8 @@ export const MODELS: IndexedModel[] = (raw as Model[])
   )
   .map((m, i) => ({ ...m, order: i }));
 
-const byId = new Map(MODELS.map((m) => [m.id, m]));
+// What a browser reports is the copied model, so the ids find that one.
+const byId = new Map(MODELS.filter((m) => !m.alias_of).map((m) => [m.id, m]));
 
 export function lookup(vendor: string, product: string): IndexedModel | null {
   return byId.get(`${vendor.toLowerCase()}:${product.toLowerCase()}`) ?? null;

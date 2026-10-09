@@ -26,8 +26,11 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     authors: [{ name: AUTHOR.alternateName, url: AUTHOR.url }],
     creator: AUTHOR.alternateName,
     category: "games",
-    // Search Console, property https://opencontroller.com.br/ (Bing imports it from there).
-    verification: { google: "FNk63heoVNbmJP2tkUPwE6o6lGAiX0C2094sAz_9ZcE" },
+    // Google Search Console and Bing Webmaster Tools, both for https://opencontroller.com.br/.
+    verification: {
+      google: "FNk63heoVNbmJP2tkUPwE6o6lGAiX0C2094sAz_9ZcE",
+      other: { "msvalidate.01": "15A962036A8AEA122B5F59633B8948AE" },
+    },
   };
 }
 

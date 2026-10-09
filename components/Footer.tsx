@@ -2,11 +2,12 @@ import Image from "next/image";
 import { LICENSE_URL, OFFICIAL_DOMAIN, RELEASES_URL, REPO_URL } from "@/lib/site";
 import { ContactButton } from "./ContactDialog";
 import { LangToggle } from "./lang";
+import { LocalLink } from "./LocalLink";
 import { T } from "./T";
 
 const LINK = "text-muted transition-colors hover:text-fg";
 
-export function Footer({ version }: { version: string | null }) {
+export function Footer({ version, path = "/", home = "" }: { version: string | null; path?: string; home?: string }) {
   return (
     <footer className="border-t border-line">
       <div className="wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12">
@@ -33,12 +34,17 @@ export function Footer({ version }: { version: string | null }) {
               </a>
             </li>
             <li>
+              <LocalLink className={LINK} path="/controllers">
+                <T en="Controllers" pt="Controles" />
+              </LocalLink>
+            </li>
+            <li>
               <a className={LINK} href={RELEASES_URL} target="_blank" rel="noopener noreferrer">
                 <T en="All versions" pt="Todas as versões" />
               </a>
             </li>
             <li>
-              <a className={LINK} href="#contact">
+              <a className={LINK} href={`${home}#contact`}>
                 <T en="Report a problem" pt="Reportar um problema" />
               </a>
             </li>
@@ -60,7 +66,7 @@ export function Footer({ version }: { version: string | null }) {
           </ul>
         </nav>
         <div className="flex items-start sm:col-span-2 lg:col-span-3 lg:justify-end">
-          <LangToggle />
+          <LangToggle path={path} />
         </div>
       </div>
       <div className="wrap">

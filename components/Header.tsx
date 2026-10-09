@@ -33,11 +33,15 @@ export function GitHubButton({ stars }: { stars: number | null }) {
   );
 }
 
-export function Header({ stars, version }: { stars: number | null; version: string | null }) {
+/**
+ * `path` is the page's English path, for the language switch. `home` is set on pages other than
+ * the home page: the home page's URL in this language, so the section links lead back to it.
+ */
+export function Header({ stars, version, path = "/", home = "" }: { stars: number | null; version: string | null; path?: string; home?: string }) {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/75 backdrop-blur-xl backdrop-saturate-150">
       <div className="wrap flex h-14 items-center gap-4">
-        <a href="#top" className="flex items-center gap-2.5 rounded-md">
+        <a href={home || "#top"} className="flex items-center gap-2.5 rounded-md">
           <Image src="/brand/icon-small.svg" alt="" width={26} height={26} priority />
           <span className="text-[15px] font-semibold tracking-tight">OpenController</span>
           {version ? <span className="hidden font-mono text-[11px] text-faint sm:inline">{version}</span> : null}
@@ -46,7 +50,7 @@ export function Header({ stars, version }: { stars: number | null; version: stri
           <ul className="flex items-center gap-1 text-[13.5px] text-muted">
             {NAV.map((n) => (
               <li key={n.id}>
-                <a href={`#${n.id}`} className="rounded-md px-2.5 py-1.5 transition-colors hover:bg-white/[0.05] hover:text-fg">
+                <a href={`${home}#${n.id}`} className="rounded-md px-2.5 py-1.5 transition-colors hover:bg-white/[0.05] hover:text-fg">
                   <T en={n.en} pt={n.pt} />
                 </a>
               </li>
@@ -54,7 +58,7 @@ export function Header({ stars, version }: { stars: number | null; version: stri
           </ul>
         </nav>
         <div className="ml-auto flex items-center gap-2">
-          <LangToggle />
+          <LangToggle path={path} />
           <GitHubButton stars={stars} />
         </div>
       </div>

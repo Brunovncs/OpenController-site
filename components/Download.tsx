@@ -110,7 +110,7 @@ function OtherArch({ platform, release }: { platform: Platform; release: Release
 }
 
 /** The download that already knows the visitor's system, from <html data-os/data-arch>. */
-export function Download({ release, quiet }: { release: Release | null; quiet?: boolean }) {
+export function Download({ release, quiet, platformsHref = "#platforms" }: { release: Release | null; quiet?: boolean; platformsHref?: string }) {
   return (
     <div>
       <div className="os-variant" data-for="windows">
@@ -132,7 +132,7 @@ export function Download({ release, quiet }: { release: Release | null; quiet?: 
         </div>
       </div>
       <div className="os-variant" data-for="other">
-        <a href="#platforms" className="btn btn-primary h-12 px-5 text-[15px]">
+        <a href={platformsHref} className="btn btn-primary h-12 px-5 text-[15px]">
           <T en="Download for Windows, Linux or Mac" pt="Baixar para Windows, Linux ou Mac" />
           <ArrowIcon />
         </a>

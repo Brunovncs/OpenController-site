@@ -1,0 +1,29 @@
+name: IndexNow
+
+# Tells Bing, Yandex, Seznam, Naver and the other IndexNow engines that the pages changed, once
+# Vercel has deployed the push. Google does not take part: it reads the sitemap on its own.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for the deploy
+        run: sleep 120
+      - name: Send every URL in the sitemap
+        env:
+          HOST: opencontroller.com.br
+          KEY: b5346050efa18a85b3678fa429c71fe4
+        run: |
+          urls=$(curl -fsSL "https://$HOST/sitemap.xml" | grep -oE '<loc>[^<]+</loc>' | sed -E 's#</?loc>##g')
+          urls="$urls
+          https://$HOST/llms.txt
+          https://$HOST/llms-full.txt"
+          body=$(printf '%s\n' $urls | jq -R . | jq -s --arg host "$HOST" --arg key "$KEY" '{host: $host, key: $key, keyLocation: "https://\($host)/\($key).txt", urlList: .}')
+          echo "$body" | jq '.urlList | length'
+          code=$(curl -sS -o /dev/null -w '%{http_code}' -X POST https://api.indexnow.org/indexnow -H 'Content-Type: application/json; charset=utf-8' -d "$body")
+          echo "IndexNow answered $code"
+          [ "$code" = 200 ] || [ "$code" = 202 ]

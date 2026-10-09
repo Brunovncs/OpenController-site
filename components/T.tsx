@@ -1,16 +1,9 @@
-import type { ReactNode } from "react";
+"use client";
 
-/**
- * Text in both languages. Both are rendered and CSS shows the one in <html data-lang>, which an
- * inline script sets before the first paint, so there is no flash and no hydration mismatch.
- */
+import type { ReactNode } from "react";
+import { useLang } from "./lang";
+
+/** Text in both languages; only the one of the page's URL is rendered, so each URL is one language. */
 export function T({ en, pt }: { en: ReactNode; pt: ReactNode }) {
-  return (
-    <>
-      <span data-l="en">{en}</span>
-      <span data-l="pt" lang="pt-BR">
-        {pt}
-      </span>
-    </>
-  );
+  return <>{useLang() === "pt" ? pt : en}</>;
 }

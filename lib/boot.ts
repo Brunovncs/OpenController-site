@@ -1,11 +1,10 @@
 /**
- * Runs in <head> before the first paint: picks the language (stored choice, then the browser's)
- * and the operating system, and writes them on <html> for CSS to show the right text and download.
+ * Runs in <head> before the first paint: writes the operating system on <html> for CSS to show the
+ * right download. The language comes from the URL; a choice saved before that (localStorage only)
+ * becomes the cookie next.config.ts redirects by, once.
  */
-export const BOOT_SCRIPT = `(function(){var d=document.documentElement,l=null;
-try{l=localStorage.getItem("oc-lang")}catch(e){}
-if(l!=="en"&&l!=="pt"){var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""];l=/^pt\\b/i.test(ls[0]||"")?"pt":"en"}
-d.setAttribute("data-lang",l);d.lang=l==="pt"?"pt-BR":"en";
+export const BOOT_SCRIPT = `(function(){var d=document.documentElement;
+try{if(!/(^|; )oc-lang=/.test(document.cookie)){var l=localStorage.getItem("oc-lang");if(l==="en"||l==="pt"){document.cookie="oc-lang="+l+"; path=/; max-age=31536000; samesite=lax";var p=location.pathname,pt=p==="/pt"||p.indexOf("/pt/")===0;if(l==="pt"&&!pt)location.replace((p==="/"?"/pt":"/pt"+p)+location.hash)}}}catch(e){}
 var ua=navigator.userAgent||"",uad=navigator.userAgentData,p=(uad&&uad.platform)||navigator.platform||"",os="other";
 if((uad&&uad.mobile)||/Android|iPhone|iPad|iPod/i.test(ua))os="mobile";
 else if(/win/i.test(p)||/Windows/.test(ua))os="windows";

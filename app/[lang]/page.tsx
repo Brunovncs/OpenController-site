@@ -15,15 +15,28 @@ import { RailToc } from "@/components/RailToc";
 import { SectionHead } from "@/components/SectionHead";
 import { Spotlight } from "@/components/Spotlight";
 import { T } from "@/components/T";
+import type { Metadata } from "next";
+import { GuideLinks } from "@/components/GuideLinks";
 import { SINCE, getLatestRelease, getStars, hasFeature } from "@/lib/github";
+import { isLang, type Lang } from "@/lib/i18n";
+import { HOME, homeJsonLd, jsonLdScript, pageMeta } from "@/lib/seo";
 
 export const revalidate = 3600;
 
-export default async function Page() {
+export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLang(lang)) return {};
+  return pageMeta(lang, "/", HOME.title[lang], HOME.description[lang]);
+}
+
+export default async function Page({ params }: PageProps<"/[lang]">) {
+  const lang = (await params).lang as Lang;
   const [release, stars] = await Promise.all([getLatestRelease(), getStars()]);
+  const appReports = hasFeature(release?.version, SINCE.reports);
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(homeJsonLd(lang, release, appReports)) }} />
       <a href="#main" className="skip">
         <T en="Skip to content" pt="Pular para o conteúdo" />
       </a>
@@ -92,14 +105,15 @@ export default async function Page() {
           <div className="mt-12">
             <Compat />
           </div>
+          <GuideLinks />
         </section>
 
         <Platforms release={release} />
-        <Faq appReports={hasFeature(release?.version, SINCE.reports)} />
+        <Faq appReports={appReports} />
         <Contact />
       </main>
       <ContactDialog version={release?.version ?? null} />
-      <RequestDialog appReports={hasFeature(release?.version, SINCE.reports)} />
+      <RequestDialog appReports={appReports} />
 
       <Footer version={release?.version ?? null} />
     </>

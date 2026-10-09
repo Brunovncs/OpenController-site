@@ -45,7 +45,7 @@ const RATINGS: Record<Rating, { en: string; pt: string; hintEn: string; hintPt: 
 };
 const RATING_ORDER: Rating[] = ["Verified", "Compatible", "Caveats", "Unsupported"];
 
-function RatingBadge({ rating }: { rating: Rating }) {
+export function RatingBadge({ rating }: { rating: Rating }) {
   const r = RATINGS[rating];
   return (
     <span className={`inline-flex h-5 shrink-0 items-center gap-1 rounded border px-1.5 font-mono text-[10.5px] ${r.tone}`}>
@@ -81,7 +81,7 @@ function Mark({ on, children }: { on: boolean; children?: React.ReactNode }) {
   );
 }
 
-function FamilyDetail({ family, hint }: { family: Family; hint: string | null }) {
+export function FamilyDetail({ family, hint }: { family: Family; hint: string | null }) {
   return (
     <div className="grid gap-x-8 gap-y-2 text-[13.5px] sm:grid-cols-2">
       <p>

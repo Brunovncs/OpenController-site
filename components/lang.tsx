@@ -1,22 +1,19 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { createContext, useContext, useSyncExternalStore, type ReactNode } from "react";
+import { LANG_COOKIE, localePath, type Lang } from "@/lib/i18n";
 
-export type Lang = "en" | "pt";
+export type { Lang };
 
-const EVENT = "oc-lang";
+const LangContext = createContext<Lang>("en");
 
-function subscribe(cb: () => void) {
-  window.addEventListener(EVENT, cb);
-  return () => window.removeEventListener(EVENT, cb);
-}
-
-function read(): Lang {
-  return document.documentElement.getAttribute("data-lang") === "pt" ? "pt" : "en";
+/** The language comes from the URL (app/[lang]); everything below reads it from here. */
+export function LangProvider({ lang, children }: { lang: Lang; children: ReactNode }) {
+  return <LangContext.Provider value={lang}>{children}</LangContext.Provider>;
 }
 
 export function useLang(): Lang {
-  return useSyncExternalStore(subscribe, read, () => "en");
+  return useContext(LangContext);
 }
 
 function noop() {
@@ -32,44 +29,34 @@ export function useHtmlData(name: string, fallback: string): string {
   );
 }
 
-export function setLang(lang: Lang) {
-  const apply = () => {
-    const d = document.documentElement;
-    d.setAttribute("data-lang", lang);
-    d.lang = lang === "pt" ? "pt-BR" : "en";
-    window.dispatchEvent(new Event(EVENT));
-  };
+function remember(lang: Lang) {
+  document.cookie = `${LANG_COOKIE}=${lang}; path=/; max-age=31536000; samesite=lax`;
   try {
-    localStorage.setItem("oc-lang", lang);
+    localStorage.setItem(LANG_COOKIE, lang);
   } catch {}
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  type VT = { ready: Promise<void>; finished: Promise<void>; updateCallbackDone: Promise<void> };
-  const doc = document as Document & { startViewTransition?: (cb: () => void) => VT };
-  if (!doc.startViewTransition || reduce || document.hidden) {
-    apply();
-    return;
-  }
-  const t = doc.startViewTransition(apply);
-  t.ready.catch(() => {});
-  t.finished.catch(() => {});
-  t.updateCallbackDone.catch(() => {});
 }
 
-export function LangToggle({ className = "" }: { className?: string }) {
+/** Links to this page in each language. `path` is the page's English path, like "/" or "/controllers/dualsense". */
+export function LangToggle({ path = "/", className = "" }: { path?: string; className?: string }) {
   const lang = useLang();
   return (
     <div role="group" aria-label={lang === "pt" ? "Idioma" : "Language"} className={`seg ${className}`}>
       {(["en", "pt"] as const).map((l) => (
-        <button
+        <a
           key={l}
-          type="button"
-          aria-pressed={lang === l}
+          href={localePath(l, path)}
+          hrefLang={l === "pt" ? "pt-BR" : "en"}
           lang={l === "pt" ? "pt-BR" : "en"}
-          onClick={() => setLang(l)}
+          aria-current={lang === l ? "true" : undefined}
+          onClick={(e) => {
+            remember(l);
+            if (lang === l) e.preventDefault();
+            else e.currentTarget.href = localePath(l, path) + window.location.hash;
+          }}
           title={l === "en" ? "English" : "Português (Brasil)"}
         >
           {l === "en" ? "EN" : "PT"}
-        </button>
+        </a>
       ))}
     </div>
   );

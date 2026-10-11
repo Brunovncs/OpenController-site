@@ -160,7 +160,7 @@ export function guideJsonLd(lang: Lang, g: Guide, description: string, models: s
         inLanguage: HTML_LANG[lang],
         isPartOf: { "@id": ID.site },
         about: { "@id": ID.app },
-        mentions: models.slice(0, 60).map((name) => ({ "@type": "Product", name })),
+        mentions: models.slice(0, 60).map((name) => ({ "@type": "Thing", name })),
       },
       {
         "@type": "BreadcrumbList",

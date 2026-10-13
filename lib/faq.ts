@@ -57,6 +57,20 @@ export const QA: FaqItem[] = [
     },
   },
   {
+    q: { en: "Can I remap buttons for each game without Steam?", pt: "Dá para remapear os botões de cada jogo sem a Steam?" },
+    a: {
+      en: "Yes, on Windows and Linux. Open your controller and, under Buttons, open All buttons. Any button can become another one, a key or a macro, and the game no longer sees it as itself. Save it in a profile and add the game to that profile: it switches on by itself while the game is in front, whether the game came from Steam or not. Restore defaults puts everything back.",
+      pt: "Sim, no Windows e no Linux. Abra o seu controle e, em Botões, abra Todos os botões. Qualquer botão pode virar outro, uma tecla ou uma macro, e o jogo deixa de vê-lo como ele mesmo. Salve num perfil e adicione o jogo a esse perfil: ele entra sozinho enquanto o jogo está na frente, tenha o jogo vindo da Steam ou não. Restaurar padrão desfaz tudo.",
+    },
+  },
+  {
+    q: { en: "A and B are swapped on my Switch controller.", pt: "O A e o B do meu controle de Switch estão trocados." },
+    a: {
+      en: "Games see buttons by where they are, as on an Xbox controller, so the B at the bottom of a Switch controller is A in games. To follow the letters instead, open the controller, go to Buttons, open All buttons and turn on Use the controller's letters.",
+      pt: "Os jogos veem os botões pela posição, como num controle de Xbox, então o B de baixo de um controle de Switch vira A nos jogos. Para seguir as letras, abra o controle, vá em Botões, abra Todos os botões e ligue Usar as letras do controle.",
+    },
+  },
+  {
     q: { en: "Can games use my controller's gyro?", pt: "Os jogos podem usar o giroscópio do meu controle?" },
     a: {
       en: "An Xbox controller has no gyro, so games don't see it. OpenController can aim with it instead, by adding it to the right stick, under Motion. On Windows you can also show the controller to games as a DualShock 4, under Information. Games and Steam Input that read motion then get its gyro and accelerometer, but games that only know Xbox controllers don't see it, so it is off by default. It is experimental.",

@@ -11,7 +11,7 @@ type Cell = true | false | { en: string; pt: string };
 const ROWS: { k: { en: string; pt: string }; w: Cell; l: Cell; m: Cell }[] = [
   { k: { en: "Works in your games", pt: "Funciona nos seus jogos" }, w: true, l: true, m: { en: "Built into macOS", pt: "Já vem no macOS" } },
   { k: { en: "Each friend stays the same player", pt: "Cada amigo continua sendo o mesmo jogador" }, w: true, l: true, m: false },
-  { k: { en: "Extra buttons and a setup per game", pt: "Botões extras e configuração por jogo" }, w: true, l: true, m: { en: "As keys", pt: "Como teclas" } },
+  { k: { en: "Remapped buttons and a setup per game", pt: "Botões remapeados e configuração por jogo" }, w: true, l: true, m: { en: "Extra buttons as keys", pt: "Botões extras como teclas" } },
   { k: { en: "Controller light and battery", pt: "Luz do controle e bateria" }, w: true, l: true, m: true },
 ];
 

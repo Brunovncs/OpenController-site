@@ -9181,6 +9181,16 @@
   },
   {
     "art": "Offset",
+    "drawing": "leadjoyXenoPro",
+    "family": "Xbox",
+    "hint": null,
+    "name": "LeadJoy Xeno Pro and Xeno Plus",
+    "product": "3519",
+    "rating": "Compatible",
+    "vendor": "4131"
+  },
+  {
+    "art": "Offset",
     "drawing": null,
     "family": "Xbox",
     "hint": null,
@@ -9227,6 +9237,18 @@
     "family": "SwitchPro",
     "hint": null,
     "name": "Onikuma C1",
+    "product": "2009",
+    "rating": "Compatible",
+    "vendor": "057e"
+  },
+  {
+    "alias_of": "Nintendo Switch Pro Controller",
+    "art": "Offset",
+    "brand": "LeadJoy",
+    "drawing": "leadjoyXenoPro",
+    "family": "SwitchPro",
+    "hint": null,
+    "name": "LeadJoy Xeno Pro",
     "product": "2009",
     "rating": "Compatible",
     "vendor": "057e"

@@ -57,6 +57,9 @@ export function RatingBadge({ rating }: { rating: Rating }) {
 
 const PAGE = 40;
 
+/** What a controller off the list most often reports itself as, by copying its chip and ids. */
+const LOOKALIKES = ["Xbox 360 Controller", "DualShock 4", "Switch Pro Controller"];
+
 function Dot({ on, label }: { on: boolean; label: string }) {
   return (
     <span
@@ -379,29 +382,46 @@ export function Compat() {
               })}
             </ul>
           ) : (
-            <div className="border-y border-line py-10 text-center text-[14px] text-muted">
-              <p>
-                <T en="Not on the list yet." pt="Ainda não está na lista." />
-              </p>
-              <p className="mx-auto mt-2 max-w-md text-[13px] text-faint">
-                <T
-                  en="It may still work, since most controllers do. Test it in the section above."
-                  pt="Pode funcionar mesmo assim, como a maioria dos controles. Teste na seção acima."
-                />
-              </p>
-              <p className="mx-auto mt-2 max-w-md text-[13px] text-faint">
-                <T
-                  en="Tell us which one it is and it goes on the list."
-                  pt="Diga qual é o seu e ele entra na lista."
-                />
-              </p>
-              <button
-                type="button"
-                onClick={() => openRequest({ model: query.trim(), query: query.trim() })}
-                className="btn btn-primary mt-6 h-10 px-5 text-[13.5px]"
-              >
-                <T en="Ask for this controller" pt="Pedir este controle" />
-              </button>
+            <div className="border-y border-line px-2 py-12 text-center">
+              <div className="mx-auto max-w-lg">
+                <p className="text-balance text-[19px] font-medium leading-snug text-fg">
+                  <T en="Not on the list yet, but it will probably work." pt="Ainda não está na lista, mas provavelmente funciona." />
+                </p>
+                <p className="mt-3 text-[14.5px] leading-relaxed text-muted">
+                  <T
+                    en="Many controllers are built on the same chip as an Xbox, PlayStation or Switch controller and tell the computer they are one. OpenController then knows yours as that controller, and it works like one."
+                    pt="Muitos controles usam o mesmo chip de um controle de Xbox, PlayStation ou Switch e se apresentam ao computador como um deles. Aí o OpenController reconhece o seu como esse controle, e ele funciona igual."
+                  />
+                </p>
+                <p className="mt-5 text-[12.5px] text-faint">
+                  <T en="Yours may show up as" pt="O seu pode aparecer como" />
+                </p>
+                <ul className="mt-2 flex flex-wrap justify-center gap-1.5">
+                  {LOOKALIKES.map((name) => (
+                    <li key={name} className="rounded-full border border-line px-2.5 py-1 text-[12.5px] text-muted">
+                      {name}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-7 flex flex-wrap justify-center gap-2">
+                  <a href="#check" className="btn btn-primary h-10 px-5 text-[13.5px]">
+                    <T en="Test my controller" pt="Testar meu controle" />
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => openRequest({ model: query.trim(), query: query.trim() })}
+                    className="btn btn-ghost h-10 px-5 text-[13.5px]"
+                  >
+                    <T en="Ask for it to be added" pt="Pedir para incluir" />
+                  </button>
+                </div>
+                <p className="mt-4 text-[12.5px] leading-relaxed text-faint">
+                  <T
+                    en="The test shows in seconds what your controller says it is. If it is not recognised there, ask from the test itself and its ids go with the request."
+                    pt="O teste mostra em segundos como o seu controle se apresenta. Se ele não for reconhecido lá, peça pelo próprio teste e os IDs dele vão junto com o pedido."
+                  />
+                </p>
+              </div>
             </div>
           )}
 
@@ -409,7 +429,7 @@ export function Compat() {
 
           {results.length ? (
             <p className="mt-4 text-center text-[13px] text-faint">
-              <T en="Missing yours? " pt="Não achou o seu? " />
+              <T en="Missing yours? It probably works anyway. " pt="Não achou o seu? Ele provavelmente funciona mesmo assim. " />
               <button
                 type="button"
                 onClick={() => openRequest({ model: query.trim(), query: query.trim() })}

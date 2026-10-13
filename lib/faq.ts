@@ -111,8 +111,8 @@ const WITH_REPORTS: { replace: string; item: FaqItem }[] = [
     item: {
       q: { en: "My controller is not on the list, or misbehaves.", pt: "Meu controle não está na lista, ou funciona errado." },
       a: {
-        en: "Most controllers work even off the list. To get yours added or fixed, open it in OpenController's window, go to Information and press Report a problem. It sends the controller's ids and how the system sees it, which is what it takes to support it without having it in hand. You can add the model and what goes wrong.",
-        pt: "A maioria dos controles funciona mesmo fora da lista. Para incluir ou corrigir o seu, abra-o na janela do OpenController, vá em Informações e aperte Reportar um problema. Ele envia os IDs do controle e como o sistema o enxerga, que é o que basta para dar suporte sem ter o controle em mãos. Você pode dizer o modelo e o que está errado.",
+        en: "Most controllers work even off the list. Many are built on the same chip as an Xbox, PlayStation or Switch controller and say they are one, so OpenController knows them as that controller. To get yours added or fixed, open it in OpenController's window, go to Information and press Report a problem. It sends the controller's ids and how the system sees it, which is what it takes to support it without having it in hand. You can add the model and what goes wrong.",
+        pt: "A maioria dos controles funciona mesmo fora da lista. Muitos usam o mesmo chip de um controle de Xbox, PlayStation ou Switch e dizem ser um deles, então o OpenController os reconhece como esse controle. Para incluir ou corrigir o seu, abra-o na janela do OpenController, vá em Informações e aperte Reportar um problema. Ele envia os IDs do controle e como o sistema o enxerga, que é o que basta para dar suporte sem ter o controle em mãos. Você pode dizer o modelo e o que está errado.",
       },
     },
   },

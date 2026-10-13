@@ -68,6 +68,7 @@ const BRANDS: Record<string, string> = {
   "1430": "RedOctane",
   "3537": "GameSir",
   "37d7": "Flydigi",
+  "4131": "LeadJoy",
   "04b4": "Flydigi",
   "0db0": "MSI",
   "1949": "Amazon",

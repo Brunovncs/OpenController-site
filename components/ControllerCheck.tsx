@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { glyphsFor, shapeFor, type Glyphs, type Shape } from "@/lib/drawings";
 import { FAMILIES, HINTS, SHORT, type Family } from "@/lib/families";
-import { gamepadName, lookup, parseGamepadId } from "@/lib/models";
+import { MODELS, gamepadName, lookup, parseGamepadId } from "@/lib/models";
 import { PadDrawing } from "./PadDrawing";
 import { openRequest } from "./RequestDialog";
 import { useHtmlData } from "./lang";
@@ -23,6 +23,9 @@ const EXAMPLES = [
   { id: "2dc8:6003", label: "8BitDo Pro 2" },
   { id: "2dc8:2862", label: "8BitDo SN30" },
 ];
+
+/** Ids that other controllers copy along with the chip: Xbox 360, DualShock 4 and Switch Pro. */
+const COPIED = new Set(["045e:028e", "054c:05c4", "054c:09cc", "057e:2009"]);
 
 const PHYSICAL: Record<Glyphs, string[]> = {
   xbox: ["A", "B", "X", "Y", "LB", "RB", "LT", "RT", "View", "Menu", "LS", "RS", "↑", "↓", "←", "→", "Home"],
@@ -278,6 +281,7 @@ export function ControllerCheck() {
     return parsed ? lookup(parsed.vendor, parsed.product) : null;
   }, [example, parsed]);
   const family = model ? (FAMILIES[model.family] ?? FAMILIES.Other) : null;
+  const lookalikes = model ? MODELS.filter((m) => m.id === model.id && m.alias_of).map((m) => m.name) : [];
   // A pad Windows hands over as XInput has no ids ("Xbox 360 Controller (XInput STANDARD GAMEPAD)",
   // or the device's own name in the system's language), and is an Xbox controller as far as anyone
   // can tell.
@@ -442,6 +446,20 @@ export function ControllerCheck() {
                   <p className="mt-5 text-[17px] leading-snug text-fg">
                     <Verdict family={family} os={os} hint={model.hint} />
                   </p>
+                  {!example && COPIED.has(model.id) ? (
+                    <p className="mt-3 text-[13.5px] leading-relaxed text-muted">
+                      <T
+                        en={`Not the name of yours? Many controllers use the same chip as the ${model.name} and say they are one. Yours then works just like it.`}
+                        pt={`Não é esse o nome do seu? Muitos controles usam o mesmo chip do ${model.name} e dizem ser um. Aí o seu funciona igual a ele.`}
+                      />
+                      {lookalikes.length ? (
+                        <T
+                          en={` If it is the ${lookalikes.join(" or ")}, pick it in the app under Model, on its Information page.`}
+                          pt={` Se for o ${lookalikes.join(" ou ")}, escolha ele no app em Modelo, na página Informações.`}
+                        />
+                      ) : null}
+                    </p>
+                  ) : null}
                   <Capabilities family={family} />
                   {model.hint && HINTS[model.hint] ? (
                     <p className="mt-4 border-l-2 border-warn/70 pl-3 text-[14px] leading-relaxed text-muted">

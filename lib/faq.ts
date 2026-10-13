@@ -57,6 +57,13 @@ export const QA: FaqItem[] = [
     },
   },
   {
+    q: { en: "Can games use my controller's gyro?", pt: "Os jogos podem usar o giroscópio do meu controle?" },
+    a: {
+      en: "An Xbox controller has no gyro, so games don't see it. OpenController can aim with it instead, by adding it to the right stick, under Motion. On Windows you can also show the controller to games as a DualShock 4, under Information. Games and Steam Input that read motion then get its gyro and accelerometer, but games that only know Xbox controllers don't see it, so it is off by default. It is experimental.",
+      pt: "Controle de Xbox não tem giroscópio, então os jogos não o veem. O OpenController pode mirar com ele, somando o movimento ao analógico direito, em Movimento. No Windows também dá para mostrar o controle aos jogos como um DualShock 4, em Informações. Aí os jogos e o Steam Input que leem movimento recebem o giroscópio e o acelerômetro, mas jogos que só conhecem controle de Xbox deixam de vê-lo, por isso vem desligado. É experimental.",
+    },
+  },
+  {
     q: { en: "Can more than four people play?", pt: "Dá para jogar com mais de quatro pessoas?" },
     a: {
       en: "Most PC games accept up to four controllers. Some newer games accept more, and the app lets you know when that happens. On Linux, players past the fourth get their own number too.",

@@ -72,12 +72,12 @@ export const FAMILIES: Record<string, Family> = {
     group: "playstation",
     label: { en: "DualShock 3, Sixaxis and PS3 style pads", pt: "DualShock 3, Sixaxis e controles estilo PS3" },
     extras: null,
-    gyro: "no",
+    gyro: "yes",
     lightBar: false,
     touchpad: false,
     note: {
-      en: "On Windows it needs Nefarius' DsHidMini in SXS mode, and BthPS3 for Bluetooth. The app offers both.",
-      pt: "No Windows precisa do DsHidMini da Nefarius no modo SXS, e do BthPS3 para Bluetooth. O app oferece os dois.",
+      en: "On Windows it needs Nefarius' DsHidMini in SXS mode, and BthPS3 for Bluetooth. The app offers both. There its pressure-sensitive buttons can move the triggers and its gyro aims, both experimental.",
+      pt: "No Windows precisa do DsHidMini da Nefarius no modo SXS, e do BthPS3 para Bluetooth. O app oferece os dois. Nesse modo, os botões sensíveis à pressão podem mover os gatilhos e o giroscópio mira, os dois em fase experimental.",
     },
   },
   Ps2Adapter: {

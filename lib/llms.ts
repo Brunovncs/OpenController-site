@@ -19,7 +19,7 @@ export function llmsTxt(release: Release | null, full: boolean): string {
   line(`> ${HOME.description.en}`);
   line();
   line(
-    "OpenController is a free, open source (MIT) desktop app. While it runs, each connected controller shows up in games as an Xbox 360 controller with its own player number, and the original is hidden so the game doesn't see it twice. On Windows it uses two free drivers, ViGEmBus and HidHide, which the app installs on request; VIIPER is an experimental alternative to ViGEmBus. On Linux it creates the virtual controllers with uinput. On Windows and Linux any button can be remapped to another Xbox button, a key or a macro, in profiles that switch on with the game in front. macOS reads controllers on its own, so there the app adds extra buttons as keys and macros, the light bar and battery.",
+    "OpenController is a free, open source (MIT) desktop app. While it runs, each connected controller shows up in games as an Xbox 360 controller with its own player number, and the original is hidden so the game doesn't see it twice. On Windows it uses two free drivers, ViGEmBus and HidHide, which the app installs on request; VIIPER is an experimental alternative to ViGEmBus. On Linux it creates the virtual controllers with uinput. On Windows and Linux any button can be remapped to another Xbox button, a key or a macro, in profiles that switch on with the game in front, and each stick gets a deadzone, full tilt, a response curve and a measured centre for drift. macOS reads controllers on its own, so there the app adds extra buttons as keys and macros, the light bar and battery.",
   );
   line();
   line(

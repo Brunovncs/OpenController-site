@@ -100,6 +100,7 @@ function app(lang: Lang, release: Release | null) {
             "Vários controles ao mesmo tempo, cada um com o próprio número de jogador",
             "Qualquer botão como outro botão, tecla ou macro, com perfis por jogo",
             "Mira com giroscópio",
+            "Zona morta, curva e correção de drift dos analógicos",
             "Luz e bateria do controle",
           ]
         : [
@@ -107,6 +108,7 @@ function app(lang: Lang, release: Release | null) {
             "Several controllers at once, each with its own player number",
             "Any button as another button, a key or a macro, with profiles per game",
             "Gyro aiming",
+            "Stick deadzone, response curve and drift correction",
             "Controller light and battery",
           ],
   };

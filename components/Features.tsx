@@ -129,8 +129,8 @@ export function Features() {
 
         <Card className="lg:col-span-3" title={<T en="Your way" pt="Do seu jeito" />} visual={<SetupsVisual />}>
           <T
-            en="If you want, change what any button does, the extra ones included, aim with the gyro, tuned the way you like, play on the d-pad with a stick, and save a setup for each game that switches on by itself when the game opens. It's all optional: your controller works without any of it."
-            pt="Se quiser, mude o que qualquer botão faz, inclusive os extras, mire com o giroscópio no ajuste que preferir, jogue no direcional com o analógico e salve uma configuração para cada jogo, que entra sozinha quando o jogo abre. É tudo opcional: o controle já funciona sem mexer em nada."
+            en="If you want, change what any button does, the extra ones included, aim with the gyro, tuned the way you like, fix a stick that drifts or change how it responds, play on the d-pad with a stick, and save a setup for each game that switches on by itself when the game opens. It's all optional: your controller works without any of it."
+            pt="Se quiser, mude o que qualquer botão faz, inclusive os extras, mire com o giroscópio no ajuste que preferir, corrija um analógico que anda sozinho ou mude a resposta dele, jogue no direcional com o analógico e salve uma configuração para cada jogo, que entra sozinha quando o jogo abre. É tudo opcional: o controle já funciona sem mexer em nada."
           />
         </Card>
 

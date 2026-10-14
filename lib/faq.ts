@@ -71,6 +71,13 @@ export const QA: FaqItem[] = [
     },
   },
   {
+    q: { en: "My stick drifts, or no longer reaches its edge.", pt: "Meu analógico anda sozinho, ou não chega mais até a borda." },
+    a: {
+      en: "On Windows and Linux, open your controller and go to Sticks, then press Measure. It finds where the stick rests and how far it reaches, and sets its centre, deadzone and full tilt from that, so a stick that always leans the same way only needs a small deadzone. You can also set the deadzone, full tilt and response curve yourself, from the values offered or any value you type, for both sticks or for each one. The page shows live what games get.",
+      pt: "No Windows e no Linux, abra o seu controle, vá em Analógicos e aperte Medir. Ele descobre onde o analógico descansa e até onde chega, e ajusta o centro, a zona morta e a inclinação total a partir disso, então um analógico que sempre pende para o mesmo lado precisa só de uma zona morta pequena. Também dá para ajustar a zona morta, a inclinação total e a curva de resposta à mão, com os valores oferecidos ou qualquer valor digitado, para os dois analógicos ou para cada um. A página mostra ao vivo o que os jogos recebem.",
+    },
+  },
+  {
     q: { en: "Can games use my controller's gyro?", pt: "Os jogos podem usar o giroscópio do meu controle?" },
     a: {
       en: "An Xbox controller has no gyro, so games don't see it. OpenController can aim with it instead, by adding it to the right stick, under Motion. On Windows you can also show the controller to games as a DualShock 4, under Information. Games and Steam Input that read motion then get its gyro and accelerometer, but games that only know Xbox controllers don't see it, so it is off by default. It is experimental.",

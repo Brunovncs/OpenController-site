@@ -113,6 +113,13 @@ export const QA: FaqItem[] = [
     },
   },
   {
+    q: { en: "A HidHide window opens by itself.", pt: "Uma janela do HidHide abre sozinha." },
+    a: {
+      en: "That is HidHide's own setup or updater, not OpenController. When HidHide is updated, its installer asks to restart Windows and opens again afterwards to finish. Since version 1.5, HidHide also installs an updater that starts with Windows and lets you know when a new HidHide is out. You can turn it off in Task Manager, under Startup apps, and OpenController keeps working the same.",
+      pt: "É o instalador ou o atualizador do próprio HidHide, não o OpenController. Quando o HidHide é atualizado, o instalador pede para reiniciar o Windows e abre de novo depois para terminar. Desde a versão 1.5, o HidHide também instala um atualizador que abre junto com o Windows e avisa quando sai um HidHide novo. Dá para desligá-lo no Gerenciador de Tarefas, em Aplicativos de inicialização, e o OpenController continua funcionando igual.",
+    },
+  },
+  {
     q: { en: "The app shows my controller with another one's name.", pt: "O app mostra meu controle com o nome de outro." },
     a: {
       en: "Some controllers copy another one's USB id, like the Onikuma C1, which says it is a Switch Pro Controller. The app can't tell them apart, so open your controller, go to Information and pick yours under Model. It then shows with its own name and drawing.",

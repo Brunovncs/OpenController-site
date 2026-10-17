@@ -78,6 +78,13 @@ export const QA: FaqItem[] = [
     },
   },
   {
+    q: { en: "Can each Joy-Con be a controller of its own?", pt: "Dá para usar cada Joy-Con como um controle?" },
+    a: {
+      en: "Yes, on Windows and Linux. A left and a right Joy-Con are joined into one controller at first. Open the pair and press Split Joy-Cons: each becomes a controller of its own, held sideways, so two friends can play with one pair. SL and SR are then the bumpers, and the shoulder button and trigger on the end can be given anything. Join Joy-Cons puts them back together. It is experimental.",
+      pt: "Sim, no Windows e no Linux. Um Joy-Con esquerdo e um direito começam juntos, como um controle só. Abra o par e aperte Separar Joy-Cons: cada um vira um controle, segurado de lado, então dois amigos jogam com um par. O SL e o SR viram os bumpers, e o botão de ombro e o gatilho da ponta podem fazer o que você quiser. Juntar Joy-Cons junta de novo. É experimental.",
+    },
+  },
+  {
     q: { en: "Can games use my controller's gyro?", pt: "Os jogos podem usar o giroscópio do meu controle?" },
     a: {
       en: "An Xbox controller has no gyro, so games don't see it. OpenController can aim with it instead, by adding it to the right stick, under Motion. On Windows you can also show the controller to games as a DualShock 4, under Information. Games and Steam Input that read motion then get its gyro and accelerometer, but games that only know Xbox controllers don't see it, so it is off by default. It is experimental.",

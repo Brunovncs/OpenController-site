@@ -102,7 +102,7 @@ export const FAMILIES: Record<string, Family> = {
     id: "JoyCons",
     group: "nintendo",
     label: { en: "Joy-Con, as a pair or alone", pt: "Joy-Con, em par ou sozinho" },
-    extras: { en: "Capture, SL and SR", pt: "Capture, SL e SR" },
+    extras: { en: "Capture, SL and SR; alone, L and ZL or R and ZR", pt: "Capture, SL e SR; sozinho, L e ZL ou R e ZR" },
     gyro: "yes",
     lightBar: false,
     touchpad: false,

@@ -1550,7 +1550,7 @@
     "vendor": "358a"
   },
   {
-    "art": "JoyCons",
+    "art": "JoyConLeft",
     "drawing": null,
     "family": "JoyCons",
     "hint": null,
@@ -1570,7 +1570,7 @@
     "vendor": "057e"
   },
   {
-    "art": "JoyCons",
+    "art": "JoyConRight",
     "drawing": null,
     "family": "JoyCons",
     "hint": null,

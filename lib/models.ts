@@ -1,7 +1,7 @@
 import raw from "@/data/models.json";
 import { FAMILIES, FAMILY_ORDER, GROUPS, type GroupId } from "./families";
 
-export type Art = "Offset" | "Symmetric" | "PlayStation" | "Retro" | "JoyCons" | "Handheld";
+export type Art = "Offset" | "Symmetric" | "PlayStation" | "Retro" | "JoyCons" | "JoyConLeft" | "JoyConRight" | "Handheld";
 
 /** How sure OpenController is that a model works (`rating.rs` in the app). */
 export type Rating = "Verified" | "Compatible" | "Caveats" | "Unsupported";

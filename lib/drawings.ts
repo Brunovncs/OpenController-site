@@ -10,6 +10,9 @@ export type Shape =
   | "xbox"
   | "switchPro"
   | "joycons"
+  // A Joy-Con on its own, held sideways.
+  | "joyconLeft"
+  | "joyconRight"
   | "ultimate2"
   | "ultimate2c"
   | "ultimate"
@@ -50,6 +53,8 @@ export function shapeFor(model: Pick<IndexedModel, "family" | "art" | "name" | "
     case "SwitchPro":
       return "switchPro";
     case "JoyCons":
+      if (art === "JoyConLeft") return "joyconLeft";
+      if (art === "JoyConRight") return "joyconRight";
       return "joycons";
     case "Switch2":
       if (/Joy-Con/i.test(name)) return "joycons";
@@ -71,6 +76,8 @@ export function shapeFor(model: Pick<IndexedModel, "family" | "art" | "name" | "
   if (art === "Retro") return "retro";
   if (art === "Handheld") return "handheld";
   if (art === "JoyCons") return "joycons";
+  if (art === "JoyConLeft") return "joyconLeft";
+  if (art === "JoyConRight") return "joyconRight";
   if (art === "PlayStation") return "dualsense";
   if (art === "Symmetric") return "ds3";
   return "generic";

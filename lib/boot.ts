@@ -1,6 +1,7 @@
 /**
- * Runs in <head> before the first paint: writes the operating system on <html> for CSS to show the
- * right download. The language comes from the URL; a choice saved before that (localStorage only)
+ * Runs in <head> before the first paint: writes the operating system and architecture on <html> for
+ * CSS to show the right download. A Mac starts as Apple silicon, Windows and Linux as x64 unless the
+ * browser says ARM; components/PlatformRefine.tsx corrects it where client hints know better. The language comes from the URL; a choice saved before that (localStorage only)
  * becomes the cookie next.config.ts redirects by, once.
  */
 export const BOOT_SCRIPT = `(function(){var d=document.documentElement;
@@ -11,4 +12,4 @@ else if(/win/i.test(p)||/Windows/.test(ua))os="windows";
 else if(/mac/i.test(p)||/Macintosh|Mac OS X/.test(ua))os=navigator.maxTouchPoints>1?"mobile":"mac";
 else if(/CrOS/.test(ua)||/chrome os/i.test(p))os="other";
 else if(/linux/i.test(p)||/Linux|X11/.test(ua))os="linux";
-d.setAttribute("data-os",os);d.setAttribute("data-arch","arm64");})();`;
+d.setAttribute("data-os",os);d.setAttribute("data-arch",os==="mac"||/aarch64|arm64/i.test(p+" "+ua)?"arm64":"x64");})();`;

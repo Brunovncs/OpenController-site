@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { formatSize, type Platform, type Release } from "@/lib/github";
+import { formatSize, platformsFor, type Os, type Platform, type Release } from "@/lib/github";
 import { LATEST_URL } from "@/lib/site";
 import { MissingBuild, PLATFORM_LABEL } from "./Download";
 import { CheckIcon, DashIcon, DownloadIcon } from "./icons";
@@ -73,6 +73,16 @@ function PlatformDownload({ platform, release }: { platform: Platform; release: 
           </>
         ) : null}
       </span>
+    </div>
+  );
+}
+
+function OsDownloads({ os, release }: { os: Os; release: Release | null }) {
+  return (
+    <div className="space-y-2">
+      {platformsFor(os, release).map((p) => (
+        <PlatformDownload key={p} platform={p} release={release} />
+      ))}
     </div>
   );
 }
@@ -151,11 +161,17 @@ export function Platforms({ release }: { release: Release | null }) {
       </div>
 
       <div className="mt-10 grid gap-3 lg:grid-cols-3">
-        <Req title="Windows 10, 11" foot={<PlatformDownload platform="windows-x64" release={release} />}>
+        <Req title="Windows 10, 11" foot={<OsDownloads os="windows" release={release} />}>
           <p>
             <T
-              en="64-bit. It installs without administrator rights and updates without reinstalling. It needs two free drivers and installs them for you with one click."
-              pt="64 bits. Instala sem precisar de administrador e se atualiza sem reinstalar. Precisa de dois drivers gratuitos e instala os dois para você com um clique."
+              en="For x64 and ARM PCs. It installs without administrator rights and updates without reinstalling. It needs two free drivers and installs them for you with one click."
+              pt="Para PCs x64 e ARM. Instala sem precisar de administrador e se atualiza sem reinstalar. Precisa de dois drivers gratuitos e instala os dois para você com um clique."
+            />
+          </p>
+          <p>
+            <T
+              en="HidHide, the driver that hides the original controller, has no ARM version yet. So on an ARM PC, a game that also reads the original may see it twice."
+              pt="O HidHide, driver que esconde o controle original, ainda não tem versão para ARM. Então, num PC com ARM, um jogo que também lê o original pode ver o controle duas vezes."
             />
           </p>
           <p>
@@ -165,31 +181,37 @@ export function Platforms({ release }: { release: Release | null }) {
             />
           </p>
         </Req>
-        <Req title="Linux" foot={<PlatformDownload platform="linux-x64" release={release} />}>
+        <Req title="Linux" foot={<OsDownloads os="linux" release={release} />}>
           <p>
             <T
-              en="64-bit, Ubuntu 22.04 or newer, or any other distribution as recent. The same app as on Windows. It works with native games and with games running through Proton or Wine."
-              pt="64 bits, Ubuntu 22.04 ou mais novo, ou outra distribuição tão recente quanto. O mesmo app do Windows. Funciona com jogos nativos e com os que rodam pelo Proton ou pelo Wine."
+              en="For x64 and ARM computers with Ubuntu 22.04, Debian 12, Fedora 36 or newer, or another distribution with glibc 2.35 or later. The same app as on Windows. It works with native games and with games running through Proton or Wine."
+              pt="Para computadores x64 e ARM com Ubuntu 22.04, Debian 12, Fedora 36 ou mais novos, ou outra distribuição com glibc 2.35 ou mais recente. O mesmo app do Windows. Funciona com jogos nativos e com os que rodam pelo Proton ou pelo Wine."
             />
           </p>
           <p>
             <T
-              en="The installer asks for your password once, to let the app use your controllers."
-              pt="O instalador pede sua senha uma vez, para o app poder usar seus controles."
+              en="The installer asks for your password once, to let the app use your controllers. On a Steam Deck, set a password first by running passwd in Konsole."
+              pt="O instalador pede sua senha uma vez, para o app poder usar seus controles. No Steam Deck, crie uma senha antes, rodando passwd no Konsole."
             />
           </p>
         </Req>
-        <Req title="macOS 13+" foot={<div className="space-y-2"><PlatformDownload platform="macos-arm64" release={release} /><PlatformDownload platform="macos-x64" release={release} /></div>}>
+        <Req title="macOS 13+" foot={<OsDownloads os="mac" release={release} />}>
           <p>
             <T
-              en="For Macs with an Apple or Intel chip. On a Mac, games already work with PlayStation, Xbox and Switch Pro controllers, and the system doesn't let apps add controllers of their own."
-              pt="Para Mac com chip da Apple ou Intel. No Mac, os jogos já aceitam controles de PlayStation, Xbox e Switch Pro, e o sistema não deixa outros apps criarem controles."
+              en="One app for Macs with an Apple or Intel chip. On a Mac, games already work with PlayStation, Xbox and Switch Pro controllers, and the system doesn't let apps add controllers of their own."
+              pt="Um app só para Mac com chip da Apple ou Intel. No Mac, os jogos já aceitam controles de PlayStation, Xbox e Switch Pro, e o sistema não deixa outros apps criarem controles."
             />
           </p>
           <p>
             <T
-              en="So on a Mac it adds what is missing: extra buttons as keys, the controller light, the battery and a setup for each game. The first time, right-click the app and choose Open."
-              pt="Por isso, no Mac ele completa o que falta: botões extras como teclas, a luz do controle, a bateria e uma configuração para cada jogo. Na primeira vez, clique no app com o botão direito e escolha Abrir."
+              en="So on a Mac it adds what is missing: extra buttons as keys, the controller light, the battery and a setup for each game. For keys it needs the Accessibility permission, which the window asks for. From 0.8.9 on, it stays after updates."
+              pt="Por isso, no Mac ele completa o que falta: botões extras como teclas, a luz do controle, a bateria e uma configuração para cada jogo. Para as teclas ele precisa da permissão de Acessibilidade, que a janela pede. A partir da 0.8.9, ela continua depois das atualizações."
+            />
+          </p>
+          <p>
+            <T
+              en="macOS blocks it the first time. Open it once, then go to System Settings, Privacy & Security, and click Open Anyway."
+              pt="Na primeira vez o macOS bloqueia o app. Abra uma vez, depois vá em Ajustes do Sistema, Privacidade e Segurança, e clique em Abrir Mesmo Assim."
             />
           </p>
         </Req>

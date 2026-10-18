@@ -1,14 +1,18 @@
 import type { ReactNode } from "react";
-import { formatSize, type Platform, type Release } from "@/lib/github";
+import { formatSize, platformsFor, type Os, type Platform, type Release } from "@/lib/github";
 import { BUILD_URL, LATEST_URL, RELEASES_URL } from "@/lib/site";
 import { ArrowIcon, DownloadIcon } from "./icons";
 import { T } from "./T";
 
-export const PLATFORM_LABEL: Record<Platform, { en: string; pt: string; short: string }> = {
-  "windows-x64": { en: "Windows", pt: "Windows", short: "Windows x64" },
-  "linux-x64": { en: "Linux", pt: "Linux", short: "Linux x64" },
-  "macos-arm64": { en: "Mac, Apple silicon", pt: "Mac, Apple silicon", short: "macOS Apple silicon" },
-  "macos-x64": { en: "Mac, Intel", pt: "Mac, Intel", short: "macOS Intel" },
+/** `ask` is the question next to the main button that offers this build instead. */
+export const PLATFORM_LABEL: Record<Platform, { en: string; pt: string; short: string; ask: { en: string; pt: string } }> = {
+  "windows-x64": { en: "Windows", pt: "Windows", short: "Windows x64", ask: { en: "Intel or AMD PC?", pt: "PC com Intel ou AMD?" } },
+  "windows-arm64": { en: "Windows on ARM", pt: "Windows no ARM", short: "Windows ARM", ask: { en: "ARM PC?", pt: "PC com ARM?" } },
+  "linux-x64": { en: "Linux", pt: "Linux", short: "Linux x64", ask: { en: "Intel or AMD computer?", pt: "Computador com Intel ou AMD?" } },
+  "linux-arm64": { en: "Linux on ARM", pt: "Linux no ARM", short: "Linux ARM", ask: { en: "ARM computer?", pt: "Computador com ARM?" } },
+  "macos-universal": { en: "Mac", pt: "Mac", short: "macOS", ask: { en: "Mac?", pt: "Mac?" } },
+  "macos-arm64": { en: "Mac, Apple silicon", pt: "Mac, Apple silicon", short: "macOS Apple silicon", ask: { en: "Apple silicon Mac?", pt: "Mac com Apple silicon?" } },
+  "macos-x64": { en: "Mac, Intel", pt: "Mac, Intel", short: "macOS Intel", ask: { en: "Intel Mac?", pt: "Mac com Intel?" } },
 };
 
 function fileKind(name: string) {
@@ -90,7 +94,7 @@ function Primary({ platform, release, quiet, children }: { platform: Platform; r
 
 function OtherArch({ platform, release }: { platform: Platform; release: Release | null }) {
   const asset = release?.assets[platform];
-  const label = platform === "macos-x64" ? { en: "Intel Mac?", pt: "Mac com Intel?" } : { en: "Apple silicon Mac?", pt: "Mac com Apple silicon?" };
+  const label = PLATFORM_LABEL[platform].ask;
   return (
     <p className="mt-2 text-[13px] text-muted">
       <T en={label.en} pt={label.pt} />{" "}
@@ -109,27 +113,43 @@ function OtherArch({ platform, release }: { platform: Platform; release: Release
   );
 }
 
+/**
+ * One system's download. With two builds (ARM and x64), <html data-arch> picks the main one and the
+ * other is offered under it.
+ */
+function OsDownload({ os, release, quiet }: { os: Os; release: Release | null; quiet?: boolean }) {
+  const builds = platformsFor(os, release);
+  if (builds.length === 1) return <Primary platform={builds[0]} release={release} quiet={quiet} />;
+  const arm = builds.find((p) => p.endsWith("-arm64")) ?? builds[0];
+  const x64 = builds.find((p) => p !== arm) ?? builds[1];
+  return (
+    <>
+      <div className="arch-variant" data-for="arm64">
+        <Primary platform={arm} release={release} quiet={quiet}>
+          <OtherArch platform={x64} release={release} />
+        </Primary>
+      </div>
+      <div className="arch-variant" data-for="x64">
+        <Primary platform={x64} release={release} quiet={quiet}>
+          <OtherArch platform={arm} release={release} />
+        </Primary>
+      </div>
+    </>
+  );
+}
+
 /** The download that already knows the visitor's system, from <html data-os/data-arch>. */
 export function Download({ release, quiet, platformsHref = "#platforms" }: { release: Release | null; quiet?: boolean; platformsHref?: string }) {
   return (
     <div>
       <div className="os-variant" data-for="windows">
-        <Primary platform="windows-x64" release={release} quiet={quiet} />
+        <OsDownload os="windows" release={release} quiet={quiet} />
       </div>
       <div className="os-variant" data-for="linux">
-        <Primary platform="linux-x64" release={release} quiet={quiet} />
+        <OsDownload os="linux" release={release} quiet={quiet} />
       </div>
       <div className="os-variant" data-for="mac">
-        <div className="arch-variant" data-for="arm64">
-          <Primary platform="macos-arm64" release={release} quiet={quiet}>
-            <OtherArch platform="macos-x64" release={release} />
-          </Primary>
-        </div>
-        <div className="arch-variant" data-for="x64">
-          <Primary platform="macos-x64" release={release} quiet={quiet}>
-            <OtherArch platform="macos-arm64" release={release} />
-          </Primary>
-        </div>
+        <OsDownload os="mac" release={release} quiet={quiet} />
       </div>
       <div className="os-variant" data-for="other">
         <a href={platformsHref} className="btn btn-primary h-12 px-5 text-[15px]">

@@ -24,13 +24,15 @@ It deploys to Vercel with no settings. Two optional environment variables:
 ## How the download button works
 
 `lib/github.ts` reads `releases/latest` from the GitHub API on the server, cached for an hour, and
-picks each platform's asset by name: `windows-x64`, `linux-x64`, `macos-arm64`, `macos-x64`, with
-the `.sha256` file next to it. The page renders a button for every platform, and a small script in
-`<head>` (`lib/boot.ts`) marks the visitor's system on `<html>` before the first paint, so CSS
-shows the right one with no flash. Chromium on a Mac also reports Apple silicon or Intel
-(`components/PlatformRefine.tsx`); other browsers get the Apple silicon build with the Intel one
-next to it. A platform without an asset in the latest release says so and links to the source and the
-releases page. If GitHub does not
+picks each platform's asset by name: `windows-x64`, `windows-arm64`, `linux-x64`, `linux-arm64` and
+`macos-universal`, with the `.sha256` file next to it. Releases up to 0.8.8 have `macos-arm64` and
+`macos-x64` instead of the universal app and no ARM builds for Windows or Linux; `platformsFor`
+offers whatever the latest release has. The page renders a button for every platform, and a small
+script in `<head>` (`lib/boot.ts`) marks the visitor's system and architecture on `<html>` before
+the first paint, so CSS shows the right one with no flash. Chromium also reports ARM or x64
+(`components/PlatformRefine.tsx`); other browsers get Apple silicon on a Mac and x64 elsewhere
+unless the user agent says ARM, with the other build offered next to it. A platform without an
+asset in the latest release says so and links to the source and the releases page. If GitHub does not
 answer, the button links to the releases page.
 
 ## The controller table

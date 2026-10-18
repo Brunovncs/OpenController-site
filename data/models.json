@@ -152,6 +152,16 @@
   {
     "art": "Symmetric",
     "drawing": null,
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "Twin USB Joystick (PS1/PS2 adapter)",
+    "product": "0005",
+    "rating": "Compatible",
+    "vendor": "0815"
+  },
+  {
+    "art": "Symmetric",
+    "drawing": null,
     "family": "DualShock3",
     "hint": null,
     "name": "Sony PS3 Controller",

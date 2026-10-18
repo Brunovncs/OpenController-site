@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { LangProvider } from "@/components/lang";
+import { PlatformRefine } from "@/components/PlatformRefine";
 import { BOOT_SCRIPT } from "@/lib/boot";
 import { HTML_LANG, LANGS, isLang } from "@/lib/i18n";
 import { AUTHOR } from "@/lib/seo";
@@ -49,6 +50,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
       </head>
       <body className="min-h-dvh bg-bg text-fg antialiased">
+        <PlatformRefine />
         <LangProvider lang={lang}>{children}</LangProvider>
       </body>
     </html>

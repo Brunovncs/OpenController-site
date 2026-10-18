@@ -9,7 +9,6 @@ import { Footer } from "@/components/Footer";
 import { Header, NAV } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Performance } from "@/components/Performance";
-import { PlatformRefine } from "@/components/PlatformRefine";
 import { Platforms } from "@/components/Platforms";
 import { RailToc } from "@/components/RailToc";
 import { SectionHead } from "@/components/SectionHead";
@@ -43,7 +42,6 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
       <Header stars={stars} version={release?.version ?? null} />
       <RailToc items={NAV} />
       <Spotlight />
-      <PlatformRefine />
 
       <main id="main">
         <Hero release={release} />

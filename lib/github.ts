@@ -1,7 +1,9 @@
 import { REPO } from "./site";
 
-export const PLATFORMS = ["windows-x64", "linux-x64", "macos-arm64", "macos-x64"] as const;
+/** Release asset names. Up to 0.8.8 the Mac had an Apple silicon and an Intel build; from 0.8.9 it has one universal app. */
+export const PLATFORMS = ["windows-x64", "windows-arm64", "linux-x64", "linux-arm64", "macos-universal", "macos-arm64", "macos-x64"] as const;
 export type Platform = (typeof PLATFORMS)[number];
+export type Os = "windows" | "linux" | "mac";
 
 export type Asset = {
   name: string;
@@ -62,6 +64,18 @@ export function parseRelease(r: ApiRelease): Release {
     publishedAt: r.published_at,
     assets,
   };
+}
+
+/**
+ * The builds of a system the page offers for a release, the x64 one first. ARM shows only when the
+ * release has it, and a Mac gets the universal app unless the release only has the older pair.
+ */
+export function platformsFor(os: Os, release: Release | null): Platform[] {
+  const has = (p: Platform) => Boolean(release?.assets[p]);
+  if (os === "mac")
+    return has("macos-universal") || !(has("macos-arm64") || has("macos-x64")) ? ["macos-universal"] : ["macos-arm64", "macos-x64"];
+  const [x64, arm]: [Platform, Platform] = os === "windows" ? ["windows-x64", "windows-arm64"] : ["linux-x64", "linux-arm64"];
+  return has(arm) ? [x64, arm] : [x64];
 }
 
 export async function getLatestRelease(): Promise<Release | null> {

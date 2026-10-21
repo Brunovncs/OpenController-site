@@ -6491,6 +6491,16 @@
   },
   {
     "art": "Offset",
+    "drawing": "logitechExtreme3d",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech Extreme 3D Pro",
+    "product": "c215",
+    "rating": "Compatible",
+    "vendor": "046d"
+  },
+  {
+    "art": "Offset",
     "drawing": null,
     "family": "Xbox",
     "hint": null,

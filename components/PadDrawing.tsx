@@ -13,8 +13,12 @@ export type { Glyphs, Shape };
  * standard mapping's indices, so the same props light any drawing.
  */
 
-type Btn = { input: string; circle?: [number, number, number]; d?: string; icon?: string; label?: string };
-type Stick = { circle: [number, number, number]; well?: number; ring?: [number, number] };
+/** `grip`: carried by a flight stick's grip, so it leans and turns with it. */
+type Btn = { input: string; circle?: [number, number, number]; d?: string; icon?: string; label?: string; grip?: boolean };
+/** `grip`: a flight stick's grip seen from above, drawn in place of the cap, turning up to `twist` degrees. */
+type Stick = { circle: [number, number, number]; well?: number; ring?: [number, number]; grip?: string; twist?: number };
+/** A throttle's slot, filled from the back as far as the trigger it stands for. */
+type Lever = { input: string; d: string };
 type Pad = {
   body: string;
   bumpers?: [string, string];
@@ -22,6 +26,7 @@ type Pad = {
   panels?: { style: string; d: string }[];
   touchpad?: string;
   dots?: [number, number, number][];
+  levers?: Lever[];
   sticks?: Stick[];
   buttons: Btn[];
   tint?: boolean;
@@ -75,6 +80,31 @@ function ySpan(d: string): [number, number] {
   const n = d.match(/-?\d*\.?\d+/g)?.map(Number) ?? [0, 0];
   const ys = n.filter((_, i) => i % 2 === 1);
   return [Math.min(...ys), Math.max(...ys)];
+}
+
+/** The box round an absolute path of M, L, H, V, C and Z: left, top, right, bottom. */
+function pathBox(d: string): [number, number, number, number] {
+  const xs: number[] = [];
+  const ys: number[] = [];
+  let x = 0;
+  let y = 0;
+  for (const [, cmd, args] of d.matchAll(/([MLHVCZ])([^MLHVCZ]*)/g)) {
+    const n = args.match(/-?\d*\.?\d+/g)?.map(Number) ?? [];
+    if (cmd === "H") x = n[n.length - 1];
+    else if (cmd === "V") y = n[n.length - 1];
+    else if (n.length >= 2) {
+      for (let i = 0; i + 1 < n.length; i += 2) {
+        xs.push(n[i]);
+        ys.push(n[i + 1]);
+      }
+      [x, y] = [n[n.length - 2], n[n.length - 1]];
+    }
+    if (cmd !== "Z") {
+      xs.push(x);
+      ys.push(y);
+    }
+  }
+  return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
 }
 
 function PsGlyph({ i, x, y, r, color }: { i: number; x: number; y: number; r: number; color: string }) {
@@ -191,25 +221,62 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
     );
   };
 
+  const lever = (l: Lever, k: number) => {
+    const i = INDEX[l.input] ?? -1;
+    const val = Math.max(0, Math.min(1, v(i)));
+    const [left, top, right, bottom] = pathBox(l.d);
+    const h = (bottom - top) * val;
+    const at = bottom - 3.5 - (bottom - top - 7) * val;
+    return (
+      <g key={k} {...press(i)}>
+        <clipPath id={id(`lv${k}`)}>
+          <path d={l.d} />
+        </clipPath>
+        <path d={l.d} fill="#0d0e11" stroke={val > 0.05 ? ACCENT : "rgba(255,255,255,0.2)"} className="pad-part" />
+        {val > 0.02 ? <rect x={0} y={bottom - h} width={400} height={h} fill={ACCENT} opacity={0.9} clipPath={url(`lv${k}`)} /> : null}
+        <rect x={left - 3} y={at - 3.5} width={right - left + 6} height={7} rx={3} fill={url("cap")} stroke={val > 0.05 ? ACCENT : "rgba(255,255,255,0.26)"} />
+      </g>
+    );
+  };
+
+  // A flight stick's grip leans with the stick and turns with the twist, the right stick's x.
+  const gripStick = P.sticks?.[0]?.grip ? P.sticks[0] : undefined;
+  const lean = (s: Stick) => {
+    const [x, y, cap] = s.circle;
+    // Much longer than the opening, a grip leans less, so its tip stays in the picture.
+    const reach = cap * 0.4;
+    const mx = Math.max(-1, Math.min(1, axes[0] || 0));
+    const my = Math.max(-1, Math.min(1, axes[1] || 0));
+    const twist = Math.max(-1, Math.min(1, axes[2] || 0));
+    return {
+      transform: `translate(${mx * reach} ${my * reach}) rotate(${twist * (s.twist ?? 0)} ${x} ${y})`,
+      moved: Math.hypot(mx, my) > 0.2 || Math.abs(twist) > 0.2,
+    };
+  };
+
   const stick = (s: Stick, k: number) => {
     const [x, y, cap] = s.circle;
     const well = s.well ?? cap * 1.18;
     const [ax, ay, click] = k === 0 ? [axes[0], axes[1], 10] : [axes[2], axes[3], 11];
     const mx = Math.max(-1, Math.min(1, ax || 0));
     const my = Math.max(-1, Math.min(1, ay || 0));
-    const moved = Math.hypot(mx, my) > 0.2;
-    const lit = on(click);
+    const lit = !s.grip && on(click);
+    const moved = s.grip ? lean(s).moved : Math.hypot(mx, my) > 0.2;
     const reach = Math.max(well - cap, cap * 0.25) * 0.8;
     const cx = x + mx * reach;
     const cy = y + my * reach;
     return (
-      <g key={k} {...press(click)}>
+      <g key={k} {...press(s.grip ? -1 : click)}>
         {s.ring ? (
           <circle cx={x} cy={y} r={s.ring[0]} fill="none" stroke={moved || lit ? "rgba(96,205,255,0.7)" : "rgba(255,255,255,0.16)"} strokeWidth={s.ring[1]} />
         ) : null}
         <circle cx={x} cy={y} r={well} fill="rgba(0,0,0,0.55)" stroke={moved || lit ? "rgba(96,205,255,0.55)" : "rgba(255,255,255,0.14)"} className="pad-part" />
-        <circle cx={cx} cy={cy} r={cap} fill={lit ? ACCENT : url("cap")} stroke={moved || lit ? ACCENT : "rgba(255,255,255,0.26)"} strokeWidth={1.4} filter={lit ? url("glow") : undefined} />
-        <circle cx={cx} cy={cy} r={cap * 0.62} fill="none" stroke={lit ? "rgba(0,20,31,0.35)" : "rgba(255,255,255,0.08)"} />
+        {s.grip ? null : (
+          <>
+            <circle cx={cx} cy={cy} r={cap} fill={lit ? ACCENT : url("cap")} stroke={moved || lit ? ACCENT : "rgba(255,255,255,0.26)"} strokeWidth={1.4} filter={lit ? url("glow") : undefined} />
+            <circle cx={cx} cy={cy} r={cap * 0.62} fill="none" stroke={lit ? "rgba(0,20,31,0.35)" : "rgba(255,255,255,0.08)"} />
+          </>
+        )}
       </g>
     );
   };
@@ -218,6 +285,19 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
     const i = INDEX[b.input] ?? -1;
     const face = FACES.indexOf(b.input);
     const symbol = on(i) ? INK : face >= 0 ? tint(face) : GLYPH;
+    if (!b.circle && b.d && b.label) {
+      // A key that is not round gets what is printed on it in its middle, smaller.
+      const [l, t, r, bt] = pathBox(b.d);
+      const size = Math.min(r - l, bt - t) * 0.4;
+      return (
+        <g key={k} {...press(i)}>
+          <path d={b.d} fill={fill(i)} stroke={stroke(i)} strokeLinejoin="round" filter={glow(i)} className="pad-part" />
+          <text x={(l + r) / 2} y={(t + bt) / 2 + size * 0.36} textAnchor="middle" fontSize={size * 0.98} fontWeight={650} fontFamily="var(--font-geist), system-ui, sans-serif" fill={symbol}>
+            {b.label}
+          </text>
+        </g>
+      );
+    }
     if (!b.circle) return <path key={k} d={b.d} fill={fill(i)} stroke={stroke(i)} strokeLinejoin="round" filter={glow(i)} className="pad-part" {...press(i)} />;
     const [x, y, r] = b.circle;
     return (
@@ -293,8 +373,16 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
         />
       ) : null}
 
+      {P.levers?.map(lever)}
       {P.sticks?.slice(0, 2).map(stick)}
-      {P.buttons.map(button)}
+      {P.buttons.filter((b) => !b.grip).map(button)}
+      {gripStick?.grip ? (
+        <g transform={lean(gripStick).transform}>
+          <path d={gripStick.grip} transform="translate(3 4)" fill="rgba(0,0,0,0.35)" />
+          <path d={gripStick.grip} fill={url("cap")} stroke={lean(gripStick).moved ? ACCENT : "rgba(255,255,255,0.26)"} strokeWidth={1.2} />
+          {P.buttons.filter((b) => b.grip).map(button)}
+        </g>
+      ) : null}
     </svg>
   );
 }

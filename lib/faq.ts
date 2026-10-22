@@ -167,14 +167,21 @@ const WITH_REPORTS: { replace: string; item: FaqItem }[] = [
   },
 ];
 
+/** The answer on a controller off the list once the app can map one itself. */
+const WITH_MAPPING = {
+  en: "Most controllers work even off the list. Many are built on the same chip as an Xbox, PlayStation or Switch controller and say they are one, so OpenController knows them as that controller. One whose buttons it cannot read shows Map the buttons on its page: press each part when it is asked for, and it works as an Xbox controller. To get yours added or fixed for everyone, open it in OpenController's window, go to Information and press Report a problem. It sends the controller's ids and how the system sees it, which is what it takes to support it without having it in hand. You can add the model and what goes wrong.",
+  pt: "A maioria dos controles funciona mesmo fora da lista. Muitos usam o mesmo chip de um controle de Xbox, PlayStation ou Switch e dizem ser um deles, então o OpenController os reconhece como esse controle. Um cujos botões ele não consegue ler mostra Mapear os botões na página dele: aperte cada parte quando ela for pedida e ele funciona como um controle de Xbox. Para incluir ou corrigir o seu para todos, abra-o na janela do OpenController, vá em Informações e aperte Reportar um problema. Ele envia os IDs do controle e como o sistema o enxerga, que é o que basta para dar suporte sem ter o controle em mãos. Você pode dizer o modelo e o que está errado.",
+};
+
 /** The questions as the page shows them for the latest release. */
-export function faqItems(appReports: boolean): FaqItem[] {
+export function faqItems(appReports: boolean, appMapping = false): FaqItem[] {
   if (!appReports) return QA;
   return QA.flatMap((item) => {
     const w = WITH_REPORTS.find((x) => x.replace === item.q.en);
     if (!w) return [item];
+    const added = appMapping && w.item.q.en.startsWith("My controller is not on the list") ? { ...w.item, a: WITH_MAPPING } : w.item;
     // The data answer is replaced; the new question goes before "Is it finished?".
-    return w.item.q.en === item.q.en ? [w.item] : [w.item, item];
+    return w.item.q.en === item.q.en ? [added] : [added, item];
   });
 }
 

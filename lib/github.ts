@@ -106,7 +106,7 @@ export async function getStars(): Promise<number | null> {
 }
 
 /** The first version of the app with a feature, so the site mentions it only once it is out. */
-export const SINCE = { reports: "0.8.0" } as const;
+export const SINCE = { reports: "0.8.0", mapping: "0.8.11" } as const;
 
 /** Whether `version` (the latest release) is `since` or later. */
 export function hasFeature(version: string | null | undefined, since: string): boolean {

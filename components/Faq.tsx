@@ -29,8 +29,8 @@ function Rich({ text, base }: { text: string; base: string }) {
   );
 }
 
-export function Faq({ appReports }: { appReports: boolean }) {
-  const items = faqItems(appReports);
+export function Faq({ appReports, appMapping }: { appReports: boolean; appMapping: boolean }) {
+  const items = faqItems(appReports, appMapping);
   return (
     <section id="faq" aria-labelledby="faq-title" className="wrap py-20 sm:py-24">
       <SectionHead n="06" label={<T en="Questions" pt="Dúvidas" />} title={<span id="faq-title"><T en="Common questions." pt="Perguntas frequentes." /></span>} />

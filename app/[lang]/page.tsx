@@ -32,10 +32,11 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
   const lang = (await params).lang as Lang;
   const [release, stars] = await Promise.all([getLatestRelease(), getStars()]);
   const appReports = hasFeature(release?.version, SINCE.reports);
+  const appMapping = hasFeature(release?.version, SINCE.mapping);
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(homeJsonLd(lang, release, appReports)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(homeJsonLd(lang, release, appReports, appMapping)) }} />
       <a href="#main" className="skip">
         <T en="Skip to content" pt="Pular para o conteúdo" />
       </a>
@@ -107,7 +108,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         </section>
 
         <Platforms release={release} />
-        <Faq appReports={appReports} />
+        <Faq appReports={appReports} appMapping={appMapping} />
         <Contact />
       </main>
       <ContactDialog version={release?.version ?? null} />

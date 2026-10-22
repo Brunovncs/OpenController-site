@@ -65,7 +65,7 @@ export function llmsTxt(release: Release | null, full: boolean): string {
 
   line("## Questions");
   line();
-  for (const f of faqItems(hasFeature(release?.version, SINCE.reports))) {
+  for (const f of faqItems(hasFeature(release?.version, SINCE.reports), hasFeature(release?.version, SINCE.mapping))) {
     if (full) {
       line(`### ${f.q.en}`);
       line();

@@ -127,7 +127,7 @@ function website(lang: Lang) {
   };
 }
 
-export function homeJsonLd(lang: Lang, release: Release | null, appReports: boolean) {
+export function homeJsonLd(lang: Lang, release: Release | null, appReports: boolean, appMapping: boolean) {
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -138,7 +138,7 @@ export function homeJsonLd(lang: Lang, release: Release | null, appReports: bool
         "@type": "FAQPage",
         "@id": `${absUrl(lang)}#faq`,
         inLanguage: HTML_LANG[lang],
-        mainEntity: faqItems(appReports).map((f) => ({
+        mainEntity: faqItems(appReports, appMapping).map((f) => ({
           "@type": "Question",
           name: f.q[lang],
           acceptedAnswer: { "@type": "Answer", text: plain(f.a[lang]) },

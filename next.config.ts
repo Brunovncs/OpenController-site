@@ -6,7 +6,7 @@ import type { NextConfig } from "next";
  * A visitor landing on an English page is sent to Portuguese by the language switch's cookie, or
  * without it by Accept-Language. Crawlers send neither and get English, with hreflang to /pt.
  */
-const PAGES = ["/", "/controllers", "/controllers/:slug"];
+const PAGES = ["/", "/controllers", "/controllers/:slug", "/changelog"];
 
 const toPt = (p: string) => (p === "/" ? "/pt" : `/pt${p}`);
 const toEn = (p: string) => (p === "/" ? "/en" : `/en${p}`);

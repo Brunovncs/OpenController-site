@@ -1,9 +1,13 @@
 "use client";
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { SearchField } from "@/components/arc/search-field/search-field";
+import SegmentedControl from "@/components/arc/segmented-control/segmented-control";
+import { SortableDataTable, type DataColumn, type SortDirection } from "@/components/arc/sortable-data-table/sortable-data-table";
 import { FAMILIES, FAMILY_ORDER, GROUPS, HINTS, SHORT, type Family, type GroupId } from "@/lib/families";
+import type { Lang } from "@/lib/i18n";
 import { MODELS, search, type Rating } from "@/lib/models";
-import { CheckIcon, DashIcon, SearchIcon } from "./icons";
+import { CheckIcon, DashIcon } from "./icons";
 import { useHtmlData, useLang } from "./lang";
 import { openRequest } from "./RequestDialog";
 import { T } from "./T";
@@ -135,6 +139,116 @@ export function FamilyDetail({ family, hint }: { family: Family; hint: string | 
   );
 }
 
+type FamilyRow = { id: string; name: string; group: number; extras: string; motion: number; light: number; touchpad: number; models: number };
+
+const GYRO_RANK = { yes: 2, dinput: 1, no: 0 } as const;
+
+const SORT_MESSAGES: Record<Lang, { sortBy: (label: string, current?: SortDirection) => string; sorted: (label: string, direction: SortDirection) => string }> = {
+  en: {
+    sortBy: (label, current) => `Sort by ${label}${current ? `, now ${current === "asc" ? "ascending" : "descending"}` : ""}`,
+    sorted: (label, direction) => `Sorted by ${label}, ${direction === "asc" ? "ascending" : "descending"}`,
+  },
+  pt: {
+    sortBy: (label, current) => `Ordenar por ${label}${current ? `, agora ${current === "asc" ? "crescente" : "decrescente"}` : ""}`,
+    sorted: (label, direction) => `Ordenado por ${label}, ${direction === "asc" ? "crescente" : "decrescente"}`,
+  },
+};
+
+/** A mark in the family table. On a phone the table folds into lines, so the column's name goes beside it. */
+function Flag({ on, label, children }: { on: boolean; label: string; children?: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <Mark on={on}>{children}</Mark>
+      <span className={`text-[12.5px] min-[621px]:hidden ${on ? "text-muted" : "text-faint"}`}>{label}</span>
+    </span>
+  );
+}
+
+function FamilyTable({ counts }: { counts: Record<string, number> }) {
+  const lang = useLang();
+  const rows = useMemo<FamilyRow[]>(
+    () =>
+      FAMILY_ORDER.map((id) => {
+        const f = FAMILIES[id];
+        return {
+          id,
+          name: f.label[lang],
+          group: GROUPS.findIndex((g) => g.id === f.group),
+          extras: f.extras?.[lang] ?? "",
+          motion: GYRO_RANK[f.gyro],
+          light: f.lightBar ? 1 : 0,
+          touchpad: f.touchpad ? 1 : 0,
+          models: counts[id] ?? 0,
+        };
+      }),
+    [counts, lang],
+  );
+  const pt = lang === "pt";
+  const columns: DataColumn<FamilyRow>[] = [
+    {
+      key: "name",
+      label: pt ? "Família" : "Family",
+      render: (_, r) => (
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("oc-family", { detail: r.id }))}
+          className="text-left text-fg underline decoration-transparent underline-offset-4 hover:decoration-line-strong"
+        >
+          {r.name}
+        </button>
+      ),
+    },
+    { key: "group", label: pt ? "Grupo" : "Group", numeric: false, width: 140, render: (_, r) => <span className="text-muted">{GROUPS[r.group]?.label[lang]}</span> },
+    {
+      key: "extras",
+      label: pt ? "Botões extras" : "Extra buttons",
+      sortable: false,
+      render: (_, r) => {
+        const f = FAMILIES[r.id];
+        if (f.unsupported)
+          return (
+            <span className="text-warn">
+              <T en="Not supported yet" pt="Ainda não é suportado" />
+            </span>
+          );
+        if (f.passthrough && !f.extras) return <span className="text-muted"><T en="Games already support it" pt="Os jogos já aceitam" /></span>;
+        if (f.extras) return <span className="text-muted">{r.extras}</span>;
+        return (
+          <span className="text-faint">
+            <T en="None" pt="Nenhum" />
+          </span>
+        );
+      },
+    },
+    {
+      key: "motion",
+      label: pt ? "Mira com movimento" : "Motion aim",
+      numeric: false,
+      render: (_, r) =>
+        r.motion === GYRO_RANK.dinput ? (
+          <Flag on label={pt ? "movimento" : "motion"}>
+            <span className="text-muted">D-input</span>
+          </Flag>
+        ) : (
+          <Flag on={r.motion === GYRO_RANK.yes} label={pt ? "movimento" : "motion"} />
+        ),
+    },
+    { key: "light", label: pt ? "Luz" : "Light bar", numeric: false, render: (_, r) => <Flag on={r.light === 1} label={pt ? "luz" : "light"} /> },
+    { key: "touchpad", label: "Touchpad", numeric: false, render: (_, r) => <Flag on={r.touchpad === 1} label="touchpad" /> },
+    { key: "models", label: pt ? "Modelos" : "Models", numeric: true },
+  ];
+  return (
+    <SortableDataTable
+      rows={rows}
+      columns={columns}
+      rowKey="id"
+      caption={pt ? "O que cada família de controles faz" : "What each controller family does"}
+      defaultSort={{ key: "group", direction: "asc" }}
+      messages={SORT_MESSAGES[lang]}
+    />
+  );
+}
+
 export function Compat() {
   const lang = useLang();
   const os = useHtmlData("os", "other");
@@ -200,14 +314,15 @@ export function Compat() {
   return (
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div role="tablist" aria-label={lang === "pt" ? "Visão" : "View"} className="seg">
-          <button type="button" role="tab" aria-selected={tab === "models"} onClick={() => setTab("models")}>
-            <T en="Models" pt="Modelos" /> <span className="text-faint">{MODELS.length}</span>
-          </button>
-          <button type="button" role="tab" aria-selected={tab === "families"} onClick={() => setTab("families")}>
-            <T en="Families" pt="Famílias" /> <span className="text-faint">{FAMILY_ORDER.length}</span>
-          </button>
-        </div>
+        <SegmentedControl
+          label={lang === "pt" ? "Visão" : "View"}
+          value={tab}
+          onValueChange={(v) => setTab(v as "models" | "families")}
+          options={[
+            { value: "models", label: lang === "pt" ? "Modelos" : "Models", accessory: <span className="ml-1.5 text-faint">{MODELS.length}</span> },
+            { value: "families", label: lang === "pt" ? "Famílias" : "Families", accessory: <span className="ml-1.5 text-faint">{FAMILY_ORDER.length}</span> },
+          ]}
+        />
         <p className="text-[12.5px] text-faint">
           <T en="Many controllers that are not on this list work too." pt="Muitos controles que não estão nesta lista também funcionam." />
         </p>
@@ -215,64 +330,59 @@ export function Compat() {
 
       {tab === "models" ? (
         <div className="mt-4">
-          <div className="card searchbox !rounded-2xl transition-[border-color,box-shadow]" data-spotlight>
-            <span className="rim" aria-hidden />
-            <label className="flex h-14 items-center gap-3 px-4 sm:px-5">
-              <SearchIcon width={18} height={18} className="shrink-0 text-faint" />
-              <span className="sr-only">{lang === "pt" ? "Buscar por nome, marca, família ou id USB" : "Search by name, brand, family or USB id"}</span>
-              <input
-                ref={inputRef}
-                type="search"
-                value={query}
-                onChange={(e) => {
-                  setQuery(e.target.value);
+          <div className="relative">
+            <SearchField
+              ref={inputRef}
+              label={lang === "pt" ? "Buscar por nome, marca, família ou id USB" : "Search by name, brand, family or USB id"}
+              clearLabel={lang === "pt" ? "Limpar busca" : "Clear search"}
+              value={query}
+              onValueChange={(v) => {
+                setQuery(v);
+                setLimit(PAGE);
+                setOpen(null);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  setQuery("");
+                  setFamily(null);
+                }
+              }}
+              placeholder={lang === "pt" ? "Tente DualSense ou 8BitDo" : "Try DualSense or 8BitDo"}
+              autoComplete="off"
+              spellCheck={false}
+            />
+            <span className="absolute right-0 top-0 hidden items-center gap-1 sm:flex" aria-hidden>
+              <kbd className="kbd">{os === "mac" ? "⌘" : "Ctrl"}</kbd>
+              <kbd className="kbd">K</kbd>
+            </span>
+          </div>
+          <div className="scrollbar-none mt-3 flex gap-1.5 overflow-x-auto" role="group" aria-label={lang === "pt" ? "Filtrar por grupo" : "Filter by group"}>
+            {[{ id: "all" as const, label: { en: "All", pt: "Todos" } }, ...GROUPS].map((g) => (
+              <button
+                key={g.id}
+                type="button"
+                aria-pressed={group === g.id && !family}
+                onClick={() => {
+                  setGroup(g.id);
+                  setFamily(null);
                   setLimit(PAGE);
                   setOpen(null);
                 }}
-                onKeyDown={(e) => {
-                  if (e.key === "Escape") {
-                    setQuery("");
-                    setFamily(null);
-                  }
-                }}
-                placeholder={lang === "pt" ? "Tente DualSense ou 8BitDo" : "Try DualSense or 8BitDo"}
-                autoComplete="off"
-                spellCheck={false}
-                className="h-full min-w-0 flex-1 bg-transparent text-[15px] text-fg outline-none placeholder:text-faint [&::-webkit-search-cancel-button]:hidden"
-              />
-              <span className="hidden items-center gap-1 sm:flex" aria-hidden>
-                <kbd className="kbd">{os === "mac" ? "⌘" : "Ctrl"}</kbd>
-                <kbd className="kbd">K</kbd>
-              </span>
-            </label>
-            <div className="scrollbar-none flex gap-1.5 overflow-x-auto border-t border-line px-3 py-2.5 sm:px-4">
-              {[{ id: "all" as const, label: { en: "All", pt: "Todos" } }, ...GROUPS].map((g) => (
-                <button
-                  key={g.id}
-                  type="button"
-                  aria-pressed={group === g.id && !family}
-                  onClick={() => {
-                    setGroup(g.id);
-                    setFamily(null);
-                    setLimit(PAGE);
-                    setOpen(null);
-                  }}
-                  className="btn shrink-0 rounded-full px-3 py-1 text-[12.5px] text-muted hover:bg-white/[0.05] hover:text-fg aria-pressed:bg-white/[0.08] aria-pressed:text-fg"
-                >
-                  <T en={g.label.en} pt={g.label.pt} />
-                </button>
-              ))}
-              {fam ? (
-                <button
-                  type="button"
-                  onClick={() => setFamily(null)}
-                  className="btn shrink-0 rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-[12.5px] text-fg"
-                  aria-label={lang === "pt" ? "Remover filtro de família" : "Clear family filter"}
-                >
-                  <T en={fam.label.en} pt={fam.label.pt} /> <span aria-hidden>×</span>
-                </button>
-              ) : null}
-            </div>
+                className="btn shrink-0 rounded-full px-3 py-1 text-[12.5px] text-muted hover:bg-white/[0.05] hover:text-fg aria-pressed:bg-white/[0.08] aria-pressed:text-fg"
+              >
+                <T en={g.label.en} pt={g.label.pt} />
+              </button>
+            ))}
+            {fam ? (
+              <button
+                type="button"
+                onClick={() => setFamily(null)}
+                className="btn shrink-0 rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-[12.5px] text-fg"
+                aria-label={lang === "pt" ? "Remover filtro de família" : "Clear family filter"}
+              >
+                <T en={fam.label.en} pt={fam.label.pt} /> <span aria-hidden>×</span>
+              </button>
+            ) : null}
           </div>
 
           <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4" role="group" aria-label={lang === "pt" ? "Filtrar por compatibilidade" : "Filter by compatibility"}>
@@ -449,91 +559,8 @@ export function Compat() {
           ) : null}
         </div>
       ) : (
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full min-w-[640px] border-collapse text-left text-[13.5px]">
-            <caption className="sr-only">{lang === "pt" ? "O que cada família de controles faz" : "What each controller family does"}</caption>
-            <thead>
-              <tr className="border-b border-line-strong text-faint">
-                <th scope="col" className="py-2.5 pr-4 font-normal">
-                  <T en="Family" pt="Família" />
-                </th>
-                <th scope="col" className="py-2.5 pr-4 font-normal">
-                  <T en="Extra buttons" pt="Botões extras" />
-                </th>
-                <th scope="col" className="py-2.5 pr-4 font-normal">
-                  <T en="Motion aim" pt="Mira com movimento" />
-                </th>
-                <th scope="col" className="py-2.5 pr-4 font-normal">
-                  <T en="Light bar" pt="Luz" />
-                </th>
-                <th scope="col" className="py-2.5 pr-4 font-normal">
-                  Touchpad
-                </th>
-                <th scope="col" className="py-2.5 text-right font-normal">
-                  <T en="Models" pt="Modelos" />
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {GROUPS.map((g) => {
-                const fams = FAMILY_ORDER.filter((id) => FAMILIES[id].group === g.id);
-                return [
-                  <tr key={`g-${g.id}`}>
-                    <th colSpan={6} scope="colgroup" className="pt-6 pb-2 text-left font-mono text-[11px] font-normal uppercase tracking-[0.08em] text-faint">
-                      <T en={g.label.en} pt={g.label.pt} />
-                    </th>
-                  </tr>,
-                  ...fams.map((id) => {
-                    const f = FAMILIES[id];
-                    return (
-                      <tr key={id} className="border-t border-line align-top">
-                        <th scope="row" className="py-3 pr-4 font-normal">
-                          <button
-                            type="button"
-                            onClick={() => window.dispatchEvent(new CustomEvent("oc-family", { detail: id }))}
-                            className="text-left text-fg underline decoration-transparent underline-offset-4 hover:decoration-line-strong"
-                          >
-                            <T en={f.label.en} pt={f.label.pt} />
-                          </button>
-                        </th>
-                        <td className="py-3 pr-4 text-muted">
-                          {f.unsupported ? (
-                            <span className="text-warn">
-                              <T en="Not supported yet" pt="Ainda não é suportado" />
-                            </span>
-                          ) : f.passthrough && !f.extras ? (
-                            <T en="Games already support it" pt="Os jogos já aceitam" />
-                          ) : f.extras ? (
-                            <T en={f.extras.en} pt={f.extras.pt} />
-                          ) : (
-                            <span className="text-faint">
-                              <T en="None" pt="Nenhum" />
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-3 pr-4">
-                          {f.gyro === "dinput" ? (
-                            <Mark on>
-                              <span className="text-muted">D-input</span>
-                            </Mark>
-                          ) : (
-                            <Mark on={f.gyro === "yes"} />
-                          )}
-                        </td>
-                        <td className="py-3 pr-4">
-                          <Mark on={f.lightBar} />
-                        </td>
-                        <td className="py-3 pr-4">
-                          <Mark on={f.touchpad} />
-                        </td>
-                        <td className="py-3 text-right font-mono text-[12px] text-faint">{counts[id] ?? 0}</td>
-                      </tr>
-                    );
-                  }),
-                ];
-              })}
-            </tbody>
-          </table>
+        <div className="mt-4">
+          <FamilyTable counts={counts} />
         </div>
       )}
     </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LICENSE_URL, OFFICIAL_DOMAIN, RELEASES_URL, REPO_URL } from "@/lib/site";
+import { LICENSE_URL, OFFICIAL_DOMAIN, REPO_URL } from "@/lib/site";
 import { ContactButton } from "./ContactDialog";
 import { LangToggle } from "./lang";
 import { LocalLink } from "./LocalLink";
@@ -39,9 +39,9 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
               </LocalLink>
             </li>
             <li>
-              <a className={LINK} href={RELEASES_URL} target="_blank" rel="noopener noreferrer">
-                <T en="All versions" pt="Todas as versões" />
-              </a>
+              <LocalLink className={LINK} path="/changelog">
+                <T en="What's new" pt="Novidades" />
+              </LocalLink>
             </li>
             <li>
               <a className={LINK} href={`${home}#contact`}>

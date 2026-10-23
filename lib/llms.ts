@@ -37,7 +37,8 @@ export function llmsTxt(release: Release | null, full: boolean): string {
   line(`- [Website in Portuguese](${absUrl("pt")})`);
   line(`- [Controllers](${absUrl("en", "/controllers")}): one page per controller family`);
   line(`- [Source code](${REPO_URL})`);
-  line(`- [All versions and release notes](${RELEASES_URL})`);
+  line(`- [What's new](${absUrl("en", "/changelog")}): every version and its release notes`);
+  line(`- [All versions and release notes on GitHub](${RELEASES_URL})`);
   line(`- [Report a problem](${ISSUES_URL})`);
   line(`- [License, MIT](${LICENSE_URL})`);
   if (!full) line(`- [Full text, with every answer and controller model](${absUrl("en", "/llms-full.txt")})`);

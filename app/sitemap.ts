@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
     { path: "/controllers", priority: 0.8 },
+    { path: "/changelog", priority: 0.5 },
     ...GUIDES.map((g) => ({ path: guidePath(g), priority: 0.6 })),
   ];
   return paths.flatMap(({ path, priority }) =>

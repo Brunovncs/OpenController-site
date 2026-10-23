@@ -44,7 +44,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   const { lang } = await params;
   if (!isLang(lang)) notFound();
   return (
-    <html lang={HTML_LANG[lang]} data-lang={lang} suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
+    <html lang={HTML_LANG[lang]} data-lang={lang} data-theme="dark" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: BOOT_SCRIPT }} />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />

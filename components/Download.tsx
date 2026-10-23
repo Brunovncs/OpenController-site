@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { formatSize, platformsFor, type Os, type Platform, type Release } from "@/lib/github";
 import { BUILD_URL, LATEST_URL, RELEASES_URL } from "@/lib/site";
 import { ArrowIcon, DownloadIcon } from "./icons";
+import { LocalLink } from "./LocalLink";
 import { T } from "./T";
 
 /** `ask` is the question next to the main button that offers this build instead. */
@@ -83,9 +84,9 @@ function Primary({ platform, release, quiet, children }: { platform: Platform; r
           </>
         ) : null}
         <span aria-hidden>·</span>
-        <a href={release.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line-strong underline-offset-4 hover:text-fg">
+        <LocalLink path={`/changelog#v${release.version}`} className="underline decoration-line-strong underline-offset-4 hover:text-fg">
           <T en="What's new" pt="Novidades" />
-        </a>
+        </LocalLink>
       </p>
       {children}
     </div>

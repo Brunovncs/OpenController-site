@@ -25,6 +25,17 @@ type ApiRelease = {
   html_url: string;
   published_at: string | null;
   assets: ApiAsset[];
+  body?: string | null;
+  draft?: boolean;
+  prerelease?: boolean;
+};
+
+/** A published version and its notes, which are that version's section of the app's CHANGELOG.md. */
+export type ReleaseNotes = {
+  version: string;
+  url: string;
+  publishedAt: string;
+  notes: string;
 };
 
 const REVALIDATE = 3600;
@@ -88,6 +99,29 @@ export async function getLatestRelease(): Promise<Release | null> {
     return parseRelease((await res.json()) as ApiRelease);
   } catch {
     return null;
+  }
+}
+
+/** Every published version, newest first, or null when GitHub does not answer. */
+export async function getReleases(): Promise<ReleaseNotes[] | null> {
+  const out: ReleaseNotes[] = [];
+  try {
+    for (let page = 1; page <= 5; page++) {
+      const res = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=100&page=${page}`, {
+        headers: headers(),
+        next: { revalidate: REVALIDATE, tags: [RELEASE_TAG] },
+      });
+      if (!res.ok) return out.length ? out : null;
+      const list = (await res.json()) as ApiRelease[];
+      for (const r of list) {
+        if (r.draft || r.prerelease || !r.published_at) continue;
+        out.push({ version: r.tag_name.replace(/^v/, ""), url: r.html_url, publishedAt: r.published_at, notes: r.body ?? "" });
+      }
+      if (list.length < 100) break;
+    }
+    return out;
+  } catch {
+    return out.length ? out : null;
   }
 }
 

@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import SegmentedControl from "@/components/arc/segmented-control/segmented-control";
 import { glyphsFor, shapeFor, type Glyphs, type Shape } from "@/lib/drawings";
 import { FAMILIES, HINTS, SHORT, type Family } from "@/lib/families";
 import { MODELS, gamepadName, lookup, parseGamepadId } from "@/lib/models";
 import { PadDrawing } from "./PadDrawing";
 import { openRequest } from "./RequestDialog";
-import { useHtmlData } from "./lang";
+import { useHtmlData, useLang } from "./lang";
 import { T } from "./T";
 
 type Snap = { index: number; id: string; mapping: string; buttons: number[]; axes: number[] };
@@ -195,6 +196,7 @@ function StatusPill({ state, example }: { state: State; example: boolean }) {
 }
 
 export function ControllerCheck() {
+  const lang = useLang();
   const rootRef = useRef<HTMLDivElement>(null);
   const [pads, setPads] = useState<Snap[]>([]);
   const [active, setActive] = useState<number | null>(null);
@@ -326,13 +328,13 @@ export function ControllerCheck() {
             {pad ? <span className="min-w-0 truncate text-[14px] text-muted">{gamepadName(pad.id)}</span> : null}
           </p>
           {pads.length > 1 && !example ? (
-            <div role="tablist" aria-label="Controllers" className="seg ml-auto">
-              {pads.map((p) => (
-                <button key={p.index} role="tab" aria-selected={p.index === (pad?.index ?? -1)} onClick={() => setActive(p.index)} type="button">
-                  {p.index + 1}
-                </button>
-              ))}
-            </div>
+            <SegmentedControl
+              className="ml-auto"
+              label={lang === "pt" ? "Controles" : "Controllers"}
+              value={String(pad?.index ?? -1)}
+              onValueChange={(v) => setActive(Number(v))}
+              options={pads.map((p) => ({ value: String(p.index), label: String(p.index + 1) }))}
+            />
           ) : null}
         </div>
 

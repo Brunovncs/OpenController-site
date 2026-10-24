@@ -6,5 +6,6 @@ export const ISSUES_URL = `${REPO_URL}/issues`;
 export const LICENSE_URL = `${REPO_URL}/blob/main/LICENSE`;
 export const BUILD_URL = `${REPO_URL}#building-and-testing`;
 export const OFFICIAL_DOMAIN = "opencontroller.com.br";
+export const TWITTER_URL = "https://x.com/zenorev";
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? `https://${OFFICIAL_DOMAIN}`).replace(/\/$/, "");

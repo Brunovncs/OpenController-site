@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { LICENSE_URL, OFFICIAL_DOMAIN, REPO_URL } from "@/lib/site";
+import { ISSUES_URL, LICENSE_URL, OFFICIAL_DOMAIN, REPO, REPO_URL, TWITTER_URL } from "@/lib/site";
 import { ContactButton } from "./ContactDialog";
 import { LangToggle } from "./lang";
 import { LocalLink } from "./LocalLink";
 import { T } from "./T";
 
 const LINK = "text-muted transition-colors hover:text-fg";
+const INLINE = "underline underline-offset-2 transition-colors hover:text-fg";
 
 export function Footer({ version, path = "/", home = "" }: { version: string | null; path?: string; home?: string }) {
   return (
@@ -73,8 +74,14 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
         <div className="space-y-3 border-t border-line py-6">
         <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
           <T
-            en={<>{OFFICIAL_DOMAIN} is the only official OpenController website. Download it only from here or from GitHub.</>}
-            pt={<>O {OFFICIAL_DOMAIN} é o único site oficial do OpenController. Baixe só por aqui ou pelo GitHub.</>}
+            en={<>OpenController is only distributed from <a className={INLINE} href={REPO_URL} target="_blank" rel="noopener noreferrer">github.com/{REPO}</a> and {OFFICIAL_DOMAIN}. Other sites using the name are not affiliated with this project.</>}
+            pt={<>O OpenController só é distribuído pelo <a className={INLINE} href={REPO_URL} target="_blank" rel="noopener noreferrer">github.com/{REPO}</a> e pelo {OFFICIAL_DOMAIN}. Outros sites que usam o nome não têm ligação com este projeto.</>}
+          />
+        </p>
+        <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
+          <T
+            en={<>OpenController is licensed under <a className={INLINE} href={LICENSE_URL} target="_blank" rel="noopener noreferrer">MIT</a>. <a className={INLINE} href={REPO_URL} target="_blank" rel="noopener noreferrer">Source on GitHub</a>. <a className={INLINE} href={ISSUES_URL} target="_blank" rel="noopener noreferrer">Report a bug</a>.</>}
+            pt={<>O OpenController é licenciado sob <a className={INLINE} href={LICENSE_URL} target="_blank" rel="noopener noreferrer">MIT</a>. <a className={INLINE} href={REPO_URL} target="_blank" rel="noopener noreferrer">Código no GitHub</a>. <a className={INLINE} href={ISSUES_URL} target="_blank" rel="noopener noreferrer">Reportar um bug</a>.</>}
           />
         </p>
         <p className="max-w-4xl text-[12px] leading-relaxed text-faint">
@@ -82,6 +89,12 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
             en="Not affiliated with Sony, Microsoft, Nintendo, Valve, 8BitDo or any other controller maker; their names identify compatible hardware only. ViGEmBus, HidHide, DsHidMini and BthPS3 are by Nefarius Software Solutions and are downloaded from their releases, not bundled. Use it at your own risk: the authors are not responsible for bans or other penalties from how it is used, such as macros in games that forbid them."
             pt="Sem vínculo com Sony, Microsoft, Nintendo, Valve, 8BitDo ou qualquer outro fabricante de controles; os nomes só identificam hardware compatível. ViGEmBus, HidHide, DsHidMini e BthPS3 são da Nefarius Software Solutions e são baixados das páginas deles, não incluídos. O uso é por sua conta: os autores não se responsabilizam por banimentos ou outras punições causadas pelo uso, como macros em jogos que as proíbem."
           />
+        </p>
+        <p className="text-[12.5px] text-muted">
+          <T en="Made by" pt="Feito por" />{" "}
+          <a className={INLINE} href={TWITTER_URL} target="_blank" rel="noopener noreferrer">
+            Bruno Vinicius (@zenorev)
+          </a>
         </p>
         </div>
       </div>

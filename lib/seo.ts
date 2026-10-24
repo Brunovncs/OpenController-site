@@ -3,7 +3,7 @@ import type { Release } from "./github";
 import { absUrl, alternates, HTML_LANG, LANGS, OG_LOCALE, type L, type Lang } from "./i18n";
 import { faqItems, plain } from "./faq";
 import { guidePath, guideTitle, type Guide } from "./guides";
-import { LICENSE_URL, OFFICIAL_DOMAIN, RELEASES_URL, REPO_URL, SITE_URL } from "./site";
+import { LICENSE_URL, OFFICIAL_DOMAIN, RELEASES_URL, REPO_URL, SITE_URL, TWITTER_URL } from "./site";
 
 /** Head copy for the home page. Facts here must match what the page and the app's CHANGELOG say. */
 export const HOME: { title: L; description: L } = {
@@ -22,7 +22,7 @@ export const AUTHOR = {
   name: "Bruno Vinicius Veronez de Jesus",
   alternateName: "Bruno Vinicius",
   url: "https://brunovinicius.dev.br",
-  sameAs: ["https://github.com/Brunovncs", "https://www.linkedin.com/in/brunoviniciusrp/"],
+  sameAs: ["https://github.com/Brunovncs", "https://www.linkedin.com/in/brunoviniciusrp/", TWITTER_URL],
 };
 
 /** A page's whole head: Next replaces openGraph and twitter as a block, so each page sets all of it. */

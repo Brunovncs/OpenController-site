@@ -76,8 +76,8 @@ export const FAMILIES: Record<string, Family> = {
     lightBar: false,
     touchpad: false,
     note: {
-      en: "On Windows it needs Nefarius' DsHidMini in SXS mode, and BthPS3 for Bluetooth. The app offers both. There its pressure-sensitive buttons can move the triggers and its gyro aims, both experimental.",
-      pt: "No Windows precisa do DsHidMini da Nefarius no modo SXS, e do BthPS3 para Bluetooth. O app oferece os dois. Nesse modo, os botões sensíveis à pressão podem mover os gatilhos e o giroscópio mira, os dois em fase experimental.",
+      en: "On Windows it needs Nefarius' DsHidMini in SXS mode, and BthPS3 for Bluetooth. The app offers both. There its pressure-sensitive buttons can move the triggers, its d-pad can move a stick as hard as it is pressed, and its gyro aims, all experimental.",
+      pt: "No Windows precisa do DsHidMini da Nefarius no modo SXS, e do BthPS3 para Bluetooth. O app oferece os dois. Nesse modo, os botões sensíveis à pressão podem mover os gatilhos, o direcional pode mover um analógico conforme a força e o giroscópio mira, tudo em fase experimental.",
     },
   },
   Ps2Adapter: {

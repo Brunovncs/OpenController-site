@@ -65,7 +65,7 @@ function steps(g: Guide): L[] {
         : { en: "Open your game. It keeps reading the controller as it already did, now with a steady player number.", pt: "Abra o jogo. Ele continua lendo o controle como já fazia, agora com o número de jogador fixo." },
     ];
   const out: L[] = [download, connect];
-  if (f.extras) out.push({ en: "Click it to set what each extra button does: an Xbox button, a key or a recorded macro, with a profile per game if you want.", pt: "Clique nele para escolher o que cada botão extra faz: um botão de Xbox, uma tecla ou uma macro gravada, com um perfil por jogo se quiser." });
+  if (f.extras) out.push({ en: "Click it to set what each extra button does: one or several Xbox buttons, a key or a macro recorded from the keyboard and the controller, with a profile per game if you want.", pt: "Clique nele para escolher o que cada botão extra faz: um ou vários botões de Xbox, uma tecla ou uma macro gravada do teclado e do controle, com um perfil por jogo se quiser." });
   if (f.gyro !== "no") out.push({ en: "To aim by moving the controller, turn it on under Motion: always, while aiming, or while holding a button.", pt: "Para mirar movendo o controle, ligue em Movimento: sempre, ao mirar ou segurando um botão." });
   out.push({ en: "Open your game and play. It sees an Xbox 360 controller.", pt: "Abra o jogo e jogue. Ele vê um controle de Xbox 360." });
   return out;

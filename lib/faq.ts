@@ -59,8 +59,8 @@ export const QA: FaqItem[] = [
   {
     q: { en: "Can I remap buttons for each game without Steam?", pt: "Dá para remapear os botões de cada jogo sem a Steam?" },
     a: {
-      en: "Yes, on Windows and Linux. Open your controller and, under Buttons, open All buttons. Any button can become another one, a key or a macro, and the game no longer sees it as itself. Save it in a profile and add the game to that profile: it switches on by itself while the game is in front, whether the game came from Steam or not. Restore defaults puts everything back.",
-      pt: "Sim, no Windows e no Linux. Abra o seu controle e, em Botões, abra Todos os botões. Qualquer botão pode virar outro, uma tecla ou uma macro, e o jogo deixa de vê-lo como ele mesmo. Salve num perfil e adicione o jogo a esse perfil: ele entra sozinho enquanto o jogo está na frente, tenha o jogo vindo da Steam ou não. Restaurar padrão desfaz tudo.",
+      en: "Yes, on Windows and Linux. Open your controller and, under Buttons, open All buttons. Any button can become another one or several at once, a key, or a macro of keys and controller buttons, and the game no longer sees it as itself. Save it in a profile and add the game to that profile: it switches on by itself while the game is in front, whether the game came from Steam or not. Restore defaults puts everything back.",
+      pt: "Sim, no Windows e no Linux. Abra o seu controle e, em Botões, abra Todos os botões. Qualquer botão pode virar outro ou vários juntos, uma tecla ou uma macro de teclas e botões do controle, e o jogo deixa de vê-lo como ele mesmo. Salve num perfil e adicione o jogo a esse perfil: ele entra sozinho enquanto o jogo está na frente, tenha o jogo vindo da Steam ou não. Restaurar padrão desfaz tudo.",
     },
   },
   {

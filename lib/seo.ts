@@ -98,7 +98,7 @@ function app(lang: Lang, release: Release | null) {
         ? [
             "Controles de PlayStation, Switch, 8BitDo e outros aparecem nos jogos como controle de Xbox 360",
             "Vários controles ao mesmo tempo, cada um com o próprio número de jogador",
-            "Qualquer botão como outro botão, tecla ou macro, com perfis por jogo",
+            "Qualquer botão como um ou vários botões, tecla ou macro, com perfis por jogo",
             "Mira com giroscópio",
             "Zona morta, curva e correção de drift dos analógicos",
             "Luz e bateria do controle",
@@ -106,7 +106,7 @@ function app(lang: Lang, release: Release | null) {
         : [
             "PlayStation, Switch, 8BitDo and other controllers show up in games as an Xbox 360 controller",
             "Several controllers at once, each with its own player number",
-            "Any button as another button, a key or a macro, with profiles per game",
+            "Any button as one or several buttons, a key or a macro, with profiles per game",
             "Gyro aiming",
             "Stick deadzone, response curve and drift correction",
             "Controller light and battery",

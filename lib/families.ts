@@ -341,8 +341,8 @@ export const HINTS: Record<string, L> = {
     pt: "No modo Xbox, que é o padrão, os botões extras não funcionam. Ligue o controle segurando B para usar o modo D-input, onde eles e a mira com movimento funcionam.",
   },
   EightBitDoSwitchD: {
-    en: "Set the mode switch on its back to D. That is D-input mode, where PL and PR work.",
-    pt: "Coloque a chave de modo atrás dele em D. É o modo D-input, onde PL e PR funcionam.",
+    en: "If it has a mode switch with a D position (Ultimate 2.4G, Pro 2), set it to D. That is D-input mode, where the back buttons work. The Ultimate Bluetooth has no D-input mode: its back buttons only copy other buttons, set in 8BitDo's app.",
+    pt: "Se ele tem uma chave de modo com a posição D (Ultimate 2.4G, Pro 2), coloque em D. É o modo D-input, onde os botões de trás funcionam. O Ultimate Bluetooth não tem modo D-input: os botões de trás só copiam outros botões, configurados no app da 8BitDo.",
   },
   EightBitDo2CBluetooth: {
     en: "On its receiver L4 and R4 are hidden. Over Bluetooth they work.",

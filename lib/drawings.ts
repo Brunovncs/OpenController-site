@@ -65,8 +65,10 @@ export function shapeFor(model: Pick<IndexedModel, "family" | "art" | "name" | "
     case "EightBitDoUltimate2C":
       return "ultimate2c";
     case "EightBitDoFour":
-    case "EightBitDoPro2":
       return art === "Offset" || /^8BitDo Ultimate/i.test(name) ? "ultimate2" : "sn30pro";
+    case "EightBitDoPro2":
+      // 2dc8:3106 is also the first Ultimate in XInput mode.
+      return /^8BitDo Ultimate/i.test(name) ? "ultimate" : "sn30pro";
     case "EightBitDo":
       if (art === "Retro") return "retro";
       if (art === "Symmetric") return "sn30pro";

@@ -9272,5 +9272,17 @@
     "product": "2009",
     "rating": "Compatible",
     "vendor": "057e"
+  },
+  {
+    "alias_of": "8BitDo Ultimate 2.4G / Pro 2 wired",
+    "art": "Symmetric",
+    "brand": "8BitDo",
+    "drawing": "ultimateBluetooth",
+    "family": "EightBitDoPro2",
+    "hint": "EightBitDoSwitchD",
+    "name": "8BitDo Ultimate Bluetooth",
+    "product": "3106",
+    "rating": "Caveats",
+    "vendor": "2dc8"
   }
 ]

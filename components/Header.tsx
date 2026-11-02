@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { REPO_URL } from "@/lib/site";
-import { GitHubIcon, StarIcon } from "./icons";
+import { COFFEE_URL, REPO_URL } from "@/lib/site";
+import { BmcIcon, GitHubIcon, StarIcon } from "./icons";
 import { LangToggle } from "./lang";
 import { T } from "./T";
 
@@ -22,13 +22,31 @@ export function GitHubButton({ stars }: { stars: number | null }) {
       aria-label={stars ? `GitHub, ${stars} stars` : "GitHub"}
     >
       <GitHubIcon />
-      <span className="hidden sm:inline">GitHub</span>
+      <span className="hidden sm:max-[1099px]:inline">GitHub</span>
       {stars ? (
         <span className="flex items-center gap-1 border-l border-line-strong pl-2 font-mono text-[12px] text-muted">
           <StarIcon width={12} height={12} />
           {stars.toLocaleString("en-US")}
         </span>
       ) : null}
+    </a>
+  );
+}
+
+function CoffeeButton() {
+  return (
+    <a
+      href={COFFEE_URL} target="_blank" rel="noopener noreferrer"
+      className="btn btn-ghost btn-split h-9 rounded-[10px] text-[13px] max-sm:hidden"
+    >
+      <span className="btn-split-icon">
+        <BmcIcon />
+      </span>
+      <span className="sr-only md:max-[1099px]:not-sr-only min-[1240px]:not-sr-only">
+        <span className="whitespace-nowrap px-3">
+          <T en="Buy me a coffee" pt="Me pague um café" />
+        </span>
+      </span>
     </a>
   );
 }
@@ -59,6 +77,7 @@ export function Header({ stars, version, path = "/", home = "" }: { stars: numbe
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <LangToggle path={path} />
+          <CoffeeButton />
           <GitHubButton stars={stars} />
         </div>
       </div>

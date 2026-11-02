@@ -219,6 +219,19 @@ html:not([data-arch]) .arch-variant[data-for="arm64"] {
   background: rgb(255 255 255 / 0.06);
   border-color: rgb(255 255 255 / 0.24);
 }
+/* Ghost button whose icon sits on its own colored block (Buy Me a Coffee yellow). */
+.btn-split {
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.btn-split-icon {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  padding: 0 10px;
+  background: #ffdd00;
+}
 
 /* Segmented control (language toggle and tabs). */
 .seg {

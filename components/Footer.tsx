@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ISSUES_URL, LICENSE_URL, OFFICIAL_DOMAIN, REPO, REPO_URL, TWITTER_URL } from "@/lib/site";
+import { COFFEE_URL, ISSUES_URL, LICENSE_URL, OFFICIAL_DOMAIN, REPO, REPO_URL, TWITTER_URL } from "@/lib/site";
 import { ContactButton } from "./ContactDialog";
 import { LangToggle } from "./lang";
 import { LocalLink } from "./LocalLink";
@@ -53,6 +53,11 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
               <ContactButton kind="other" className={LINK}>
                 <T en="Contact us" pt="Fale conosco" />
               </ContactButton>
+            </li>
+            <li>
+              <a className={LINK} href={COFFEE_URL} target="_blank" rel="noopener noreferrer">
+                <T en="Buy me a coffee" pt="Me pague um café" />
+              </a>
             </li>
             <li>
               <a className={LINK} href={LICENSE_URL} target="_blank" rel="noopener noreferrer">

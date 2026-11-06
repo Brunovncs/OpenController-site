@@ -15,15 +15,20 @@ export type { Glyphs, Shape };
 
 /** `grip`: carried by a flight stick's grip, so it leans and turns with it. */
 type Btn = { input: string; circle?: [number, number, number]; d?: string; icon?: string; label?: string; grip?: boolean };
-/** `grip`: a flight stick's grip seen from above, drawn in place of the cap, turning up to `twist` degrees. */
-type Stick = { circle: [number, number, number]; well?: number; ring?: [number, number]; grip?: string; twist?: number };
-/** A throttle's slot, filled from the back as far as the trigger it stands for. */
-type Lever = { input: string; d: string };
+/**
+ * `grip`: a flight stick's grip seen from above, drawn in place of the cap, turning up to `twist` degrees.
+ * With `steer`, a wheel: it turns with the left stick's x up to `steer` degrees and does not lean.
+ */
+type Stick = { circle: [number, number, number]; well?: number; ring?: [number, number]; grip?: string; twist?: number; steer?: number };
+/** A throttle's slot, filled from the back as far as the trigger it stands for; a pedal has no `handle`. */
+type Lever = { input: string; d: string; handle?: boolean };
+/** `grip`: carried by the grip, as a wheel's plate and hub are. */
+type Panel = { style: string; d: string; grip?: boolean };
 type Pad = {
   body: string;
   bumpers?: [string, string];
   triggers?: [string, string];
-  panels?: { style: string; d: string }[];
+  panels?: Panel[];
   touchpad?: string;
   dots?: [number, number, number][];
   levers?: Lever[];
@@ -234,12 +239,15 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
         </clipPath>
         <path d={l.d} fill="#0d0e11" stroke={val > 0.05 ? ACCENT : "rgba(255,255,255,0.2)"} className="pad-part" />
         {val > 0.02 ? <rect x={0} y={bottom - h} width={400} height={h} fill={ACCENT} opacity={0.9} clipPath={url(`lv${k}`)} /> : null}
-        <rect x={left - 3} y={at - 3.5} width={right - left + 6} height={7} rx={3} fill={url("cap")} stroke={val > 0.05 ? ACCENT : "rgba(255,255,255,0.26)"} />
+        {l.handle === false ? null : (
+          <rect x={left - 3} y={at - 3.5} width={right - left + 6} height={7} rx={3} fill={url("cap")} stroke={val > 0.05 ? ACCENT : "rgba(255,255,255,0.26)"} />
+        )}
       </g>
     );
   };
 
-  // A flight stick's grip leans with the stick and turns with the twist, the right stick's x.
+  // A flight stick's grip leans with the stick and turns with the twist, the right stick's x. A
+  // wheel only turns, with the left stick's x.
   const gripStick = P.sticks?.[0]?.grip ? P.sticks[0] : undefined;
   const lean = (s: Stick) => {
     const [x, y, cap] = s.circle;
@@ -247,6 +255,7 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
     const reach = cap * 0.4;
     const mx = Math.max(-1, Math.min(1, axes[0] || 0));
     const my = Math.max(-1, Math.min(1, axes[1] || 0));
+    if (s.steer) return { transform: `rotate(${mx * s.steer} ${x} ${y})`, moved: Math.abs(mx) > 0.02 };
     const twist = Math.max(-1, Math.min(1, axes[2] || 0));
     return {
       transform: `translate(${mx * reach} ${my * reach}) rotate(${twist * (s.twist ?? 0)} ${x} ${y})`,
@@ -314,7 +323,7 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
     );
   };
 
-  const panel = (p: { style: string; d: string }, k: number) => {
+  const panel = (p: Panel, k: number) => {
     if (p.style === "line") return <path key={k} d={p.d} fill="none" stroke={SOFT} strokeWidth={1.2} />;
     if (p.style === "glow") return <path key={k} d={p.d} fill="none" stroke="rgba(96,205,255,0.55)" strokeWidth={2.2} />;
     if (p.style === "light") return <path key={k} d={p.d} fill="rgba(96,205,255,0.28)" stroke="rgba(96,205,255,0.5)" />;
@@ -357,7 +366,7 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
 
       <path d={P.body} fill="#0b0c0f" />
       <path d={P.body} fill={url("sheen")} stroke="rgba(255,255,255,0.2)" strokeWidth={1.2} />
-      {P.panels?.map(panel)}
+      {P.panels?.filter((p) => !p.grip).map(panel)}
       {P.dots?.map(([x, y, r], k) => (
         <circle key={k} cx={x} cy={y} r={r} fill="rgba(255,255,255,0.28)" />
       ))}
@@ -380,6 +389,7 @@ export function PadDrawing({ shape, glyphs, buttons, axes, dim, className = "", 
         <g transform={lean(gripStick).transform}>
           <path d={gripStick.grip} transform="translate(3 4)" fill="rgba(0,0,0,0.35)" />
           <path d={gripStick.grip} fill={url("cap")} stroke={lean(gripStick).moved ? ACCENT : "rgba(255,255,255,0.26)"} strokeWidth={1.2} />
+          {P.panels?.filter((p) => p.grip).map(panel)}
           {P.buttons.filter((b) => b.grip).map(button)}
         </g>
       ) : null}

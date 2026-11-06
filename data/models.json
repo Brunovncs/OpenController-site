@@ -6501,6 +6501,16 @@
   },
   {
     "art": "Offset",
+    "drawing": "logitechG29",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech G29 Driving Force",
+    "product": "c24f",
+    "rating": "Compatible",
+    "vendor": "046d"
+  },
+  {
+    "art": "Offset",
     "drawing": null,
     "family": "Xbox",
     "hint": null,

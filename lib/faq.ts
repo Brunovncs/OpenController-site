@@ -94,8 +94,8 @@ export const QA: FaqItem[] = [
   {
     q: { en: "Does it work with flight sticks and wheels?", pt: "Funciona com manche e volante?" },
     a: {
-      en: "Yes, and it leaves them as they are, since flight and racing games read them directly, with their twist, throttle and force feedback. To play a gamepad game with a Logitech Extreme 3D Pro, open it in the app and turn off Keep native. It then becomes an Xbox controller. For other flight sticks and wheels, send their details from the app so they can get the same.",
-      pt: "Sim, e ele não mexe neles, porque os jogos de voo e de corrida leem esses aparelhos direto, com a torção, o acelerador e o force feedback. Para jogar um jogo de controle com um Logitech Extreme 3D Pro, abra-o no app e desligue Deixar nativo. Aí ele vira um controle de Xbox. Para outros manches e volantes, envie os dados deles pelo app para que ganhem o mesmo.",
+      en: "Yes, and it leaves them as they are, since flight and racing games read them directly, with their twist, throttle and force feedback. To play a gamepad game with a Logitech Extreme 3D Pro, or a Logitech G29 on Linux or a Mac, open it in the app and turn off Keep native. It then becomes an Xbox controller. For other flight sticks and wheels, send their details from the app so they can get the same.",
+      pt: "Sim, e ele não mexe neles, porque os jogos de voo e de corrida leem esses aparelhos direto, com a torção, o acelerador e o force feedback. Para jogar um jogo de controle com um Logitech Extreme 3D Pro, ou um Logitech G29 no Linux ou no Mac, abra-o no app e desligue Deixar nativo. Aí ele vira um controle de Xbox. Para outros manches e volantes, envie os dados deles pelo app para que ganhem o mesmo.",
     },
   },
   {

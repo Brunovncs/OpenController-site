@@ -3103,10 +3103,10 @@
     "art": "Offset",
     "drawing": null,
     "family": "Flydigi",
-    "hint": "FlydigiThirdParty",
+    "hint": null,
     "name": "Flydigi Vader 2/3 dongle (V1 protocol)",
     "product": "2412",
-    "rating": "Caveats",
+    "rating": "Compatible",
     "vendor": "04b4"
   },
   {

@@ -8,7 +8,8 @@ import { Header } from "@/components/Header";
 import { ArrowIcon } from "@/components/icons";
 import { GROUPS, HINTS } from "@/lib/families";
 import { getLatestRelease, getStars } from "@/lib/github";
-import { GUIDES, guideBySlug, guideDescription, guideModels, guidePath, guideTitle, type Guide } from "@/lib/guides";
+import { GUIDE_COPY } from "@/lib/guide-copy";
+import { GUIDES, guideBySlug, guideDescription, guideMetaTitle, guideModels, guidePath, guideTitle, type Guide } from "@/lib/guides";
 import { LANGS, localePath, type L, type Lang } from "@/lib/i18n";
 import { guideJsonLd, jsonLdScript, pageMeta } from "@/lib/seo";
 
@@ -24,8 +25,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/controller
   const g = guideBySlug(slug);
   if (!g) return {};
   const l = lang as Lang;
-  const title = `${guideTitle(g)[l]} | OpenController`;
-  return pageMeta(l, guidePath(g), title, guideDescription(g)[l]);
+  return pageMeta(l, guidePath(g), guideMetaTitle(g)[l], guideDescription(g)[l]);
 }
 
 const LINK = "text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg";
@@ -152,6 +152,16 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/controlle
             </p>
           ))}
         </Section>
+
+        {GUIDE_COPY[g.slug]?.sections.map((s) => (
+          <Section key={s.id} id={s.id} title={t(s.title)}>
+            {s.body.map((p, i) => (
+              <p key={i} className={i ? "mt-4" : undefined}>
+                {t(p)}
+              </p>
+            ))}
+          </Section>
+        ))}
 
         {!g.family.unsupported ? (
           <Section id="setup" title={lang === "pt" ? "Como configurar" : "How to set it up"}>

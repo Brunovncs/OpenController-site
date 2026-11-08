@@ -1,4 +1,5 @@
 import { FAMILIES, type Family } from "./families";
+import { GUIDE_COPY } from "./guide-copy";
 import type { L } from "./i18n";
 import { MODELS, type IndexedModel } from "./models";
 
@@ -65,8 +66,15 @@ export function guideTitle(g: Guide): L {
   return { en: `${up(g.name.en)} on PC`, pt: `${up(g.name.pt)} no PC` };
 }
 
+export function guideMetaTitle(g: Guide): L {
+  const title = guideTitle(g);
+  return GUIDE_COPY[g.slug]?.title ?? { en: `${title.en} | OpenController`, pt: `${title.pt} | OpenController` };
+}
+
 /** The page's meta description, from what the app does with the family. */
 export function guideDescription(g: Guide): L {
+  const written = GUIDE_COPY[g.slug]?.description;
+  if (written) return written;
   const f = g.family;
   const n = { en: `the ${g.name.en}`, pt: `${g.plural ? "os" : "o"} ${g.name.pt}` };
   if (f.unsupported)

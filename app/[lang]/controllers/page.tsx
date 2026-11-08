@@ -11,17 +11,21 @@ import { pageMeta } from "@/lib/seo";
 
 export const revalidate = 3600;
 
-const COPY: { title: L; description: L } = {
+const COPY: { title: L; metaTitle: L; description: L } = {
   title: { en: "Controllers that work on PC with OpenController", pt: "Controles que funcionam no PC com o OpenController" },
+  metaTitle: {
+    en: "Any controller on PC: PlayStation, Switch, Stadia and more | OpenController",
+    pt: "Qualquer controle no PC: PlayStation, Switch, Stadia e mais | OpenController",
+  },
   description: {
-    en: "PlayStation, Switch, Xbox, 8BitDo, Steam, Flydigi and handheld PC controllers: what works with each one in PC games, and how to set it up.",
-    pt: "Controles de PlayStation, Switch, Xbox, 8BitDo, Steam, Flydigi e PCs portáteis: o que funciona com cada um nos jogos de PC, e como configurar.",
+    en: "Use PlayStation, Switch, Stadia, Luna, Flydigi, 8BitDo and handheld PC controllers in any PC game as an Xbox controller. See what works with yours. Free.",
+    pt: "Use controles de PlayStation, Switch, Stadia, Luna, Flydigi, 8BitDo e PCs portáteis em qualquer jogo de PC como controle de Xbox. Grátis.",
   },
 };
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/controllers">): Promise<Metadata> {
   const lang = (await params).lang as Lang;
-  return pageMeta(lang, "/controllers", `${COPY.title[lang]} | OpenController`, COPY.description[lang]);
+  return pageMeta(lang, "/controllers", COPY.metaTitle[lang], COPY.description[lang]);
 }
 
 export default async function ControllersPage({ params }: PageProps<"/[lang]/controllers">) {

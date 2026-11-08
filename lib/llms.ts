@@ -1,5 +1,6 @@
 import { faqItems, plain } from "./faq";
 import { SINCE, hasFeature, type Release } from "./github";
+import { GUIDE_COPY } from "./guide-copy";
 import { GUIDES, guideDescription, guideModels, guidePath, guideTitle } from "./guides";
 import { absUrl } from "./i18n";
 import { HOME, AUTHOR } from "./seo";
@@ -60,6 +61,7 @@ export function llmsTxt(release: Release | null, full: boolean): string {
       ];
       line(`  - ${facts.join("; ")}.${f.note ? ` ${f.note.en}` : ""}`);
       line(`  - Models: ${guideModels(g).map((m) => m.name).join(", ")}.`);
+      for (const s of GUIDE_COPY[g.slug]?.sections ?? []) line(`  - ${s.title.en}: ${s.body.map((p) => p.en).join(" ")}`);
     }
   }
   line();

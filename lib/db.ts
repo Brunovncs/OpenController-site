@@ -45,5 +45,5 @@ export async function rpc<T>(fn: string, args: object = {}): Promise<T> {
   return (await call(`rpc/${fn}`, { method: "POST", body: args })).json() as Promise<T>;
 }
 
-/** A value inside a PostgREST filter, quoted so commas and parentheses stay literal. */
-export const q = (v: string) => encodeURIComponent(`"${v.replace(/"/g, '\\"')}"`);
+/** A value for an eq/gt filter. PostgREST keeps double quotes literally outside in() lists, so none here. */
+export const q = (v: string) => encodeURIComponent(v);

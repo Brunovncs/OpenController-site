@@ -125,6 +125,18 @@ tst as (select distinct visitor from e where type = 'test'),
 leaving as (
   select path, avg(value) as secs, avg((props->>'scroll')::numeric) as scroll
   from e where type = 'leave' group by path
+),
+-- Up to 8 days the timeline is hourly, beyond that daily; empty buckets stay in as zeros.
+unit as (select case when p_to - p_from <= interval '8 days' then 'hour' else 'day' end as u),
+buckets as (
+  select g as b from unit, generate_series(date_trunc(unit.u, p_from at time zone p_tz), date_trunc(unit.u, p_to at time zone p_tz), ('1 ' || unit.u)::interval) g
+),
+tl as (
+  select date_trunc(unit.u, at at time zone p_tz) as b,
+    count(distinct visitor) filter (where type = 'view') as visitors,
+    count(*) filter (where type = 'view') as views,
+    count(*) filter (where type = 'click' and name = 'download') as downloads
+  from e, unit group by 1
 )
 select jsonb_build_object(
   'totals', (select jsonb_build_object(
@@ -142,6 +154,20 @@ select jsonb_build_object(
         count(*) filter (where type = 'view') as views,
         count(*) filter (where type = 'click' and name = 'download') as downloads
       from e group by 1) d),
+  'unit', (select u from unit),
+  'timeline', (select coalesce(jsonb_agg(jsonb_build_object(
+        't', to_char(bk.b, 'YYYY-MM-DD"T"HH24:MI'),
+        'visitors', coalesce(tl.visitors, 0), 'views', coalesce(tl.views, 0), 'downloads', coalesce(tl.downloads, 0)
+      ) order by bk.b), '[]'::jsonb)
+      from buckets bk left join tl on tl.b = bk.b),
+  'hours', (select jsonb_agg(jsonb_build_object('h', h, 'visitors', coalesce(x.visitors, 0), 'views', coalesce(x.views, 0)) order by h)
+      from generate_series(0, 23) h left join (
+        select extract(hour from at at time zone p_tz)::int as h, count(distinct visitor) as visitors, count(*) as views
+        from v group by 1) x using (h)),
+  'recent', (select coalesce(jsonb_agg(s), '[]'::jsonb) from (
+      select to_char(at at time zone p_tz, 'YYYY-MM-DD"T"HH24:MI') as at, path, coalesce(source, 'direct') as source,
+        ref_host, utm_campaign as campaign, country, device
+      from v order by v.at desc limit 60) s),
   'sources', (select coalesce(jsonb_agg(s), '[]'::jsonb) from (
       select coalesce(en.source, 'direct') as source, count(*) as visitors,
         count(dl.visitor) as downloaders, count(tst.visitor) as testers
@@ -189,7 +215,7 @@ select jsonb_build_object(
   'langs', (select coalesce(jsonb_agg(s), '[]'::jsonb) from (
       select coalesce(lang, '?') as key, count(*) as visitors from entries group by 1 order by 2 desc) s),
   'bots', (select coalesce(jsonb_agg(s), '[]'::jsonb) from (
-      select bot, count(*) as hits, count(distinct path) as pages, max(at) as last
+      select bot, count(*) as hits, count(distinct path) as pages, to_char(max(at) at time zone p_tz, 'YYYY-MM-DD"T"HH24:MI') as last
       from bot_hits where at >= p_from and at < p_to group by 1 order by 2 desc) s),
   'botPages', (select coalesce(jsonb_agg(s), '[]'::jsonb) from (
       select bot, path, count(*) as hits

@@ -5,9 +5,13 @@ import { dbReady, rpc } from "@/lib/db";
 import { getLatestRelease, getStars } from "@/lib/github";
 
 type Row = Record<string, string | number | null>;
+type Bucket = { t: string; visitors: number; views: number; downloads: number };
 type Stats = {
   totals: { visitors: number; views: number; downloads: number; downloaders: number; testers: number; searches: number; appReports: number };
-  daily: { day: string; visitors: number; views: number; downloads: number }[];
+  unit: "hour" | "day";
+  timeline: Bucket[];
+  hours: { h: number; visitors: number; views: number }[];
+  recent: { at: string; path: string; source: string; ref_host: string | null; campaign: string | null; country: string | null; device: string | null }[];
   sources: { source: string; visitors: number; downloaders: number; testers: number }[];
   referrers: Row[];
   campaigns: Row[];
@@ -109,45 +113,101 @@ function Tile({ label, value, sub }: { label: string; value: string; sub?: strin
   );
 }
 
-/** Visitors per day. One series, so no legend; hovering a day shows its numbers. */
-function Daily({ days }: { days: Stats["daily"] }) {
-  if (!days.length) return <p className="text-[13px] text-faint">Sem visitas no período.</p>;
-  const top = Math.max(...days.map((d) => d.visitors), 1);
+/** "2026-11-08T14:00" (already in Brasília time) as "08/11 14:00", or "08/11" for whole days. */
+const when = (t: string, hour = true) => `${t.slice(8, 10)}/${t.slice(5, 7)}${hour ? ` ${t.slice(11, 16)}` : ""}`;
+const weekday = (t: string) => new Date(`${t.slice(0, 10)}T12:00:00Z`).toLocaleDateString("pt-BR", { weekday: "short", timeZone: "UTC" });
+
+function Bars<T>({ rows, label, value, tip, ariaLabel }: { rows: T[]; label: (r: T) => string; value: (r: T) => number; tip: (r: T) => React.ReactNode; ariaLabel: string }) {
+  const top = Math.max(...rows.map(value), 1);
+  return (
+    <div className="flex h-40 items-end gap-[2px]" role="img" aria-label={ariaLabel}>
+      {rows.map((r) => (
+        <div key={label(r)} className="group relative flex h-full min-w-[2px] flex-1 items-end">
+          <div className="w-full rounded-t-[4px]" style={{ height: `${Math.max((value(r) / top) * 100, value(r) ? 2 : 0.5)}%`, background: BAR }} />
+          <div className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-line-strong bg-bg px-2.5 py-1.5 text-[12px] group-hover:block">
+            {tip(r)}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Visitors per hour (up to a week) or per day. One series, so no legend; hovering a bar shows its numbers. */
+function Timeline({ rows, hourly }: { rows: Bucket[]; hourly: boolean }) {
+  if (!rows.some((r) => r.views)) return <p className="text-[13px] text-faint">Sem visitas no período.</p>;
+  const top = Math.max(...rows.map((r) => r.visitors), 1);
+  const name = (r: Bucket) => `${weekday(r.t)} ${when(r.t, hourly)}`;
   return (
     <div>
-      <div className="flex h-40 items-end gap-[2px]" role="img" aria-label="Visitantes por dia">
-        {days.map((d) => (
-          <div key={d.day} className="group relative flex h-full min-w-[3px] flex-1 items-end">
-            <div className="w-full rounded-t-[4px]" style={{ height: `${Math.max((d.visitors / top) * 100, 1)}%`, background: BAR }} />
-            <div className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-line-strong bg-bg px-2.5 py-1.5 text-[12px] group-hover:block">
-              <p className="text-faint">{new Date(`${d.day}T12:00:00`).toLocaleDateString("pt-BR", { weekday: "short", day: "2-digit", month: "short" })}</p>
-              <p>
-                {fmt.format(d.visitors)} visitantes · {fmt.format(d.views)} páginas · {fmt.format(d.downloads)} downloads
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Bars
+        rows={rows}
+        ariaLabel={hourly ? "Visitantes por hora" : "Visitantes por dia"}
+        label={(r) => r.t}
+        value={(r) => r.visitors}
+        tip={(r) => (
+          <>
+            <p className="text-faint">{hourly ? `${name(r)}–${String((Number(r.t.slice(11, 13)) + 1) % 24).padStart(2, "0")}:00` : name(r)}</p>
+            <p>
+              {fmt.format(r.visitors)} visitantes · {fmt.format(r.views)} páginas · {fmt.format(r.downloads)} downloads
+            </p>
+          </>
+        )}
+      />
       <div className="mt-1.5 flex justify-between font-mono text-[11px] text-faint">
-        <span>{days[0].day.slice(5).split("-").reverse().join("/")}</span>
-        <span>máx. {fmt.format(top)}/dia</span>
-        <span>{days[days.length - 1].day.slice(5).split("-").reverse().join("/")}</span>
+        <span>{when(rows[0].t, hourly)}</span>
+        <span>
+          máx. {fmt.format(top)}/{hourly ? "hora" : "dia"}
+        </span>
+        <span>{when(rows[rows.length - 1].t, hourly)}</span>
       </div>
       <details className="mt-3 text-[13px]">
         <summary className="cursor-pointer text-faint hover:text-fg">Ver como tabela</summary>
         <div className="mt-2">
           <Table
-            rows={[...days].reverse()}
+            rows={rows.filter((r) => r.views).reverse()}
             max={400}
             cols={[
-              { label: "Dia", value: (d) => d.day },
-              { label: "Visitantes", value: (d) => fmt.format(d.visitors), num: true },
-              { label: "Páginas", value: (d) => fmt.format(d.views), num: true },
-              { label: "Downloads", value: (d) => fmt.format(d.downloads), num: true },
+              { label: hourly ? "Hora" : "Dia", value: name },
+              { label: "Visitantes", value: (r) => fmt.format(r.visitors), num: true },
+              { label: "Páginas", value: (r) => fmt.format(r.views), num: true },
+              { label: "Downloads", value: (r) => fmt.format(r.downloads), num: true },
             ]}
           />
         </div>
       </details>
+    </div>
+  );
+}
+
+/** Which hours of the day people come, summed over the period. */
+function Hours({ rows }: { rows: Stats["hours"] }) {
+  if (!rows.some((r) => r.views)) return <p className="text-[13px] text-faint">Sem visitas no período.</p>;
+  return (
+    <div>
+      <Bars
+        rows={rows}
+        ariaLabel="Visitas por hora do dia"
+        label={(r) => String(r.h)}
+        value={(r) => r.views}
+        tip={(r) => (
+          <>
+            <p className="text-faint">
+              {String(r.h).padStart(2, "0")}:00–{String((r.h + 1) % 24).padStart(2, "0")}:00
+            </p>
+            <p>
+              {fmt.format(r.views)} páginas · {fmt.format(r.visitors)} visitantes
+            </p>
+          </>
+        )}
+      />
+      <div className="mt-1.5 flex justify-between font-mono text-[11px] text-faint">
+        <span>00h</span>
+        <span>06h</span>
+        <span>12h</span>
+        <span>18h</span>
+        <span>23h</span>
+      </div>
     </div>
   );
 }
@@ -234,8 +294,30 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
         <Tile label="Reports do app" value={fmt.format(t.appReports)} />
       </div>
 
-      <Section title="Visitantes por dia" note="Visitante é contado por dia: a mesma pessoa em dois dias conta duas vezes. Não há cookie nem IP guardado.">
-        <Daily days={stats.daily} />
+      <Section
+        title={stats.unit === "hour" ? "Visitantes por hora" : "Visitantes por dia"}
+        note="Visitante é contado por dia: a mesma pessoa em dois dias conta duas vezes. Não há cookie nem IP guardado."
+      >
+        <Timeline rows={stats.timeline} hourly={stats.unit === "hour"} />
+      </Section>
+
+      <Section title="Horário das visitas" note="Páginas vistas em cada hora do dia, somando o período todo.">
+        <Hours rows={stats.hours} />
+      </Section>
+
+      <Section title="Últimos acessos" note="Cada página aberta, sem nada que ligue um acesso ao outro.">
+        <Table
+          rows={stats.recent}
+          max={60}
+          empty="Sem visitas no período."
+          cols={[
+            { label: "Quando", value: (r) => when(r.at) },
+            { label: "Página", value: (r) => r.path },
+            { label: "Origem", value: (r) => [sourceLabel(r.source), r.campaign].filter(Boolean).join(" · ") },
+            { label: "País", value: (r) => (r.country ? country(r.country) : "–") },
+            { label: "Aparelho", value: (r) => r.device ?? "–" },
+          ]}
+        />
       </Section>
 
       <Section title="De onde vêm" note="Pela primeira página de cada visitante no dia. UTM vence o referrer; o ChatGPT costuma mandar utm_source=chatgpt.com.">
@@ -443,7 +525,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
               { label: "Robô", value: (r) => r.bot },
               { label: "Acessos", value: (r) => fmt.format(Number(r.hits)), num: true },
               { label: "Páginas", value: (r) => fmt.format(Number(r.pages)), num: true },
-              { label: "Último", value: (r) => new Date(String(r.last)).toLocaleDateString("pt-BR"), num: true },
+              { label: "Último", value: (r) => when(String(r.last)), num: true },
             ]}
           />
           <Table

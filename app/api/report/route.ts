@@ -8,6 +8,7 @@
  *   ids the browser read when it was connected to the controller test.
  */
 
+import { recordServer } from "@/lib/analytics";
 import { EMAIL, body as readBody, clientIp, mailReady, sendMail, text, tooMany } from "@/lib/mail";
 
 const LIMITS = { version: 30, system: 80, lang: 5, controller: 160, model: 120, message: 3000, email: 200, report: 24_000, ids: 9, browserId: 200, query: 120 };
@@ -48,6 +49,8 @@ export async function POST(request: Request) {
       text: `${summary}\n\n${message ? `What goes wrong:\n${message}\n\n` : ""}${report}\n`,
       replyTo: email || undefined,
     });
+    // Which version and system report problems, not what they say.
+    await recordServer(request, "app_report", text(body.system, LIMITS.system).split(/[\s(]/)[0] || "?", text(body.version, LIMITS.version));
     return sent ? Response.json({ ok: true }) : Response.json({ error: "send" }, { status: 502 });
   }
 
@@ -76,5 +79,6 @@ export async function POST(request: Request) {
     text: `${summary}\n${notes ? `\n${notes}\n` : ""}`,
     replyTo: email || undefined,
   });
+  await recordServer(request, "funnel", sent ? "request:sent" : "request:failed", model);
   return sent ? Response.json({ ok: true }) : Response.json({ error: "send" }, { status: 502 });
 }

@@ -5,6 +5,7 @@ import SegmentedControl from "@/components/arc/segmented-control/segmented-contr
 import { glyphsFor, shapeFor, type Glyphs, type Shape } from "@/lib/drawings";
 import { FAMILIES, HINTS, SHORT, type Family } from "@/lib/families";
 import { MODELS, gamepadName, lookup, parseGamepadId } from "@/lib/models";
+import { track } from "@/lib/track";
 import { PadDrawing } from "./PadDrawing";
 import { openRequest } from "./RequestDialog";
 import { useHtmlData, useLang } from "./lang";
@@ -305,6 +306,17 @@ export function ControllerCheck() {
           : xboxOnly
             ? "xinput"
             : "anon";
+
+  // Which controllers people test, once per controller and page: the model when it is known,
+  // and the browser's name for it when it is not, since that is the one to add.
+  const tested = useRef(new Set<string>());
+  const testedId = !example && pad && state !== "idle" ? pad.id : null;
+  const testedName = state === "known" ? model?.name : state;
+  useEffect(() => {
+    if (!testedId || !testedName || tested.current.has(testedId)) return;
+    tested.current.add(testedId);
+    track("test", testedName, testedId.slice(0, 150));
+  }, [testedId, testedName]);
 
   const showFamily = (id: string) => {
     window.dispatchEvent(new CustomEvent("oc-family", { detail: id }));

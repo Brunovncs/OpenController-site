@@ -7,6 +7,7 @@ import { SortableDataTable, type DataColumn, type SortDirection } from "@/compon
 import { FAMILIES, FAMILY_ORDER, GROUPS, HINTS, SHORT, type Family, type GroupId } from "@/lib/families";
 import type { Lang } from "@/lib/i18n";
 import { MODELS, search, type Rating } from "@/lib/models";
+import { useTrackSearch } from "@/lib/track";
 import { CheckIcon, DashIcon } from "./icons";
 import { useHtmlData, useLang } from "./lang";
 import { openRequest } from "./RequestDialog";
@@ -307,6 +308,8 @@ export function Compat() {
       window.removeEventListener("oc-family", onFamily);
     };
   }, []);
+
+  useTrackSearch("controllers", deferred, results.length);
 
   const shown = results.slice(0, limit);
   const fam = family ? FAMILIES[family] : null;

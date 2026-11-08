@@ -7,6 +7,7 @@ import { Input } from "@/components/arc/input/input";
 import SegmentedControl from "@/components/arc/segmented-control/segmented-control";
 import { Select } from "@/components/arc/select/select";
 import { Textarea } from "@/components/arc/textarea/textarea";
+import { track } from "@/lib/track";
 import { useLang } from "./lang";
 
 type Kind = "problem" | "idea" | "other";
@@ -119,6 +120,7 @@ export function ContactDialog({ version }: { version: string | null }) {
 
   useEffect(() => {
     const onOpen = (e: Event) => {
+      track("funnel", "contact:open", (e as CustomEvent<Kind>).detail ?? "problem");
       setKind((e as CustomEvent<Kind>).detail ?? "problem");
       setSystem((s) => s || (DEFAULT_SYSTEM[document.documentElement.getAttribute("data-os") ?? ""] ?? ""));
       setStatus("idle");
@@ -139,6 +141,7 @@ export function ContactDialog({ version }: { version: string | null }) {
     const os = get("system") === "other" ? get("systemDetail") : [get("system"), get("systemDetail")].filter(Boolean).join(" ");
     setStatus("sending");
     setErrors({});
+    track("funnel", "contact:submit", kind);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -164,8 +167,10 @@ export function ContactDialog({ version }: { version: string | null }) {
         return;
       }
       const { error: code } = (await res.json().catch(() => ({}))) as { error?: string };
+      track("funnel", "contact:error", code ?? String(res.status));
       setErrors(code === "message" || code === "email" ? { [code]: c.errors[code] } : { form: code === "rate" ? c.errors.rate : c.errors.other });
     } catch {
+      track("funnel", "contact:error", "network");
       setErrors({ form: c.errors.other });
     }
     setStatus("error");

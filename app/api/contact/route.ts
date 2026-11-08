@@ -2,6 +2,7 @@
  * The contact form: checks the message and emails it through Resend (`lib/mail.ts`).
  */
 
+import { recordServer } from "@/lib/analytics";
 import { EMAIL, body as readBody, clientIp, mailReady, sendMail, text, tooMany } from "@/lib/mail";
 
 const KINDS = { problem: "Problem", idea: "Suggestion", other: "Other" } as const;
@@ -41,5 +42,6 @@ export async function POST(request: Request) {
   const subject = `[OpenController] ${KINDS[kind]}: ${message.replace(/\s+/g, " ").slice(0, 60)}`;
 
   const sent = await sendMail({ tag: "contact", subject, text: `${summary}\n\n${message}\n`, replyTo: email || undefined });
+  await recordServer(request, "funnel", sent ? "contact:sent" : "contact:failed", kind);
   return sent ? Response.json({ ok: true }) : Response.json({ error: "send" }, { status: 502 });
 }

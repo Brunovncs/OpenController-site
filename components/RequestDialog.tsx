@@ -5,6 +5,7 @@ import { Button } from "@/components/arc/button/button";
 import { Dialog, DialogClose, DialogContent } from "@/components/arc/dialog/dialog";
 import { Input } from "@/components/arc/input/input";
 import { Textarea } from "@/components/arc/textarea/textarea";
+import { track } from "@/lib/track";
 import { useLang } from "./lang";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -88,6 +89,7 @@ export function RequestDialog({ appReports }: { appReports: boolean }) {
       setErrors({});
       if (!opened.current) opened.current = Date.now();
       setOpen(true);
+      track("funnel", "request:open", d.ids ? "test" : d.query ? "search" : "other");
     };
     window.addEventListener(OPEN, onOpen);
     return () => window.removeEventListener(OPEN, onOpen);
@@ -104,6 +106,7 @@ export function RequestDialog({ appReports }: { appReports: boolean }) {
     }
     setStatus("sending");
     setErrors({});
+    track("funnel", "request:submit");
     try {
       const res = await fetch("/api/report", {
         method: "POST",
@@ -128,8 +131,10 @@ export function RequestDialog({ appReports }: { appReports: boolean }) {
         return;
       }
       const { error: code } = (await res.json().catch(() => ({}))) as { error?: string };
+      track("funnel", "request:error", code ?? String(res.status));
       setErrors(code === "model" || code === "email" ? { [code]: c.errors[code] } : { form: code === "rate" ? c.errors.rate : c.errors.other });
     } catch {
+      track("funnel", "request:error", "network");
       setErrors({ form: c.errors.other });
     }
     setStatus("error");

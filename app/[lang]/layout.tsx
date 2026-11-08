@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
 import { LangProvider } from "@/components/lang";
 import { PlatformRefine } from "@/components/PlatformRefine";
 import { BOOT_SCRIPT } from "@/lib/boot";
@@ -51,6 +52,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       </head>
       <body className="min-h-dvh bg-bg text-fg antialiased">
         <PlatformRefine />
+        <Analytics />
         <LangProvider lang={lang}>{children}</LangProvider>
       </body>
     </html>

@@ -95,6 +95,12 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
             pt="Sem vínculo com Sony, Microsoft, Nintendo, Valve, 8BitDo ou qualquer outro fabricante de controles; os nomes só identificam hardware compatível. ViGEmBus, HidHide, DsHidMini e BthPS3 são da Nefarius Software Solutions e são baixados das páginas deles, não incluídos. O uso é por sua conta: os autores não se responsabilizam por banimentos ou outras punições causadas pelo uso, como macros em jogos que as proíbem."
           />
         </p>
+        <p className="max-w-4xl text-[12px] leading-relaxed text-faint">
+          <T
+            en="This site counts visits anonymously to know what people look for: no cookies, no IP address kept, nothing that tells one person from another the next day."
+            pt="Este site conta as visitas de forma anônima para saber o que as pessoas procuram: sem cookies, sem guardar IP, nada que diferencie uma pessoa da outra no dia seguinte."
+          />
+        </p>
         <p className="text-[12.5px] text-muted">
           <T en="Made by" pt="Feito por" />{" "}
           <a className={INLINE} href={TWITTER_URL} target="_blank" rel="noopener noreferrer">

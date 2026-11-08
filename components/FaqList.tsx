@@ -3,6 +3,7 @@
 import { type ReactNode, useDeferredValue, useState } from "react";
 import { SearchField } from "@/components/arc/search-field/search-field";
 import { plain, type FaqItem } from "@/lib/faq";
+import { useTrackSearch } from "@/lib/track";
 import { PlusIcon } from "./icons";
 import { useLang } from "./lang";
 import { T } from "./T";
@@ -44,6 +45,7 @@ export function FaqList({ items }: { items: FaqItem[] }) {
   const needle = normalize(useDeferredValue(query).trim());
   const shown = items.map((item) => !needle || normalize(`${item.q[lang]} ${plain(item.a[lang])}`).includes(needle));
   const count = shown.filter(Boolean).length;
+  useTrackSearch("faq", query, count);
 
   return (
     <>

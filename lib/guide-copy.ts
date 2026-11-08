@@ -12,6 +12,125 @@ export type GuideCopy = {
 };
 
 export const GUIDE_COPY: Record<string, GuideCopy> = {
+  dualsense: {
+    title: {
+      en: "PS5 DualSense on PC: works in any game, with gyro | OpenController",
+      pt: "Controle de PS5 (DualSense) no PC em qualquer jogo | OpenController",
+    },
+    description: {
+      en: "Use the PS5 DualSense in any PC game as an Xbox controller, over USB or Bluetooth. Gyro aiming, touchpad as buttons, light bar. Free for Windows and Linux.",
+      pt: "Use o DualSense do PS5 em qualquer jogo de PC como controle de Xbox, por USB ou Bluetooth. Mira com giroscópio. Grátis no Windows e Linux.",
+    },
+    sections: [
+      {
+        id: "native",
+        title: { en: "Xbox or native", pt: "Xbox ou nativo" },
+        body: [
+          {
+            en: "By default games get an Xbox 360 controller: Xbox button prompts and rumble, but no adaptive triggers or haptics. Keep native, on the controller's page, gives the game the DualSense itself, for games that support it: PlayStation prompts, adaptive triggers and, over the cable, haptics. Profiles, gyro and remapping are off while it's native.",
+            pt: "Por padrão o jogo recebe um controle de Xbox 360: ícones de Xbox e vibração, sem gatilhos adaptáveis nem resposta tátil. Deixar nativo, na página do controle, entrega o próprio DualSense aos jogos que o suportam: ícones de PlayStation, gatilhos adaptáveis e, no cabo, resposta tátil. Perfis, giroscópio e remapeamento ficam desligados enquanto ele está nativo.",
+          },
+        ],
+      },
+      {
+        id: "gyro-touchpad",
+        title: { en: "Gyro and touchpad", pt: "Giroscópio e touchpad" },
+        body: [
+          {
+            en: "The gyro is added to the right stick: always, while L2 is pulled, or while a button is held. The touchpad gives four buttons: click, left half, right half and two fingers. These and the mic button can each be an Xbox button, a key or a macro, in a profile per game.",
+            pt: "O giroscópio soma no analógico direito: sempre, com o L2 puxado ou segurando um botão. O touchpad vira quatro botões: clique, metade esquerda, metade direita e dois dedos. Esses e o botão do microfone podem ser um botão de Xbox, uma tecla ou uma macro, num perfil por jogo.",
+          },
+        ],
+      },
+      {
+        id: "cable",
+        title: { en: "Cable and Bluetooth", pt: "Cabo e Bluetooth" },
+        body: [
+          {
+            en: "Plugging the cable into a DualSense on Bluetooth keeps the same player, and the game doesn't see it disconnect. The player lights and the light bar show the player number, or the light bar can show the battery.",
+            pt: "Ligar o cabo num DualSense que estava no Bluetooth mantém o mesmo jogador, e o jogo não vê ele desconectar. As luzes de jogador e a barra de luz mostram o número do jogador, ou a barra pode mostrar a bateria.",
+          },
+        ],
+      },
+    ],
+  },
+
+  "dualshock-4": {
+    title: {
+      en: "PS4 DualShock 4 on PC: works in any game | OpenController",
+      pt: "Controle de PS4 (DualShock 4) no PC em qualquer jogo | OpenController",
+    },
+    description: {
+      en: "Use the PS4 DualShock 4 in any PC game as an Xbox controller, by cable, Bluetooth or Sony's adaptor. Gyro aiming. Free for Windows and Linux.",
+      pt: "Use o DualShock 4 do PS4 em qualquer jogo de PC como controle de Xbox, por cabo, Bluetooth ou adaptador da Sony. Mira com giroscópio. Grátis no Windows e Linux.",
+    },
+    sections: [
+      {
+        id: "connect",
+        title: { en: "Cable, Bluetooth or adaptor", pt: "Cabo, Bluetooth ou adaptador" },
+        body: [
+          {
+            en: "Both versions of the DualShock 4 work by USB, Bluetooth or Sony's USB wireless adaptor. Plugging the cable into one on Bluetooth keeps the same player.",
+            pt: "As duas versões do DualShock 4 funcionam por USB, Bluetooth ou pelo adaptador sem fio USB da Sony. Ligar o cabo num que estava no Bluetooth mantém o mesmo jogador.",
+          },
+        ],
+      },
+      {
+        id: "light",
+        title: { en: "Light bar", pt: "Barra de luz" },
+        body: [
+          {
+            en: "The light bar shows the player number in PlayStation colours: blue, red, green, pink. It can also show a colour you pick, the battery from green to red, or nothing. Below 15% on battery it blinks.",
+            pt: "A barra de luz mostra o número do jogador nas cores do PlayStation: azul, vermelho, verde, rosa. Também pode mostrar uma cor que você escolher, a bateria do verde ao vermelho, ou nada. Abaixo de 15% de bateria ela pisca.",
+          },
+        ],
+      },
+      {
+        id: "gyro-touchpad",
+        title: { en: "Gyro and touchpad", pt: "Giroscópio e touchpad" },
+        body: [
+          {
+            en: "The gyro is added to the right stick: always, while L2 is pulled, or while a button is held. The touchpad gives four buttons: click, left half, right half and two fingers. Each can be an Xbox button, a key or a macro, in a profile per game.",
+            pt: "O giroscópio soma no analógico direito: sempre, com o L2 puxado ou segurando um botão. O touchpad vira quatro botões: clique, metade esquerda, metade direita e dois dedos. Cada um pode ser um botão de Xbox, uma tecla ou uma macro, num perfil por jogo.",
+          },
+        ],
+      },
+    ],
+  },
+
+  "switch-pro-controller": {
+    title: {
+      en: "Switch Pro Controller on PC: works in any game | OpenController",
+      pt: "Switch Pro Controller no PC em qualquer jogo | OpenController",
+    },
+    description: {
+      en: "Use the Switch Pro Controller in any PC game as an Xbox controller, over USB or Bluetooth. Gyro aiming, Capture as a key or macro. Free for Windows and Linux.",
+      pt: "Use o Switch Pro Controller em qualquer jogo de PC como controle de Xbox, por USB ou Bluetooth, com mira por giroscópio. Grátis no Windows e Linux.",
+    },
+    sections: [
+      {
+        id: "layout",
+        title: { en: "Button layout", pt: "Posição dos botões" },
+        body: [
+          {
+            en: "Buttons follow their position, not their letter. The bottom one, B on a Switch, is Xbox A, and the right one, A, is Xbox B. To keep the letters, swap them under Buttons, in a profile per game if you want.",
+            pt: "Os botões seguem a posição, não a letra. O de baixo, B no Switch, é o A do Xbox, e o da direita, A, é o B do Xbox. Para manter as letras, troque em Botões, num perfil por jogo se quiser.",
+          },
+        ],
+      },
+      {
+        id: "gyro-capture",
+        title: { en: "Gyro, Capture and lights", pt: "Giroscópio, Capture e luzes" },
+        body: [
+          {
+            en: "The gyro is added to the right stick: always, while ZL is held, or while a button is held. Capture can be an Xbox button, a key or a macro. The player lights show the player number, as on a Switch.",
+            pt: "O giroscópio soma no analógico direito: sempre, segurando o ZL ou segurando um botão. O Capture pode ser um botão de Xbox, uma tecla ou uma macro. As luzes de jogador mostram o número do jogador, como no Switch.",
+          },
+        ],
+      },
+    ],
+  },
+
   "stadia-controller": {
     title: {
       en: "Stadia controller on PC: use it in any game | OpenController",

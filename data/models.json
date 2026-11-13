@@ -242,6 +242,16 @@
   {
     "art": "Symmetric",
     "drawing": null,
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "GreenAsia USB Joystick (PS3-style pads, PS2 adapters)",
+    "product": "0003",
+    "rating": "Compatible",
+    "vendor": "0e8f"
+  },
+  {
+    "art": "Symmetric",
+    "drawing": null,
     "family": "DualShock3",
     "hint": null,
     "name": "Green Asia",
@@ -2673,10 +2683,20 @@
     "art": "Symmetric",
     "drawing": null,
     "family": "EightBitDoPro2",
-    "hint": null,
+    "hint": "EightBitDoForXbox",
     "name": "8BitDo Pro 2 Wired for Xbox",
     "product": "2000",
-    "rating": "Compatible",
+    "rating": "Caveats",
+    "vendor": "2dc8"
+  },
+  {
+    "art": "Symmetric",
+    "drawing": null,
+    "family": "EightBitDoPro2",
+    "hint": "EightBitDoForXbox",
+    "name": "8BitDo Pro 2 Wired for Xbox",
+    "product": "201e",
+    "rating": "Caveats",
     "vendor": "2dc8"
   },
   {
@@ -6506,6 +6526,16 @@
     "hint": null,
     "name": "Logitech G29 Driving Force",
     "product": "c24f",
+    "rating": "Compatible",
+    "vendor": "046d"
+  },
+  {
+    "art": "Offset",
+    "drawing": "logitechG29",
+    "family": "Other",
+    "hint": null,
+    "name": "Logitech RS50 Base for PlayStation/PC",
+    "product": "c276",
     "rating": "Compatible",
     "vendor": "046d"
   },

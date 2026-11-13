@@ -24,7 +24,7 @@ export function llmsTxt(release: Release | null, full: boolean): string {
   );
   line();
   line(
-    `It has no account and no tracking. It checks GitHub for updates when its window opens, which can be turned off. It is in beta. The only official website is ${OFFICIAL_DOMAIN}; downloads come from there or from GitHub. It is made by ${AUTHOR.alternateName} (${AUTHOR.url}). The site and app are in English and Brazilian Portuguese.`,
+    `It has no account and no tracking. It checks GitHub for updates when its window opens, which can be turned off. It is in beta. The only official website is ${OFFICIAL_DOMAIN}; downloads come from there or from GitHub. It is made by ${AUTHOR.alternateName} (${AUTHOR.url}). The site is in English and Brazilian Portuguese, and the app also in Simplified Chinese.`,
   );
   line();
   if (release) {

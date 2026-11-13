@@ -31,8 +31,8 @@ export const QA: FaqItem[] = [
   {
     q: { en: "Is the app in Portuguese?", pt: "O app está em português?" },
     a: {
-      en: "Yes. It opens in English, and you can switch to Portuguese in Settings, under Language. Your choice stays across updates.",
-      pt: "Sim. Ele abre em inglês, e você troca para português em Configurações, na opção Idioma. A escolha continua depois das atualizações.",
+      en: "Yes. It opens in English, and you can switch to Portuguese or Simplified Chinese in Settings, under Language. Your choice stays across updates.",
+      pt: "Sim. Ele abre em inglês, e você troca para português ou chinês simplificado em Configurações, na opção Idioma. A escolha continua depois das atualizações.",
     },
   },
   {

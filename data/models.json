@@ -681,6 +681,16 @@
   },
   {
     "art": "Symmetric",
+    "drawing": null,
+    "family": "Ps2Adapter",
+    "hint": null,
+    "name": "Twin USB Joystick (ShanWan PC pad)",
+    "product": "0555",
+    "rating": "Compatible",
+    "vendor": "2563"
+  },
+  {
+    "art": "Symmetric",
     "drawing": "redragonHarrow",
     "family": "DualShock3",
     "hint": null,

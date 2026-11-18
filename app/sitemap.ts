@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
 import { getLatestRelease } from "@/lib/github";
 import { GUIDES, guidePath } from "@/lib/guides";
-import { absUrl, LANGS } from "@/lib/i18n";
+import { HELP_SLUGS, helpPath } from "@/lib/help";
+import { absUrl, languages, LANGS } from "@/lib/i18n";
 
 export const revalidate = 3600;
 
-/** Every page in both languages, each listing the other through hreflang alternates. */
+/** Every page in every language, each listing the others through hreflang alternates. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const release = await getLatestRelease();
   // The pages follow the app: they change when a version comes out.
@@ -14,6 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/", priority: 1 },
     { path: "/controllers", priority: 0.8 },
     { path: "/changelog", priority: 0.5 },
+    { path: "/help", priority: 0.7 },
+    ...HELP_SLUGS.map((s) => ({ path: helpPath(s), priority: 0.7 })),
     ...GUIDES.map((g) => ({ path: guidePath(g), priority: 0.6 })),
   ];
   return paths.flatMap(({ path, priority }) =>
@@ -22,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified,
       changeFrequency: "weekly" as const,
       priority,
-      alternates: { languages: { en: absUrl("en", path), "pt-BR": absUrl("pt", path), "x-default": absUrl("en", path) } },
+      alternates: { languages: languages(path, true) },
     })),
   );
 }

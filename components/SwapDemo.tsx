@@ -1,8 +1,8 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
-import { useLang } from "./lang";
-import { T } from "./T";
+import { fmt } from "@/lib/text";
+import { useT } from "./lang";
 
 const PADS = [
   { id: "ds", name: "DualSense", conn: "Bluetooth" },
@@ -15,7 +15,7 @@ const PADS = [
 const COLOURS = ["#3d7bff", "#ff4d5e", "#3ddc84", "#ff6ad5"];
 
 export function SwapDemo() {
-  const lang = useLang();
+  const m = useT().home.swap;
   const [order, setOrder] = useState(PADS.map((p) => p.id));
   const [picked, setPicked] = useState<string | null>(null);
   const [announce, setAnnounce] = useState("");
@@ -35,11 +35,7 @@ export function SwapDemo() {
     const pa = PADS.find((p) => p.id === a)!.name;
     const pb = PADS.find((p) => p.id === b)!.name;
     setOrder(n);
-    setAnnounce(
-      lang === "pt"
-        ? `${pa} agora é o jogador ${j + 1}, ${pb} é o jogador ${i + 1}.`
-        : `${pa} is now player ${j + 1}, ${pb} is player ${i + 1}.`,
-    );
+    setAnnounce(fmt(m.swapped, { a: pa, i: j + 1, b: pb, j: i + 1 }));
     setPicked(null);
   };
 
@@ -114,7 +110,7 @@ export function SwapDemo() {
 
   return (
     <div>
-      <ul className="grid grid-cols-2 gap-2.5" aria-label={lang === "pt" ? "Jogadores" : "Players"}>
+      <ul className="grid grid-cols-2 gap-2.5" aria-label={m.players}>
         {order.map((id, slot) => {
           const p = PADS.find((x) => x.id === id)!;
           const isPicked = picked === id;
@@ -133,14 +129,14 @@ export function SwapDemo() {
                 onPointerCancel={onPointerUp}
                 onClick={(e) => onClick(e, id)}
                 aria-pressed={isPicked}
-                aria-label={`${p.name}, ${lang === "pt" ? "jogador" : "player"} ${slot + 1}`}
+                aria-label={fmt(m.pad, { name: p.name, n: slot + 1 })}
                 className={`relative flex w-full touch-none flex-col items-start gap-3 rounded-xl border bg-panel-2 p-3 text-left transition-[border-color,box-shadow,transform] duration-200 select-none ${
                   isPicked ? "border-accent/70 shadow-[0_0_0_3px_rgba(96,205,255,0.15)]" : "border-line hover:border-line-strong"
                 } cursor-grab active:cursor-grabbing`}
               >
                 <span className="flex w-full items-center justify-between">
                   <span className="rounded-md bg-white/[0.06] px-1.5 py-0.5 font-mono text-[11px] text-muted">
-                    <T en="Player" pt="Jogador" /> {slot + 1}
+                    {fmt(m.player, { n: slot + 1 })}
                   </span>
                   <span
                     aria-hidden
@@ -150,7 +146,7 @@ export function SwapDemo() {
                 </span>
                 <span className="text-[13.5px] leading-tight text-fg">{p.name}</span>
                 <span className="font-mono text-[11px] text-faint">
-                  {p.conn === "Receiver" ? <T en="Receiver" pt="Receptor" /> : p.conn}
+                  {p.conn === "Receiver" ? m.receiver : p.conn}
                 </span>
               </button>
             </li>

@@ -1,14 +1,27 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { COFFEE_URL, ISSUES_URL, LICENSE_URL, OFFICIAL_DOMAIN, REPO, REPO_URL, TWITTER_URL } from "@/lib/site";
 import { ContactButton } from "./ContactDialog";
-import { LangToggle } from "./lang";
+import { t } from "@/lib/i18n-server";
+import { LangMenu } from "./lang";
 import { LocalLink } from "./LocalLink";
-import { T } from "./T";
+import { rich } from "@/lib/text";
 
 const LINK = "text-muted transition-colors hover:text-fg";
 const INLINE = "underline underline-offset-2 transition-colors hover:text-fg";
 
+function out(href: string) {
+  return function OutLink(c: ReactNode) {
+    return (
+      <a className={INLINE} href={href} target="_blank" rel="noopener noreferrer">
+        {c}
+      </a>
+    );
+  };
+}
+
 export function Footer({ version, path = "/", home = "" }: { version: string | null; path?: string; home?: string }) {
+  const m = t().home.footer;
   return (
     <footer className="border-t border-line">
       <div className="wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12">
@@ -21,13 +34,10 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
             </div>
           </div>
           <p className="mt-5 max-w-sm text-[13.5px] leading-relaxed text-faint">
-            <T
-              en="Free and open source, so you can play on PC with the controller you already have."
-              pt="Gratuito e de código aberto, para você jogar no PC com o controle que já tem."
-            />
+            {m.blurb}
           </p>
         </div>
-        <nav aria-label="Project" className="text-[14px] lg:col-span-4">
+        <nav aria-label={m.nav} className="text-[14px] lg:col-span-4">
           <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5">
             <li>
               <a className={LINK} href={REPO_URL} target="_blank" rel="noopener noreferrer">
@@ -36,76 +46,66 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
             </li>
             <li>
               <LocalLink className={LINK} path="/controllers">
-                <T en="Controllers" pt="Controles" />
+                {m.controllers}
+              </LocalLink>
+            </li>
+            <li>
+              <LocalLink className={LINK} path="/help">
+                {t().common.help}
               </LocalLink>
             </li>
             <li>
               <LocalLink className={LINK} path="/changelog">
-                <T en="What's new" pt="Novidades" />
+                {m.whatsNew}
               </LocalLink>
             </li>
             <li>
               <a className={LINK} href={`${home}#contact`}>
-                <T en="Report a problem" pt="Reportar um problema" />
+                {m.report}
               </a>
             </li>
             <li>
               <ContactButton kind="other" className={LINK}>
-                <T en="Contact us" pt="Fale conosco" />
+                {m.contact}
               </ContactButton>
             </li>
             <li>
               <a className={LINK} href={COFFEE_URL} target="_blank" rel="noopener noreferrer">
-                <T en="Buy me a coffee" pt="Me pague um café" />
+                {t().common.coffee}
               </a>
             </li>
             <li>
               <a className={LINK} href={LICENSE_URL} target="_blank" rel="noopener noreferrer">
-                <T en="MIT License" pt="Licença MIT" />
+                {m.license}
               </a>
             </li>
             <li>
               <a className={LINK} href={`${REPO_URL}/blob/main/THIRD_PARTY_NOTICES.md`} target="_blank" rel="noopener noreferrer">
-                <T en="Third-party notices" pt="Avisos de terceiros" />
+                {m.notices}
               </a>
             </li>
           </ul>
         </nav>
         <div className="flex items-start sm:col-span-2 lg:col-span-3 lg:justify-end">
-          <LangToggle path={path} />
+          <LangMenu path={path} label={t().common.language} up />
         </div>
       </div>
       <div className="wrap">
         <div className="space-y-3 border-t border-line py-6">
         <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
-          <T
-            en={<>OpenController is only distributed from <a className={INLINE} href={REPO_URL} target="_blank" rel="noopener noreferrer">github.com/{REPO}</a> and {OFFICIAL_DOMAIN}. Other sites using the name are not affiliated with this project.</>}
-            pt={<>O OpenController só é distribuído pelo <a className={INLINE} href={REPO_URL} target="_blank" rel="noopener noreferrer">github.com/{REPO}</a> e pelo {OFFICIAL_DOMAIN}. Outros sites que usam o nome não têm ligação com este projeto.</>}
-          />
+          {rich(m.official, { a: out(REPO_URL) }, { repo: `github.com/${REPO}`, domain: OFFICIAL_DOMAIN })}
         </p>
         <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
-          <T
-            en={<>OpenController is licensed under <a className={INLINE} href={LICENSE_URL} target="_blank" rel="noopener noreferrer">MIT</a>. <a className={INLINE} href={REPO_URL} target="_blank" rel="noopener noreferrer">Source on GitHub</a>. <a className={INLINE} href={ISSUES_URL} target="_blank" rel="noopener noreferrer">Report a bug</a>.</>}
-            pt={<>O OpenController é licenciado sob <a className={INLINE} href={LICENSE_URL} target="_blank" rel="noopener noreferrer">MIT</a>. <a className={INLINE} href={REPO_URL} target="_blank" rel="noopener noreferrer">Código no GitHub</a>. <a className={INLINE} href={ISSUES_URL} target="_blank" rel="noopener noreferrer">Reportar um bug</a>.</>}
-          />
+          {rich(m.source, { license: out(LICENSE_URL), source: out(REPO_URL), bug: out(ISSUES_URL) })}
         </p>
         <p className="max-w-4xl text-[12px] leading-relaxed text-faint">
-          <T
-            en="Not affiliated with Sony, Microsoft, Nintendo, Valve, 8BitDo or any other controller maker; their names identify compatible hardware only. ViGEmBus, HidHide, DsHidMini and BthPS3 are by Nefarius Software Solutions and are downloaded from their releases, not bundled. Use it at your own risk: the authors are not responsible for bans or other penalties from how it is used, such as macros in games that forbid them."
-            pt="Sem vínculo com Sony, Microsoft, Nintendo, Valve, 8BitDo ou qualquer outro fabricante de controles; os nomes só identificam hardware compatível. ViGEmBus, HidHide, DsHidMini e BthPS3 são da Nefarius Software Solutions e são baixados das páginas deles, não incluídos. O uso é por sua conta: os autores não se responsabilizam por banimentos ou outras punições causadas pelo uso, como macros em jogos que as proíbem."
-          />
+          {m.disclaimer}
         </p>
         <p className="max-w-4xl text-[12px] leading-relaxed text-faint">
-          <T
-            en="This site counts visits anonymously to know what people look for: no cookies, no IP address kept, nothing that tells one person from another the next day."
-            pt="Este site conta as visitas de forma anônima para saber o que as pessoas procuram: sem cookies, sem guardar IP, nada que diferencie uma pessoa da outra no dia seguinte."
-          />
+          {m.analytics}
         </p>
         <p className="text-[12.5px] text-muted">
-          <T en="Made by" pt="Feito por" />{" "}
-          <a className={INLINE} href={TWITTER_URL} target="_blank" rel="noopener noreferrer">
-            Bruno Vinicius (@zenorev)
-          </a>
+          {rich(m.madeBy, { a: out(TWITTER_URL) }, { name: "Bruno Vinicius (@zenorev)" })}
         </p>
         </div>
       </div>

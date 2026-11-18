@@ -6,6 +6,8 @@ import { LangProvider } from "@/components/lang";
 import { PlatformRefine } from "@/components/PlatformRefine";
 import { BOOT_SCRIPT } from "@/lib/boot";
 import { HTML_LANG, LANGS, isLang } from "@/lib/i18n";
+import { setLang } from "@/lib/i18n-server";
+import { clientMessages } from "@/messages";
 import { AUTHOR } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
@@ -44,6 +46,7 @@ export const viewport: Viewport = {
 export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!isLang(lang)) notFound();
+  setLang(lang);
   return (
     <html lang={HTML_LANG[lang]} data-lang={lang} data-theme="dark" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <head>
@@ -53,7 +56,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       <body className="min-h-dvh bg-bg text-fg antialiased">
         <PlatformRefine />
         <Analytics />
-        <LangProvider lang={lang}>{children}</LangProvider>
+        <LangProvider lang={lang} messages={clientMessages(lang)}>
+          {children}
+        </LangProvider>
       </body>
     </html>
   );

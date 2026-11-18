@@ -1,5 +1,6 @@
 import raw from "@/data/models.json";
-import { FAMILIES, FAMILY_ORDER, GROUPS, type GroupId } from "./families";
+import compat from "@/messages/en/compat";
+import { FAMILIES, FAMILY_ORDER, GROUPS, familyText, type GroupId } from "./families";
 
 export type Art = "Offset" | "Symmetric" | "PlayStation" | "Retro" | "JoyCons" | "JoyConLeft" | "JoyConRight" | "Handheld";
 
@@ -125,6 +126,8 @@ function fold(s: string): string {
 export const MODELS: IndexedModel[] = (raw as Model[])
   .map((m) => {
     const family = FAMILIES[m.family] ?? FAMILIES.Other;
+    // English names only: the list is searched by model names, which are English anyway.
+    const text = familyText(compat.families, family.id);
     const brand = m.brand ?? BRANDS[m.vendor] ?? null;
     const id = `${m.vendor}:${m.product}`;
     return {
@@ -135,7 +138,7 @@ export const MODELS: IndexedModel[] = (raw as Model[])
       group: family.group,
       order: 0,
       haystack: fold(
-        [m.name, brand ?? "", family.label.en, family.label.pt, family.id, id, `${m.vendor} ${m.product}`, `${m.vendor}${m.product}`].join(
+        [m.name, brand ?? "", text.label, text.short, family.id, id, `${m.vendor} ${m.product}`, `${m.vendor}${m.product}`].join(
           " | ",
         ),
       ),

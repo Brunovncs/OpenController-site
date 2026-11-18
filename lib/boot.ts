@@ -5,7 +5,7 @@
  * becomes the cookie next.config.ts redirects by, once.
  */
 export const BOOT_SCRIPT = `(function(){var d=document.documentElement;
-try{if(!/(^|; )oc-lang=/.test(document.cookie)){var l=localStorage.getItem("oc-lang");if(l==="en"||l==="pt"){document.cookie="oc-lang="+l+"; path=/; max-age=31536000; samesite=lax";var p=location.pathname,pt=p==="/pt"||p.indexOf("/pt/")===0;if(l==="pt"&&!pt)location.replace((p==="/"?"/pt":"/pt"+p)+location.hash)}}}catch(e){}
+try{if(!/(^|; )oc-lang=/.test(document.cookie)){var l=localStorage.getItem("oc-lang"),o=["pt","es","fr","ja","zh"];if(l==="en"||o.indexOf(l)>=0){document.cookie="oc-lang="+l+"; path=/; max-age=31536000; samesite=lax";var p=location.pathname,c=p.split("/")[1];if(l!=="en"&&o.indexOf(c)<0)location.replace((p==="/"?"/"+l:"/"+l+p)+location.hash)}}}catch(e){}
 var ua=navigator.userAgent||"",uad=navigator.userAgentData,p=(uad&&uad.platform)||navigator.platform||"",os="other";
 if((uad&&uad.mobile)||/Android|iPhone|iPad|iPod/i.test(ua))os="mobile";
 else if(/win/i.test(p)||/Windows/.test(ua))os="windows";

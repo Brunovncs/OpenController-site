@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
 /**
- * English lives at "/" and Portuguese at "/pt": app/[lang] serves both, so "/" and the other
- * English pages are rewritten to /en/..., and /en/... redirects back so each page has one URL.
- * A visitor landing on an English page is sent to Portuguese by the language switch's cookie, or
- * without it by Accept-Language. Crawlers send neither and get English, with hreflang to /pt.
+ * English lives at "/" and every other language under its code ("/pt", "/es", "/fr", "/ja", "/zh"):
+ * app/[lang] serves them all, so "/" and the other English pages are rewritten to /en/..., and
+ * /en/... redirects back so each page has one URL. A visitor landing on an English page is sent to
+ * their language by the language menu's cookie, or without it by Accept-Language. Crawlers send
+ * neither and get English, with hreflang to the others. Keep in step with LANGS in lib/i18n.ts.
  */
-const PAGES = ["/", "/controllers", "/controllers/:slug", "/changelog"];
+const PAGES = ["/", "/controllers", "/controllers/:slug", "/changelog", "/help", "/help/:slug"];
+const OTHER_LANGS = ["pt", "es", "fr", "ja", "zh"];
 
-const toPt = (p: string) => (p === "/" ? "/pt" : `/pt${p}`);
-const toEn = (p: string) => (p === "/" ? "/en" : `/en${p}`);
+const under = (lang: string, p: string) => (p === "/" ? `/${lang}` : `/${lang}${p}`);
 
 const SECURITY_HEADERS = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -25,20 +26,27 @@ const nextConfig: NextConfig = {
     return [
       { source: "/en", destination: "/", permanent: true },
       { source: "/en/:path*", destination: "/:path*", permanent: true },
-      ...PAGES.flatMap((source) => [
-        { source, destination: toPt(source), permanent: false, has: [{ type: "cookie" as const, key: "oc-lang", value: "pt" }] },
-        {
+      ...OTHER_LANGS.flatMap((lang) =>
+        PAGES.map((source) => ({
           source,
-          destination: toPt(source),
+          destination: under(lang, source),
+          permanent: false,
+          has: [{ type: "cookie" as const, key: "oc-lang", value: lang }],
+        })),
+      ),
+      ...OTHER_LANGS.flatMap((lang) =>
+        PAGES.map((source) => ({
+          source,
+          destination: under(lang, source),
           permanent: false,
           missing: [{ type: "cookie" as const, key: "oc-lang" }],
-          has: [{ type: "header" as const, key: "accept-language", value: "pt.*" }],
-        },
-      ]),
+          has: [{ type: "header" as const, key: "accept-language", value: `${lang}.*` }],
+        })),
+      ),
     ];
   },
   async rewrites() {
-    return PAGES.map((source) => ({ source, destination: toEn(source) }));
+    return PAGES.map((source) => ({ source, destination: under("en", source) }));
   },
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];

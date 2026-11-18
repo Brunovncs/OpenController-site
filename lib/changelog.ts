@@ -1,8 +1,8 @@
 import type { ChangelogEntry, ChangelogMonth } from "@/components/arc/blocks/changelog-feed/changelog-feed";
 import type { ReleaseNotes } from "./github";
-import type { Lang } from "./i18n";
+import { HTML_LANG, type Lang } from "./i18n";
+import { MESSAGES } from "@/messages";
 
-const LOCALE: Record<Lang, string> = { en: "en-US", pt: "pt-BR" };
 /** Dates are read in UTC, so a page built anywhere says the same day. */
 const TZ = "UTC";
 
@@ -24,7 +24,7 @@ function splitSentence(p: string): [string, string] {
 }
 
 function monthOf(lang: Lang, d: Date): ChangelogMonth {
-  const part = (o: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(LOCALE[lang], { timeZone: TZ, ...o }).format(d);
+  const part = (o: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(HTML_LANG[lang], { timeZone: TZ, ...o }).format(d);
   return {
     key: d.toISOString().slice(0, 7),
     label: capital(part({ month: "long" })),
@@ -34,7 +34,7 @@ function monthOf(lang: Lang, d: Date): ChangelogMonth {
 }
 
 export function longDate(lang: Lang, iso: string): string {
-  return new Intl.DateTimeFormat(LOCALE[lang], { timeZone: TZ, day: "numeric", month: "long", year: "numeric" }).format(new Date(iso));
+  return new Intl.DateTimeFormat(HTML_LANG[lang], { timeZone: TZ, day: "numeric", month: "long", year: "numeric" }).format(new Date(iso));
 }
 
 /** The releases as the changelog feed shows them: the first sentence is the title, the rest of that paragraph the summary. */
@@ -44,13 +44,13 @@ export function changelog(lang: Lang, releases: ReleaseNotes[]): { entries: Chan
     const d = new Date(r.publishedAt);
     const month = monthOf(lang, d);
     if (!months.has(month.key)) months.set(month.key, month);
-    const day = new Intl.DateTimeFormat(LOCALE[lang], { timeZone: TZ, day: "numeric" }).format(d);
+    const day = new Intl.DateTimeFormat(HTML_LANG[lang], { timeZone: TZ, day: "numeric" }).format(d);
     const [first = "", ...rest] = paragraphs(r.notes);
     const [title, summary] = splitSentence(first);
     return {
       id: `v${r.version}`,
       month: month.key,
-      date: lang === "pt" ? `${day} ${month.short.toLowerCase()}` : `${month.short} ${day}`,
+      date: MESSAGES[lang].guides.changelog.day(day, month.short),
       iso: r.publishedAt.slice(0, 10),
       version: r.version,
       title: title || r.version,

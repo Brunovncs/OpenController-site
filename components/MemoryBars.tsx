@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, type CSSProperties } from "react";
-import { T } from "./T";
+import { fmt, rich } from "@/lib/text";
+import { useT } from "./lang";
 
 const OPEN = 35;
 const BACKGROUND = 4;
@@ -16,6 +17,7 @@ const DURATION = 1600;
  * view.
  */
 export function MemoryBars() {
+  const m = useT().home.performance.bars;
   const root = useRef<HTMLDivElement>(null);
   const num = useRef<HTMLSpanElement>(null);
 
@@ -59,10 +61,7 @@ export function MemoryBars() {
   return (
     <div ref={root} className="mem">
       <p className="sr-only">
-        <T
-          en={`Up to ${BACKGROUND} MB with the window closed, down from about ${OPEN} MB with it open.`}
-          pt={`Até ${BACKGROUND} MB com a janela fechada, contra cerca de ${OPEN} MB com ela aberta.`}
-        />
+        {fmt(m.summary, { closed: BACKGROUND, open: OPEN })}
       </p>
 
       <div aria-hidden>
@@ -76,23 +75,12 @@ export function MemoryBars() {
           <div className="mem-shrink h-full rounded-full bg-accent" style={{ "--w": BACKGROUND / OPEN } as CSSProperties} />
         </div>
         <p className="mt-3 text-right text-[13px] text-faint">
-          <T en={`Window open: ${OPEN} MB`} pt={`Janela aberta: ${OPEN} MB`} />
+          {fmt(m.open, { n: OPEN })}
         </p>
       </div>
 
       <p className="mem-punch display mt-8 text-[26px] sm:text-[32px]">
-        <T
-          en={
-            <>
-              <span className="text-accent">Up to {BACKGROUND} MB</span> once the window is closed.
-            </>
-          }
-          pt={
-            <>
-              <span className="text-accent">Até {BACKGROUND} MB</span> com a janela fechada.
-            </>
-          }
-        />
+        {rich(m.closed, { b: (c) => <span className="text-accent">{c}</span> }, { n: BACKGROUND })}
       </p>
     </div>
   );

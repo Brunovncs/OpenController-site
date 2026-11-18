@@ -56,6 +56,24 @@
   --focus-outline-offset: 3px;
 }
 
+/* Geist has no Japanese or Chinese: the system's own fonts for those, picked by the page's language. */
+:root:lang(ja) {
+  --font-sans: var(--font-geist), "Hiragino Sans", "Yu Gothic UI", "Meiryo", "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+}
+:root:lang(zh) {
+  --font-sans: var(--font-geist), "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+}
+/* Japanese headlines break between phrases, not inside a word, where the browser can tell them apart. */
+:lang(ja) :is(h1, h2, h3) {
+  word-break: auto-phrase;
+}
+/* Tight tracking suits Latin headlines but crowds ideographs. */
+:is(:lang(ja), :lang(zh)) [class*="tracking-"] {
+  letter-spacing: 0;
+}
+
 html {
   background: #000;
   scroll-padding-top: 5rem;

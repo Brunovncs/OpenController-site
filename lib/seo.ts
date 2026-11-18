@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
 import type { Release } from "./github";
-import { absUrl, alternates, HTML_LANG, LANGS, OG_LOCALE, type L, type Lang } from "./i18n";
+import { MESSAGES } from "@/messages";
+import { absUrl, alternates, HTML_LANG, LANGS, OG_LOCALE, type Lang } from "./i18n";
 import { faqItems, plain } from "./faq";
 import { guidePath, guideTitle, type Guide } from "./guides";
 import { LICENSE_URL, OFFICIAL_DOMAIN, RELEASES_URL, REPO_URL, SITE_URL, TWITTER_URL } from "./site";
-
-/** Head copy for the home page. Facts here must match what the page and the app's CHANGELOG say. */
-export const HOME: { title: L; description: L } = {
-  title: {
-    en: "OpenController: use any controller in PC games, free",
-    pt: "OpenController: use qualquer controle nos jogos de PC, de graça",
-  },
-  description: {
-    en: "Use your PlayStation, Switch, 8BitDo and hundreds of other controllers in PC games, alone or with friends. Free and open source for Windows, Linux and Mac.",
-    pt: "Use controles de PlayStation, Switch, 8BitDo e centenas de outros nos jogos de PC, sozinho ou com amigos. Gratuito e de código aberto para Windows, Linux e Mac.",
-  },
-};
 
 /** Who makes it, linked both ways with his own site so search engines tie the two together. */
 export const AUTHOR = {
@@ -32,7 +21,7 @@ export function pageMeta(lang: Lang, path: string, title: string, description: s
     url: `/og/${lang}.png`,
     width: 1200,
     height: 630,
-    alt: lang === "pt" ? "OpenController: seu controle em qualquer jogo de PC" : "OpenController: your controller in every PC game",
+    alt: "OpenController",
   };
   return {
     title: { absolute: title },
@@ -72,11 +61,11 @@ function app(lang: Lang, release: Release | null) {
     "@id": ID.app,
     name: "OpenController",
     url: absUrl(lang),
-    description: HOME.description[lang],
+    description: MESSAGES[lang].home.meta.description,
     applicationCategory: "UtilitiesApplication",
     applicationSubCategory: "Game controller mapper",
     operatingSystem: "Windows, Linux, macOS",
-    inLanguage: ["en", "pt-BR"],
+    inLanguage: LANGS.map((l) => HTML_LANG[l]),
     isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     license: LICENSE_URL,
@@ -93,24 +82,7 @@ function app(lang: Lang, release: Release | null) {
           ...(release.publishedAt ? { dateModified: release.publishedAt } : {}),
         }
       : {}),
-    featureList:
-      lang === "pt"
-        ? [
-            "Controles de PlayStation, Switch, 8BitDo e outros aparecem nos jogos como controle de Xbox 360",
-            "Vários controles ao mesmo tempo, cada um com o próprio número de jogador",
-            "Qualquer botão como um ou vários botões, tecla ou macro, com perfis por jogo",
-            "Mira com giroscópio",
-            "Zona morta, curva e correção de drift dos analógicos",
-            "Luz e bateria do controle",
-          ]
-        : [
-            "PlayStation, Switch, 8BitDo and other controllers show up in games as an Xbox 360 controller",
-            "Several controllers at once, each with its own player number",
-            "Any button as one or several buttons, a key or a macro, with profiles per game",
-            "Gyro aiming",
-            "Stick deadzone, response curve and drift correction",
-            "Controller light and battery",
-          ],
+    featureList: MESSAGES[lang].home.meta.features,
   };
 }
 
@@ -138,10 +110,10 @@ export function homeJsonLd(lang: Lang, release: Release | null, appReports: bool
         "@type": "FAQPage",
         "@id": `${absUrl(lang)}#faq`,
         inLanguage: HTML_LANG[lang],
-        mainEntity: faqItems(appReports, appMapping).map((f) => ({
+        mainEntity: faqItems(lang, appReports, appMapping).map((f) => ({
           "@type": "Question",
-          name: f.q[lang],
-          acceptedAnswer: { "@type": "Answer", text: plain(f.a[lang]) },
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: plain(f.a) },
         })),
       },
     ],
@@ -157,7 +129,7 @@ export function guideJsonLd(lang: Lang, g: Guide, description: string, models: s
         "@type": "WebPage",
         "@id": url,
         url,
-        name: guideTitle(g)[lang],
+        name: guideTitle(g, lang),
         description,
         inLanguage: HTML_LANG[lang],
         isPartOf: { "@id": ID.site },
@@ -168,8 +140,8 @@ export function guideJsonLd(lang: Lang, g: Guide, description: string, models: s
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "OpenController", item: absUrl(lang) },
-          { "@type": "ListItem", position: 2, name: lang === "pt" ? "Controles" : "Controllers", item: absUrl(lang, "/controllers") },
-          { "@type": "ListItem", position: 3, name: guideTitle(g)[lang], item: url },
+          { "@type": "ListItem", position: 2, name: MESSAGES[lang].guides.page.controllers, item: absUrl(lang, "/controllers") },
+          { "@type": "ListItem", position: 3, name: guideTitle(g, lang), item: url },
         ],
       },
       website(lang),

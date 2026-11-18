@@ -1,16 +1,10 @@
 import type { ReactNode } from "react";
+import { t } from "@/lib/i18n-server";
 import { ISSUES_URL, OFFICIAL_DOMAIN } from "@/lib/site";
+import { rich } from "@/lib/text";
 import { ContactButton } from "./ContactDialog";
 import { GitHubIcon } from "./icons";
 import { SectionHead } from "./SectionHead";
-import { T } from "./T";
-
-const INCLUDE: { en: string; pt: string }[] = [
-  { en: "Your system and its version, like Windows 11 or Ubuntu 24.04", pt: "Seu sistema e a versão dele, como Windows 11 ou Ubuntu 24.04" },
-  { en: "The exact controller model, and if it is on a cable, Bluetooth or its receiver", pt: "O modelo exato do controle, e se ele está no cabo, no Bluetooth ou no receptor" },
-  { en: "The OpenController version, shown at the top of its window", pt: "A versão do OpenController, que aparece no topo da janela" },
-  { en: "What you did and what happened, with a screenshot if you can", pt: "O que você fez e o que aconteceu, com um print se puder" },
-];
 
 function Card({ title, children, foot }: { title: ReactNode; children: ReactNode; foot?: ReactNode }) {
   return (
@@ -24,85 +18,43 @@ function Card({ title, children, foot }: { title: ReactNode; children: ReactNode
 }
 
 export function Contact() {
+  const m = t().home.contact;
   return (
     <section id="contact" aria-labelledby="contact-title" className="wrap py-20 sm:py-24">
-      <SectionHead
-        n="07"
-        label={<T en="Contact" pt="Contato" />}
-        title={
-          <span id="contact-title">
-            <T en="Something not working? Tell us." pt="Algo não funcionou? Fale com a gente." />
-          </span>
-        }
-      >
-        <T
-          en="OpenController is in beta, and every report helps fix it for everyone. Use the form or open an issue on GitHub, whichever is easier for you."
-          pt="O OpenController está em beta, e cada relato ajuda a corrigir para todo mundo. Use o formulário ou abra uma issue no GitHub, o que for mais fácil para você."
-        />
+      <SectionHead n="07" label={m.label} title={<span id="contact-title">{m.title}</span>}>
+        {m.body}
       </SectionHead>
 
       <div className="mt-12 grid gap-3 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <Card
-            title={<T en="Report a problem" pt="Reportar um problema" />}
+            title={m.report.title}
             foot={
               <>
-                <ContactButton className="btn btn-primary h-11 px-5 text-[14px]">
-                  <T en="Contact us" pt="Fale conosco" />
-                </ContactButton>
+                <ContactButton className="btn btn-primary h-11 px-5 text-[14px]">{m.report.button}</ContactButton>
                 <a className="btn btn-ghost h-11 px-5 text-[14px]" href={ISSUES_URL} target="_blank" rel="noopener noreferrer">
                   <GitHubIcon />
-                  <T en="Open an issue" pt="Abrir uma issue" />
+                  {m.report.issue}
                 </a>
               </>
             }
           >
-            <p>
-              <T en="The form asks for what helps find a problem fast:" pt="O formulário pede o que ajuda a achar o problema rápido:" />
-            </p>
-            <ul className="space-y-2">
-              {INCLUDE.map((i) => (
-                <li key={i.en} className="flex gap-3">
-                  <span className="mt-[9px] size-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
-                  <span>
-                    <T en={i.en} pt={i.pt} />
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <p>{m.report.body}</p>
           </Card>
         </div>
         <div className="grid gap-3 lg:col-span-5">
           <Card
-            title={<T en="Suggestions and questions" pt="Sugestões e dúvidas" />}
+            title={m.ideas.title}
             foot={
               <ContactButton kind="idea" className="btn btn-ghost h-11 px-5 text-[14px]">
-                <T en="Send a suggestion" pt="Mandar uma sugestão" />
+                {m.ideas.button}
               </ContactButton>
             }
           >
-            <p>
-              <T
-                en="An idea for a feature, a controller you would like supported, or any question: send it through the same form."
-                pt="Uma ideia de recurso, um controle que você queria ver funcionando ou qualquer dúvida: mande pelo mesmo formulário."
-              />
-            </p>
+            <p>{m.ideas.body}</p>
           </Card>
-          <Card title={<T en="Official site" pt="Site oficial" />}>
-            <p>
-              <T
-                en={
-                  <>
-                    <span className="text-fg">{OFFICIAL_DOMAIN}</span> is the only official OpenController website. Download it only from here or from its GitHub page; any other site offering it is not ours.
-                  </>
-                }
-                pt={
-                  <>
-                    O <span className="text-fg">{OFFICIAL_DOMAIN}</span> é o único site oficial do OpenController. Baixe só por aqui ou pela página dele no GitHub; qualquer outro site que ofereça o programa não é nosso.
-                  </>
-                }
-              />
-            </p>
+          <Card title={m.official.title}>
+            <p>{rich(m.official.body, { b: (c) => <span className="text-fg">{c}</span> }, { domain: OFFICIAL_DOMAIN })}</p>
           </Card>
         </div>
       </div>

@@ -14,10 +14,10 @@ type Entry = ChangelogEntry;
 
 /** Plain strings, so a server component can pass them. */
 export type ChangelogLabels = {
-  /** The noun of the month count, as in "4 updates". */
+  /** The month's count, with {n} for the number, as in "{n} updates". */
   count: { one: string; other: string };
   monthNav: string;
-  /** Before a month's name, as in "Jump to October 2026". */
+  /** A month's button, with {month} for its name and year, as in "Jump to {month}". */
   jumpTo: string;
   scroller: string;
   /** Link to the release's own page. */
@@ -25,9 +25,9 @@ export type ChangelogLabels = {
 };
 
 const englishLabels: ChangelogLabels = {
-  count: { one: "update", other: "updates" },
+  count: { one: "{n} update", other: "{n} updates" },
   monthNav: "Jump to month",
-  jumpTo: "Jump to",
+  jumpTo: "Jump to {month}",
   scroller: "Release notes",
   source: "Release page",
 };
@@ -197,12 +197,12 @@ export function ChangelogFeed({ entries, months, title, subtitle, action, endNot
             <motion.span key={current?.key ?? "none"} custom={active.direction} variants={rise} initial="enter" animate="center" exit="exit" transition={reduce ? instant : motionTokens.spring.morph}>{current ? <>{current.label}<span className={styles.monthYear}> {current.year}</span></> : null}</motion.span>
           </AnimatePresence>
         </span>
-        <motion.span className={styles.monthCount} layout="position" transition={layout}><RollingText value={`${current?.items.length ?? 0} ${current?.items.length === 1 ? labels.count.one : labels.count.other}`} direction={active.direction} reduce={reduce} /></motion.span>
+        <motion.span className={styles.monthCount} layout="position" transition={layout}><RollingText value={(current?.items.length === 1 ? labels.count.one : labels.count.other).replace("{n}", String(current?.items.length ?? 0))} direction={active.direction} reduce={reduce} /></motion.span>
       </div>
       {groups.length > 1 && <nav className={styles.monthNav} aria-label={labels.monthNav}>
         {groups.map((group) => {
           const selected = group.key === current?.key;
-          return <button key={group.key} type="button" aria-label={`${labels.jumpTo} ${group.label} ${group.year}`} aria-current={selected ? "true" : undefined} onClick={() => jumpTo(group.key)}>
+          return <button key={group.key} type="button" aria-label={labels.jumpTo.replace("{month}", `${group.label} ${group.year}`)} aria-current={selected ? "true" : undefined} onClick={() => jumpTo(group.key)}>
             {selected && <motion.span layoutId={`${uid}-month`} className={styles.monthPill} transition={reduce ? instant : motionTokens.spring.morph} />}
             <span className={styles.monthShort}>{group.short}</span>
           </button>;

@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { HOME } from "@/lib/seo";
+import { MESSAGES } from "@/messages";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "OpenController",
     short_name: "OpenController",
-    description: HOME.description.en,
+    description: MESSAGES.en.home.meta.description,
     start_url: "/",
     display: "browser",
     background_color: "#000000",

@@ -1,3 +1,4 @@
+import { setLang, t } from "@/lib/i18n-server";
 import { Compat } from "@/components/Compat";
 import { Contact } from "@/components/Contact";
 import { ContactDialog } from "@/components/ContactDialog";
@@ -13,32 +14,36 @@ import { Platforms } from "@/components/Platforms";
 import { RailToc } from "@/components/RailToc";
 import { SectionHead } from "@/components/SectionHead";
 import { Spotlight } from "@/components/Spotlight";
-import { T } from "@/components/T";
 import type { Metadata } from "next";
 import { GuideLinks } from "@/components/GuideLinks";
 import { SINCE, getLatestRelease, getStars, hasFeature } from "@/lib/github";
 import { isLang, type Lang } from "@/lib/i18n";
-import { HOME, homeJsonLd, jsonLdScript, pageMeta } from "@/lib/seo";
+import { homeJsonLd, jsonLdScript, pageMeta } from "@/lib/seo";
+import { rich } from "@/lib/text";
 
 export const revalidate = 3600;
 
 export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
-  return pageMeta(lang, "/", HOME.title[lang], HOME.description[lang]);
+  setLang(lang);
+  const { meta } = t().home;
+  return pageMeta(lang, "/", meta.title, meta.description);
 }
 
 export default async function Page({ params }: PageProps<"/[lang]">) {
   const lang = (await params).lang as Lang;
+  setLang(lang);
   const [release, stars] = await Promise.all([getLatestRelease(), getStars()]);
   const appReports = hasFeature(release?.version, SINCE.reports);
   const appMapping = hasFeature(release?.version, SINCE.mapping);
+  const m = t().home;
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(homeJsonLd(lang, release, appReports, appMapping)) }} />
       <a href="#main" className="skip">
-        <T en="Skip to content" pt="Pular para o conteúdo" />
+        {t().common.skip}
       </a>
       <Header stars={stars} version={release?.version ?? null} />
       <RailToc items={NAV} />
@@ -48,19 +53,8 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Hero release={release} />
 
         <section id="check" aria-labelledby="check-title" className="wrap pt-24 sm:pt-32">
-          <SectionHead
-            n="01"
-            label={<T en="Test your controller" pt="Teste seu controle" />}
-            title={
-              <span id="check-title">
-                <T en="Test your controller here." pt="Teste seu controle aqui." />
-              </span>
-            }
-          >
-            <T
-              en="Before you download anything, see if OpenController knows your controller. Connect it and press a button. It all happens right here in your browser."
-              pt="Antes de baixar, veja se o OpenController reconhece seu controle. Conecte e aperte um botão. Tudo acontece aqui mesmo, no navegador."
-            />
+          <SectionHead n="01" label={m.check.label} title={<span id="check-title">{m.check.title}</span>}>
+            {m.check.body}
           </SectionHead>
           <div className="mt-12">
             <ControllerCheck />
@@ -71,35 +65,14 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Performance />
 
         <section id="controllers" aria-labelledby="controllers-title" className="wrap py-20 sm:py-24">
-          <SectionHead
-            n="04"
-            label={<T en="Controllers" pt="Controles" />}
-            title={
-              <span id="controllers-title">
-                <T en="Find your controller." pt="Procure seu controle." />
-              </span>
-            }
-          >
-            <T
-              en={
-                <>
-                  Search for yours to see what works with it. Most controllers work even if they are not on the list. If yours gives you trouble,{" "}
-                  <a href="#contact" className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
-                    let us know
-                  </a>
-                  .
-                </>
-              }
-              pt={
-                <>
-                  Procure o seu para ver o que funciona com ele. A maioria dos controles funciona mesmo sem estar na lista. Se o seu der algum problema,{" "}
-                  <a href="#contact" className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
-                    avise a gente
-                  </a>
-                  .
-                </>
-              }
-            />
+          <SectionHead n="04" label={m.controllers.label} title={<span id="controllers-title">{m.controllers.title}</span>}>
+            {rich(m.controllers.body, {
+              a: (c) => (
+                <a href="#contact" className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
+                  {c}
+                </a>
+              ),
+            })}
           </SectionHead>
           <div className="mt-12">
             <Compat />

@@ -6,7 +6,7 @@ import { Dialog, DialogClose, DialogContent } from "@/components/arc/dialog/dial
 import { Input } from "@/components/arc/input/input";
 import { Textarea } from "@/components/arc/textarea/textarea";
 import { track } from "@/lib/track";
-import { useLang } from "./lang";
+import { useLang, useT } from "./lang";
 
 type Status = "idle" | "sending" | "sent" | "error";
 type Errors = { model?: string; email?: string; form?: string };
@@ -21,56 +21,9 @@ export function openRequest(detail: RequestDetail = {}) {
   window.dispatchEvent(new CustomEvent<RequestDetail>(OPEN, { detail }));
 }
 
-const COPY = {
-  en: {
-    title: "Ask for a controller",
-    intro: "Tell us which controller you would like on the list. Requests for the controllers people use most come first.",
-    model: "Brand and model",
-    modelHint: "As it is sold, e.g. Redragon Darkflame G820",
-    ids: "Read by the controller test",
-    notes: "Anything else (optional)",
-    notesHint: "Where you bought it, how you connect it, what does not work.",
-    email: "Your email (optional)",
-    emailHint: "To tell you when it is added. Only used for that.",
-    app: "Already have OpenController? Its window can send the controller's details for you: open the controller, then Information, then Report a problem.",
-    send: "Send request",
-    close: "Close",
-    sentTitle: "Request sent. Thank you!",
-    sentBody: "If you left your email, you will hear back when it is added.",
-    errors: {
-      model: "Write the brand and model.",
-      email: "That email doesn't look right.",
-      rate: "Too many requests in a short time. Try again in an hour.",
-      other: "The request could not be sent right now. Try again in a moment.",
-    },
-  },
-  pt: {
-    title: "Pedir um controle",
-    intro: "Diga qual controle você quer na lista. Os pedidos dos controles mais usados vêm primeiro.",
-    model: "Marca e modelo",
-    modelHint: "Como ele é vendido, ex.: Redragon Darkflame G820",
-    ids: "Lido pelo teste de controle",
-    notes: "Algo mais (opcional)",
-    notesHint: "Onde comprou, como conecta, o que não funciona.",
-    email: "Seu email (opcional)",
-    emailHint: "Para avisar quando ele entrar. Só é usado para isso.",
-    app: "Já tem o OpenController? A janela dele envia os dados do controle por você: abra o controle, depois Informações, depois Reportar um problema.",
-    send: "Enviar pedido",
-    close: "Fechar",
-    sentTitle: "Pedido enviado. Obrigado!",
-    sentBody: "Se você deixou seu email, avisamos quando ele entrar.",
-    errors: {
-      model: "Escreva a marca e o modelo.",
-      email: "Esse email não parece certo.",
-      rate: "Muitos pedidos em pouco tempo. Tente de novo daqui a uma hora.",
-      other: "Não deu para enviar agora. Tente de novo em instantes.",
-    },
-  },
-};
-
 export function RequestDialog({ appReports }: { appReports: boolean }) {
   const lang = useLang();
-  const c = COPY[lang];
+  const c = useT().home.request;
   const opened = useRef(0);
   const [open, setOpen] = useState(false);
   const [detail, setDetail] = useState<RequestDetail>({});

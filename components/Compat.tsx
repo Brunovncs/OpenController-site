@@ -4,58 +4,32 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { SearchField } from "@/components/arc/search-field/search-field";
 import SegmentedControl from "@/components/arc/segmented-control/segmented-control";
 import { SortableDataTable, type DataColumn, type SortDirection } from "@/components/arc/sortable-data-table/sortable-data-table";
-import { FAMILIES, FAMILY_ORDER, GROUPS, HINTS, SHORT, type Family, type GroupId } from "@/lib/families";
-import type { Lang } from "@/lib/i18n";
+import { glyphsFor, shapeFor } from "@/lib/drawings";
+import { FAMILIES, FAMILY_ORDER, GROUPS, familyText, hintText, type Family, type GroupId } from "@/lib/families";
 import { MODELS, search, type Rating } from "@/lib/models";
+import { fmt, plural, rich } from "@/lib/text";
 import { useTrackSearch } from "@/lib/track";
 import { CheckIcon, DashIcon } from "./icons";
-import { useHtmlData, useLang } from "./lang";
+import { useHtmlData, useT } from "./lang";
+import { PadDrawing } from "./PadDrawing";
 import { openRequest } from "./RequestDialog";
-import { T } from "./T";
 
-/** The grades, as the app shows them next to a controller (`rating.rs`). */
-const RATINGS: Record<Rating, { en: string; pt: string; hintEn: string; hintPt: string; tone: string; mark: string }> = {
-  Verified: {
-    en: "Verified",
-    pt: "Verificado",
-    hintEn: "Tested with OpenController on the controller itself. Everything it has works.",
-    hintPt: "Testado com o OpenController no próprio controle. Tudo o que ele tem funciona.",
-    tone: "border-ok/40 bg-ok/10 text-ok",
-    mark: "✓✓",
-  },
-  Compatible: {
-    en: "Compatible",
-    pt: "Compatível",
-    hintEn: "A known model. It should work in full, but it has not been tested here yet.",
-    hintPt: "Um modelo conhecido. Deve funcionar por completo, mas ainda não foi testado aqui.",
-    tone: "border-accent/40 bg-accent/10 text-accent",
-    mark: "✓",
-  },
-  Caveats: {
-    en: "With a note",
-    pt: "Com ressalva",
-    hintEn: "It works, with one thing to know first: a mode to switch to, or buttons the system keeps to itself.",
-    hintPt: "Funciona, com um detalhe para saber antes: um modo para trocar, ou botões que o sistema guarda para si.",
-    tone: "border-warn/40 bg-warn/10 text-warn",
-    mark: "!",
-  },
-  Unsupported: {
-    en: "Not yet",
-    pt: "Ainda não",
-    hintEn: "Recognised, but OpenController cannot read it yet.",
-    hintPt: "Reconhecido, mas o OpenController ainda não consegue lê-lo.",
-    tone: "border-line-strong bg-white/[0.03] text-faint",
-    mark: "✕",
-  },
+/** The grades, as the app shows them next to a controller (`rating.rs`). Their text is in compat.ratings. */
+const RATINGS: Record<Rating, { tone: string; mark: string }> = {
+  Verified: { tone: "border-ok/40 bg-ok/10 text-ok", mark: "✓✓" },
+  Compatible: { tone: "border-accent/40 bg-accent/10 text-accent", mark: "✓" },
+  Caveats: { tone: "border-warn/40 bg-warn/10 text-warn", mark: "!" },
+  Unsupported: { tone: "border-line-strong bg-white/[0.03] text-faint", mark: "✕" },
 };
 const RATING_ORDER: Rating[] = ["Verified", "Compatible", "Caveats", "Unsupported"];
 
 export function RatingBadge({ rating }: { rating: Rating }) {
+  const m = useT();
   const r = RATINGS[rating];
   return (
     <span className={`inline-flex h-5 shrink-0 items-center gap-1 rounded border px-1.5 font-mono text-[10.5px] ${r.tone}`}>
       <span aria-hidden>{r.mark}</span>
-      <T en={r.en} pt={r.pt} />
+      {m.compat.ratings[rating].label}
     </span>
   );
 }
@@ -89,53 +63,36 @@ function Mark({ on, children }: { on: boolean; children?: React.ReactNode }) {
   );
 }
 
+/** The model's drawing, small, at rest: the same one the app and the test show. */
+function Miniature({ model }: { model: (typeof MODELS)[number] }) {
+  const shape = shapeFor(model, model.vendor);
+  return (
+    <div aria-hidden className="w-[160px] max-w-full rounded-xl border border-line bg-white/[0.015] px-2 py-1.5 sm:mt-1">
+      <PadDrawing shape={shape} glyphs={glyphsFor(model, model.vendor, shape)} buttons={[]} axes={[0, 0, 0, 0]} />
+    </div>
+  );
+}
+
+const faint = { k: (c: React.ReactNode) => <span className="text-faint">{c}</span> };
+
 export function FamilyDetail({ family, hint }: { family: Family; hint: string | null }) {
+  const m = useT();
+  const d = m.compat.detail;
+  const text = familyText(m.compat.families, family.id);
+  const hintLine = hintText(m.compat.hints, hint);
+  const yesNo = (on: boolean) => (on ? d.yes : d.no);
   return (
     <div className="grid gap-x-8 gap-y-2 text-[13.5px] sm:grid-cols-2">
+      <p>{rich(d.extras, faint, { v: family.extras ? text.extras : family.passthrough ? d.passthrough : d.none })}</p>
+      <p>{rich(d.motion, faint, { v: family.gyro === "yes" ? d.yes : family.gyro === "dinput" ? d.dinput : d.no })}</p>
       <p>
-        <span className="text-faint">
-          <T en="Extra buttons: " pt="Botões extras: " />
-        </span>
-        {family.passthrough && !family.extras ? (
-          <T en="none, games already support it" pt="nenhum, os jogos já aceitam esse controle" />
-        ) : family.extras ? (
-          <T en={family.extras.en} pt={family.extras.pt} />
-        ) : (
-          <T en="none" pt="nenhum" />
-        )}
+        {rich(d.light, faint, { v: yesNo(family.lightBar) })}
+        <span className="text-faint">{" · "}</span>
+        {rich(d.touchpad, faint, { v: yesNo(family.touchpad) })}
       </p>
-      <p>
-        <span className="text-faint">
-          <T en="Aim by moving it: " pt="Mira com movimento: " />
-        </span>
-        {family.gyro === "yes" ? <T en="yes" pt="sim" /> : family.gyro === "dinput" ? <T en="in D-input mode" pt="no modo D-input" /> : <T en="no" pt="não" />}
-      </p>
-      <p>
-        <span className="text-faint">
-          <T en="Light bar: " pt="Barra de luz: " />
-        </span>
-        {family.lightBar ? <T en="yes" pt="sim" /> : <T en="no" pt="não" />}
-        <span className="text-faint">
-          {" · "}
-          <T en="Touchpad as buttons: " pt="Touchpad como botões: " />
-        </span>
-        {family.touchpad ? <T en="yes" pt="sim" /> : <T en="no" pt="não" />}
-      </p>
-      {family.unsupported ? (
-        <p className="text-warn">
-          <T en="Not supported yet." pt="Ainda não é suportado." />
-        </p>
-      ) : null}
-      {hint && HINTS[hint] ? (
-        <p className="border-l-2 border-warn/70 pl-3 text-muted sm:col-span-2">
-          <T en={HINTS[hint].en} pt={HINTS[hint].pt} />
-        </p>
-      ) : null}
-      {family.note ? (
-        <p className="text-muted sm:col-span-2">
-          <T en={family.note.en} pt={family.note.pt} />
-        </p>
-      ) : null}
+      {family.unsupported ? <p className="text-warn">{d.unsupported}</p> : null}
+      {hintLine ? <p className="border-l-2 border-warn/70 pl-3 text-muted sm:col-span-2">{hintLine}</p> : null}
+      {text.note ? <p className="text-muted sm:col-span-2">{text.note}</p> : null}
     </div>
   );
 }
@@ -143,17 +100,6 @@ export function FamilyDetail({ family, hint }: { family: Family; hint: string | 
 type FamilyRow = { id: string; name: string; group: number; extras: string; motion: number; light: number; touchpad: number; models: number };
 
 const GYRO_RANK = { yes: 2, dinput: 1, no: 0 } as const;
-
-const SORT_MESSAGES: Record<Lang, { sortBy: (label: string, current?: SortDirection) => string; sorted: (label: string, direction: SortDirection) => string }> = {
-  en: {
-    sortBy: (label, current) => `Sort by ${label}${current ? `, now ${current === "asc" ? "ascending" : "descending"}` : ""}`,
-    sorted: (label, direction) => `Sorted by ${label}, ${direction === "asc" ? "ascending" : "descending"}`,
-  },
-  pt: {
-    sortBy: (label, current) => `Ordenar por ${label}${current ? `, agora ${current === "asc" ? "crescente" : "decrescente"}` : ""}`,
-    sorted: (label, direction) => `Ordenado por ${label}, ${direction === "asc" ? "crescente" : "decrescente"}`,
-  },
-};
 
 /** A mark in the family table. On a phone the table folds into lines, so the column's name goes beside it. */
 function Flag({ on, label, children }: { on: boolean; label: string; children?: React.ReactNode }) {
@@ -166,29 +112,38 @@ function Flag({ on, label, children }: { on: boolean; label: string; children?: 
 }
 
 function FamilyTable({ counts }: { counts: Record<string, number> }) {
-  const lang = useLang();
+  const m = useT();
+  const tx = m.compat.table;
   const rows = useMemo<FamilyRow[]>(
     () =>
       FAMILY_ORDER.map((id) => {
         const f = FAMILIES[id];
+        const text = familyText(m.compat.families, id);
         return {
           id,
-          name: f.label[lang],
+          name: text.label,
           group: GROUPS.findIndex((g) => g.id === f.group),
-          extras: f.extras?.[lang] ?? "",
+          extras: f.extras ? text.extras : "",
           motion: GYRO_RANK[f.gyro],
           light: f.lightBar ? 1 : 0,
           touchpad: f.touchpad ? 1 : 0,
           models: counts[id] ?? 0,
         };
       }),
-    [counts, lang],
+    [counts, m],
   );
-  const pt = lang === "pt";
+  const sortMessages = useMemo(
+    () => ({
+      sortBy: (label: string, current?: SortDirection) =>
+        fmt(current === "asc" ? tx.sortByAsc : current === "desc" ? tx.sortByDesc : tx.sortBy, { label }),
+      sorted: (label: string, direction: SortDirection) => fmt(direction === "asc" ? tx.sortedAsc : tx.sortedDesc, { label }),
+    }),
+    [tx],
+  );
   const columns: DataColumn<FamilyRow>[] = [
     {
       key: "name",
-      label: pt ? "Família" : "Family",
+      label: tx.family,
       render: (_, r) => (
         <button
           type="button"
@@ -199,59 +154,59 @@ function FamilyTable({ counts }: { counts: Record<string, number> }) {
         </button>
       ),
     },
-    { key: "group", label: pt ? "Grupo" : "Group", numeric: false, width: 140, render: (_, r) => <span className="text-muted">{GROUPS[r.group]?.label[lang]}</span> },
+    {
+      key: "group",
+      label: tx.group,
+      numeric: false,
+      width: 140,
+      render: (_, r) => {
+        const g = GROUPS[r.group];
+        return <span className="text-muted">{g ? m.compat.groups[g.id] : null}</span>;
+      },
+    },
     {
       key: "extras",
-      label: pt ? "Botões extras" : "Extra buttons",
+      label: tx.extras,
       sortable: false,
       render: (_, r) => {
         const f = FAMILIES[r.id];
-        if (f.unsupported)
-          return (
-            <span className="text-warn">
-              <T en="Not supported yet" pt="Ainda não é suportado" />
-            </span>
-          );
-        if (f.passthrough && !f.extras) return <span className="text-muted"><T en="Games already support it" pt="Os jogos já aceitam" /></span>;
+        if (f.unsupported) return <span className="text-warn">{tx.unsupported}</span>;
+        if (f.passthrough && !f.extras) return <span className="text-muted">{tx.passthrough}</span>;
         if (f.extras) return <span className="text-muted">{r.extras}</span>;
-        return (
-          <span className="text-faint">
-            <T en="None" pt="Nenhum" />
-          </span>
-        );
+        return <span className="text-faint">{tx.none}</span>;
       },
     },
     {
       key: "motion",
-      label: pt ? "Mira com movimento" : "Motion aim",
+      label: tx.motion,
       numeric: false,
       render: (_, r) =>
         r.motion === GYRO_RANK.dinput ? (
-          <Flag on label={pt ? "movimento" : "motion"}>
+          <Flag on label={tx.motionShort}>
             <span className="text-muted">D-input</span>
           </Flag>
         ) : (
-          <Flag on={r.motion === GYRO_RANK.yes} label={pt ? "movimento" : "motion"} />
+          <Flag on={r.motion === GYRO_RANK.yes} label={tx.motionShort} />
         ),
     },
-    { key: "light", label: pt ? "Luz" : "Light bar", numeric: false, render: (_, r) => <Flag on={r.light === 1} label={pt ? "luz" : "light"} /> },
-    { key: "touchpad", label: "Touchpad", numeric: false, render: (_, r) => <Flag on={r.touchpad === 1} label="touchpad" /> },
-    { key: "models", label: pt ? "Modelos" : "Models", numeric: true },
+    { key: "light", label: tx.light, numeric: false, render: (_, r) => <Flag on={r.light === 1} label={tx.lightShort} /> },
+    { key: "touchpad", label: tx.touchpad, numeric: false, render: (_, r) => <Flag on={r.touchpad === 1} label={tx.touchpadShort} /> },
+    { key: "models", label: tx.models, numeric: true },
   ];
   return (
     <SortableDataTable
       rows={rows}
       columns={columns}
       rowKey="id"
-      caption={pt ? "O que cada família de controles faz" : "What each controller family does"}
+      caption={tx.caption}
       defaultSort={{ key: "group", direction: "asc" }}
-      messages={SORT_MESSAGES[lang]}
+      messages={sortMessages}
     />
   );
 }
 
 export function Compat() {
-  const lang = useLang();
+  const c = useT().compat;
   const os = useHtmlData("os", "other");
   const [tab, setTab] = useState<"models" | "families">("models");
   const [query, setQuery] = useState("");
@@ -312,23 +267,20 @@ export function Compat() {
   useTrackSearch("controllers", deferred, results.length);
 
   const shown = results.slice(0, limit);
-  const fam = family ? FAMILIES[family] : null;
+  const famLabel = family ? familyText(c.families, family).label : null;
 
   return (
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <SegmentedControl
-          label={lang === "pt" ? "Visão" : "View"}
+          label={c.view}
           value={tab}
           onValueChange={(v) => setTab(v as "models" | "families")}
           options={[
-            { value: "models", label: lang === "pt" ? "Modelos" : "Models", accessory: <span className="ml-1.5 text-faint">{MODELS.length}</span> },
-            { value: "families", label: lang === "pt" ? "Famílias" : "Families", accessory: <span className="ml-1.5 text-faint">{FAMILY_ORDER.length}</span> },
+            { value: "models", label: c.models, accessory: <span className="ml-1.5 text-faint">{MODELS.length}</span> },
+            { value: "families", label: c.familiesTab, accessory: <span className="ml-1.5 text-faint">{FAMILY_ORDER.length}</span> },
           ]}
         />
-        <p className="text-[12.5px] text-faint">
-          <T en="Many controllers that are not on this list work too." pt="Muitos controles que não estão nesta lista também funcionam." />
-        </p>
       </div>
 
       {tab === "models" ? (
@@ -336,8 +288,8 @@ export function Compat() {
           <div className="relative">
             <SearchField
               ref={inputRef}
-              label={lang === "pt" ? "Buscar por nome, marca, família ou id USB" : "Search by name, brand, family or USB id"}
-              clearLabel={lang === "pt" ? "Limpar busca" : "Clear search"}
+              label={c.search}
+              clearLabel={c.clearSearch}
               value={query}
               onValueChange={(v) => {
                 setQuery(v);
@@ -350,7 +302,7 @@ export function Compat() {
                   setFamily(null);
                 }
               }}
-              placeholder={lang === "pt" ? "Tente DualSense ou 8BitDo" : "Try DualSense or 8BitDo"}
+              placeholder={c.searchPlaceholder}
               autoComplete="off"
               spellCheck={false}
             />
@@ -359,8 +311,8 @@ export function Compat() {
               <kbd className="kbd">K</kbd>
             </span>
           </div>
-          <div className="scrollbar-none mt-3 flex gap-1.5 overflow-x-auto" role="group" aria-label={lang === "pt" ? "Filtrar por grupo" : "Filter by group"}>
-            {[{ id: "all" as const, label: { en: "All", pt: "Todos" } }, ...GROUPS].map((g) => (
+          <div className="scrollbar-none mt-3 flex gap-1.5 overflow-x-auto" role="group" aria-label={c.filterGroup}>
+            {[{ id: "all" as const }, ...GROUPS].map((g) => (
               <button
                 key={g.id}
                 type="button"
@@ -373,22 +325,22 @@ export function Compat() {
                 }}
                 className="btn shrink-0 rounded-full px-3 py-1 text-[12.5px] text-muted hover:bg-white/[0.05] hover:text-fg aria-pressed:bg-white/[0.08] aria-pressed:text-fg"
               >
-                <T en={g.label.en} pt={g.label.pt} />
+                {g.id === "all" ? c.all : c.groups[g.id]}
               </button>
             ))}
-            {fam ? (
+            {famLabel ? (
               <button
                 type="button"
                 onClick={() => setFamily(null)}
                 className="btn shrink-0 rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-[12.5px] text-fg"
-                aria-label={lang === "pt" ? "Remover filtro de família" : "Clear family filter"}
+                aria-label={c.clearFamily}
               >
-                <T en={fam.label.en} pt={fam.label.pt} /> <span aria-hidden>×</span>
+                {famLabel} <span aria-hidden>×</span>
               </button>
             ) : null}
           </div>
 
-          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4" role="group" aria-label={lang === "pt" ? "Filtrar por compatibilidade" : "Filter by compatibility"}>
+          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4" role="group" aria-label={c.filterRating}>
             {RATING_ORDER.filter((r) => ratingCounts[r]).map((r) => (
               <button
                 key={r}
@@ -405,19 +357,13 @@ export function Compat() {
                   <RatingBadge rating={r} />
                   <span className="font-mono text-[11.5px] text-faint">{ratingCounts[r]}</span>
                 </span>
-                <span className="text-[12.5px] leading-snug text-muted">
-                  <T en={RATINGS[r].hintEn} pt={RATINGS[r].hintPt} />
-                </span>
+                <span className="text-[12.5px] leading-snug text-muted">{c.ratings[r].hint}</span>
               </button>
             ))}
           </div>
 
           <p className="mt-4 mb-2 font-mono text-[12px] text-faint" aria-live="polite">
-            {results.length === 1 ? (
-              <T en="1 model" pt="1 modelo" />
-            ) : (
-              <T en={`${results.length} models`} pt={`${results.length} modelos`} />
-            )}
+            {plural(results.length, c.count.one, c.count.other)}
           </p>
 
           <div className="min-h-[min(70vh,640px)]">
@@ -425,7 +371,7 @@ export function Compat() {
             <ul className="divide-y divide-line border-y border-line">
               {shown.map((m) => {
                 const f = FAMILIES[m.family] ?? FAMILIES.Other;
-                const short = SHORT[m.family] ?? SHORT.Other;
+                const short = familyText(c.families, f.id).short;
                 const isOpen = open === m.key;
                 return (
                   <li key={m.key}>
@@ -444,12 +390,12 @@ export function Compat() {
                         </span>
                         <span className="block truncate text-[12.5px] text-faint md:hidden">
                           {m.brand ? `${m.brand} · ` : ""}
-                          <T en={short.en} pt={short.pt} />
+                          {short}
                         </span>
                       </span>
                       <span className="hidden min-w-0 truncate text-[13px] text-muted md:block">
                         {m.brand ? <span className="text-fg/80">{m.brand} · </span> : null}
-                        <T en={short.en} pt={short.pt} />
+                        {short}
                       </span>
                       <span className="hidden items-center md:flex">
                         <RatingBadge rating={m.rating} />
@@ -457,37 +403,37 @@ export function Compat() {
                       <span className="hidden gap-1 lg:flex">
                         {f.passthrough ? (
                           <span className="inline-flex h-5 items-center rounded bg-white/[0.06] px-1.5 font-mono text-[10.5px] text-muted">
-                            <T en="works as is" pt="funciona direto" />
+                            {c.worksAsIs}
                           </span>
                         ) : f.unsupported ? (
                           <span className="inline-flex h-5 items-center rounded bg-warn/10 px-1.5 font-mono text-[10.5px] text-warn">
-                            <T en="not yet" pt="ainda não" />
+                            {c.notYet}
                           </span>
                         ) : (
                           <>
-                            <Dot on={!!f.extras} label={lang === "pt" ? "extras" : "extras"} />
-                            <Dot on={f.gyro !== "no"} label={lang === "pt" ? "movimento" : "motion"} />
-                            <Dot on={f.lightBar} label={lang === "pt" ? "luz" : "light"} />
+                            <Dot on={f.extras} label={c.dots.extras} />
+                            <Dot on={f.gyro !== "no"} label={c.dots.motion} />
+                            <Dot on={f.lightBar} label={c.dots.light} />
                           </>
                         )}
                       </span>
                       <span className="font-mono text-[12px] text-muted">{m.id}</span>
                     </button>
                     {isOpen ? (
-                      <div className="px-1 pb-4 pt-1 sm:px-3">
+                      <div className="grid gap-x-6 gap-y-3 px-1 pb-5 pt-1 sm:grid-cols-[160px_minmax(0,1fr)] sm:px-3">
+                        <Miniature model={m} />
+                        <div className="min-w-0">
                         <p className="mb-3 flex flex-wrap items-center gap-2 text-[13px] text-muted">
                           <RatingBadge rating={m.rating} />
-                          <T en={RATINGS[m.rating].hintEn} pt={RATINGS[m.rating].hintPt} />
+                          {c.ratings[m.rating].hint}
                         </p>
                         {m.alias_of ? (
                           <p className="mb-3 text-[13px] text-muted">
-                            <T
-                              en={`It reports itself as a ${m.alias_of}, so the app shows it as one at first. Pick ${m.name} under Model, on its Information page, to see it by name.`}
-                              pt={`Ele se apresenta como ${m.alias_of}, então o app mostra esse nome no começo. Escolha ${m.name} em Modelo, na página Informações dele, para vê-lo com o nome certo.`}
-                            />
+                            {fmt(c.alias, { alias: m.alias_of, name: m.name })}
                           </p>
                         ) : null}
                         <FamilyDetail family={f} hint={m.hint} />
+                        </div>
                       </div>
                     ) : null}
                   </li>
@@ -497,18 +443,9 @@ export function Compat() {
           ) : (
             <div className="border-y border-line px-2 py-12 text-center">
               <div className="mx-auto max-w-lg">
-                <p className="text-balance text-[19px] font-medium leading-snug text-fg">
-                  <T en="Not on the list yet, but it will probably work." pt="Ainda não está na lista, mas provavelmente funciona." />
-                </p>
-                <p className="mt-3 text-[14.5px] leading-relaxed text-muted">
-                  <T
-                    en="Many controllers are built on the same chip as an Xbox, PlayStation or Switch controller and tell the computer they are one. OpenController then knows yours as that controller, and it works like one."
-                    pt="Muitos controles usam o mesmo chip de um controle de Xbox, PlayStation ou Switch e se apresentam ao computador como um deles. Aí o OpenController reconhece o seu como esse controle, e ele funciona igual."
-                  />
-                </p>
-                <p className="mt-5 text-[12.5px] text-faint">
-                  <T en="Yours may show up as" pt="O seu pode aparecer como" />
-                </p>
+                <p className="text-balance text-[19px] font-medium leading-snug text-fg">{c.empty.title}</p>
+                <p className="mt-3 text-[14.5px] leading-relaxed text-muted">{c.empty.body}</p>
+                <p className="mt-5 text-[12.5px] text-faint">{c.empty.showsUpAs}</p>
                 <ul className="mt-2 flex flex-wrap justify-center gap-1.5">
                   {LOOKALIKES.map((name) => (
                     <li key={name} className="rounded-full border border-line px-2.5 py-1 text-[12.5px] text-muted">
@@ -518,22 +455,17 @@ export function Compat() {
                 </ul>
                 <div className="mt-7 flex flex-wrap justify-center gap-2">
                   <a href="#check" className="btn btn-primary h-10 px-5 text-[13.5px]">
-                    <T en="Test my controller" pt="Testar meu controle" />
+                    {c.empty.test}
                   </a>
                   <button
                     type="button"
                     onClick={() => openRequest({ model: query.trim(), query: query.trim() })}
                     className="btn btn-ghost h-10 px-5 text-[13.5px]"
                   >
-                    <T en="Ask for it to be added" pt="Pedir para incluir" />
+                    {c.empty.ask}
                   </button>
                 </div>
-                <p className="mt-4 text-[12.5px] leading-relaxed text-faint">
-                  <T
-                    en="The test shows in seconds what your controller says it is. If it is not recognised there, ask from the test itself and its ids go with the request."
-                    pt="O teste mostra em segundos como o seu controle se apresenta. Se ele não for reconhecido lá, peça pelo próprio teste e os IDs dele vão junto com o pedido."
-                  />
-                </p>
+                <p className="mt-4 text-[12.5px] leading-relaxed text-faint">{c.empty.note}</p>
               </div>
             </div>
           )}
@@ -542,21 +474,24 @@ export function Compat() {
 
           {results.length ? (
             <p className="mt-4 text-center text-[13px] text-faint">
-              <T en="Missing yours? It probably works anyway. " pt="Não achou o seu? Ele provavelmente funciona mesmo assim. " />
-              <button
-                type="button"
-                onClick={() => openRequest({ model: query.trim(), query: query.trim() })}
-                className="text-muted underline decoration-line-strong underline-offset-4 hover:text-fg"
-              >
-                <T en="Ask for it" pt="Peça para incluirmos" />
-              </button>
+              {rich(c.missing, {
+                a: (chunk) => (
+                  <button
+                    type="button"
+                    onClick={() => openRequest({ model: query.trim(), query: query.trim() })}
+                    className="text-muted underline decoration-line-strong underline-offset-4 hover:text-fg"
+                  >
+                    {chunk}
+                  </button>
+                ),
+              })}
             </p>
           ) : null}
 
           {results.length > limit ? (
             <div className="mt-4 flex justify-center">
               <button type="button" onClick={() => setLimit((l) => l + PAGE * 2)} className="btn btn-ghost h-10 px-4 text-[13px]">
-                <T en={`Show more (${results.length - limit} left)`} pt={`Mostrar mais (faltam ${results.length - limit})`} />
+                {fmt(c.showMore, { n: results.length - limit })}
               </button>
             </div>
           ) : null}

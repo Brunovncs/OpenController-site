@@ -3,30 +3,29 @@
  * and `Hint` in crates/open-controller-core/src/extras.rs and the README's compatibility table.
  */
 
-export type L = { en: string; pt: string };
-
 export type GroupId = "playstation" | "nintendo" | "xbox" | "eightbitdo" | "steam" | "handheld" | "more";
 
-export const GROUPS: { id: GroupId; label: L }[] = [
-  { id: "playstation", label: { en: "PlayStation", pt: "PlayStation" } },
-  { id: "nintendo", label: { en: "Nintendo", pt: "Nintendo" } },
-  { id: "xbox", label: { en: "Xbox", pt: "Xbox" } },
-  { id: "eightbitdo", label: { en: "8BitDo", pt: "8BitDo" } },
-  { id: "steam", label: { en: "Steam", pt: "Steam" } },
-  { id: "handheld", label: { en: "Handheld PCs", pt: "PCs portáteis" } },
-  { id: "more", label: { en: "More", pt: "Outros" } },
+export const GROUPS: { id: GroupId }[] = [
+  { id: "playstation" },
+  { id: "nintendo" },
+  { id: "xbox" },
+  { id: "eightbitdo" },
+  { id: "steam" },
+  { id: "handheld" },
+  { id: "more" },
 ];
 
 /** "yes": aims with it. "dinput": only in D-input mode. "no": not listed by the README. */
 export type Gyro = "yes" | "dinput" | "no";
 
+/**
+ * Its names, extra buttons and note are text, in messages/<lang>/compat under `families`.
+ */
 export type Family = {
   id: string;
   group: GroupId;
-  /** Short name of the family, as in the README's table. */
-  label: L;
-  /** The extra buttons, named as printed. null when there are none. */
-  extras: L | null;
+  /** Has buttons beyond the usual ones; they are named in the family's `extras` text. */
+  extras: boolean;
   gyro: Gyro;
   lightBar: boolean;
   /** Touchpad halves and two-finger touch as buttons of their own. */
@@ -35,25 +34,21 @@ export type Family = {
   passthrough?: boolean;
   /** Not read by this build. */
   unsupported?: boolean;
-  note?: L;
 };
 
 export const FAMILIES: Record<string, Family> = {
   DualShock4: {
     id: "DualShock4",
     group: "playstation",
-    label: { en: "DualShock 4 and PS4 style pads", pt: "DualShock 4 e controles estilo PS4" },
-    extras: { en: "Touchpad click, its left and right halves, two fingers", pt: "Clique do touchpad, suas metades esquerda e direita, dois dedos" },
+    extras: true,
     gyro: "yes",
     lightBar: true,
     touchpad: true,
-    note: { en: "Also on Sony's USB wireless adaptor.", pt: "Também no adaptador sem fio USB da Sony." },
   },
   DualSense: {
     id: "DualSense",
     group: "playstation",
-    label: { en: "DualSense, Access controller and PS5 style pads", pt: "DualSense, controle Access e controles estilo PS5" },
-    extras: { en: "Mic, touchpad click, its halves, two fingers", pt: "Microfone, clique do touchpad, suas metades, dois dedos" },
+    extras: true,
     gyro: "yes",
     lightBar: true,
     touchpad: true,
@@ -61,8 +56,7 @@ export const FAMILIES: Record<string, Family> = {
   DualSenseEdge: {
     id: "DualSenseEdge",
     group: "playstation",
-    label: { en: "DualSense Edge", pt: "DualSense Edge" },
-    extras: { en: "Back buttons, Fn L and Fn R, mic, touchpad click and halves", pt: "Botões traseiros, Fn L e Fn R, microfone, clique e metades do touchpad" },
+    extras: true,
     gyro: "yes",
     lightBar: true,
     touchpad: true,
@@ -70,21 +64,15 @@ export const FAMILIES: Record<string, Family> = {
   DualShock3: {
     id: "DualShock3",
     group: "playstation",
-    label: { en: "DualShock 3, Sixaxis and PS3 style pads", pt: "DualShock 3, Sixaxis e controles estilo PS3" },
-    extras: null,
+    extras: false,
     gyro: "yes",
     lightBar: false,
     touchpad: false,
-    note: {
-      en: "On Windows it needs Nefarius' DsHidMini in SXS mode, and BthPS3 for Bluetooth. The app offers both. There its pressure-sensitive buttons can move the triggers, its d-pad and its L1 and R1 can move a stick as hard as they are pressed, and its gyro aims, all experimental.",
-      pt: "No Windows precisa do DsHidMini da Nefarius no modo SXS, e do BthPS3 para Bluetooth. O app oferece os dois. Nesse modo, os botões sensíveis à pressão podem mover os gatilhos, o direcional e o L1 e R1 podem mover um analógico conforme a força e o giroscópio mira, tudo em fase experimental.",
-    },
   },
   Ps2Adapter: {
     id: "Ps2Adapter",
     group: "playstation",
-    label: { en: "PlayStation and PS2 pads on USB adapters", pt: "Controles de PlayStation e PS2 em adaptadores USB" },
-    extras: null,
+    extras: false,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -92,8 +80,7 @@ export const FAMILIES: Record<string, Family> = {
   SwitchPro: {
     id: "SwitchPro",
     group: "nintendo",
-    label: { en: "Switch Pro Controller and licensed pads", pt: "Switch Pro Controller e controles licenciados" },
-    extras: { en: "Capture", pt: "Capture" },
+    extras: true,
     gyro: "yes",
     lightBar: false,
     touchpad: false,
@@ -101,18 +88,15 @@ export const FAMILIES: Record<string, Family> = {
   JoyCons: {
     id: "JoyCons",
     group: "nintendo",
-    label: { en: "Joy-Con, as a pair or alone", pt: "Joy-Con, em par ou sozinho" },
-    extras: { en: "Capture, SL and SR; alone, L and ZL or R and ZR", pt: "Capture, SL e SR; sozinho, L e ZL ou R e ZR" },
+    extras: true,
     gyro: "yes",
     lightBar: false,
     touchpad: false,
-    note: { en: "Bluetooth.", pt: "Bluetooth." },
   },
   NintendoClassic: {
     id: "NintendoClassic",
     group: "nintendo",
-    label: { en: "Switch Online SNES, N64 and Mega Drive", pt: "SNES, N64 e Mega Drive do Switch Online" },
-    extras: { en: "Capture on the N64", pt: "Capture no N64" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -120,8 +104,7 @@ export const FAMILIES: Record<string, Family> = {
   Switch2: {
     id: "Switch2",
     group: "nintendo",
-    label: { en: "Switch 2 controllers", pt: "Controles do Switch 2" },
-    extras: null,
+    extras: false,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -130,21 +113,15 @@ export const FAMILIES: Record<string, Family> = {
   GameCube: {
     id: "GameCube",
     group: "nintendo",
-    label: { en: "GameCube adapters", pt: "Adaptadores de GameCube" },
-    extras: { en: "Trigger clicks, where the adapter reports them", pt: "Clique dos gatilhos, quando o adaptador informa" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
-    note: {
-      en: "The official Wii U adapter needs a USB library (libusb) this version leaves out.",
-      pt: "O adaptador oficial do Wii U precisa de uma biblioteca USB (libusb) que esta versão não inclui.",
-    },
   },
   Wii: {
     id: "Wii",
     group: "nintendo",
-    label: { en: "Wii Remote and Wii U Pro", pt: "Wii Remote e Wii U Pro" },
-    extras: null,
+    extras: false,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -152,8 +129,7 @@ export const FAMILIES: Record<string, Family> = {
   Xbox: {
     id: "Xbox",
     group: "xbox",
-    label: { en: "Xbox 360, One, Series and pads made for them", pt: "Xbox 360, One, Series e controles feitos para eles" },
-    extras: null,
+    extras: false,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -162,8 +138,7 @@ export const FAMILIES: Record<string, Family> = {
   XboxElite: {
     id: "XboxElite",
     group: "xbox",
-    label: { en: "Xbox Elite", pt: "Xbox Elite" },
-    extras: null,
+    extras: false,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -172,8 +147,7 @@ export const FAMILIES: Record<string, Family> = {
   SteamDeck: {
     id: "SteamDeck",
     group: "steam",
-    label: { en: "Steam Deck and pads built like it", pt: "Steam Deck e controles feitos como ele" },
-    extras: { en: "L4, R4, L5, R5, quick access, trackpad clicks", pt: "L4, R4, L5, R5, acesso rápido, cliques dos trackpads" },
+    extras: true,
     gyro: "yes",
     lightBar: false,
     touchpad: false,
@@ -181,8 +155,7 @@ export const FAMILIES: Record<string, Family> = {
   SteamController: {
     id: "SteamController",
     group: "steam",
-    label: { en: "Steam Controller", pt: "Steam Controller" },
-    extras: { en: "Grips on the 2015 controller, trackpad clicks", pt: "Grips no controle de 2015, cliques dos trackpads" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -190,8 +163,7 @@ export const FAMILIES: Record<string, Family> = {
   EightBitDoFour: {
     id: "EightBitDoFour",
     group: "eightbitdo",
-    label: { en: "8BitDo Ultimate 2 Wireless, Ultimate 3, Pro 3", pt: "8BitDo Ultimate 2 Wireless, Ultimate 3, Pro 3" },
-    extras: { en: "L4, R4, PL, PR in D-input mode", pt: "L4, R4, PL, PR no modo D-input" },
+    extras: true,
     gyro: "dinput",
     lightBar: false,
     touchpad: false,
@@ -199,8 +171,7 @@ export const FAMILIES: Record<string, Family> = {
   EightBitDoPro2: {
     id: "EightBitDoPro2",
     group: "eightbitdo",
-    label: { en: "8BitDo Pro 2", pt: "8BitDo Pro 2" },
-    extras: { en: "PL and PR in D-input mode", pt: "PL e PR no modo D-input" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -208,8 +179,7 @@ export const FAMILIES: Record<string, Family> = {
   EightBitDoUltimate: {
     id: "EightBitDoUltimate",
     group: "eightbitdo",
-    label: { en: "8BitDo Ultimate (first)", pt: "8BitDo Ultimate (o primeiro)" },
-    extras: { en: "Two back buttons and the star button", pt: "Dois botões traseiros e o botão estrela" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -217,8 +187,7 @@ export const FAMILIES: Record<string, Family> = {
   EightBitDoUltimate2C: {
     id: "EightBitDoUltimate2C",
     group: "eightbitdo",
-    label: { en: "8BitDo Ultimate 2C", pt: "8BitDo Ultimate 2C" },
-    extras: { en: "L4 and R4 over Bluetooth", pt: "L4 e R4 via Bluetooth" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -226,8 +195,7 @@ export const FAMILIES: Record<string, Family> = {
   EightBitDo: {
     id: "EightBitDo",
     group: "eightbitdo",
-    label: { en: "8BitDo SN30 Pro, Lite, Zero, M30 and the retro range", pt: "8BitDo SN30 Pro, Lite, Zero, M30 e a linha retrô" },
-    extras: null,
+    extras: false,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -235,8 +203,7 @@ export const FAMILIES: Record<string, Family> = {
   Flydigi: {
     id: "Flydigi",
     group: "more",
-    label: { en: "Flydigi Vader", pt: "Flydigi Vader" },
-    extras: { en: "M1 to M4, C, Z, LM, RM", pt: "M1 a M4, C, Z, LM, RM" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -244,8 +211,7 @@ export const FAMILIES: Record<string, Family> = {
   FlydigiApex: {
     id: "FlydigiApex",
     group: "more",
-    label: { en: "Flydigi Apex 5 and 6", pt: "Flydigi Apex 5 e 6" },
-    extras: { en: "M1 to M4, LM and RM", pt: "M1 a M4, LM e RM" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -253,8 +219,7 @@ export const FAMILIES: Record<string, Family> = {
   Stadia: {
     id: "Stadia",
     group: "more",
-    label: { en: "Google Stadia", pt: "Google Stadia" },
-    extras: { en: "Capture and Assistant", pt: "Capture e Assistente" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -262,8 +227,7 @@ export const FAMILIES: Record<string, Family> = {
   Luna: {
     id: "Luna",
     group: "more",
-    label: { en: "Amazon Luna", pt: "Amazon Luna" },
-    extras: { en: "Mic", pt: "Microfone" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -271,8 +235,7 @@ export const FAMILIES: Record<string, Family> = {
   Shield: {
     id: "Shield",
     group: "more",
-    label: { en: "NVIDIA Shield", pt: "NVIDIA Shield" },
-    extras: { en: "Share, volume down and up", pt: "Compartilhar, volume menos e mais" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -280,25 +243,16 @@ export const FAMILIES: Record<string, Family> = {
   Handheld: {
     id: "Handheld",
     group: "handheld",
-    label: { en: "Handheld PCs' built-in controllers", pt: "Controles embutidos de PCs portáteis" },
-    extras: {
-      en: "Back and menu buttons of AYANEO, Legion Go, Go 2, Go S, ZOTAC Zone and OneXPlayer, as keys and macros",
-      pt: "Botões traseiros e de menu de AYANEO, Legion Go, Go 2, Go S, ZOTAC Zone e OneXPlayer, como teclas e macros",
-    },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
     passthrough: true,
-    note: {
-      en: "Windows only, and not tried on a machine yet. ROG Ally and MSI Claw buttons need settings written to the controller, which OpenController does not do.",
-      pt: "Só no Windows, e ainda não testado num aparelho. Os botões do ROG Ally e do MSI Claw precisam de configuração gravada no controle, o que o OpenController não faz.",
-    },
   },
   Other: {
     id: "Other",
     group: "more",
-    label: { en: "PowerA, Hori, Razer, Nacon, Logitech and other pads", pt: "PowerA, Hori, Razer, Nacon, Logitech e outros controles" },
-    extras: { en: "Those the controller reports", pt: "Os que o controle informar" },
+    extras: true,
     gyro: "no",
     lightBar: false,
     touchpad: false,
@@ -335,68 +289,12 @@ export const FAMILY_ORDER = [
   "Other",
 ];
 
-export const HINTS: Record<string, L> = {
-  EightBitDoDInput: {
-    en: "In Xbox mode, the default, the extra buttons do not work. Turn the controller on while holding B to use D-input mode, where they and motion aiming work.",
-    pt: "No modo Xbox, que é o padrão, os botões extras não funcionam. Ligue o controle segurando B para usar o modo D-input, onde eles e a mira com movimento funcionam.",
-  },
-  EightBitDoSwitchD: {
-    en: "If it has a mode switch with a D position (Ultimate 2.4G, Pro 2), set it to D. That is D-input mode, where the back buttons work. The Ultimate Bluetooth has no D-input mode: its back buttons only copy other buttons, set in 8BitDo's app.",
-    pt: "Se ele tem uma chave de modo com a posição D (Ultimate 2.4G, Pro 2), coloque em D. É o modo D-input, onde os botões de trás funcionam. O Ultimate Bluetooth não tem modo D-input: os botões de trás só copiam outros botões, configurados no app da 8BitDo.",
-  },
-  EightBitDo2CBluetooth: {
-    en: "On its receiver L4 and R4 are hidden. Over Bluetooth they work.",
-    pt: "No receptor, L4 e R4 ficam ocultos. Via Bluetooth eles funcionam.",
-  },
-  EightBitDoForXbox: {
-    en: "Made for Xbox: its extra buttons only copy other buttons, set in 8BitDo's app.",
-    pt: "Feito para Xbox: os botões extras só copiam outros botões, configurados no app da 8BitDo.",
-  },
-  XboxPaddlesHidden: {
-    en: "Windows does not pass the Elite's paddles on to programs, except as copies of other buttons set in the Xbox Accessories app.",
-    pt: "O Windows não repassa as paletas do Elite aos programas, a não ser como cópias de outros botões configuradas no app Acessórios Xbox.",
-  },
-  SteamInput: {
-    en: "Steam takes Valve's controllers for itself while it runs.",
-    pt: "A Steam toma os controles da Valve para si enquanto está aberta.",
-  },
-  FlydigiThirdParty: {
-    en: "The extra buttons need \"Allow third-party apps to take over mappings\" in Flydigi Space Station.",
-    pt: "Os botões extras precisam de \"Allow third-party apps to take over mappings\" ligado no Flydigi Space Station.",
-  },
-  Switch2Unsupported: {
-    en: "Switch 2 controllers do not work in this version yet.",
-    pt: "Os controles do Switch 2 ainda não funcionam nesta versão.",
-  },
-};
+/** A family's text in messages/<lang>/compat `families`, or Other's for an unknown id. */
+export function familyText<T>(families: Record<string, T>, id: string): T {
+  return families[id] ?? families.Other;
+}
 
-/** Short family names for dense rows. */
-export const SHORT: Record<string, L> = {
-  DualShock4: { en: "DualShock 4", pt: "DualShock 4" },
-  DualSense: { en: "DualSense", pt: "DualSense" },
-  DualSenseEdge: { en: "DualSense Edge", pt: "DualSense Edge" },
-  DualShock3: { en: "DualShock 3", pt: "DualShock 3" },
-  Ps2Adapter: { en: "PS2 adapter", pt: "Adaptador PS2" },
-  SwitchPro: { en: "Switch Pro", pt: "Switch Pro" },
-  JoyCons: { en: "Joy-Con", pt: "Joy-Con" },
-  NintendoClassic: { en: "Switch Online", pt: "Switch Online" },
-  Switch2: { en: "Switch 2", pt: "Switch 2" },
-  GameCube: { en: "GameCube", pt: "GameCube" },
-  Wii: { en: "Wii", pt: "Wii" },
-  Xbox: { en: "Xbox", pt: "Xbox" },
-  XboxElite: { en: "Xbox Elite", pt: "Xbox Elite" },
-  SteamDeck: { en: "Steam Deck", pt: "Steam Deck" },
-  SteamController: { en: "Steam Controller", pt: "Steam Controller" },
-  EightBitDoFour: { en: "8BitDo, four extra", pt: "8BitDo, quatro extras" },
-  EightBitDoPro2: { en: "8BitDo Pro 2", pt: "8BitDo Pro 2" },
-  EightBitDoUltimate: { en: "8BitDo Ultimate", pt: "8BitDo Ultimate" },
-  EightBitDoUltimate2C: { en: "8BitDo Ultimate 2C", pt: "8BitDo Ultimate 2C" },
-  EightBitDo: { en: "8BitDo", pt: "8BitDo" },
-  Flydigi: { en: "Flydigi Vader", pt: "Flydigi Vader" },
-  FlydigiApex: { en: "Flydigi Apex", pt: "Flydigi Apex" },
-  Stadia: { en: "Stadia", pt: "Stadia" },
-  Luna: { en: "Luna", pt: "Luna" },
-  Shield: { en: "Shield", pt: "Shield" },
-  Handheld: { en: "Handheld PC", pt: "PC portátil" },
-  Other: { en: "Generic", pt: "Genérico" },
-};
+/** The text of a hint id from models.json (`Hint` in extras.rs), in messages/<lang>/compat `hints`. */
+export function hintText(hints: Record<string, string>, id: string | null | undefined): string | null {
+  return (id && hints[id]) || null;
+}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Release } from "@/lib/github";
 import { Download } from "./Download";
+import { HeroVideo } from "./HeroVideo";
 import { ArrowIcon } from "./icons";
 import { T } from "./T";
 
@@ -60,38 +61,16 @@ export function Hero({ release }: { release: Release | null }) {
             aria-hidden
             className="pointer-events-none absolute -inset-x-10 -top-16 bottom-0 -z-10 opacity-80 [background:radial-gradient(55%_60%_at_50%_30%,rgba(96,205,255,0.12),transparent_70%)]"
           />
-          {/* Made by scripts/screenshot.ps1 in the app's repository, in each language. */}
-          <div className="relative mx-auto aspect-[1125/760] max-w-[900px] overflow-hidden rounded-[14px] border border-line-strong bg-panel shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9),0_0_0_1px_rgba(0,0,0,1)]">
+          <div className="relative mx-auto aspect-[1800/1125] max-w-[900px] overflow-hidden rounded-[14px] border border-line-strong bg-panel shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9),0_0_0_1px_rgba(0,0,0,1)]">
             <T
-              en={
-                <Image
-                  src="/window.png"
-                  alt="The OpenController app with six connected controllers, each drawn in its own shape."
-                  width={1125}
-                  height={1015}
-                  priority
-                  sizes="(min-width: 960px) 900px, 100vw"
-                  className="block h-auto w-full"
-                />
-              }
-              pt={
-                <Image
-                  src="/window-pt.png"
-                  alt="O app OpenController com seis controles conectados, cada um desenhado no seu formato."
-                  width={1125}
-                  height={1015}
-                  priority
-                  sizes="(min-width: 960px) 900px, 100vw"
-                  className="block h-auto w-full"
-                />
-              }
+              en={<HeroVideo label="The OpenController app showing a DualSense, two Joy-Cons, a flight stick and a racing wheel as they are played, then all five at once." />}
+              pt={<HeroVideo label="O app OpenController mostrando um DualSense, dois Joy-Con, um manche e um volante enquanto alguém joga, e depois os cinco juntos." />}
             />
-            <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-black/85" />
           </div>
           <figcaption className="mt-3 text-[13px] text-faint">
             <T
-              en="The app, showing every controller you connect."
-              pt="O app mostrando cada controle conectado."
+              en="The app shows every press, on a drawing of your own controller."
+              pt="O app mostra cada toque, no desenho do seu próprio controle."
             />
           </figcaption>
         </figure>

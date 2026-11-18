@@ -52,8 +52,8 @@ export const QA: FaqItem[] = [
   {
     q: { en: "Will games show PlayStation button icons?", pt: "Os jogos vão mostrar os ícones do PlayStation?" },
     a: {
-      en: "Not by default. Games show Xbox button icons, since that is the controller they see, and special features like the DualSense's adaptive triggers don't reach them. If a game supports your controller, open it in the app and turn on Keep native. The game then sees the real controller, with its own icons, adaptive triggers and, over the cable, haptic feedback. This also lets the app work alongside a DS5Dongle. While a controller is native, its profiles, gyro aiming and remapped buttons are off. Close the game before switching.",
-      pt: "Não por padrão. Os jogos mostram os ícones do Xbox, já que é esse o controle que eles veem, e recursos especiais como os gatilhos adaptáveis do DualSense não chegam a eles. Se o jogo aceita o seu controle, abra-o no app e ligue Deixar nativo. Aí o jogo vê o controle de verdade, com os próprios ícones, os gatilhos adaptáveis e, no cabo, a vibração háptica. Isso também permite usar o app junto com um DS5Dongle. Enquanto o controle está nativo, os perfis, a mira com giroscópio e os botões remapeados ficam desligados. Feche o jogo antes de trocar.",
+      en: "Not by default. Games show Xbox button icons, since that is the controller they see, and a game can't set the DualSense's adaptive triggers itself, though the app's Lab page can give them resistance or vibration of its own. If a game supports your controller, open it in the app and turn on Native mode. The game then sees the real controller, with its own icons, adaptive triggers and, over the cable, haptic feedback. This also lets the app work alongside a DS5Dongle. While a controller is native, its profiles, gyro aiming and remapped buttons are off. Close the game before switching.",
+      pt: "Não por padrão. Os jogos mostram os ícones do Xbox, já que é esse o controle que eles veem, e o jogo não consegue usar os gatilhos adaptáveis do DualSense, mas a página Laboratório do app dá a eles resistência ou vibração por conta própria. Se o jogo aceita o seu controle, abra-o no app e ligue o Modo nativo. Aí o jogo vê o controle de verdade, com os próprios ícones, os gatilhos adaptáveis e, no cabo, a vibração háptica. Isso também permite usar o app junto com um DS5Dongle. Enquanto o controle está nativo, os perfis, a mira com giroscópio e os botões remapeados ficam desligados. Feche o jogo antes de trocar.",
     },
   },
   {
@@ -94,8 +94,8 @@ export const QA: FaqItem[] = [
   {
     q: { en: "Does it work with flight sticks and wheels?", pt: "Funciona com manche e volante?" },
     a: {
-      en: "Yes, and it leaves them as they are, since flight and racing games read them directly, with their twist, throttle and force feedback. To play a gamepad game with a Logitech Extreme 3D Pro, or a Logitech G29 on Linux or a Mac, open it in the app and turn off Keep native. It then becomes an Xbox controller. For other flight sticks and wheels, send their details from the app so they can get the same.",
-      pt: "Sim, e ele não mexe neles, porque os jogos de voo e de corrida leem esses aparelhos direto, com a torção, o acelerador e o force feedback. Para jogar um jogo de controle com um Logitech Extreme 3D Pro, ou um Logitech G29 no Linux ou no Mac, abra-o no app e desligue Deixar nativo. Aí ele vira um controle de Xbox. Para outros manches e volantes, envie os dados deles pelo app para que ganhem o mesmo.",
+      en: "Yes, and it leaves them as they are, since flight and racing games read them directly, with their twist, throttle and force feedback. To play a gamepad game with a Logitech Extreme 3D Pro, or a Logitech G29 on Linux or a Mac, open it in the app and turn off Native mode. It then becomes an Xbox controller. For other flight sticks and wheels, send their details from the app so they can get the same.",
+      pt: "Sim, e ele não mexe neles, porque os jogos de voo e de corrida leem esses aparelhos direto, com a torção, o acelerador e o force feedback. Para jogar um jogo de controle com um Logitech Extreme 3D Pro, ou um Logitech G29 no Linux ou no Mac, abra-o no app e desligue o Modo nativo. Aí ele vira um controle de Xbox. Para outros manches e volantes, envie os dados deles pelo app para que ganhem o mesmo.",
     },
   },
   {

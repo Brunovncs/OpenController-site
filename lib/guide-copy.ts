@@ -27,8 +27,8 @@ export const GUIDE_COPY: Record<string, GuideCopy> = {
         title: { en: "Xbox or native", pt: "Xbox ou nativo" },
         body: [
           {
-            en: "By default games get an Xbox 360 controller: Xbox button prompts and rumble, but no adaptive triggers or haptics. Keep native, on the controller's page, gives the game the DualSense itself, for games that support it: PlayStation prompts, adaptive triggers and, over the cable, haptics. Profiles, gyro and remapping are off while it's native.",
-            pt: "Por padrão o jogo recebe um controle de Xbox 360: ícones de Xbox e vibração, sem gatilhos adaptáveis nem resposta tátil. Deixar nativo, na página do controle, entrega o próprio DualSense aos jogos que o suportam: ícones de PlayStation, gatilhos adaptáveis e, no cabo, resposta tátil. Perfis, giroscópio e remapeamento ficam desligados enquanto ele está nativo.",
+            en: "By default games get an Xbox 360 controller: Xbox button prompts and rumble, but no haptics, and the game can't set the adaptive triggers (the app's Lab page can give them resistance or vibration of its own). Native mode, on the controller's page, gives the game the DualSense itself, for games that support it: PlayStation prompts, adaptive triggers and, over the cable, haptics. Profiles, gyro and remapping are off while it's native.",
+            pt: "Por padrão o jogo recebe um controle de Xbox 360: ícones de Xbox e vibração, sem resposta tátil, e o jogo não usa os gatilhos adaptáveis (a página Laboratório do app dá a eles resistência ou vibração por conta própria). O Modo nativo, na página do controle, entrega o próprio DualSense aos jogos que o suportam: ícones de PlayStation, gatilhos adaptáveis e, no cabo, resposta tátil. Perfis, giroscópio e remapeamento ficam desligados enquanto ele está nativo.",
           },
         ],
       },
@@ -37,8 +37,8 @@ export const GUIDE_COPY: Record<string, GuideCopy> = {
         title: { en: "Gyro and touchpad", pt: "Giroscópio e touchpad" },
         body: [
           {
-            en: "The gyro is added to the right stick: always, while L2 is pulled, or while a button is held. The touchpad gives four buttons: click, left half, right half and two fingers. These and the mic button can each be an Xbox button, a key or a macro, in a profile per game.",
-            pt: "O giroscópio soma no analógico direito: sempre, com o L2 puxado ou segurando um botão. O touchpad vira quatro botões: clique, metade esquerda, metade direita e dois dedos. Esses e o botão do microfone podem ser um botão de Xbox, uma tecla ou uma macro, num perfil por jogo.",
+            en: "The gyro is added to the right stick: always, while L2 is pulled, or while a button is held. The touchpad gives four buttons: click, left half, right half and two fingers. These and the mic button can each be an Xbox button, a key or a macro, in a profile per game. On Windows, the touchpad can also move the mouse and the mic button can mute the PC.",
+            pt: "O giroscópio soma no analógico direito: sempre, com o L2 puxado ou segurando um botão. O touchpad vira quatro botões: clique, metade esquerda, metade direita e dois dedos. Esses e o botão do microfone podem ser um botão de Xbox, uma tecla ou uma macro, num perfil por jogo. No Windows, o touchpad também pode mover o mouse e o botão do microfone pode silenciar o PC.",
           },
         ],
       },
@@ -90,8 +90,8 @@ export const GUIDE_COPY: Record<string, GuideCopy> = {
         title: { en: "Gyro and touchpad", pt: "Giroscópio e touchpad" },
         body: [
           {
-            en: "The gyro is added to the right stick: always, while L2 is pulled, or while a button is held. The touchpad gives four buttons: click, left half, right half and two fingers. Each can be an Xbox button, a key or a macro, in a profile per game.",
-            pt: "O giroscópio soma no analógico direito: sempre, com o L2 puxado ou segurando um botão. O touchpad vira quatro botões: clique, metade esquerda, metade direita e dois dedos. Cada um pode ser um botão de Xbox, uma tecla ou uma macro, num perfil por jogo.",
+            en: "The gyro is added to the right stick: always, while L2 is pulled, or while a button is held. The touchpad gives four buttons: click, left half, right half and two fingers. Each can be an Xbox button, a key or a macro, in a profile per game. On Windows, the touchpad can also move the mouse.",
+            pt: "O giroscópio soma no analógico direito: sempre, com o L2 puxado ou segurando um botão. O touchpad vira quatro botões: clique, metade esquerda, metade direita e dois dedos. Cada um pode ser um botão de Xbox, uma tecla ou uma macro, num perfil por jogo. No Windows, o touchpad também pode mover o mouse.",
           },
         ],
       },

@@ -201,19 +201,20 @@ const guides: GuidesMessages = {
     "flydigi-vader": {
       title: "飞智 Flydigi Vader 5 Pro、4 Pro 连电脑和 Linux | OpenController",
       description:
-        "在任何电脑游戏中把 Flydigi Vader 5 Pro、4 Pro、5S 或更早的 Vader 当作 Xbox 手柄使用，M1 至 M4、C 和 Z 都能映射。支持 Windows 和 Linux，免费。",
+        "在任何电脑游戏中把 Flydigi Vader 5 Pro、4 Pro 或更早的 Vader 当作 Xbox 手柄使用，M1 至 M4、C 和 Z 都能映射。支持 Windows 和 Linux，免费。",
       sections: {
         which: {
           title: "你的 Vader 是哪一款",
           body: [
-            "Vader 4 Pro、5 Pro、5S 和 Direwolf 4 通过数据线或接收器连接。较早的 Vader 2 和 3 使用自己的旧款接收器。它们在游戏中都会显示为 Xbox 360 手柄。",
+            "Vader 4 Pro、5 Pro 和 Direwolf 4 通过数据线或接收器连接。较早的 Vader 2 和 3 使用自己的旧款接收器。它们在游戏中都会显示为 Xbox 360 手柄。",
+            "Vader 5S 不一样。它是为 Xbox 设计的有线手柄，Windows 像读取其他 Xbox 手柄一样读取它，所以 OpenController 看到的是 Xbox Wireless Controller。Windows 不会把它的额外按键交给其他应用。在 Space Station for Xbox 里把它们设成 Xbox 按键，它们就会在任何地方作为这些按键使用。",
           ],
         },
         "space-station": {
           title: "额外按键和飞智空间站",
           body: [
             "M1 至 M4、C、Z、LM 和 RM 都可以设为一个或多个 Xbox 按键、键盘按键或宏，并按游戏保存配置方案，自动切换。",
-            "Vader 4 Pro 及更新的型号，需要在飞智空间站（Flydigi Space Station）中开启“允许第三方应用接管映射”，否则其他应用读取不到这些按键。需要时 OpenController 窗口会提醒你。使用旧款接收器的 Vader 2 和 3 不需要。",
+            "Vader 4 Pro、5 Pro 和 Direwolf 4 需要在飞智空间站（Flydigi Space Station）中开启“允许第三方应用接管映射”，否则其他应用读取不到这些按键。需要时 OpenController 窗口会提醒你。使用旧款接收器的 Vader 2 和 3 不需要。",
           ],
         },
         linux: {

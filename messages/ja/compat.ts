@@ -80,6 +80,7 @@ const compat: CompatMessages = {
     SteamInput: "Steamは起動中、Valveのコントローラーを自分で使います。",
     FlydigiThirdParty: "追加ボタンを使うには、Flydigi Space Stationで「Allow third-party apps to take over mappings」をオンにしてください。",
     Switch2Unsupported: "Switch 2のコントローラーは、このバージョンではまだ使えません。",
+    PlayStationInXboxMode: "Xbox/PCモードでは、Xboxのボタンしか送りません。ほかの部分はプログラムから読み取れません。",
   },
   ratings: {
     Verified: { label: "確認済み", hint: "実機でテスト済み。すべて動作します。" },

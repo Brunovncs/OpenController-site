@@ -176,19 +176,20 @@ const copy = {
   "flydigi-vader": {
     title: "Flydigi Vader 5 Pro and 4 Pro on PC and Linux | OpenController",
     description:
-      "Use the Flydigi Vader 5 Pro, 4 Pro, 5S or an older Vader in any PC game as an Xbox controller, with M1 to M4, C and Z mapped. Windows and Linux, free.",
+      "Use the Flydigi Vader 5 Pro, 4 Pro or an older Vader in any PC game as an Xbox controller, with M1 to M4, C and Z mapped. Windows and Linux, free.",
     sections: {
       which: {
         title: "Which Vader you have",
         body: [
-          "The Vader 4 Pro, 5 Pro, 5S and the Direwolf 4 connect by cable or receiver. The older Vader 2 and 3 use their own older receiver. All of them show up in games as an Xbox 360 controller.",
+          "The Vader 4 Pro, 5 Pro and the Direwolf 4 connect by cable or receiver. The older Vader 2 and 3 use their own older receiver. All of them show up in games as an Xbox 360 controller.",
+          "The Vader 5S is different. It is a wired controller made for Xbox, and Windows reads it like any Xbox pad, so OpenController sees it as an Xbox Wireless Controller. Windows does not pass its extra buttons to other apps. Give them Xbox buttons in Space Station for Xbox and they work everywhere as those buttons.",
         ],
       },
       "space-station": {
         title: "Extra buttons and Space Station",
         body: [
           "M1 to M4, C, Z, LM and RM can each be one or more Xbox buttons, a key or a macro, with a profile per game that switches on by itself.",
-          'On the Vader 4 Pro and newer, turn on "Allow third-party apps to take over mappings" in Flydigi Space Station, or other apps can\'t read these buttons. OpenController\'s window reminds you when it\'s needed. The Vader 2 and 3 on the old receiver don\'t need it.',
+          'On the Vader 4 Pro, 5 Pro and the Direwolf 4, turn on "Allow third-party apps to take over mappings" in Flydigi Space Station, or other apps can\'t read these buttons. OpenController\'s window reminds you when it\'s needed. The Vader 2 and 3 on the old receiver don\'t need it.',
         ],
       },
       linux: {

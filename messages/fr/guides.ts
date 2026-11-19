@@ -212,19 +212,20 @@ const guides: GuidesMessages = {
     "flydigi-vader": {
       title: "Flydigi Vader 5 Pro et 4 Pro sur PC et Linux | OpenController",
       description:
-        "Utilise la Flydigi Vader 5 Pro, 4 Pro, 5S ou une Vader plus ancienne dans tout jeu PC comme une manette Xbox, avec M1 à M4, C et Z assignés. Windows et Linux, gratuit.",
+        "Utilise la Flydigi Vader 5 Pro, 4 Pro ou une Vader plus ancienne dans tout jeu PC comme une manette Xbox, avec M1 à M4, C et Z assignés. Windows et Linux, gratuit.",
       sections: {
         which: {
           title: "Quelle Vader tu as",
           body: [
-            "Les Vader 4 Pro, 5 Pro, 5S et la Direwolf 4 se branchent par câble ou avec le récepteur. Les Vader 2 et 3, plus anciennes, utilisent leur propre récepteur plus ancien. Toutes apparaissent dans les jeux comme une manette Xbox 360.",
+            "Les Vader 4 Pro, 5 Pro et la Direwolf 4 se branchent par câble ou avec le récepteur. Les Vader 2 et 3, plus anciennes, utilisent leur propre récepteur plus ancien. Toutes apparaissent dans les jeux comme une manette Xbox 360.",
+            "La Vader 5S est différente. C'est une manette filaire faite pour Xbox, et Windows la lit comme n'importe quelle manette Xbox, donc OpenController voit une Xbox Wireless Controller. Windows ne transmet pas ses boutons en plus aux autres applis. Donne-leur des boutons Xbox dans Space Station for Xbox et ils marchent partout comme ces boutons.",
           ],
         },
         "space-station": {
           title: "Boutons supplémentaires et Space Station",
           body: [
             "M1 à M4, C, Z, LM et RM peuvent chacun être un ou plusieurs boutons Xbox, une touche ou une macro, avec un profil par jeu qui s'active tout seul.",
-            "Sur la Vader 4 Pro et les plus récentes, active « Allow third-party apps to take over mappings » dans Flydigi Space Station, sinon les autres apps ne peuvent pas lire ces boutons. La fenêtre d'OpenController te le rappelle quand c'est nécessaire. Les Vader 2 et 3 sur l'ancien récepteur n'en ont pas besoin.",
+            "Sur la Vader 4 Pro, la 5 Pro et la Direwolf 4, active « Allow third-party apps to take over mappings » dans Flydigi Space Station, sinon les autres apps ne peuvent pas lire ces boutons. La fenêtre d'OpenController te le rappelle quand c'est nécessaire. Les Vader 2 et 3 sur l'ancien récepteur n'en ont pas besoin.",
           ],
         },
         linux: {

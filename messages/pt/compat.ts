@@ -80,6 +80,7 @@ const compat: CompatMessages = {
     SteamInput: "A Steam toma os controles da Valve para si enquanto está aberta.",
     FlydigiThirdParty: "Os botões extras precisam de \"Allow third-party apps to take over mappings\" ligado no Flydigi Space Station.",
     Switch2Unsupported: "Os controles do Switch 2 ainda não funcionam nesta versão.",
+    PlayStationInXboxMode: "No modo Xbox/PC ele só envia os botões do Xbox. Os programas não conseguem ler o resto.",
   },
   ratings: {
     Verified: { label: "Verificado", hint: "Testado no próprio controle. Tudo funciona." },

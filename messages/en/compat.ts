@@ -84,6 +84,7 @@ const compat = {
     SteamInput: "Steam takes Valve's controllers for itself while it runs.",
     FlydigiThirdParty: "The extra buttons need \"Allow third-party apps to take over mappings\" turned on in Flydigi Space Station.",
     Switch2Unsupported: "Switch 2 controllers do not work in this version yet.",
+    PlayStationInXboxMode: "In Xbox/PC mode it only sends the Xbox buttons. Programs can't read the rest.",
   },
   /** The grades the app shows next to a controller (`rating.rs`). */
   ratings: {

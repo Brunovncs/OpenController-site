@@ -205,19 +205,20 @@ const guides: GuidesMessages = {
     "flydigi-vader": {
       title: "Flydigi Vader 5 Pro y 4 Pro en PC y Linux | OpenController",
       description:
-        "Usa el Flydigi Vader 5 Pro, 4 Pro, 5S o un Vader más antiguo en cualquier juego de PC como mando de Xbox, con M1 a M4, C y Z asignados. Windows y Linux, gratis.",
+        "Usa el Flydigi Vader 5 Pro, 4 Pro o un Vader más antiguo en cualquier juego de PC como mando de Xbox, con M1 a M4, C y Z asignados. Windows y Linux, gratis.",
       sections: {
         which: {
           title: "Qué Vader tienes",
           body: [
-            "El Vader 4 Pro, 5 Pro, 5S y el Direwolf 4 se conectan por cable o receptor. Los Vader 2 y 3, más antiguos, usan su propio receptor antiguo. Todos aparecen en los juegos como un mando de Xbox 360.",
+            "El Vader 4 Pro, 5 Pro y el Direwolf 4 se conectan por cable o receptor. Los Vader 2 y 3, más antiguos, usan su propio receptor antiguo. Todos aparecen en los juegos como un mando de Xbox 360.",
+            "El Vader 5S es distinto. Es un mando con cable hecho para Xbox, y Windows lo lee como cualquier mando de Xbox, así que OpenController ve un Xbox Wireless Controller. Windows no pasa sus botones extra a otras apps. Asígnales botones de Xbox en Space Station for Xbox y funcionarán en todas partes como esos botones.",
           ],
         },
         "space-station": {
           title: "Botones extra y Space Station",
           body: [
             "M1 a M4, C, Z, LM y RM pueden ser cada uno uno o varios botones de Xbox, una tecla o una macro, con un perfil por juego que se activa solo.",
-            'En el Vader 4 Pro y los más nuevos, activa "Allow third-party apps to take over mappings" en Flydigi Space Station, o las demás apps no pueden leer estos botones. La ventana de OpenController te lo recuerda cuando hace falta. Los Vader 2 y 3 con el receptor antiguo no lo necesitan.',
+            'En el Vader 4 Pro, el 5 Pro y el Direwolf 4, activa "Allow third-party apps to take over mappings" en Flydigi Space Station, o las demás apps no pueden leer estos botones. La ventana de OpenController te lo recuerda cuando hace falta. Los Vader 2 y 3 con el receptor antiguo no lo necesitan.',
           ],
         },
         linux: {

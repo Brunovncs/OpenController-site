@@ -1063,10 +1063,10 @@
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
+    "hint": "PlayStationInXboxMode",
     "name": "Hori Fighting Stick mini 4 kai",
     "product": "00ed",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "0f0d"
   },
   {
@@ -1113,10 +1113,10 @@
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
+    "hint": "PlayStationInXboxMode",
     "name": "HORI Fighting Commander OCTA (Xbox/PC mode)",
     "product": "0164",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "0f0d"
   },
   {
@@ -1133,50 +1133,50 @@
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
+    "hint": "PlayStationInXboxMode",
     "name": "Nacon PS4 Compact Controller (Xbox/PC mode)",
     "product": "0603",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "146b"
   },
   {
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
+    "hint": "PlayStationInXboxMode",
     "name": "NACON Daija Arcade Stick (Xbox/PC mode)",
     "product": "0604",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "146b"
   },
   {
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
-    "name": "NACON PS4 controller in Xbox mode",
+    "hint": "PlayStationInXboxMode",
+    "name": "NACON Revolution Unlimited Pro (Xbox/PC mode)",
     "product": "0605",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "146b"
   },
   {
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
-    "name": "NACON Unknown Controller (Xbox/PC mode)",
+    "hint": "PlayStationInXboxMode",
+    "name": "NACON Revolution Unlimited Pro (Xbox/PC mode)",
     "product": "0606",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "146b"
   },
   {
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
-    "name": "NACON Wireless Controller for PS4 (Xbox/PC mode)",
+    "hint": "PlayStationInXboxMode",
+    "name": "NACON Asymmetric Wireless Controller (Xbox/PC mode)",
     "product": "0609",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "146b"
   },
   {
@@ -1234,7 +1234,7 @@
     "drawing": null,
     "family": "DualShock4",
     "hint": null,
-    "name": "NACON Revolution Infinite",
+    "name": "NACON Revolution Infinite or Unlimited",
     "product": "0d10",
     "rating": "Compatible",
     "vendor": "146b"
@@ -1363,10 +1363,10 @@
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
+    "hint": "PlayStationInXboxMode",
     "name": "Qanba Obsidian Arcade Joystick (Xbox/PC mode)",
     "product": "2303",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "2c22"
   },
   {
@@ -1383,10 +1383,10 @@
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
+    "hint": "PlayStationInXboxMode",
     "name": "Qanba Dragon Arcade Joystick (Xbox/PC mode)",
     "product": "2503",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "2c22"
   },
   {
@@ -1423,10 +1423,10 @@
     "art": "PlayStation",
     "drawing": null,
     "family": "DualShock4",
-    "hint": null,
-    "name": "Astro C40 in Xbox 360 mode (Xbox/PC mode)",
+    "hint": "PlayStationInXboxMode",
+    "name": "Astro C40 TR (Xbox/PC mode)",
     "product": "0024",
-    "rating": "Compatible",
+    "rating": "Caveats",
     "vendor": "9886"
   },
   {
@@ -9242,11 +9242,11 @@
   {
     "art": "Offset",
     "drawing": null,
-    "family": "Flydigi",
-    "hint": "FlydigiThirdParty",
+    "family": "Xbox",
+    "hint": null,
     "name": "Flydigi Vader 5S",
     "product": "2801",
-    "rating": "Caveats",
+    "rating": "Compatible",
     "vendor": "37d7"
   },
   {

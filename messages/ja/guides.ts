@@ -201,19 +201,20 @@ const guides: GuidesMessages = {
     "flydigi-vader": {
       title: "Flydigi Vader 5 Pro・4 ProをPCとLinuxで使う | OpenController",
       description:
-        "Flydigi Vader 5 Pro、4 Pro、5S、旧型のVaderを、どのPCゲームでもXboxコントローラーとして使えます。M1～M4、C、Zも割り当て可能。Windows・Linux対応、無料。",
+        "Flydigi Vader 5 Pro、4 Pro、旧型のVaderを、どのPCゲームでもXboxコントローラーとして使えます。M1～M4、C、Zも割り当て可能。Windows・Linux対応、無料。",
       sections: {
         which: {
           title: "お使いのVaderはどれ？",
           body: [
-            "Vader 4 Pro、5 Pro、5S、Direwolf 4は、有線かレシーバーでつなぎます。旧型のVader 2と3は、専用の旧型レシーバーを使います。どれもゲームからはXbox 360コントローラーとして見えます。",
+            "Vader 4 Pro、5 Pro、Direwolf 4は、有線かレシーバーでつなぎます。旧型のVader 2と3は、専用の旧型レシーバーを使います。どれもゲームからはXbox 360コントローラーとして見えます。",
+            "Vader 5Sは別です。Xbox向けの有線コントローラーで、WindowsはほかのXboxコントローラーと同じように読むため、OpenControllerにはXbox Wireless Controllerとして見えます。Windowsは追加ボタンをほかのアプリに渡しません。Space Station for XboxでXboxのボタンを割り当てれば、どこでもそのボタンとして使えます。",
           ],
         },
         "space-station": {
           title: "追加ボタンとSpace Station",
           body: [
             "M1～M4、C、Z、LM、RMは、それぞれ1つまたは複数のXboxボタン、キー、マクロにでき、ゲームごとのプロファイルが自動で切り替わります。",
-            "Vader 4 Pro以降では、Flydigi Space Stationで「Allow third-party apps to take over mappings」をオンにしてください。オフだと、ほかのアプリはこれらのボタンを読み取れません。必要なときはOpenControllerのウィンドウでお知らせします。旧型レシーバーのVader 2と3では不要です。",
+            "Vader 4 Pro、5 Pro、Direwolf 4では、Flydigi Space Stationで「Allow third-party apps to take over mappings」をオンにしてください。オフだと、ほかのアプリはこれらのボタンを読み取れません。必要なときはOpenControllerのウィンドウでお知らせします。旧型レシーバーのVader 2と3では不要です。",
           ],
         },
         linux: {

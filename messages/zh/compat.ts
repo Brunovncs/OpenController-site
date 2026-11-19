@@ -80,6 +80,7 @@ const compat: CompatMessages = {
     SteamInput: "Steam 运行时会独占 Valve 的手柄。",
     FlydigiThirdParty: "额外按键需要在飞智空间站（Flydigi Space Station）中开启“允许第三方应用接管映射”。",
     Switch2Unsupported: "当前版本暂不支持 Switch 2 手柄。",
+    PlayStationInXboxMode: "在 Xbox/PC 模式下，它只发送 Xbox 按键，程序无法读取其他部分。",
   },
   ratings: {
     Verified: { label: "已验证", hint: "已用手柄实测，全部功能可用。" },

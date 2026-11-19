@@ -80,6 +80,7 @@ const compat: CompatMessages = {
     SteamInput: "Steam garde les manettes de Valve pour lui tant qu'il est ouvert.",
     FlydigiThirdParty: "Les boutons supplémentaires demandent d'activer « Allow third-party apps to take over mappings » dans Flydigi Space Station.",
     Switch2Unsupported: "Les manettes Switch 2 ne marchent pas encore dans cette version.",
+    PlayStationInXboxMode: "En mode Xbox/PC, elle n'envoie que les boutons Xbox. Les programmes ne peuvent pas lire le reste.",
   },
   ratings: {
     Verified: { label: "Vérifiée", hint: "Testée sur la manette elle-même. Tout marche." },

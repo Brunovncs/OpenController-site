@@ -204,19 +204,20 @@ const guides: GuidesMessages = {
     "flydigi-vader": {
       title: "Flydigi Vader 5 Pro e 4 Pro no PC e no Linux | OpenController",
       description:
-        "Use o Flydigi Vader 5 Pro, 4 Pro, 5S ou um Vader antigo em qualquer jogo de PC como controle de Xbox, com M1 a M4, C e Z. Windows e Linux, grátis.",
+        "Use o Flydigi Vader 5 Pro, 4 Pro ou um Vader antigo em qualquer jogo de PC como controle de Xbox, com M1 a M4, C e Z. Windows e Linux, grátis.",
       sections: {
         which: {
           title: "Qual Vader você tem",
           body: [
-            "O Vader 4 Pro, 5 Pro, 5S e o Direwolf 4 conectam pelo cabo ou pelo receptor. Os Vader 2 e 3, mais antigos, usam o receptor antigo deles. Todos aparecem nos jogos como um controle de Xbox 360.",
+            "O Vader 4 Pro, 5 Pro e o Direwolf 4 conectam pelo cabo ou pelo receptor. Os Vader 2 e 3, mais antigos, usam o receptor antigo deles. Todos aparecem nos jogos como um controle de Xbox 360.",
+            "O Vader 5S é diferente. Ele é um controle com fio feito para o Xbox, e o Windows lê ele como qualquer controle de Xbox, então o OpenController vê um Xbox Wireless Controller. O Windows não passa os botões extras dele para outros apps. Dê a eles botões do Xbox no Space Station for Xbox e eles funcionam em todo lugar como esses botões.",
           ],
         },
         "space-station": {
           title: "Botões extras e o Space Station",
           body: [
             "M1 a M4, C, Z, LM e RM podem virar um ou vários botões de Xbox, uma tecla ou uma macro, com um perfil por jogo que entra sozinho.",
-            'No Vader 4 Pro e nos mais novos, ligue "Allow third-party apps to take over mappings" no Flydigi Space Station, senão outros programas não leem esses botões. A janela do OpenController avisa quando isso é preciso. Os Vader 2 e 3 no receptor antigo não precisam.',
+            'No Vader 4 Pro, no 5 Pro e no Direwolf 4, ligue "Allow third-party apps to take over mappings" no Flydigi Space Station, senão outros programas não leem esses botões. A janela do OpenController avisa quando isso é preciso. Os Vader 2 e 3 no receptor antigo não precisam.',
           ],
         },
         linux: {

@@ -80,6 +80,7 @@ const compat: CompatMessages = {
     SteamInput: "Steam se queda con los mandos de Valve mientras está abierto.",
     FlydigiThirdParty: "Los botones extra necesitan activar \"Allow third-party apps to take over mappings\" en Flydigi Space Station.",
     Switch2Unsupported: "Los mandos de Switch 2 todavía no funcionan en esta versión.",
+    PlayStationInXboxMode: "En modo Xbox/PC solo envía los botones de Xbox. Los programas no pueden leer el resto.",
   },
   ratings: {
     Verified: { label: "Verificado", hint: "Probado con el propio mando. Todo funciona." },

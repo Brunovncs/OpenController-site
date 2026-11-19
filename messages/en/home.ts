@@ -185,7 +185,7 @@ const home = {
       {
         id: "dataReports",
         q: "Does it send any of my data?",
-        a: "Nothing about you: no account, no tracking. It checks GitHub for a new version when you open the window, which you can turn off in Settings under Check for updates. On Windows it also downloads the updates and drivers you choose to install. Report a problem sends only that controller's technical details, and you can read them before sending.",
+        a: "Nothing about you: no account, no tracking. It checks GitHub for a new version when you open the window, which you can turn off in Settings under Check for updates. On Windows it also downloads the updates and drivers you choose to install. Report a problem sends only technical details: that controller's and, for one made for Xbox, the models of the Xbox devices connected. No serial numbers, and you can read it all before sending.",
       },
       {
         id: "languages",

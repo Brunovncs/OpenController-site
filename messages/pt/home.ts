@@ -184,7 +184,7 @@ const home: HomeMessages = {
       {
         id: "dataReports",
         q: "Ele envia algum dado meu?",
-        a: "Nada sobre você: sem conta, sem rastreamento. Quando você abre a janela, ele consulta o GitHub para ver se saiu versão nova, o que dá para desligar em Configurações, em Procurar atualizações. No Windows ele também baixa as atualizações e os drivers que você escolher instalar. Reportar um problema envia só os dados técnicos daquele controle, e você pode lê-los antes de enviar.",
+        a: "Nada sobre você: sem conta, sem rastreamento. Quando você abre a janela, ele consulta o GitHub para ver se saiu versão nova, o que dá para desligar em Configurações, em Procurar atualizações. No Windows ele também baixa as atualizações e os drivers que você escolher instalar. Reportar um problema envia só dados técnicos: os daquele controle e, se ele for feito para Xbox, os modelos dos aparelhos de Xbox conectados. Nada de número de série, e você pode ler tudo antes de enviar.",
       },
       {
         id: "languages",

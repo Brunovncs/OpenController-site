@@ -8,11 +8,9 @@ export function Faq({ appReports, appMapping }: { appReports: boolean; appMappin
   const items = faqItems(getLang(), appReports, appMapping);
   return (
     <section id="faq" aria-labelledby="faq-title" className="wrap py-20 sm:py-24">
-      <SectionHead n="06" label={m.label} title={<span id="faq-title">{m.title}</span>} />
-      <div className="faq mt-12 grid gap-x-10 lg:grid-cols-12">
-        <div className="lg:col-span-9 lg:col-start-4">
-          <FaqList items={items} />
-        </div>
+      <SectionHead id="faq-title" title={m.title} />
+      <div className="faq mx-auto mt-12 max-w-[50rem]">
+        <FaqList items={items} />
       </div>
     </section>
   );

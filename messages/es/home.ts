@@ -29,14 +29,11 @@ const home: HomeMessages = {
   },
 
   check: {
-    label: "Prueba tu mando",
     title: "Prueba tu mando aquí.",
   },
 
   features: {
-    label: "Qué hace",
     title: "Conecta y juega.",
-    body: "La mayoría de los juegos de PC están hechos para el mando de Xbox. OpenController hace que el tuyo también funcione en ellos.",
     games: {
       title: "Funciona en tus juegos",
       body: "Los mandos de Xbox ya funcionan, así que no los toca. Si un juego admite tu mando tal como es, activa \"Native mode\" y el juego ve el mando real.",
@@ -70,7 +67,6 @@ const home: HomeMessages = {
   },
 
   performance: {
-    label: "Rendimiento",
     title: "Casi nada en segundo plano.",
     memory: "Memoria en uso",
     games: "En tus juegos",
@@ -86,12 +82,10 @@ const home: HomeMessages = {
   },
 
   controllers: {
-    label: "Mandos",
     title: "Busca tu mando.",
   },
 
   platforms: {
-    label: "Sistemas",
     title: "Descarga para Windows, Linux o Mac.",
     caption: "Qué funciona en cada sistema",
     feature: "Función",
@@ -150,7 +144,6 @@ const home: HomeMessages = {
   },
 
   faq: {
-    label: "Preguntas",
     title: "Preguntas frecuentes.",
     search: "Buscar en las preguntas",
     clear: "Borrar búsqueda",
@@ -273,22 +266,10 @@ const home: HomeMessages = {
   },
 
   contact: {
-    label: "Contacto",
     title: "¿Algo no funciona? Cuéntanoslo.",
-    body: "OpenController está en beta, y cada informe ayuda.",
-    report: {
-      title: "Informar de un problema",
-      button: "Contáctanos",
-      issue: "Abrir una issue",
-    },
-    ideas: {
-      title: "Sugerencias y preguntas",
-      button: "Enviar una sugerencia",
-    },
-    official: {
-      title: "Sitio oficial",
-      body: "<b>{domain}</b> es el único sitio oficial de OpenController. Descárgalo solo desde aquí o desde GitHub.",
-    },
+    report: "Informar de un problema",
+    issue: "Abrir una issue",
+    idea: "Enviar una sugerencia",
   },
 
   contactForm: {
@@ -350,7 +331,6 @@ const home: HomeMessages = {
   },
 
   footer: {
-    blurb: "Gratis y de código abierto. Juega en PC con el mando que ya tienes.",
     nav: "Proyecto",
     controllers: "Mandos",
     whatsNew: "Novedades",

@@ -231,7 +231,7 @@ const guides: GuidesMessages = {
     metaTitle: "OpenControllerの更新情報 | リリースノート",
     description: "OpenControllerの全バージョンを新しい順に。変更点と、設定が引き継がれるかどうか。",
     title: "更新情報",
-    intro: "全バージョンを新しい順に並べています。アプリはウィンドウを開いたときに新しいバージョンを確認し、再インストールなしで更新されます。",
+    intro: "アプリはウィンドウを開いたときに新しいバージョンを確認し、再インストールなしで更新されます。",
     notesInEnglish: "各バージョンのリリースノートは英語で書かれています。",
     feed: "すべてのバージョン",
     rss: "RSSで購読",

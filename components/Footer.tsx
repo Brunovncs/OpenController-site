@@ -30,12 +30,9 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
             <Image src="/brand/icon.svg" alt="" width={40} height={40} />
             <div>
               <p className="text-[15px] font-semibold">OpenController</p>
-              <p className="font-mono text-[11.5px] text-faint">{version ? `v${version} · ` : ""}MIT</p>
+              {version ? <p className="font-mono text-[11.5px] text-faint">v{version}</p> : null}
             </div>
           </div>
-          <p className="mt-5 max-w-sm text-[13.5px] leading-relaxed text-faint">
-            {m.blurb}
-          </p>
         </div>
         <nav aria-label={m.nav} className="text-[14px] lg:col-span-4">
           <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5">
@@ -92,18 +89,12 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
       </div>
       <div className="wrap">
         <div className="space-y-3 border-t border-line py-6">
-        <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
-          {rich(m.official, { a: out(REPO_URL) }, { repo: `github.com/${REPO}`, domain: OFFICIAL_DOMAIN })}
-        </p>
-        <p className="max-w-4xl text-[12px] leading-relaxed text-faint">
-          {m.disclaimer}
-        </p>
-        <p className="max-w-4xl text-[12px] leading-relaxed text-faint">
-          {m.analytics}
-        </p>
-        <p className="text-[12.5px] text-muted">
-          {rich(m.madeBy, { a: out(TWITTER_URL) }, { name: "Bruno Vinicius (@zenorev)" })}
-        </p>
+          <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
+            {rich(m.official, { a: out(REPO_URL) }, { repo: `github.com/${REPO}`, domain: OFFICIAL_DOMAIN })}
+          </p>
+          <p className="max-w-4xl text-[12px] leading-relaxed text-faint">{m.disclaimer}</p>
+          <p className="max-w-4xl text-[12px] leading-relaxed text-faint">{m.analytics}</p>
+          <p className="text-[12.5px] text-muted">{rich(m.madeBy, { a: out(TWITTER_URL) }, { name: "Bruno Vinicius (@zenorev)" })}</p>
         </div>
       </div>
     </footer>

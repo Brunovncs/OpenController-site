@@ -29,14 +29,11 @@ const home: HomeMessages = {
   },
 
   check: {
-    label: "コントローラーをテスト",
     title: "ここでコントローラーをテスト。",
   },
 
   features: {
-    label: "できること",
     title: "つないで、すぐ遊べる。",
-    body: "ほとんどのPCゲームはXboxコントローラー向けに作られています。OpenControllerを使えば、お使いのコントローラーもそのまま使えます。",
     games: {
       title: "いつものゲームで使える",
       body: "Xboxコントローラーはもともと使えるので、手を加えません。ゲームがお使いのコントローラーにそのまま対応しているなら、「Native mode」をオンにすると、ゲームから本物のコントローラーが見えます。",
@@ -70,7 +67,6 @@ const home: HomeMessages = {
   },
 
   performance: {
-    label: "パフォーマンス",
     title: "バックグラウンドではほぼ何もしません。",
     memory: "メモリ使用量",
     games: "ゲーム中",
@@ -86,12 +82,10 @@ const home: HomeMessages = {
   },
 
   controllers: {
-    label: "コントローラー",
     title: "コントローラーを探す。",
   },
 
   platforms: {
-    label: "対応OS",
     title: "Windows、Linux、Mac用をダウンロード。",
     caption: "OSごとにできること",
     feature: "機能",
@@ -150,7 +144,6 @@ const home: HomeMessages = {
   },
 
   faq: {
-    label: "よくある質問",
     title: "よくある質問。",
     search: "質問を検索",
     clear: "検索をクリア",
@@ -273,22 +266,10 @@ const home: HomeMessages = {
   },
 
   contact: {
-    label: "お問い合わせ",
     title: "うまく動きませんか？教えてください。",
-    body: "OpenControllerはベータ版で、どの報告も役に立ちます。",
-    report: {
-      title: "問題を報告",
-      button: "お問い合わせ",
-      issue: "issueを作成",
-    },
-    ideas: {
-      title: "提案と質問",
-      button: "提案を送る",
-    },
-    official: {
-      title: "公式サイト",
-      body: "OpenControllerの公式サイトは<b>{domain}</b>だけです。ダウンロードはここかGitHubからのみ行ってください。",
-    },
+    report: "問題を報告",
+    issue: "issueを作成",
+    idea: "提案を送る",
   },
 
   contactForm: {
@@ -350,7 +331,6 @@ const home: HomeMessages = {
   },
 
   footer: {
-    blurb: "無料のオープンソース。今あるコントローラーでPCゲームを。",
     nav: "プロジェクト",
     controllers: "コントローラー",
     whatsNew: "更新情報",

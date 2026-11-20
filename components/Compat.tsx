@@ -205,18 +205,31 @@ function FamilyTable({ counts }: { counts: Record<string, number> }) {
   );
 }
 
+/** What the list is narrowed to: a group of families (or all of them), or one family picked in the family table. */
+type Scope = { group: GroupId | "all" } | { family: string };
+type Filter = { query: string; scope: Scope; rating: Rating | null };
+const UNFILTERED: Filter = { query: "", scope: { group: "all" }, rating: null };
+
 export function Compat() {
   const c = useT().compat;
   const os = useHtmlData("os", "other");
   const [tab, setTab] = useState<"models" | "families">("models");
-  const [query, setQuery] = useState("");
-  const [group, setGroup] = useState<GroupId | "all">("all");
-  const [family, setFamily] = useState<string | null>(null);
-  const [rating, setRating] = useState<Rating | null>(null);
+  const [filter, setFilter] = useState<Filter>(UNFILTERED);
   const [limit, setLimit] = useState(PAGE);
   const [open, setOpen] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { query, scope, rating } = filter;
+  const group = "group" in scope ? scope.group : "all";
+  const family = "family" in scope ? scope.family : null;
+  const filtered = query.trim() !== "" || family !== null || group !== "all" || rating !== null;
   const deferred = useDeferredValue(query);
+
+  /** A new filter starts the list over: first page, nothing unfolded. */
+  const refine = (patch: Partial<Filter>) => {
+    setFilter((f) => ({ ...f, ...patch }));
+    setLimit(PAGE);
+    setOpen(null);
+  };
 
   const results = useMemo(() => {
     const r = search(MODELS, deferred, group).filter((m) => !rating || m.rating === rating);
@@ -250,9 +263,7 @@ export function Compat() {
     const onFamily = (e: Event) => {
       const id = (e as CustomEvent<string>).detail;
       setTab("models");
-      setQuery("");
-      setGroup("all");
-      setFamily(id);
+      setFilter((f) => ({ ...f, query: "", scope: { family: id } }));
       setLimit(PAGE);
       setOpen(null);
     };
@@ -291,16 +302,9 @@ export function Compat() {
               label={c.search}
               clearLabel={c.clearSearch}
               value={query}
-              onValueChange={(v) => {
-                setQuery(v);
-                setLimit(PAGE);
-                setOpen(null);
-              }}
+              onValueChange={(v) => refine({ query: v })}
               onKeyDown={(e) => {
-                if (e.key === "Escape") {
-                  setQuery("");
-                  setFamily(null);
-                }
+                if (e.key === "Escape") refine({ query: "", scope: family ? { group: "all" } : scope });
               }}
               placeholder={c.searchPlaceholder}
               autoComplete="off"
@@ -317,12 +321,7 @@ export function Compat() {
                 key={g.id}
                 type="button"
                 aria-pressed={group === g.id && !family}
-                onClick={() => {
-                  setGroup(g.id);
-                  setFamily(null);
-                  setLimit(PAGE);
-                  setOpen(null);
-                }}
+                onClick={() => refine({ scope: { group: g.id } })}
                 className="btn shrink-0 rounded-full px-3 py-1 text-[12.5px] text-muted hover:bg-white/[0.05] hover:text-fg aria-pressed:bg-white/[0.08] aria-pressed:text-fg"
               >
                 {g.id === "all" ? c.all : c.groups[g.id]}
@@ -331,7 +330,7 @@ export function Compat() {
             {famLabel ? (
               <button
                 type="button"
-                onClick={() => setFamily(null)}
+                onClick={() => refine({ scope: { group: "all" } })}
                 className="btn shrink-0 rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-[12.5px] text-fg"
                 aria-label={c.clearFamily}
               >
@@ -346,11 +345,7 @@ export function Compat() {
                 key={r}
                 type="button"
                 aria-pressed={rating === r}
-                onClick={() => {
-                  setRating(rating === r ? null : r);
-                  setLimit(PAGE);
-                  setOpen(null);
-                }}
+                onClick={() => refine({ rating: rating === r ? null : r })}
                 className="btn flex flex-col items-start gap-1.5 rounded-xl border border-line px-3 py-2.5 text-left transition-colors hover:bg-white/[0.03] aria-pressed:border-accent/60 aria-pressed:bg-accent/[0.06]"
               >
                 <span className="flex w-full items-center justify-between gap-2">
@@ -362,8 +357,8 @@ export function Compat() {
             ))}
           </div>
 
-          <p className="mt-4 mb-2 font-mono text-[12px] text-faint" aria-live="polite">
-            {plural(results.length, c.count.one, c.count.other)}
+          <p className="mt-4 mb-2 min-h-[18px] font-mono text-[12px] text-faint" aria-live="polite">
+            {filtered ? plural(results.length, c.count.one, c.count.other) : null}
           </p>
 
           <div className="min-h-[min(70vh,640px)]">

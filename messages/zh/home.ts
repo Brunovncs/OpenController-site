@@ -29,14 +29,11 @@ const home: HomeMessages = {
   },
 
   check: {
-    label: "测试你的手柄",
     title: "在这里测试你的手柄。",
   },
 
   features: {
-    label: "功能",
     title: "插上就能玩。",
-    body: "大多数电脑游戏是为 Xbox 手柄设计的。OpenController 让你的手柄也能用。",
     games: {
       title: "游戏中直接可用",
       body: "Xbox 手柄本来就能用，所以不做处理。如果游戏原本就支持你的手柄，打开“原生模式”，游戏就会读取手柄本身。",
@@ -70,7 +67,6 @@ const home: HomeMessages = {
   },
 
   performance: {
-    label: "性能",
     title: "后台几乎不占资源。",
     memory: "内存占用",
     games: "游戏中",
@@ -86,12 +82,10 @@ const home: HomeMessages = {
   },
 
   controllers: {
-    label: "手柄",
     title: "找到你的手柄。",
   },
 
   platforms: {
-    label: "平台",
     title: "下载 Windows、Linux 或 Mac 版。",
     caption: "各系统支持的功能",
     feature: "功能",
@@ -150,7 +144,6 @@ const home: HomeMessages = {
   },
 
   faq: {
-    label: "问题",
     title: "常见问题。",
     search: "搜索问题",
     clear: "清除搜索",
@@ -273,22 +266,10 @@ const home: HomeMessages = {
   },
 
   contact: {
-    label: "联系",
     title: "遇到问题？告诉我们。",
-    body: "OpenController 还在测试阶段，每一份反馈都有帮助。",
-    report: {
-      title: "报告问题",
-      button: "联系我们",
-      issue: "提交 issue",
-    },
-    ideas: {
-      title: "建议和问题",
-      button: "提交建议",
-    },
-    official: {
-      title: "官方网站",
-      body: "<b>{domain}</b> 是 OpenController 唯一的官方网站。请只从这里或 GitHub 下载。",
-    },
+    report: "报告问题",
+    issue: "提交 issue",
+    idea: "提交建议",
   },
 
   contactForm: {
@@ -350,7 +331,6 @@ const home: HomeMessages = {
   },
 
   footer: {
-    blurb: "免费开源。用你现有的手柄在电脑上玩游戏。",
     nav: "项目",
     controllers: "手柄",
     whatsNew: "更新内容",

@@ -38,14 +38,13 @@ export default async function ChangelogPage({ params }: PageProps<"/[lang]/chang
       </a>
       <Header stars={stars} version={release?.version ?? null} path="/changelog" home={home} />
       <main id="main" className="wrap pb-20">
-        <header className="pb-10 pt-10 sm:pb-12 sm:pt-14">
+        <header className="mx-auto max-w-[920px] pb-10 pt-10 sm:pb-12 sm:pt-14">
           <h1 className="display text-balance text-[34px] sm:text-[46px]">{c.title}</h1>
           <p className="mt-5 max-w-[44rem] text-pretty text-[17px] leading-relaxed text-muted">{c.intro}</p>
           {c.notesInEnglish ? <p className="mt-3 text-[14px] text-faint">{c.notesInEnglish}</p> : null}
         </header>
         {entries.length && latest && first ? (
           <ChangelogFeed
-            className="mx-0!"
             entries={entries}
             months={months}
             labels={c.labels}
@@ -59,7 +58,7 @@ export default async function ChangelogPage({ params }: PageProps<"/[lang]/chang
             endNote={fmt(c.first, { version: first.version, date: longDate(lang, first.publishedAt) })}
           />
         ) : (
-          <div className="card max-w-[44rem] p-6 sm:p-8">
+          <div className="card mx-auto max-w-[44rem] p-6 sm:p-8">
             <p className="text-[17px] text-fg">{c.offline}</p>
             <p className="mt-2 text-[15px] leading-relaxed text-muted">
               {rich(c.offlineLink, {

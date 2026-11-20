@@ -234,7 +234,7 @@ const guides: GuidesMessages = {
     metaTitle: "Novidades do OpenController | Notas de versão",
     description: "Todas as versões do OpenController, da mais nova para a mais antiga: o que mudou e se as suas configurações continuam.",
     title: "Novidades",
-    intro: "Todas as versões, da mais nova para a mais antiga. O app procura uma versão nova quando a janela abre e se atualiza sem reinstalar.",
+    intro: "O app procura uma versão nova quando a janela abre e se atualiza sem reinstalar.",
     notesInEnglish: "As notas de cada versão são escritas em inglês.",
     feed: "Todas as versões",
     rss: "Acompanhar por RSS",

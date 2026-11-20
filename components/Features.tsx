@@ -40,11 +40,11 @@ function SetupsVisual() {
     { name: m.setups.shooter, on: false },
   ];
   return (
-    <ul className="space-y-2 px-6 pb-7 sm:px-7">
+    <ul className="flex flex-wrap gap-2 px-6 pb-7 sm:px-7">
       {rows.map((r, i) => (
         <li
           key={i}
-          className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 text-[13px] ${r.on ? "border-accent/50 bg-accent/[0.07]" : "border-line bg-panel-2"}`}
+          className={`flex min-w-[10rem] flex-1 items-center gap-3 rounded-xl border px-3 py-2.5 text-[13px] ${r.on ? "border-accent/50 bg-accent/[0.07]" : "border-line bg-panel-2"}`}
         >
           <span className={`size-1.5 rounded-full ${r.on ? "bg-accent" : "bg-line-strong"}`} aria-hidden />
           <span className="text-fg">{r.name}</span>
@@ -72,17 +72,15 @@ export function Features() {
   const m = t().home.features;
   return (
     <section id="features" aria-labelledby="features-title" className="wrap py-20 sm:py-24">
-      <SectionHead n="02" label={m.label} title={<span id="features-title">{m.title}</span>}>
-        {m.body}
-      </SectionHead>
+      <SectionHead id="features-title" title={m.title} />
 
-      <div className="mt-14 grid gap-3 lg:grid-cols-6">
-        <Card className="lg:col-span-3" title={m.games.title} visual={<StepsVisual steps={m.games.steps} />}>
+      <div className="mt-12 grid gap-3 lg:grid-cols-6">
+        <Card className="lg:col-span-2" title={m.games.title} visual={<StepsVisual steps={m.games.steps} />}>
           {m.games.body}
         </Card>
 
         <Card
-          className="lg:col-span-3"
+          className="lg:col-span-4"
           title={m.friends.title}
           visual={
             <div className="px-6 pb-7 sm:px-7">
@@ -94,11 +92,11 @@ export function Features() {
           {m.friends.body}
         </Card>
 
-        <Card className="lg:col-span-3" title={m.custom.title} visual={<SetupsVisual />}>
+        <Card className="lg:col-span-4" title={m.custom.title} visual={<SetupsVisual />}>
           {m.custom.body}
         </Card>
 
-        <Card className="lg:col-span-3" title={m.updates.title} visual={<UpdateVisual />}>
+        <Card className="lg:col-span-2" title={m.updates.title} visual={<UpdateVisual />}>
           {m.updates.body}
         </Card>
       </div>

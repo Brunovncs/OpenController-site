@@ -29,14 +29,11 @@ const home = {
   },
 
   check: {
-    label: "Test your controller",
     title: "Test your controller here.",
   },
 
   features: {
-    label: "What it does",
     title: "Plug it in and play.",
-    body: "Most PC games are made for the Xbox controller. OpenController makes yours work in them too.",
     games: {
       title: "Works in your games",
       body: "Xbox controllers already work, so it leaves those alone. If a game supports your controller as it is, turn on Native mode and the game sees the real one.",
@@ -70,7 +67,6 @@ const home = {
   },
 
   performance: {
-    label: "Performance",
     title: "Almost nothing in the background.",
     memory: "Memory in use",
     games: "In your games",
@@ -86,12 +82,10 @@ const home = {
   },
 
   controllers: {
-    label: "Controllers",
     title: "Find your controller.",
   },
 
   platforms: {
-    label: "Platforms",
     title: "Download for Windows, Linux or Mac.",
     caption: "What works on each system",
     feature: "Feature",
@@ -150,7 +144,6 @@ const home = {
   },
 
   faq: {
-    label: "Questions",
     title: "Common questions.",
     search: "Search the questions",
     clear: "Clear search",
@@ -274,22 +267,10 @@ const home = {
   },
 
   contact: {
-    label: "Contact",
     title: "Something not working? Tell us.",
-    body: "OpenController is in beta, and every report helps.",
-    report: {
-      title: "Report a problem",
-      button: "Contact us",
-      issue: "Open an issue",
-    },
-    ideas: {
-      title: "Suggestions and questions",
-      button: "Send a suggestion",
-    },
-    official: {
-      title: "Official site",
-      body: "<b>{domain}</b> is the only official OpenController site. Download it only from here or from GitHub.",
-    },
+    report: "Report a problem",
+    issue: "Open an issue",
+    idea: "Send a suggestion",
   },
 
   contactForm: {
@@ -351,7 +332,6 @@ const home = {
   },
 
   footer: {
-    blurb: "Free and open source. Play on PC with the controller you already have.",
     nav: "Project",
     controllers: "Controllers",
     whatsNew: "What's new",

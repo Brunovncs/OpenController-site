@@ -29,14 +29,11 @@ const home: HomeMessages = {
   },
 
   check: {
-    label: "Teste ta manette",
     title: "Teste ta manette ici.",
   },
 
   features: {
-    label: "Ce qu'il fait",
     title: "Branche et joue.",
-    body: "La plupart des jeux PC sont faits pour la manette Xbox. OpenController fait marcher la tienne avec eux aussi.",
     games: {
       title: "Marche dans tes jeux",
       body: "Les manettes Xbox marchent déjà, donc il n'y touche pas. Si un jeu prend en charge ta manette telle quelle, active « Native mode » et le jeu voit la vraie.",
@@ -70,7 +67,6 @@ const home: HomeMessages = {
   },
 
   performance: {
-    label: "Performances",
     title: "Presque rien en arrière-plan.",
     memory: "Mémoire utilisée",
     games: "Dans tes jeux",
@@ -86,12 +82,10 @@ const home: HomeMessages = {
   },
 
   controllers: {
-    label: "Manettes",
     title: "Trouve ta manette.",
   },
 
   platforms: {
-    label: "Plateformes",
     title: "Télécharge pour Windows, Linux ou Mac.",
     caption: "Ce qui marche sur chaque système",
     feature: "Fonction",
@@ -150,7 +144,6 @@ const home: HomeMessages = {
   },
 
   faq: {
-    label: "Questions",
     title: "Questions fréquentes.",
     search: "Chercher dans les questions",
     clear: "Effacer la recherche",
@@ -273,22 +266,10 @@ const home: HomeMessages = {
   },
 
   contact: {
-    label: "Contact",
     title: "Quelque chose ne marche pas ? Dis-le-nous.",
-    body: "OpenController est en bêta, et chaque signalement aide.",
-    report: {
-      title: "Signaler un problème",
-      button: "Nous contacter",
-      issue: "Ouvrir une issue",
-    },
-    ideas: {
-      title: "Suggestions et questions",
-      button: "Envoyer une suggestion",
-    },
-    official: {
-      title: "Site officiel",
-      body: "<b>{domain}</b> est le seul site officiel d'OpenController. Télécharge-le uniquement ici ou sur GitHub.",
-    },
+    report: "Signaler un problème",
+    issue: "Ouvrir une issue",
+    idea: "Envoyer une suggestion",
   },
 
   contactForm: {
@@ -350,7 +331,6 @@ const home: HomeMessages = {
   },
 
   footer: {
-    blurb: "Gratuit et open source. Joue sur PC avec la manette que tu as déjà.",
     nav: "Projet",
     controllers: "Manettes",
     whatsNew: "Nouveautés",

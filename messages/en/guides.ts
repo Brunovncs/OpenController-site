@@ -282,7 +282,7 @@ const guides = {
     metaTitle: "What's new in OpenController | Release notes",
     description: "Every OpenController version, newest first: what changed and whether your settings carry over.",
     title: "What's new",
-    intro: "Every version, newest first. The app checks for a new version when its window opens and updates itself without reinstalling.",
+    intro: "The app checks for a new version when its window opens and updates itself without reinstalling.",
     /** Shown under the intro in languages other than English; empty here. */
     notesInEnglish: "",
     feed: "All versions",

@@ -52,7 +52,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Hero release={release} />
 
         <section id="check" aria-labelledby="check-title" className="wrap pt-24 sm:pt-32">
-          <SectionHead n="01" label={m.check.label} title={<span id="check-title">{m.check.title}</span>} />
+          <SectionHead id="check-title" title={m.check.title} />
           <div className="mt-12">
             <ControllerCheck />
           </div>
@@ -62,7 +62,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Performance />
 
         <section id="controllers" aria-labelledby="controllers-title" className="wrap py-20 sm:py-24">
-          <SectionHead n="04" label={m.controllers.label} title={<span id="controllers-title">{m.controllers.title}</span>} />
+          <SectionHead id="controllers-title" title={m.controllers.title} />
           <div className="mt-12">
             <Compat />
           </div>

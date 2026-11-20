@@ -231,7 +231,7 @@ const guides: GuidesMessages = {
     metaTitle: "OpenController 更新内容 | 版本说明",
     description: "OpenController 的所有版本，从新到旧：改了什么，设置是否保留。",
     title: "更新内容",
-    intro: "所有版本，从新到旧。应用在窗口打开时检查新版本，无需重装即可更新。",
+    intro: "应用在窗口打开时检查新版本，无需重装即可更新。",
     notesInEnglish: "各版本的更新说明为英文。",
     feed: "所有版本",
     rss: "通过 RSS 订阅",

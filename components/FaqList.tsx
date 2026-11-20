@@ -33,8 +33,8 @@ export function FaqList({ items }: { items: FaqItem[] }) {
   return (
     <>
       <SearchField label={m.search} clearLabel={m.clear} placeholder={m.placeholder} value={query} onValueChange={setQuery} autoComplete="off" />
-      <p className="mt-3 font-mono text-[12px] text-faint" aria-live="polite">
-        {plural(needle ? count : items.length, m.count.one, m.count.other)}
+      <p className="mt-3 min-h-[18px] font-mono text-[12px] text-faint" aria-live="polite">
+        {needle ? plural(count, m.count.one, m.count.other) : null}
       </p>
       <div className="mt-3 border-t border-line">
         {items.map((item, i) => (

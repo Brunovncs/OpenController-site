@@ -179,12 +179,12 @@ const home: HomeMessages = {
       {
         id: "data",
         q: "¿Envía algún dato mío?",
-        a: "Nada sobre ti: sin cuenta, sin rastreo. Al abrir la ventana consulta GitHub para ver si hay una versión nueva, algo que puedes desactivar en \"Settings\", en \"Check for updates\". En Windows también descarga las actualizaciones y los drivers que decidas instalar.",
+        a: "Nada sobre ti: sin cuenta, sin rastreo. Al abrir la ventana, y cada pocas horas mientras sigue abierta, consulta GitHub para ver si hay una versión nueva, algo que puedes desactivar en \"Settings\", en \"Check for updates\". En Windows también descarga las actualizaciones y los drivers que decidas instalar.",
       },
       {
         id: "dataReports",
         q: "¿Envía algún dato mío?",
-        a: "Nada sobre ti: sin cuenta, sin rastreo. Al abrir la ventana consulta GitHub para ver si hay una versión nueva, algo que puedes desactivar en \"Settings\", en \"Check for updates\". En Windows también descarga las actualizaciones y los drivers que decidas instalar. \"Report a problem\" envía solo los datos técnicos de ese mando, y puedes leerlos antes de enviarlos.",
+        a: "Nada sobre ti: sin cuenta, sin rastreo. Al abrir la ventana, y cada pocas horas mientras sigue abierta, consulta GitHub para ver si hay una versión nueva, algo que puedes desactivar en \"Settings\", en \"Check for updates\". En Windows también descarga las actualizaciones y los drivers que decidas instalar. \"Report a problem\" envía solo los datos técnicos de ese mando, y puedes leerlos antes de enviarlos.",
       },
       {
         id: "languages",

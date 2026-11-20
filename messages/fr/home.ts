@@ -179,12 +179,12 @@ const home: HomeMessages = {
       {
         id: "data",
         q: "Est-ce qu'il envoie mes données ?",
-        a: "Rien sur toi : pas de compte, pas de pistage. Il vérifie sur GitHub s'il y a une nouvelle version quand tu ouvres la fenêtre, ce que tu peux désactiver dans « Settings », sous « Check for updates ». Sous Windows, il télécharge aussi les mises à jour et les pilotes que tu choisis d'installer.",
+        a: "Rien sur toi : pas de compte, pas de pistage. Il vérifie sur GitHub s'il y a une nouvelle version quand tu ouvres la fenêtre, puis toutes les quelques heures tant qu'elle reste ouverte, ce que tu peux désactiver dans « Settings », sous « Check for updates ». Sous Windows, il télécharge aussi les mises à jour et les pilotes que tu choisis d'installer.",
       },
       {
         id: "dataReports",
         q: "Est-ce qu'il envoie mes données ?",
-        a: "Rien sur toi : pas de compte, pas de pistage. Il vérifie sur GitHub s'il y a une nouvelle version quand tu ouvres la fenêtre, ce que tu peux désactiver dans « Settings », sous « Check for updates ». Sous Windows, il télécharge aussi les mises à jour et les pilotes que tu choisis d'installer. « Report a problem » n'envoie que les détails techniques de cette manette, et tu peux les lire avant d'envoyer.",
+        a: "Rien sur toi : pas de compte, pas de pistage. Il vérifie sur GitHub s'il y a une nouvelle version quand tu ouvres la fenêtre, puis toutes les quelques heures tant qu'elle reste ouverte, ce que tu peux désactiver dans « Settings », sous « Check for updates ». Sous Windows, il télécharge aussi les mises à jour et les pilotes que tu choisis d'installer. « Report a problem » n'envoie que les détails techniques de cette manette, et tu peux les lire avant d'envoyer.",
       },
       {
         id: "languages",

@@ -13,11 +13,10 @@ const check: CheckMessages = {
   pressed: "已按下",
   extra: "· 额外",
   pressExample: "点击图中的按键试试。",
-  pressIdle: "按下按键时，这里会亮起对应的按键。",
   pressAny: "按任意键，推动摇杆，扣动扳机。",
   idle: {
     title: "连接手柄，然后按任意键。",
-    body: "数据线或蓝牙都可以。你会看到它的名称，以及 OpenController 能为它做什么。",
+    body: "数据线或蓝牙都可以。",
     brave: "Brave 会向网站隐藏手柄。请用 Chrome 或 Edge 打开本页，或试试下面的示例。",
     unsupported: "此浏览器无法读取手柄。请用 Chrome 或 Edge 打开本页，或试试下面的示例。",
     helpTitle: "没有显示？",

@@ -12,11 +12,10 @@ const check = {
   pressed: "Pressed",
   extra: "· extra",
   pressExample: "Click or tap the buttons on the drawing.",
-  pressIdle: "Buttons light up here as you press them.",
   pressAny: "Press any button, move the sticks, pull the triggers.",
   idle: {
     title: "Connect your controller and press any button.",
-    body: "By cable or Bluetooth. You will see its name and what OpenController can do with it.",
+    body: "By cable or Bluetooth.",
     brave: "Brave hides controllers from websites. Open this page in Chrome or Edge, or try an example below.",
     unsupported: "This browser cannot read controllers. Open this page in Chrome or Edge, or try an example below.",
     helpTitle: "Not showing up?",

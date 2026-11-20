@@ -302,20 +302,22 @@ export function ControllerCheck() {
             </div>
 
             <div className="relative mt-6 min-h-[60px]">
-              <p className="label mb-2.5">{t.pressed}</p>
-              {pressed.length ? (
-                <ul className="flex flex-wrap gap-1.5">
-                  {pressed.map((i) => (
-                    <li key={i} className="flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[13px] text-fg">
-                      {physicalName(glyphs, shape, i, model?.family ?? null)}
-                      {i > 16 ? <span className="text-accent">{t.extra}</span> : null}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-[14px] text-faint">
-                  {example ? t.pressExample : state === "idle" ? t.pressIdle : t.pressAny}
-                </p>
+              {state === "idle" && !example ? null : (
+                <>
+                  <p className="label mb-2.5">{t.pressed}</p>
+                  {pressed.length ? (
+                    <ul className="flex flex-wrap gap-1.5">
+                      {pressed.map((i) => (
+                        <li key={i} className="flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[13px] text-fg">
+                          {physicalName(glyphs, shape, i, model?.family ?? null)}
+                          {i > 16 ? <span className="text-accent">{t.extra}</span> : null}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-[14px] text-faint">{example ? t.pressExample : t.pressAny}</p>
+                  )}
+                </>
               )}
             </div>
           </div>

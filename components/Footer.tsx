@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { COFFEE_URL, ISSUES_URL, LICENSE_URL, OFFICIAL_DOMAIN, REPO, REPO_URL, TWITTER_URL } from "@/lib/site";
+import { COFFEE_URL, LICENSE_URL, OFFICIAL_DOMAIN, REPO, REPO_URL, TWITTER_URL } from "@/lib/site";
 import { ContactButton } from "./ContactDialog";
 import { t } from "@/lib/i18n-server";
 import { LangMenu } from "./lang";
@@ -94,9 +94,6 @@ export function Footer({ version, path = "/", home = "" }: { version: string | n
         <div className="space-y-3 border-t border-line py-6">
         <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
           {rich(m.official, { a: out(REPO_URL) }, { repo: `github.com/${REPO}`, domain: OFFICIAL_DOMAIN })}
-        </p>
-        <p className="max-w-4xl text-[12.5px] leading-relaxed text-muted">
-          {rich(m.source, { license: out(LICENSE_URL), source: out(REPO_URL), bug: out(ISSUES_URL) })}
         </p>
         <p className="max-w-4xl text-[12px] leading-relaxed text-faint">
           {m.disclaimer}

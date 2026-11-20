@@ -98,9 +98,7 @@ export function Platforms({ release }: { release: Release | null }) {
   const m = t().home.platforms;
   return (
     <section id="platforms" aria-labelledby="platforms-title" className="wrap py-20 sm:py-24">
-      <SectionHead n="05" label={m.label} title={<span id="platforms-title">{m.title}</span>}>
-        {m.body}
-      </SectionHead>
+      <SectionHead n="05" label={m.label} title={<span id="platforms-title">{m.title}</span>} />
 
       <div className="reveal mt-14">
         <table className="w-full border-collapse text-left text-[13px] sm:text-[14px]">

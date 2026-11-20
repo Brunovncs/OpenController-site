@@ -13,11 +13,10 @@ const check: CheckMessages = {
   pressed: "押されたボタン",
   extra: "· 追加",
   pressExample: "イラストのボタンをクリックかタップしてください。",
-  pressIdle: "押したボタンがここで光ります。",
   pressAny: "ボタンを押したり、スティックを動かしたり、トリガーを引いたりしてみてください。",
   idle: {
     title: "コントローラーをつないで、どれかボタンを押してください。",
-    body: "有線でもBluetoothでも大丈夫です。名前と、OpenControllerでできることが表示されます。",
+    body: "有線でもBluetoothでも大丈夫です。",
     brave: "Braveはコントローラーをサイトから隠します。このページをChromeかEdgeで開くか、下のサンプルを試してください。",
     unsupported: "このブラウザーはコントローラーを読み取れません。このページをChromeかEdgeで開くか、下のサンプルを試してください。",
     helpTitle: "表示されませんか？",

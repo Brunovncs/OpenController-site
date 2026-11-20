@@ -20,7 +20,6 @@ const home: HomeMessages = {
     lead: "Utilise des manettes PlayStation, Switch, 8BitDo et d'autres dans tes jeux PC, seul ou entre amis.",
     test: "Teste ta manette",
     video: "L'app OpenController affichant une DualSense, deux Joy-Con, un joystick de vol et un volant pendant qu'on joue, puis les cinq en même temps.",
-    caption: "L'app affiche chaque appui sur un dessin de ta manette.",
     facts: [
       { k: "Tourne sur", v: "Windows, Linux et Mac" },
       { k: "Marche avec", v: "Des centaines de manettes" },
@@ -32,7 +31,6 @@ const home: HomeMessages = {
   check: {
     label: "Teste ta manette",
     title: "Teste ta manette ici.",
-    body: "Avant de télécharger, vérifie qu'OpenController connaît ta manette. Branche-la et appuie sur un bouton.",
   },
 
   features: {
@@ -41,23 +39,23 @@ const home: HomeMessages = {
     body: "La plupart des jeux PC sont faits pour la manette Xbox. OpenController fait marcher la tienne avec eux aussi.",
     games: {
       title: "Marche dans tes jeux",
-      body: "Les boutons, les sticks, les gâchettes et la vibration marchent comme tu t'y attends. Les manettes Xbox marchent déjà, donc il n'y touche pas. Si un jeu prend en charge ta manette telle quelle, active « Native mode » et le jeu voit la vraie.",
+      body: "Les manettes Xbox marchent déjà, donc il n'y touche pas. Si un jeu prend en charge ta manette telle quelle, active « Native mode » et le jeu voit la vraie.",
       steps: ["Branche ta manette", "Lance un jeu", "Joue"],
     },
     friends: {
       title: "Joue entre amis",
-      body: "Chaque manette est un joueur à part, et reste le même joueur si elle se déconnecte un instant.",
+      body: "Chacun reste le même joueur, même si sa manette se déconnecte un instant.",
       hint: "Essaie : glisse une manette sur une autre pour échanger les joueurs, ou touches-en deux.",
     },
     custom: {
       title: "À ta façon",
-      body: "Change ce que fait n'importe quel bouton, vise avec le gyroscope, corrige un stick qui dérive, et enregistre une config pour chaque jeu, qui s'active quand le jeu s'ouvre. Le « Controller Lab » ajoute des effets de gâchette sur une DualSense, plus le Flick Stick et le pavé tactile comme souris sous Windows. Sous Windows, le bouton micro d'une DualSense peut aussi couper le micro du PC. Rien de tout ça n'est nécessaire pour jouer.",
+      body: "Change ce que fait n'importe quel bouton, vise avec le gyroscope, corrige un stick qui dérive, et enregistre une config pour chaque jeu, qui s'active quand le jeu s'ouvre. Le « Controller Lab » ajoute des effets de gâchette sur une DualSense, plus le Flick Stick et le pavé tactile comme souris sous Windows.",
       setups: { default: "Par défaut", racing: "Jeu de course", shooter: "Jeu de tir" },
       inUse: "actif",
     },
     updates: {
       title: "Toujours à jour",
-      body: "L'app te prévient quand une nouvelle version sort. Sous Windows, un clic l'installe et garde tes réglages.",
+      body: "Sous Windows, un clic l'installe et garde tes réglages.",
       notice: "Une nouvelle version est sortie.",
       button: "Update now",
     },
@@ -74,9 +72,7 @@ const home: HomeMessages = {
   performance: {
     label: "Performances",
     title: "Presque rien en arrière-plan.",
-    body: "La fenêtre ne tourne que quand elle est ouverte. Ferme-la et il ne reste que la partie qui fait marcher tes manettes.",
     memory: "Mémoire utilisée",
-    note: "Mesuré sur la version 0.8.0 et Windows 11 dans le Gestionnaire des tâches, sans manette branchée. Avec la fenêtre ouverte, il utilisait 30 à 35 Mo.",
     games: "Dans tes jeux",
     measures: [
       { k: "Délai ajouté à ta manette", v: "En général moins d'une milliseconde" },
@@ -92,13 +88,11 @@ const home: HomeMessages = {
   controllers: {
     label: "Manettes",
     title: "Trouve ta manette.",
-    body: "Cherche la tienne pour voir ce qui marche. La plupart des manettes marchent même si elles ne sont pas dans la liste. Si la tienne pose problème, <a>préviens-nous</a>.",
   },
 
   platforms: {
     label: "Plateformes",
     title: "Télécharge pour Windows, Linux ou Mac.",
-    body: "La même app sur les trois. Un Mac gère déjà les manettes tout seul, donc là-bas elle en fait moins.",
     caption: "Ce qui marche sur chaque système",
     feature: "Fonction",
     yes: "Oui",
@@ -112,7 +106,7 @@ const home: HomeMessages = {
     windows: {
       title: "Windows 10, 11",
       body: [
-        "Pour les PC x64 et ARM. S'installe sans droits administrateur et se met à jour sans réinstaller. Un clic installe les deux pilotes gratuits dont il a besoin.",
+        "S'installe sans droits administrateur et se met à jour sans réinstaller. Un clic installe les deux pilotes gratuits dont il a besoin.",
         "HidHide, le pilote qui cache la manette d'origine, n'a pas encore de version ARM. Sur un PC ARM, un jeu qui lit aussi la manette d'origine peut la voir en double.",
         "L'installateur n'est pas encore signé, donc la première fois Windows peut afficher « Windows a protégé votre ordinateur ». Clique sur Informations complémentaires, puis sur Exécuter quand même.",
       ],
@@ -120,7 +114,7 @@ const home: HomeMessages = {
     linux: {
       title: "Linux",
       body: [
-        "Pour x64 et ARM, sur Ubuntu 22.04, Debian 12, Fedora 36 ou plus récent, ou toute distribution avec glibc 2.35 ou plus. Marche avec les jeux natifs et avec Proton ou Wine.",
+        "Sur Ubuntu 22.04, Debian 12, Fedora 36 ou plus récent, ou toute distribution avec glibc 2.35 ou plus. Marche avec les jeux natifs et avec Proton ou Wine.",
         "L'installateur demande ton mot de passe une fois pour donner à l'app l'accès à tes manettes. Sur un Steam Deck, définis d'abord un mot de passe en lançant passwd dans Konsole.",
       ],
     },
@@ -128,7 +122,7 @@ const home: HomeMessages = {
       title: "macOS 13+",
       body: [
         "Une seule app pour les Mac Apple et Intel. Sur Mac, les jeux marchent déjà avec les manettes PlayStation, Xbox et Switch Pro, et macOS ne laisse pas les apps ajouter des manettes.",
-        "Elle ajoute donc ce qui manque : boutons supplémentaires en touches, lumière de la manette, batterie et une config pour chaque jeu. Les touches ont besoin de l'autorisation Accessibilité, que la fenêtre te demande.",
+        "Les boutons supplémentaires en touches ont besoin de l'autorisation Accessibilité, que la fenêtre te demande.",
         "macOS la bloque la première fois. Ouvre-la une fois, puis va dans Réglages Système, Confidentialité et sécurité, et clique sur Ouvrir quand même.",
       ],
     },
@@ -158,7 +152,6 @@ const home: HomeMessages = {
   faq: {
     label: "Questions",
     title: "Questions fréquentes.",
-    side: "Une autre question, ou une manette qui ne marche pas bien ? <a>Écris-nous</a>.",
     search: "Chercher dans les questions",
     clear: "Effacer la recherche",
     placeholder: "Essaie Linux, macro ou mise à jour",
@@ -282,27 +275,24 @@ const home: HomeMessages = {
   contact: {
     label: "Contact",
     title: "Quelque chose ne marche pas ? Dis-le-nous.",
-    body: "OpenController est en bêta, et chaque signalement aide. Utilise le formulaire ou ouvre une issue sur GitHub.",
+    body: "OpenController est en bêta, et chaque signalement aide.",
     report: {
       title: "Signaler un problème",
-      body: "Indique ton système, la manette et comment elle est branchée, la version d'OpenController et ce qui s'est passé. Une capture d'écran aide.",
       button: "Nous contacter",
       issue: "Ouvrir une issue",
     },
     ideas: {
       title: "Suggestions et questions",
-      body: "Une idée, une manette que tu aimerais voir prise en charge ou une question : envoie-la par le même formulaire.",
       button: "Envoyer une suggestion",
     },
     official: {
       title: "Site officiel",
-      body: "<b>{domain}</b> est le seul site officiel d'OpenController. Télécharge-le uniquement ici ou sur GitHub. Tout autre site qui le propose n'est pas le nôtre.",
+      body: "<b>{domain}</b> est le seul site officiel d'OpenController. Télécharge-le uniquement ici ou sur GitHub.",
     },
   },
 
   contactForm: {
     title: "Nous contacter",
-    intro: "Dis-nous ce qui s'est passé ou ce que tu aimerais voir. On lit tous les messages.",
     kind: "Sujet",
     kinds: { problem: "Un problème", idea: "Une suggestion", other: "Autre chose" },
     system: "Système d'exploitation",
@@ -369,7 +359,6 @@ const home: HomeMessages = {
     license: "Licence MIT",
     notices: "Licences tierces",
     official: "OpenController est distribué uniquement depuis <a>{repo}</a> et {domain}. Les autres sites qui utilisent ce nom n'ont aucun lien avec ce projet.",
-    source: "OpenController est sous licence <license>MIT</license>. <source>Code source sur GitHub</source>. <bug>Signaler un bug</bug>.",
     disclaimer:
       "Aucun lien avec Sony, Microsoft, Nintendo, Valve, 8BitDo ou tout autre fabricant de manettes ; leurs noms servent seulement à identifier le matériel compatible. ViGEmBus, HidHide, DsHidMini et BthPS3 sont de Nefarius Software Solutions et sont téléchargés depuis leurs pages de versions, pas inclus. Utilisation à tes risques : les auteurs ne sont pas responsables des bannissements ou autres sanctions, par exemple pour des macros dans des jeux qui les interdisent.",
     analytics: "Ce site compte les visites de façon anonyme : pas de cookies, pas d'adresse IP conservée, rien qui permette de distinguer une personne d'une autre le lendemain.",

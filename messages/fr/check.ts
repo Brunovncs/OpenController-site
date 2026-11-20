@@ -13,11 +13,10 @@ const check: CheckMessages = {
   pressed: "Appuyé",
   extra: "· extra",
   pressExample: "Clique ou touche les boutons du dessin.",
-  pressIdle: "Les boutons s'allument ici quand tu appuies dessus.",
   pressAny: "Appuie sur un bouton, bouge les sticks, presse les gâchettes.",
   idle: {
     title: "Branche ta manette et appuie sur un bouton.",
-    body: "Par câble ou en Bluetooth. Tu verras son nom et ce qu'OpenController peut faire avec.",
+    body: "Par câble ou en Bluetooth.",
     brave: "Brave cache les manettes aux sites web. Ouvre cette page dans Chrome ou Edge, ou essaie un exemple ci-dessous.",
     unsupported: "Ce navigateur ne sait pas lire les manettes. Ouvre cette page dans Chrome ou Edge, ou essaie un exemple ci-dessous.",
     helpTitle: "Elle n'apparaît pas ?",

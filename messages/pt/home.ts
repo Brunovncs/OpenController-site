@@ -20,7 +20,6 @@ const home: HomeMessages = {
     lead: "Use controles de PlayStation, Switch, 8BitDo e outros nos seus jogos de PC, sozinho ou com amigos.",
     test: "Teste seu controle",
     video: "O app OpenController mostrando um DualSense, dois Joy-Con, um manche e um volante enquanto alguém joga, e depois os cinco juntos.",
-    caption: "O app mostra cada toque no desenho do seu controle.",
     facts: [
       { k: "Roda em", v: "Windows, Linux e Mac" },
       { k: "Funciona com", v: "Centenas de controles" },
@@ -32,7 +31,6 @@ const home: HomeMessages = {
   check: {
     label: "Teste seu controle",
     title: "Teste seu controle aqui.",
-    body: "Antes de baixar, veja se o OpenController reconhece seu controle. Conecte e aperte um botão.",
   },
 
   features: {
@@ -41,23 +39,23 @@ const home: HomeMessages = {
     body: "A maioria dos jogos de PC foi feita para o controle de Xbox. O OpenController faz o seu funcionar neles também.",
     games: {
       title: "Funciona nos seus jogos",
-      body: "Botões, analógicos, gatilhos e vibração funcionam do jeito que você espera. Controle de Xbox já funciona, então ele nem mexe nesses. Se um jogo aceita o seu controle do jeito que ele é, ligue o Modo nativo e o jogo vê o controle de verdade.",
+      body: "Controle de Xbox já funciona, então ele nem mexe nesses. Se um jogo aceita o seu controle do jeito que ele é, ligue o Modo nativo e o jogo vê o controle de verdade.",
       steps: ["Conecte o controle", "Abra o jogo", "Jogue"],
     },
     friends: {
       title: "Jogue com os amigos",
-      body: "Cada controle é um jogador, e continua o mesmo jogador se desconectar por um instante.",
+      body: "Cada um continua o mesmo jogador, mesmo se o controle desconectar por um instante.",
       hint: "Experimente: arraste um sobre o outro para trocar, ou toque em dois.",
     },
     custom: {
       title: "Do seu jeito",
-      body: "Mude o que qualquer botão faz, mire com o giroscópio, corrija um analógico que anda sozinho e salve uma configuração para cada jogo, que entra sozinha quando ele abre. O Laboratório traz efeitos nos gatilhos do DualSense e, no Windows, o Flick Stick e o touchpad como mouse. No Windows, o botão de microfone do DualSense também silencia o PC. Nada disso é preciso para jogar.",
+      body: "Mude o que qualquer botão faz, mire com o giroscópio, corrija um analógico que anda sozinho e salve uma configuração para cada jogo, que entra sozinha quando ele abre. O Laboratório traz efeitos nos gatilhos do DualSense e, no Windows, o Flick Stick e o touchpad como mouse.",
       setups: { default: "Padrão", racing: "Jogo de corrida", shooter: "Jogo de tiro" },
       inUse: "em uso",
     },
     updates: {
       title: "Sempre atualizado",
-      body: "O app avisa quando sai uma versão nova. No Windows, um clique instala e mantém suas configurações.",
+      body: "No Windows, um clique instala e mantém suas configurações.",
       notice: "Saiu uma versão nova.",
       button: "Atualizar agora",
     },
@@ -74,9 +72,7 @@ const home: HomeMessages = {
   performance: {
     label: "Desempenho",
     title: "Quase nada em segundo plano.",
-    body: "A janela só roda enquanto está aberta. Fechou, fica só a parte que faz seus controles funcionarem.",
     memory: "Memória em uso",
-    note: "Medido na versão 0.8.0, no Windows 11, pelo Gerenciador de Tarefas, sem controle conectado. Com a janela aberta ficou entre 30 e 35 MB.",
     games: "Nos seus jogos",
     measures: [
       { k: "Atraso que ele adiciona ao controle", v: "Normalmente menos de um milissegundo" },
@@ -92,13 +88,11 @@ const home: HomeMessages = {
   controllers: {
     label: "Controles",
     title: "Procure seu controle.",
-    body: "Procure o seu para ver o que funciona. A maioria dos controles funciona mesmo sem estar na lista. Se o seu der problema, <a>avise a gente</a>.",
   },
 
   platforms: {
     label: "Sistemas",
     title: "Baixe para Windows, Linux ou Mac.",
-    body: "O mesmo app nos três. O Mac já cuida dos controles sozinho, então lá ele faz menos.",
     caption: "O que funciona em cada sistema",
     feature: "Recurso",
     yes: "Sim",
@@ -112,7 +106,7 @@ const home: HomeMessages = {
     windows: {
       title: "Windows 10, 11",
       body: [
-        "Para PCs x64 e ARM. Instala sem administrador e se atualiza sem reinstalar. Um clique instala os dois drivers gratuitos de que ele precisa.",
+        "Instala sem administrador e se atualiza sem reinstalar. Um clique instala os dois drivers gratuitos de que ele precisa.",
         "O HidHide, driver que esconde o controle original, ainda não tem versão para ARM. Num PC com ARM, um jogo que também lê o original pode ver o controle duas vezes.",
         "O instalador ainda não é assinado, então na primeira vez o Windows pode mostrar “O Windows protegeu o computador”. Clique em Mais informações e depois em Executar assim mesmo.",
       ],
@@ -120,7 +114,7 @@ const home: HomeMessages = {
     linux: {
       title: "Linux",
       body: [
-        "Para x64 e ARM, no Ubuntu 22.04, Debian 12, Fedora 36 ou mais novos, ou qualquer distribuição com glibc 2.35 ou mais recente. Funciona com jogos nativos e com Proton ou Wine.",
+        "No Ubuntu 22.04, Debian 12, Fedora 36 ou mais novos, ou qualquer distribuição com glibc 2.35 ou mais recente. Funciona com jogos nativos e com Proton ou Wine.",
         "O instalador pede sua senha uma vez, para o app poder usar seus controles. No Steam Deck, crie uma senha antes rodando passwd no Konsole.",
       ],
     },
@@ -128,7 +122,7 @@ const home: HomeMessages = {
       title: "macOS 13+",
       body: [
         "Um app só para Mac com chip da Apple ou Intel. No Mac, os jogos já aceitam controles de PlayStation, Xbox e Switch Pro, e o sistema não deixa apps criarem controles.",
-        "Por isso ele completa o que falta: botões extras como teclas, a luz do controle, a bateria e uma configuração para cada jogo. As teclas precisam da permissão de Acessibilidade, que a janela pede.",
+        "Os botões extras como teclas precisam da permissão de Acessibilidade, que a janela pede.",
         "Na primeira vez o macOS bloqueia o app. Abra uma vez, depois vá em Ajustes do Sistema, Privacidade e Segurança, e clique em Abrir Mesmo Assim.",
       ],
     },
@@ -158,7 +152,6 @@ const home: HomeMessages = {
   faq: {
     label: "Dúvidas",
     title: "Perguntas frequentes.",
-    side: "Ficou com outra dúvida, ou algum controle não funcionou direito? <a>Fale com a gente</a>.",
     search: "Buscar nas perguntas",
     clear: "Limpar busca",
     placeholder: "Tente Linux, macro ou atualizar",
@@ -282,27 +275,24 @@ const home: HomeMessages = {
   contact: {
     label: "Contato",
     title: "Algo não funcionou? Fale com a gente.",
-    body: "O OpenController está em beta, e cada relato ajuda. Use o formulário ou abra uma issue no GitHub.",
+    body: "O OpenController está em beta, e cada relato ajuda.",
     report: {
       title: "Reportar um problema",
-      body: "Diga seu sistema, o controle e como ele está conectado, a versão do OpenController e o que aconteceu. Um print ajuda.",
       button: "Fale conosco",
       issue: "Abrir uma issue",
     },
     ideas: {
       title: "Sugestões e dúvidas",
-      body: "Uma ideia, um controle que você queria ver funcionando ou uma dúvida: mande pelo mesmo formulário.",
       button: "Mandar uma sugestão",
     },
     official: {
       title: "Site oficial",
-      body: "O <b>{domain}</b> é o único site oficial do OpenController. Baixe só por aqui ou pelo GitHub. Qualquer outro site que ofereça o programa não é nosso.",
+      body: "O <b>{domain}</b> é o único site oficial do OpenController. Baixe só por aqui ou pelo GitHub.",
     },
   },
 
   contactForm: {
     title: "Fale conosco",
-    intro: "Conte o que aconteceu ou o que você gostaria de ver. Todas as mensagens são lidas.",
     kind: "Assunto",
     kinds: { problem: "Um problema", idea: "Uma sugestão", other: "Outro assunto" },
     system: "Sistema operacional",
@@ -369,7 +359,6 @@ const home: HomeMessages = {
     license: "Licença MIT",
     notices: "Avisos de terceiros",
     official: "O OpenController só é distribuído pelo <a>{repo}</a> e pelo {domain}. Outros sites que usam o nome não têm ligação com este projeto.",
-    source: "O OpenController é licenciado sob <license>MIT</license>. <source>Código no GitHub</source>. <bug>Reportar um bug</bug>.",
     disclaimer:
       "Sem vínculo com Sony, Microsoft, Nintendo, Valve, 8BitDo ou qualquer outro fabricante de controles; os nomes só identificam hardware compatível. ViGEmBus, HidHide, DsHidMini e BthPS3 são da Nefarius Software Solutions e são baixados das páginas deles, não incluídos. O uso é por sua conta: os autores não se responsabilizam por banimentos ou outras punições, como por macros em jogos que as proíbem.",
     analytics: "Este site conta as visitas de forma anônima: sem cookies, sem guardar IP, nada que diferencie uma pessoa da outra no dia seguinte.",

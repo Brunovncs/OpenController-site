@@ -113,7 +113,7 @@ export function ContactDialog({ version }: { version: string | null }) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
         title={sent ? c.sentTitle : c.title}
-        description={sent ? c.sentBody : c.intro}
+        description={sent ? c.sentBody : undefined}
         closeLabel={c.close}
         className="w-[min(40rem,calc(100vw-2rem))]!"
       >

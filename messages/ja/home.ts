@@ -20,7 +20,6 @@ const home: HomeMessages = {
     lead: "PlayStation、Switch、8BitDoなどのコントローラーを、ひとりでも友だちとでもPCゲームで使えます。",
     test: "コントローラーをテスト",
     video: "OpenControllerのアプリが、DualSense、Joy-Con 2本、フライトスティック、ハンドルコントローラーの操作を表示し、最後に5台すべてを同時に表示している様子。",
-    caption: "押したボタンが、コントローラーのイラストに表示されます。",
     facts: [
       { k: "対応OS", v: "Windows、Linux、Mac" },
       { k: "対応機種", v: "数百種類のコントローラー" },
@@ -32,7 +31,6 @@ const home: HomeMessages = {
   check: {
     label: "コントローラーをテスト",
     title: "ここでコントローラーをテスト。",
-    body: "ダウンロードする前に、OpenControllerがお使いのコントローラーを知っているか確認できます。つないでボタンを押してください。",
   },
 
   features: {
@@ -41,23 +39,23 @@ const home: HomeMessages = {
     body: "ほとんどのPCゲームはXboxコントローラー向けに作られています。OpenControllerを使えば、お使いのコントローラーもそのまま使えます。",
     games: {
       title: "いつものゲームで使える",
-      body: "ボタン、スティック、トリガー、振動が思いどおりに動きます。Xboxコントローラーはもともと使えるので、手を加えません。ゲームがお使いのコントローラーにそのまま対応しているなら、「Native mode」をオンにすると、ゲームから本物のコントローラーが見えます。",
+      body: "Xboxコントローラーはもともと使えるので、手を加えません。ゲームがお使いのコントローラーにそのまま対応しているなら、「Native mode」をオンにすると、ゲームから本物のコントローラーが見えます。",
       steps: ["コントローラーをつなぐ", "ゲームを開く", "遊ぶ"],
     },
     friends: {
       title: "友だちと遊べる",
-      body: "コントローラーごとに別のプレイヤーになり、一瞬接続が切れても同じプレイヤーのままです。",
+      body: "一瞬接続が切れても、同じプレイヤーのままです。",
       hint: "試してみてください：1つをもう1つの上にドラッグするか、2つをタップすると入れ替わります。",
     },
     custom: {
       title: "自分好みに",
-      body: "ボタンの割り当てを変えたり、ジャイロでエイムしたり、ドリフトするスティックを直したりできます。ゲームごとに設定を保存すれば、そのゲームを開いたときに自動で切り替わります。「Controller Lab」では、DualSenseのトリガー効果に加え、WindowsではFlick Stickやタッチパッドのマウス操作も使えます。Windowsでは、DualSenseのマイクボタンでPCをミュートすることもできます。どれも遊ぶのに必須ではありません。",
+      body: "ボタンの割り当てを変えたり、ジャイロでエイムしたり、ドリフトするスティックを直したりできます。ゲームごとに設定を保存すれば、そのゲームを開いたときに自動で切り替わります。「Controller Lab」では、DualSenseのトリガー効果に加え、WindowsではFlick Stickやタッチパッドのマウス操作も使えます。",
       setups: { default: "標準", racing: "レースゲーム", shooter: "シューター" },
       inUse: "使用中",
     },
     updates: {
       title: "いつも最新",
-      body: "新しいバージョンが出るとアプリがお知らせします。Windowsならワンクリックで更新でき、設定もそのまま残ります。",
+      body: "Windowsならワンクリックで更新でき、設定もそのまま残ります。",
       notice: "新しいバージョンがあります。",
       button: "今すぐ更新",
     },
@@ -74,9 +72,7 @@ const home: HomeMessages = {
   performance: {
     label: "パフォーマンス",
     title: "バックグラウンドではほぼ何もしません。",
-    body: "ウィンドウが動くのは開いている間だけです。閉じると、コントローラーを動かすための部分だけが残ります。",
     memory: "メモリ使用量",
-    note: "バージョン0.8.0、Windows 11のタスクマネージャーで、コントローラー未接続の状態で計測。ウィンドウを開いている間は30～35 MBでした。",
     games: "ゲーム中",
     measures: [
       { k: "コントローラーに加わる遅延", v: "通常1ミリ秒未満" },
@@ -92,13 +88,11 @@ const home: HomeMessages = {
   controllers: {
     label: "コントローラー",
     title: "コントローラーを探す。",
-    body: "お使いのコントローラーを検索して、何ができるか確認できます。リストになくても、ほとんどのコントローラーは動きます。うまく動かない場合は<a>お知らせください</a>。",
   },
 
   platforms: {
     label: "対応OS",
     title: "Windows、Linux、Mac用をダウンロード。",
-    body: "3つとも同じアプリです。Macはもともと自分でコントローラーを扱うので、Macでできることは少なめです。",
     caption: "OSごとにできること",
     feature: "機能",
     yes: "あり",
@@ -112,7 +106,7 @@ const home: HomeMessages = {
     windows: {
       title: "Windows 10、11",
       body: [
-        "x64とARMのPCに対応。管理者権限なしでインストールでき、再インストールなしで更新できます。必要な無料ドライバー2つはワンクリックで入ります。",
+        "管理者権限なしでインストールでき、再インストールなしで更新できます。必要な無料ドライバー2つはワンクリックで入ります。",
         "元のコントローラーを隠すドライバーHidHideには、まだARM版がありません。ARMのPCでは、元のコントローラーも読むゲームだと二重に見えることがあります。",
         "インストーラーはまだ署名されていないので、初回はWindowsが「WindowsによってPCが保護されました」と表示することがあります。「詳細情報」をクリックし、「実行」を押してください。",
       ],
@@ -120,7 +114,7 @@ const home: HomeMessages = {
     linux: {
       title: "Linux",
       body: [
-        "x64とARMに対応。Ubuntu 22.04、Debian 12、Fedora 36以降、またはglibc 2.35以降のディストリビューションで動きます。ネイティブのゲームでもProtonやWineでも使えます。",
+        "Ubuntu 22.04、Debian 12、Fedora 36以降、またはglibc 2.35以降のディストリビューションで動きます。ネイティブのゲームでもProtonやWineでも使えます。",
         "アプリがコントローラーを使えるように、インストーラーが一度だけパスワードを求めます。Steam Deckでは、先にKonsoleでpasswdを実行してパスワードを設定してください。",
       ],
     },
@@ -128,7 +122,7 @@ const home: HomeMessages = {
       title: "macOS 13+",
       body: [
         "Apple シリコンとIntelのMacで使える1つのアプリです。Macではもともと、PlayStation、Xbox、Switch Proのコントローラーがゲームで使えます。また、macOSはアプリがコントローラーを追加することを許可していません。",
-        "そこで足りない部分を補います：追加ボタンのキー割り当て、コントローラーのライト、バッテリー、ゲームごとの設定です。キー入力には「アクセシビリティ」の許可が必要で、ウィンドウから求められます。",
+        "追加ボタンのキー入力には「アクセシビリティ」の許可が必要で、ウィンドウから求められます。",
         "初回はmacOSにブロックされます。一度開いてから「システム設定」の「プライバシーとセキュリティ」で「このまま開く」をクリックしてください。",
       ],
     },
@@ -158,7 +152,6 @@ const home: HomeMessages = {
   faq: {
     label: "よくある質問",
     title: "よくある質問。",
-    side: "ほかに質問がある、またはコントローラーがうまく動かない場合は<a>お問い合わせください</a>。",
     search: "質問を検索",
     clear: "検索をクリア",
     placeholder: "Linux、マクロ、更新など",
@@ -282,27 +275,24 @@ const home: HomeMessages = {
   contact: {
     label: "お問い合わせ",
     title: "うまく動きませんか？教えてください。",
-    body: "OpenControllerはベータ版で、どの報告も役に立ちます。フォームを使うか、GitHubでissueを作成してください。",
+    body: "OpenControllerはベータ版で、どの報告も役に立ちます。",
     report: {
       title: "問題を報告",
-      body: "OS、コントローラーと接続方法、OpenControllerのバージョン、起きたことを教えてください。スクリーンショットがあると助かります。",
       button: "お問い合わせ",
       issue: "issueを作成",
     },
     ideas: {
       title: "提案と質問",
-      body: "アイデア、対応してほしいコントローラー、質問は、同じフォームから送ってください。",
       button: "提案を送る",
     },
     official: {
       title: "公式サイト",
-      body: "OpenControllerの公式サイトは<b>{domain}</b>だけです。ダウンロードはここかGitHubからのみ行ってください。ほかのサイトで配布されているものは、私たちとは関係ありません。",
+      body: "OpenControllerの公式サイトは<b>{domain}</b>だけです。ダウンロードはここかGitHubからのみ行ってください。",
     },
   },
 
   contactForm: {
     title: "お問い合わせ",
-    intro: "起きたことや、ほしい機能を教えてください。メッセージはすべて読んでいます。",
     kind: "件名",
     kinds: { problem: "問題", idea: "提案", other: "その他" },
     system: "OS",
@@ -369,7 +359,6 @@ const home: HomeMessages = {
     license: "MITライセンス",
     notices: "サードパーティーの表記",
     official: "OpenControllerの配布元は<a>{repo}</a>と{domain}だけです。この名前を使うほかのサイトは、このプロジェクトとは関係ありません。",
-    source: "OpenControllerは<license>MIT</license>ライセンスです。<source>GitHubのソースコード</source>。<bug>バグを報告</bug>。",
     disclaimer:
       "Sony、Microsoft、Nintendo、Valve、8BitDo、そのほかのコントローラーメーカーとは関係ありません。名前は対応ハードウェアを示すためだけに使っています。ViGEmBus、HidHide、DsHidMini、BthPS3はNefarius Software Solutionsのソフトで、同梱ではなく各リリースページからダウンロードされます。ご利用は自己責任でお願いします。マクロを禁止しているゲームでの使用などによるBANやその他のペナルティについて、作者は責任を負いません。",
     analytics: "このサイトは訪問数を匿名で数えています。Cookieは使わず、IPアドレスも保存せず、翌日には誰が誰かを区別できる情報は残りません。",

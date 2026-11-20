@@ -39,7 +39,6 @@ export function Hero({ release }: { release: Release | null }) {
           <div className="relative mx-auto aspect-[1800/1125] max-w-[900px] overflow-hidden rounded-[14px] border border-line-strong bg-panel shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9),0_0_0_1px_rgba(0,0,0,1)]">
             <HeroVideo label={m.video} />
           </div>
-          <figcaption className="mt-3 text-[13px] text-faint">{m.caption}</figcaption>
         </figure>
 
         <dl className="mt-12 grid grid-cols-1 border-y border-line sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">

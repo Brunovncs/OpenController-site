@@ -20,7 +20,6 @@ const home: HomeMessages = {
     lead: "在电脑游戏中使用 PlayStation、Switch、8BitDo 等手柄，单人或和朋友一起玩。",
     test: "测试你的手柄",
     video: "OpenController 应用实时显示正在使用的 DualSense、两只 Joy-Con、飞行摇杆和赛车方向盘，最后五个设备同时显示。",
-    caption: "应用会在手柄示意图上显示每一次按键。",
     facts: [
       { k: "支持系统", v: "Windows、Linux 和 Mac" },
       { k: "支持手柄", v: "数百款" },
@@ -32,7 +31,6 @@ const home: HomeMessages = {
   check: {
     label: "测试你的手柄",
     title: "在这里测试你的手柄。",
-    body: "下载之前，先看看 OpenController 是否认识你的手柄。连接手柄，按一个键即可。",
   },
 
   features: {
@@ -41,23 +39,23 @@ const home: HomeMessages = {
     body: "大多数电脑游戏是为 Xbox 手柄设计的。OpenController 让你的手柄也能用。",
     games: {
       title: "游戏中直接可用",
-      body: "按键、摇杆、扳机和震动都和你预期的一样。Xbox 手柄本来就能用，所以不做处理。如果游戏原本就支持你的手柄，打开“原生模式”，游戏就会读取手柄本身。",
+      body: "Xbox 手柄本来就能用，所以不做处理。如果游戏原本就支持你的手柄，打开“原生模式”，游戏就会读取手柄本身。",
       steps: ["连接手柄", "打开游戏", "开始玩"],
     },
     friends: {
       title: "和朋友一起玩",
-      body: "每个手柄都是独立的玩家，短暂断开后仍是同一个玩家。",
+      body: "短暂断开后，仍是同一个玩家。",
       hint: "试试看：把一个拖到另一个上交换玩家，或依次点两个。",
     },
     custom: {
       title: "随你设置",
-      body: "修改任意按键的功能，用陀螺仪瞄准，修正漂移的摇杆，还能为每个游戏保存一套设置，游戏打开时自动启用。“手柄实验室”为 DualSense 提供扳机效果，在 Windows 上还有 Flick Stick 和触摸板鼠标。在 Windows 上，DualSense 的麦克风键还能让电脑静音。这些都不是必需的，不设置也能玩。",
+      body: "修改任意按键的功能，用陀螺仪瞄准，修正漂移的摇杆，还能为每个游戏保存一套设置，游戏打开时自动启用。“手柄实验室”为 DualSense 提供扳机效果，在 Windows 上还有 Flick Stick 和触摸板鼠标。",
       setups: { default: "默认", racing: "赛车游戏", shooter: "射击游戏" },
       inUse: "使用中",
     },
     updates: {
       title: "始终保持最新",
-      body: "有新版本时应用会提示你。在 Windows 上，一键即可安装，设置保持不变。",
+      body: "在 Windows 上，一键即可安装，设置保持不变。",
       notice: "新版本已发布。",
       button: "立即更新",
     },
@@ -74,9 +72,7 @@ const home: HomeMessages = {
   performance: {
     label: "性能",
     title: "后台几乎不占资源。",
-    body: "窗口只在打开时运行。关闭窗口后，只保留让手柄正常工作的部分。",
     memory: "内存占用",
-    note: "在 Windows 11 上用任务管理器测量 0.8.0 版本，未连接手柄。窗口打开时占用 30 至 35 MB。",
     games: "游戏中",
     measures: [
       { k: "为手柄增加的延迟", v: "通常不到 1 毫秒" },
@@ -92,13 +88,11 @@ const home: HomeMessages = {
   controllers: {
     label: "手柄",
     title: "找到你的手柄。",
-    body: "搜索你的手柄，看看哪些功能可用。不在列表中的手柄大多也能用。如果你的手柄有问题，<a>请告诉我们</a>。",
   },
 
   platforms: {
     label: "平台",
     title: "下载 Windows、Linux 或 Mac 版。",
-    body: "三个系统上是同一个应用。Mac 本身就能处理手柄，所以在 Mac 上功能较少。",
     caption: "各系统支持的功能",
     feature: "功能",
     yes: "是",
@@ -112,7 +106,7 @@ const home: HomeMessages = {
     windows: {
       title: "Windows 10、11",
       body: [
-        "支持 x64 和 ARM 电脑。无需管理员权限即可安装，更新无需重装。一键安装所需的两个免费驱动。",
+        "无需管理员权限即可安装，更新无需重装。一键安装所需的两个免费驱动。",
         "用于隐藏原始手柄的驱动 HidHide 还没有 ARM 版本。在 ARM 电脑上，同时读取原始手柄的游戏可能会识别到两次。",
         "安装程序还没有签名，第一次运行时 Windows 可能显示“Windows 已保护你的电脑”。点击“更多信息”，再点击“仍要运行”。",
       ],
@@ -120,7 +114,7 @@ const home: HomeMessages = {
     linux: {
       title: "Linux",
       body: [
-        "支持 x64 和 ARM，需要 Ubuntu 22.04、Debian 12、Fedora 36 或更新版本，或任何 glibc 2.35 及以上的发行版。原生游戏和 Proton、Wine 都能用。",
+        "需要 Ubuntu 22.04、Debian 12、Fedora 36 或更新版本，或任何 glibc 2.35 及以上的发行版。原生游戏和 Proton、Wine 都能用。",
         "安装程序会请求输入一次密码，让应用能访问手柄。在 Steam Deck 上，请先在 Konsole 中运行 passwd 设置密码。",
       ],
     },
@@ -128,7 +122,7 @@ const home: HomeMessages = {
       title: "macOS 13+",
       body: [
         "一个应用同时支持 Apple 芯片和 Intel 的 Mac。在 Mac 上，游戏本身就支持 PlayStation、Xbox 和 Switch Pro 手柄，而且 macOS 不允许应用添加手柄。",
-        "所以它补上缺少的部分：额外按键映射为键盘按键、手柄灯光、电量，以及按游戏的设置。键盘按键需要“辅助功能”权限，窗口会提示你授权。",
+        "额外按键映射为键盘按键需要“辅助功能”权限，窗口会提示你授权。",
         "第一次打开时 macOS 会阻止它。先打开一次，然后前往“系统设置”中的“隐私与安全性”，点击“仍要打开”。",
       ],
     },
@@ -158,7 +152,6 @@ const home: HomeMessages = {
   faq: {
     label: "问题",
     title: "常见问题。",
-    side: "还有其他问题，或者手柄用起来不正常？<a>联系我们</a>。",
     search: "搜索问题",
     clear: "清除搜索",
     placeholder: "试试 Linux、宏或更新",
@@ -282,27 +275,24 @@ const home: HomeMessages = {
   contact: {
     label: "联系",
     title: "遇到问题？告诉我们。",
-    body: "OpenController 还在测试阶段，每一份反馈都有帮助。可以使用表单，也可以在 GitHub 上提交 issue。",
+    body: "OpenController 还在测试阶段，每一份反馈都有帮助。",
     report: {
       title: "报告问题",
-      body: "请说明你的系统、手柄和连接方式、OpenController 版本，以及发生了什么。附上截图会更有帮助。",
       button: "联系我们",
       issue: "提交 issue",
     },
     ideas: {
       title: "建议和问题",
-      body: "有想法、希望支持的手柄或任何问题，都可以通过同一个表单发送。",
       button: "提交建议",
     },
     official: {
       title: "官方网站",
-      body: "<b>{domain}</b> 是 OpenController 唯一的官方网站。请只从这里或 GitHub 下载。其他提供下载的网站都与我们无关。",
+      body: "<b>{domain}</b> 是 OpenController 唯一的官方网站。请只从这里或 GitHub 下载。",
     },
   },
 
   contactForm: {
     title: "联系我们",
-    intro: "告诉我们发生了什么，或者你希望看到什么。每条消息我们都会看。",
     kind: "主题",
     kinds: { problem: "遇到问题", idea: "提建议", other: "其他" },
     system: "操作系统",
@@ -369,7 +359,6 @@ const home: HomeMessages = {
     license: "MIT 许可证",
     notices: "第三方声明",
     official: "OpenController 只通过 <a>{repo}</a> 和 {domain} 发布。其他使用该名称的网站与本项目无关。",
-    source: "OpenController 采用 <license>MIT</license> 许可证。<source>GitHub 上的源代码</source>。<bug>报告错误</bug>。",
     disclaimer:
       "本项目与 Sony、Microsoft、Nintendo、Valve、8BitDo 或其他任何手柄厂商均无关联，提及其名称仅用于说明兼容的硬件。ViGEmBus、HidHide、DsHidMini 和 BthPS3 由 Nefarius Software Solutions 开发，从其发布页面下载，不随本软件附带。使用风险自负：对于封号或其他处罚，例如在禁止宏的游戏中使用宏，作者概不负责。",
     analytics: "本站以匿名方式统计访问量：不使用 Cookie，不保存 IP 地址，第二天也无法区分不同的访客。",

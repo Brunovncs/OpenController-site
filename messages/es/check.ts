@@ -13,11 +13,10 @@ const check: CheckMessages = {
   pressed: "Pulsado",
   extra: "· extra",
   pressExample: "Haz clic o toca los botones del dibujo.",
-  pressIdle: "Los botones se iluminan aquí cuando los pulsas.",
   pressAny: "Pulsa cualquier botón, mueve los sticks, aprieta los gatillos.",
   idle: {
     title: "Conecta tu mando y pulsa cualquier botón.",
-    body: "Por cable o Bluetooth. Verás su nombre y lo que OpenController puede hacer con él.",
+    body: "Por cable o Bluetooth.",
     brave: "Brave oculta los mandos a los sitios web. Abre esta página en Chrome o Edge, o prueba un ejemplo abajo.",
     unsupported: "Este navegador no puede leer mandos. Abre esta página en Chrome o Edge, o prueba un ejemplo abajo.",
     helpTitle: "¿No aparece?",

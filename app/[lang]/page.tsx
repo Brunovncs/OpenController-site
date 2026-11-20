@@ -19,7 +19,6 @@ import { GuideLinks } from "@/components/GuideLinks";
 import { SINCE, getLatestRelease, getStars, hasFeature } from "@/lib/github";
 import { isLang, type Lang } from "@/lib/i18n";
 import { homeJsonLd, jsonLdScript, pageMeta } from "@/lib/seo";
-import { rich } from "@/lib/text";
 
 export const revalidate = 3600;
 
@@ -53,9 +52,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Hero release={release} />
 
         <section id="check" aria-labelledby="check-title" className="wrap pt-24 sm:pt-32">
-          <SectionHead n="01" label={m.check.label} title={<span id="check-title">{m.check.title}</span>}>
-            {m.check.body}
-          </SectionHead>
+          <SectionHead n="01" label={m.check.label} title={<span id="check-title">{m.check.title}</span>} />
           <div className="mt-12">
             <ControllerCheck />
           </div>
@@ -65,15 +62,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Performance />
 
         <section id="controllers" aria-labelledby="controllers-title" className="wrap py-20 sm:py-24">
-          <SectionHead n="04" label={m.controllers.label} title={<span id="controllers-title">{m.controllers.title}</span>}>
-            {rich(m.controllers.body, {
-              a: (c) => (
-                <a href="#contact" className="text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg">
-                  {c}
-                </a>
-              ),
-            })}
-          </SectionHead>
+          <SectionHead n="04" label={m.controllers.label} title={<span id="controllers-title">{m.controllers.title}</span>} />
           <div className="mt-12">
             <Compat />
           </div>

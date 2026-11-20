@@ -20,7 +20,6 @@ const home = {
     lead: "Use PlayStation, Switch, 8BitDo and other controllers in your PC games, alone or with friends.",
     test: "Test your controller",
     video: "The OpenController app showing a DualSense, two Joy-Cons, a flight stick and a racing wheel as they are played, then all five at once.",
-    caption: "The app shows every press on a drawing of your controller.",
     facts: [
       { k: "Runs on", v: "Windows, Linux and Mac" },
       { k: "Works with", v: "Hundreds of controllers" },
@@ -32,7 +31,6 @@ const home = {
   check: {
     label: "Test your controller",
     title: "Test your controller here.",
-    body: "Before downloading, see if OpenController knows your controller. Connect it and press a button.",
   },
 
   features: {
@@ -41,23 +39,23 @@ const home = {
     body: "Most PC games are made for the Xbox controller. OpenController makes yours work in them too.",
     games: {
       title: "Works in your games",
-      body: "Buttons, sticks, triggers and vibration work the way you expect. Xbox controllers already work, so it leaves those alone. If a game supports your controller as it is, turn on Native mode and the game sees the real one.",
+      body: "Xbox controllers already work, so it leaves those alone. If a game supports your controller as it is, turn on Native mode and the game sees the real one.",
       steps: ["Connect your controller", "Open a game", "Play"],
     },
     friends: {
       title: "Play with friends",
-      body: "Each controller is its own player, and stays the same player if it disconnects for a moment.",
+      body: "Each one stays the same player, even if its controller disconnects for a moment.",
       hint: "Try it: drag one onto another to swap players, or tap two.",
     },
     custom: {
       title: "Your way",
-      body: "Change what any button does, aim with the gyro, fix a stick that drifts, and save a setup for each game that switches on when the game opens. The Controller Lab adds trigger effects on a DualSense, plus Flick Stick and the touchpad as a mouse on Windows. On Windows, a DualSense's mic button can also mute the PC. None of it is needed to play.",
+      body: "Change what any button does, aim with the gyro, fix a stick that drifts, and save a setup for each game that switches on when the game opens. The Controller Lab adds trigger effects on a DualSense, plus Flick Stick and the touchpad as a mouse on Windows.",
       setups: { default: "Default", racing: "Racing game", shooter: "Shooter" },
       inUse: "in use",
     },
     updates: {
       title: "Always up to date",
-      body: "The app tells you when a new version is out. On Windows, one click installs it and keeps your settings.",
+      body: "On Windows, one click installs it and keeps your settings.",
       notice: "A new version is out.",
       button: "Update now",
     },
@@ -74,9 +72,7 @@ const home = {
   performance: {
     label: "Performance",
     title: "Almost nothing in the background.",
-    body: "The window only runs while it is open. Close it and only the part that keeps your controllers working stays.",
     memory: "Memory in use",
-    note: "Measured on version 0.8.0 and Windows 11 in Task Manager, with no controller connected. With the window open it used 30 to 35 MB.",
     games: "In your games",
     measures: [
       { k: "Delay it adds to your controller", v: "Usually under a millisecond" },
@@ -92,13 +88,11 @@ const home = {
   controllers: {
     label: "Controllers",
     title: "Find your controller.",
-    body: "Search for yours to see what works. Most controllers work even if they are not on the list. If yours gives you trouble, <a>let us know</a>.",
   },
 
   platforms: {
     label: "Platforms",
     title: "Download for Windows, Linux or Mac.",
-    body: "The same app on all three. A Mac already handles controllers on its own, so there it does less.",
     caption: "What works on each system",
     feature: "Feature",
     yes: "Yes",
@@ -112,7 +106,7 @@ const home = {
     windows: {
       title: "Windows 10, 11",
       body: [
-        "For x64 and ARM PCs. It installs without administrator rights and updates without reinstalling. One click sets up the two free drivers it needs.",
+        "It installs without administrator rights and updates without reinstalling. One click sets up the two free drivers it needs.",
         "HidHide, the driver that hides the original controller, has no ARM version yet. On an ARM PC, a game that also reads the original may see it twice.",
         "The installer isn't signed yet, so the first time Windows may show “Windows protected your PC”. Click More info, then Run anyway.",
       ],
@@ -120,7 +114,7 @@ const home = {
     linux: {
       title: "Linux",
       body: [
-        "For x64 and ARM, on Ubuntu 22.04, Debian 12, Fedora 36 or newer, or any distribution with glibc 2.35 or later. Works with native games and with Proton or Wine.",
+        "On Ubuntu 22.04, Debian 12, Fedora 36 or newer, or any distribution with glibc 2.35 or later. Works with native games and with Proton or Wine.",
         "The installer asks for your password once to give the app access to your controllers. On a Steam Deck, set a password first by running passwd in Konsole.",
       ],
     },
@@ -128,7 +122,7 @@ const home = {
       title: "macOS 13+",
       body: [
         "One app for Apple and Intel Macs. On a Mac, games already work with PlayStation, Xbox and Switch Pro controllers, and macOS doesn't let apps add controllers.",
-        "So it adds what's missing: extra buttons as keys, the controller light, the battery and a setup for each game. Keys need the Accessibility permission, which the window asks for.",
+        "Extra buttons as keys need the Accessibility permission, which the window asks for.",
         "macOS blocks it the first time. Open it once, then go to System Settings, Privacy & Security, and click Open Anyway.",
       ],
     },
@@ -158,7 +152,6 @@ const home = {
   faq: {
     label: "Questions",
     title: "Common questions.",
-    side: "Another question, or a controller that isn't working right? <a>Get in touch</a>.",
     search: "Search the questions",
     clear: "Clear search",
     placeholder: "Try Linux, macro or update",
@@ -283,27 +276,24 @@ const home = {
   contact: {
     label: "Contact",
     title: "Something not working? Tell us.",
-    body: "OpenController is in beta, and every report helps. Use the form or open an issue on GitHub.",
+    body: "OpenController is in beta, and every report helps.",
     report: {
       title: "Report a problem",
-      body: "Tell us your system, the controller and how it's connected, the OpenController version and what happened. A screenshot helps.",
       button: "Contact us",
       issue: "Open an issue",
     },
     ideas: {
       title: "Suggestions and questions",
-      body: "An idea, a controller you'd like supported or a question: send it through the same form.",
       button: "Send a suggestion",
     },
     official: {
       title: "Official site",
-      body: "<b>{domain}</b> is the only official OpenController site. Download it only from here or from GitHub. Any other site offering it is not ours.",
+      body: "<b>{domain}</b> is the only official OpenController site. Download it only from here or from GitHub.",
     },
   },
 
   contactForm: {
     title: "Contact us",
-    intro: "Tell us what happened or what you'd like to see. We read every message.",
     kind: "Subject",
     kinds: { problem: "A problem", idea: "A suggestion", other: "Something else" },
     system: "Operating system",
@@ -370,7 +360,6 @@ const home = {
     license: "MIT License",
     notices: "Third-party notices",
     official: "OpenController is only distributed from <a>{repo}</a> and {domain}. Other sites using the name are not affiliated with this project.",
-    source: "OpenController is licensed under <license>MIT</license>. <source>Source on GitHub</source>. <bug>Report a bug</bug>.",
     disclaimer:
       "Not affiliated with Sony, Microsoft, Nintendo, Valve, 8BitDo or any other controller maker; their names only identify compatible hardware. ViGEmBus, HidHide, DsHidMini and BthPS3 are by Nefarius Software Solutions and are downloaded from their releases, not bundled. Use it at your own risk: the authors are not responsible for bans or other penalties, such as for macros in games that forbid them.",
     analytics: "This site counts visits anonymously: no cookies, no IP address kept, nothing that tells one person from another the next day.",

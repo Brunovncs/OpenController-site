@@ -13,11 +13,10 @@ const check: CheckMessages = {
   pressed: "Apertado",
   extra: "· extra",
   pressExample: "Clique ou toque nos botões do desenho.",
-  pressIdle: "Os botões acendem aqui conforme você aperta.",
   pressAny: "Aperte qualquer botão, mexa os analógicos, puxe os gatilhos.",
   idle: {
     title: "Conecte seu controle e aperte qualquer botão.",
-    body: "Por cabo ou Bluetooth. Você vê o nome dele e o que o OpenController consegue fazer com ele.",
+    body: "Por cabo ou Bluetooth.",
     brave: "O Brave esconde os controles dos sites. Abra esta página no Chrome ou no Edge, ou teste um exemplo abaixo.",
     unsupported: "Este navegador não lê controles. Abra esta página no Chrome ou no Edge, ou teste um exemplo abaixo.",
     helpTitle: "Não aparece?",

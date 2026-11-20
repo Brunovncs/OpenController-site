@@ -6,9 +6,7 @@ export function Performance() {
   const m = t().home.performance;
   return (
     <section id="performance" aria-labelledby="performance-title" className="wrap py-20 sm:py-24">
-      <SectionHead n="03" label={m.label} title={<span id="performance-title">{m.title}</span>}>
-        {m.body}
-      </SectionHead>
+      <SectionHead n="03" label={m.label} title={<span id="performance-title">{m.title}</span>} />
 
       <div className="mt-14 grid gap-x-10 gap-y-10 lg:grid-cols-12">
         <article className="card reveal p-6 sm:p-9 lg:col-span-8" data-spotlight>
@@ -18,7 +16,6 @@ export function Performance() {
             <span className="text-accent">{m.memory}</span>
           </p>
           <MemoryBars />
-          <p className="mt-8 font-mono text-[11.5px] leading-relaxed text-faint">{m.note}</p>
         </article>
 
         <div className="reveal lg:col-span-4">

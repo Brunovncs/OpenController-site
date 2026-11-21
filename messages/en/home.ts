@@ -46,7 +46,7 @@ const home = {
     },
     custom: {
       title: "Your way",
-      body: "Change what any button does, aim with the gyro, fix a stick that drifts, and save a setup for each game that switches on when the game opens. The Controller Lab adds trigger effects on a DualSense, plus Flick Stick and the touchpad as a mouse on Windows.",
+      body: "Change what any button does, make it repeat while held or do nothing, aim with the gyro, fix a stick that drifts, and save a setup for each game that switches on when the game opens and can go to a friend as a file. The Controller Lab adds trigger effects on a DualSense, plus Flick Stick and the touchpad as a mouse on Windows.",
       setups: { default: "Default", racing: "Racing game", shooter: "Shooter" },
       inUse: "in use",
     },
@@ -196,7 +196,7 @@ const home = {
       {
         id: "remap",
         q: "Can I remap buttons for each game without Steam?",
-        a: "Yes, on Windows and Linux. Under Buttons, All buttons, any button can become another, several at once, a key or a macro. Save it in a profile, add the game, and it switches on whenever that game is in front.",
+        a: "Yes, on Windows and Linux. Under Buttons, All buttons, any button can become another, several at once, a key or a macro, repeat while held or do nothing. Save it in a profile, add the game, and it switches on whenever that game is in front. Export the profile to share it or take it to another PC.",
       },
       {
         id: "letters",

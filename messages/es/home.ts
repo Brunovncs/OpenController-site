@@ -46,7 +46,7 @@ const home: HomeMessages = {
     },
     custom: {
       title: "A tu manera",
-      body: "Cambia lo que hace cualquier botón, apunta con el giroscopio, corrige un stick con drift y guarda una configuración para cada juego que se activa sola al abrirlo. \"Controller Lab\" añade efectos en los gatillos del DualSense y, en Windows, Flick Stick y el touchpad como mouse.",
+      body: "Cambia lo que hace cualquier botón, haz que se repita mientras lo mantienes o que no haga nada, apunta con el giroscopio, corrige un stick con drift y guarda una configuración para cada juego que se activa sola al abrirlo y que puedes pasar a un amigo en un archivo. \"Controller Lab\" añade efectos en los gatillos del DualSense y, en Windows, Flick Stick y el touchpad como mouse.",
       setups: { default: "Predeterminado", racing: "Juego de carreras", shooter: "Shooter" },
       inUse: "en uso",
     },
@@ -195,7 +195,7 @@ const home: HomeMessages = {
       {
         id: "remap",
         q: "¿Puedo reasignar botones para cada juego sin Steam?",
-        a: "Sí, en Windows y Linux. En \"Buttons\", \"All buttons\", cualquier botón puede convertirse en otro, en varios a la vez, en una tecla o en una macro. Guárdalo en un perfil, añade el juego y se activa siempre que ese juego esté en primer plano.",
+        a: "Sí, en Windows y Linux. En \"Buttons\", \"All buttons\", cualquier botón puede convertirse en otro, en varios a la vez, en una tecla o en una macro, repetirse mientras lo mantienes (\"Repeat while held\") o no hacer nada (\"Nothing\"). Guárdalo en un perfil, añade el juego y se activa siempre que ese juego esté en primer plano. Exporta el perfil para compartirlo o llevarlo a otro PC.",
       },
       {
         id: "letters",

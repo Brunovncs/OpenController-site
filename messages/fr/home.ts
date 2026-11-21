@@ -46,7 +46,7 @@ const home: HomeMessages = {
     },
     custom: {
       title: "À ta façon",
-      body: "Change ce que fait n'importe quel bouton, vise avec le gyroscope, corrige un stick qui dérive, et enregistre une config pour chaque jeu, qui s'active quand le jeu s'ouvre. Le « Controller Lab » ajoute des effets de gâchette sur une DualSense, plus le Flick Stick et le pavé tactile comme souris sous Windows.",
+      body: "Change ce que fait n'importe quel bouton, fais-le se répéter tant que tu le tiens ou ne rien faire, vise avec le gyroscope, corrige un stick qui dérive, et enregistre une config pour chaque jeu, qui s'active quand le jeu s'ouvre et peut passer à un ami dans un fichier. Le « Controller Lab » ajoute des effets de gâchette sur une DualSense, plus le Flick Stick et le pavé tactile comme souris sous Windows.",
       setups: { default: "Par défaut", racing: "Jeu de course", shooter: "Jeu de tir" },
       inUse: "actif",
     },
@@ -195,7 +195,7 @@ const home: HomeMessages = {
       {
         id: "remap",
         q: "Je peux réassigner les boutons pour chaque jeu sans Steam ?",
-        a: "Oui, sous Windows et Linux. Dans « Buttons », « All buttons », n'importe quel bouton peut en devenir un autre, plusieurs à la fois, une touche ou une macro. Enregistre-le dans un profil, ajoute le jeu, et il s'active dès que ce jeu est au premier plan.",
+        a: "Oui, sous Windows et Linux. Dans « Buttons », « All buttons », n'importe quel bouton peut en devenir un autre, plusieurs à la fois, une touche ou une macro, se répéter tant que tu le tiens ou ne rien faire. Enregistre-le dans un profil, ajoute le jeu, et il s'active dès que ce jeu est au premier plan. Exporte le profil pour le partager ou l'emporter sur un autre PC.",
       },
       {
         id: "letters",

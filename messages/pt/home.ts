@@ -46,7 +46,7 @@ const home: HomeMessages = {
     },
     custom: {
       title: "Do seu jeito",
-      body: "Mude o que qualquer botão faz, mire com o giroscópio, corrija um analógico que anda sozinho e salve uma configuração para cada jogo, que entra sozinha quando ele abre. O Laboratório traz efeitos nos gatilhos do DualSense e, no Windows, o Flick Stick e o touchpad como mouse.",
+      body: "Mude o que qualquer botão faz, faça ele repetir enquanto segura ou não fazer nada, mire com o giroscópio, corrija um analógico que anda sozinho e salve uma configuração para cada jogo, que entra sozinha quando ele abre e pode ir para um amigo num arquivo. O Laboratório traz efeitos nos gatilhos do DualSense e, no Windows, o Flick Stick e o touchpad como mouse.",
       setups: { default: "Padrão", racing: "Jogo de corrida", shooter: "Jogo de tiro" },
       inUse: "em uso",
     },
@@ -195,7 +195,7 @@ const home: HomeMessages = {
       {
         id: "remap",
         q: "Dá para remapear os botões de cada jogo sem a Steam?",
-        a: "Sim, no Windows e no Linux. Em Botões, Todos os botões, qualquer botão pode virar outro, vários juntos, uma tecla ou uma macro. Salve num perfil, adicione o jogo, e ele entra sozinho sempre que o jogo estiver na frente.",
+        a: "Sim, no Windows e no Linux. Em Botões, Todos os botões, qualquer botão pode virar outro, vários juntos, uma tecla ou uma macro, repetir enquanto segura ou não fazer nada. Salve num perfil, adicione o jogo, e ele entra sozinho sempre que o jogo estiver na frente. Exporte o perfil para passar a um amigo ou levar para outro PC.",
       },
       {
         id: "letters",

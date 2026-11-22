@@ -36,7 +36,7 @@ const help = {
         {
           h: "Adaptive triggers and haptics",
           p: [
-            "Games see an Xbox controller, so they can't use the adaptive triggers. Native mode, on the controller's page, gives the real DualSense back to the games that support it, with their triggers and, over the cable, haptic feedback. Or the Controller Lab gives the triggers effects of its own, in any game: resistance, vibration or a click.",
+            "Games see an Xbox controller, so they can't use the adaptive triggers. Native mode, on the controller's page, gives the real DualSense back to the games that support it, with their triggers and, over the cable, haptic feedback. Or the Controller Lab gives the triggers effects of its own, in any game: resistance, vibration or a click. It does the same on the Flydigi Apex 3, 4 and 5, whose triggers push back too.",
           ],
         },
         {

@@ -33,7 +33,7 @@ const help: HelpMessages = {
         {
           h: "Gatilhos adaptáveis e vibração háptica",
           p: [
-            "Os jogos veem um controle de Xbox, então não usam os gatilhos adaptáveis. O modo nativo, na página do controle, devolve o DualSense de verdade aos jogos que têm suporte, com os gatilhos deles e, pelo cabo, a vibração háptica. Ou o Laboratório dá aos gatilhos efeitos próprios em qualquer jogo: resistência, vibração ou um clique.",
+            "Os jogos veem um controle de Xbox, então não usam os gatilhos adaptáveis. O modo nativo, na página do controle, devolve o DualSense de verdade aos jogos que têm suporte, com os gatilhos deles e, pelo cabo, a vibração háptica. Ou o Laboratório dá aos gatilhos efeitos próprios em qualquer jogo: resistência, vibração ou um clique. Ele faz o mesmo nos Flydigi Apex 3, 4 e 5, cujos gatilhos também fazem força contra o dedo.",
           ],
         },
         {

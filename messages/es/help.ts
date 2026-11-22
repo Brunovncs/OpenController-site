@@ -33,7 +33,7 @@ const help: HelpMessages = {
         {
           h: "Gatillos adaptativos y vibración háptica",
           p: [
-            "Los juegos ven un mando de Xbox, así que no pueden usar los gatillos adaptativos. \"Native mode\", en la página del mando, devuelve el DualSense real a los juegos que lo admiten, con sus gatillos y, por cable, la vibración háptica. O bien \"Controller Lab\" da a los gatillos efectos propios en cualquier juego: resistencia, vibración o un clic.",
+            "Los juegos ven un mando de Xbox, así que no pueden usar los gatillos adaptativos. \"Native mode\", en la página del mando, devuelve el DualSense real a los juegos que lo admiten, con sus gatillos y, por cable, la vibración háptica. O bien \"Controller Lab\" da a los gatillos efectos propios en cualquier juego: resistencia, vibración o un clic. Hace lo mismo con los Flydigi Apex 3, 4 y 5, cuyos gatillos también ofrecen resistencia.",
           ],
         },
         {

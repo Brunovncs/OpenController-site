@@ -33,7 +33,7 @@ const help: HelpMessages = {
         {
           h: "Gâchettes adaptatives et retour haptique",
           p: [
-            "Les jeux voient une manette Xbox, donc ils ne peuvent pas utiliser les gâchettes adaptatives. « Native mode », sur la page de la manette, rend la vraie DualSense aux jeux qui la prennent en charge, avec leurs gâchettes et, en filaire, le retour haptique. Sinon, le « Controller Lab » donne ses propres effets aux gâchettes, dans n'importe quel jeu : résistance, vibration ou clic.",
+            "Les jeux voient une manette Xbox, donc ils ne peuvent pas utiliser les gâchettes adaptatives. « Native mode », sur la page de la manette, rend la vraie DualSense aux jeux qui la prennent en charge, avec leurs gâchettes et, en filaire, le retour haptique. Sinon, le « Controller Lab » donne ses propres effets aux gâchettes, dans n'importe quel jeu : résistance, vibration ou clic. Il fait de même sur les Flydigi Apex 3, 4 et 5, dont les gâchettes résistent aussi.",
           ],
         },
         {

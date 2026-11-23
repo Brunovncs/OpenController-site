@@ -236,6 +236,34 @@ const guides: GuidesMessages = {
         },
       },
     },
+
+    "flydigi-apex": {
+      title: "Flydigi Apex 2, 3, 4 et 5 sur PC | OpenController",
+      description:
+        "Utilise la Flydigi Apex 2 à 6 dans tout jeu PC comme une manette Xbox, avec les boutons en plus assignés et des effets de gâchette sur les Apex 3, 4 et 5. Gratuit.",
+      sections: {
+        which: {
+          title: "Quelle Apex tu as",
+          body: [
+            "Les Apex 5 et 6 se branchent par câble ou avec le récepteur et apparaissent dans les jeux comme une manette Xbox 360. Sur l'Apex 5, active \"Allow third-party apps to take over mappings\" dans Flydigi Space Station, sinon les autres applis ne lisent pas M1 à M4, LM et RM. La fenêtre d'OpenController te le rappelle quand il le faut.",
+            "Les Apex 2, 3 et 4, plus anciennes, ont besoin de leur mode Android, par câble ou avec leur récepteur 2,4 GHz. En mode 360, seuls les boutons habituels peuvent être lus. Sur l'Apex 2, maintiens ))) et Select 3 secondes pour changer.",
+          ],
+        },
+        triggers: {
+          title: "Des gâchettes qui résistent",
+          body: [
+            "Sur les Apex 3, 4 et 5, les effets de gâchette du Lab marchent comme sur une DualSense : résistance, vibration ou un clic, dans n'importe quel jeu. Les mods faits pour les gâchettes adaptatives de Flydigi envoient leurs effets à OpenController tant que l'appli de Flydigi est fermée.",
+          ],
+        },
+        "apex-2": {
+          title: "L'Apex 2",
+          body: [
+            "Tous les boutons marchent, par câble et avec le récepteur : C, Z, M1 à M6, Return et ))), chacun comme bouton Xbox, touche ou macro, par jeu. Les gâchettes s'enfoncent jusqu'au bout, et l'air mouse, activé avec ))), vise comme un gyroscope.",
+            "La prise en charge de l'Apex 2 a été faite avec l'aide d'un propriétaire qui a envoyé un rapport à chaque nouvelle version, jusqu'à ce que tous les boutons marchent. Merci !",
+          ],
+        },
+      },
+    },
   },
 
   changelog: {

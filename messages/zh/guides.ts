@@ -225,6 +225,34 @@ const guides: GuidesMessages = {
         },
       },
     },
+
+    "flydigi-apex": {
+      title: "飞智 Flydigi Apex 2、3、4、5 连电脑 | OpenController",
+      description:
+        "在任何电脑游戏中把 Flydigi Apex 2 至 6 当作 Xbox 手柄使用，额外按键都能映射，Apex 3、4、5 还支持扳机效果。免费。",
+      sections: {
+        which: {
+          title: "你的 Apex 是哪一款",
+          body: [
+            "Apex 5 和 6 通过数据线或接收器连接，在游戏中显示为 Xbox 360 手柄。在 Apex 5 上，请在 Flydigi Space Station 里打开“Allow third-party apps to take over mappings”，否则其他应用读不到 M1 至 M4、LM 和 RM。需要时 OpenController 的窗口会提醒你。",
+            "较早的 Apex 2、3 和 4 需要使用安卓模式，数据线或 2.4 GHz 接收器都一样。在 360 模式下只能读取普通按键。在 Apex 2 上，同时按住 ))) 和 Select 3 秒即可切换。",
+          ],
+        },
+        triggers: {
+          title: "会反推的扳机",
+          body: [
+            "在 Apex 3、4 和 5 上，“手柄实验室”的扳机效果和在 DualSense 上一样可用：阻力、振动或咔嗒感，任何游戏都行。为飞智自适应扳机制作的游戏 Mod，会在飞智应用关闭时把效果发给 OpenController。",
+          ],
+        },
+        "apex-2": {
+          title: "Apex 2",
+          body: [
+            "无论用数据线还是接收器，所有按键都能用：C、Z、M1 至 M6、Return 和 )))，每个都可以按游戏设成 Xbox 按键、键盘按键或宏。扳机能按到底，用 ))) 打开的体感鼠标可以像陀螺仪一样瞄准。",
+            "Apex 2 的支持离不开一位玩家的帮助：每出一个新版本，这位玩家都会发来报告，直到所有按键都能用。谢谢！",
+          ],
+        },
+      },
+    },
   },
 
   changelog: {

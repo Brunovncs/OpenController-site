@@ -21,6 +21,8 @@ export type Model = {
   brand?: string;
   /** The model whose ids it copies, which is what the app sees until its owner picks it. */
   alias_of?: string;
+  /** The model listed with the same ids, which the app tells apart from this one by itself. */
+  same_ids_as?: string;
 };
 
 export type IndexedModel = Omit<Model, "brand"> & {
@@ -133,7 +135,7 @@ export const MODELS: IndexedModel[] = (raw as Model[])
     return {
       ...m,
       id,
-      key: m.alias_of ? `${id}:${m.name}` : id,
+      key: m.alias_of || m.same_ids_as ? `${id}:${m.name}` : id,
       brand,
       group: family.group,
       order: 0,
@@ -153,7 +155,7 @@ export const MODELS: IndexedModel[] = (raw as Model[])
   .map((m, i) => ({ ...m, order: i }));
 
 // What a browser reports is the copied model, so the ids find that one.
-const byId = new Map(MODELS.filter((m) => !m.alias_of).map((m) => [m.id, m]));
+const byId = new Map(MODELS.filter((m) => !m.alias_of && !m.same_ids_as).map((m) => [m.id, m]));
 
 export function lookup(vendor: string, product: string): IndexedModel | null {
   return byId.get(`${vendor.toLowerCase()}:${product.toLowerCase()}`) ?? null;

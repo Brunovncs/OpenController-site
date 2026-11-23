@@ -7,10 +7,13 @@ import { Download } from "@/components/Download";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ArrowIcon } from "@/components/icons";
+import { PadDrawing } from "@/components/PadDrawing";
+import { glyphsFor, shapeFor } from "@/lib/drawings";
 import { getLatestRelease, getStars } from "@/lib/github";
 import { guideCopy } from "@/lib/guide-copy";
 import { GUIDES, guideBySlug, guideDescription, guideMetaTitle, guideModels, guideName, guidePath, guideTitle, type Guide } from "@/lib/guides";
 import { LANGS, localePath, type Lang } from "@/lib/i18n";
+import { MODELS } from "@/lib/models";
 import { guideJsonLd, jsonLdScript, pageMeta } from "@/lib/seo";
 import { fmt, rich } from "@/lib/text";
 
@@ -61,6 +64,19 @@ function steps(g: Guide): string[] {
   if (f.gyro !== "no") out.push(s.gyro);
   out.push(s.play);
   return out;
+}
+
+/** A model's own drawing, at rest, as the app and the controller list show it. */
+function Drawing({ name, vendor }: { name: string; vendor: string }) {
+  const model = MODELS.find((x) => x.name === name && x.vendor === vendor);
+  if (!model?.drawing) return null;
+  const shape = shapeFor(model, vendor);
+  return (
+    <figure className="mt-8 w-full max-w-[420px] rounded-xl border border-line bg-white/[0.015] px-4 py-3">
+      <PadDrawing shape={shape} glyphs={glyphsFor(model, vendor, shape)} buttons={[]} axes={[0, 0, 0, 0]} />
+      <figcaption className="sr-only">{model.name}</figcaption>
+    </figure>
+  );
 }
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
@@ -153,6 +169,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/controlle
                 {text}
               </p>
             ))}
+            {s.drawing ? <Drawing {...s.drawing} /> : null}
           </Section>
         ))}
 

@@ -58,6 +58,7 @@ const compat: CompatMessages = {
     EightBitDo: { label: "8BitDo SN30 Pro, Lite, Zero, M30 e a linha retrô", short: "8BitDo", extras: "", note: "" },
     Flydigi: { label: "Flydigi Vader", short: "Flydigi Vader", extras: "M1 a M4, C, Z, LM, RM", note: "" },
     FlydigiApex: { label: "Flydigi Apex 5 e 6", short: "Flydigi Apex", extras: "M1 a M4, LM e RM", note: "" },
+    FlydigiApex2: { label: "Flydigi Apex 2", short: "Flydigi Apex 2", extras: "M1 a M6, C, Z, Return e )))", note: "" },
     Stadia: { label: "Google Stadia", short: "Stadia", extras: "Capture e Assistente", note: "" },
     Luna: { label: "Amazon Luna", short: "Luna", extras: "Microfone", note: "" },
     Shield: { label: "NVIDIA Shield", short: "Shield", extras: "Compartilhar, volume menos e mais", note: "" },

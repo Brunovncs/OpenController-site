@@ -9354,5 +9354,16 @@
     "product": "3106",
     "rating": "Caveats",
     "vendor": "2dc8"
+  },
+  {
+    "art": "Offset",
+    "drawing": "flydigiApex2",
+    "family": "FlydigiApex2",
+    "hint": null,
+    "name": "Flydigi Apex 2",
+    "product": "2412",
+    "rating": "Compatible",
+    "same_ids_as": "Flydigi Vader 2/3 dongle (V1 protocol)",
+    "vendor": "04b4"
   }
 ]

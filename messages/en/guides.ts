@@ -200,6 +200,34 @@ const copy = {
       },
     },
   },
+
+  "flydigi-apex": {
+    title: "Flydigi Apex 2, 3, 4 and 5 on PC | OpenController",
+    description:
+      "Use the Flydigi Apex 2 to 6 in any PC game as an Xbox controller, with the extra buttons mapped and trigger effects on the Apex 3, 4 and 5. Free.",
+    sections: {
+      which: {
+        title: "Which Apex you have",
+        body: [
+          "The Apex 5 and 6 connect by cable or receiver and show up in games as an Xbox 360 controller. On the Apex 5, turn on \"Allow third-party apps to take over mappings\" in Flydigi Space Station, or other apps can't read M1 to M4, LM and RM. OpenController's window reminds you when it's needed.",
+          "The older Apex 2, 3 and 4 need their Android mode, by cable or on their 2.4 GHz receiver. In 360 mode only the usual buttons can be read. On the Apex 2, hold ))) and Select for 3 seconds to switch.",
+        ],
+      },
+      triggers: {
+        title: "Triggers that push back",
+        body: [
+          "On the Apex 3, 4 and 5 the Lab's trigger effects work as on a DualSense: resistance, vibration or a click, in any game. Game mods made for Flydigi's adaptive triggers send their effects to OpenController while Flydigi's app is closed.",
+        ],
+      },
+      "apex-2": {
+        title: "The Apex 2",
+        body: [
+          "Every button works, on the cable and on the receiver: C, Z, M1 to M6, Return and ))), each one an Xbox button, a key or a macro, per game. The triggers press all the way, and the air mouse, turned on with ))), aims like a gyro.",
+          "Apex 2 support was built with the help of an owner who sent a report after every new version, until every button worked. Thank you!",
+        ],
+      },
+    },
+  },
 } satisfies Partial<Record<GuideSlug, GuideCopy>>;
 
 const guides = {

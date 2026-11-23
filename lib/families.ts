@@ -216,6 +216,14 @@ export const FAMILIES: Record<string, Family> = {
     lightBar: false,
     touchpad: false,
   },
+  FlydigiApex2: {
+    id: "FlydigiApex2",
+    group: "more",
+    extras: true,
+    gyro: "yes",
+    lightBar: false,
+    touchpad: false,
+  },
   Stadia: {
     id: "Stadia",
     group: "more",
@@ -283,6 +291,7 @@ export const FAMILY_ORDER = [
   "Handheld",
   "Flydigi",
   "FlydigiApex",
+  "FlydigiApex2",
   "Stadia",
   "Luna",
   "Shield",

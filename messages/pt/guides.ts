@@ -228,6 +228,34 @@ const guides: GuidesMessages = {
         },
       },
     },
+
+    "flydigi-apex": {
+      title: "Flydigi Apex 2, 3, 4 e 5 no PC | OpenController",
+      description:
+        "Use o Flydigi Apex 2 a 6 em qualquer jogo de PC como controle de Xbox, com os botões extras e efeitos nos gatilhos do Apex 3, 4 e 5. Grátis.",
+      sections: {
+        which: {
+          title: "Qual Apex você tem",
+          body: [
+            "O Apex 5 e o 6 conectam pelo cabo ou pelo receptor e aparecem nos jogos como um controle de Xbox 360. No Apex 5, ligue \"Allow third-party apps to take over mappings\" no Flydigi Space Station, senão outros programas não leem M1 a M4, LM e RM. A janela do OpenController avisa quando isso é preciso.",
+            "Os Apex 2, 3 e 4, mais antigos, precisam do modo Android, pelo cabo ou pelo receptor 2.4 GHz deles. No modo 360 só os botões comuns podem ser lidos. No Apex 2, segure ))) e Select por 3 segundos para trocar.",
+          ],
+        },
+        triggers: {
+          title: "Gatilhos que fazem força",
+          body: [
+            "No Apex 3, 4 e 5 os efeitos de gatilho do Lab funcionam como no DualSense: resistência, vibração ou um clique, em qualquer jogo. Mods de jogos feitos para os gatilhos adaptativos da Flydigi mandam os efeitos para o OpenController enquanto o app da Flydigi está fechado.",
+          ],
+        },
+        "apex-2": {
+          title: "O Apex 2",
+          body: [
+            "Todos os botões funcionam, pelo cabo e pelo receptor: C, Z, M1 a M6, Return e ))), cada um como botão de Xbox, tecla ou macro, por jogo. Os gatilhos apertam até o fim, e o air mouse, ligado no ))), mira como um giroscópio.",
+            "O suporte ao Apex 2 foi feito com a ajuda de um dono que mandou um report a cada versão nova, até todos os botões funcionarem. Obrigado!",
+          ],
+        },
+      },
+    },
   },
 
   changelog: {

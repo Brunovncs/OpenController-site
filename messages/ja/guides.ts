@@ -225,6 +225,34 @@ const guides: GuidesMessages = {
         },
       },
     },
+
+    "flydigi-apex": {
+      title: "Flydigi Apex 2・3・4・5をPCで使う | OpenController",
+      description:
+        "Flydigi Apex 2～6を、どのPCゲームでもXboxコントローラーとして使えます。追加ボタンも割り当て可能、Apex 3・4・5はトリガーエフェクトにも対応。無料。",
+      sections: {
+        which: {
+          title: "お使いのApexはどれ？",
+          body: [
+            "Apex 5と6は、有線かレシーバーでつなぎ、ゲームからはXbox 360コントローラーとして見えます。Apex 5では、Flydigi Space Stationで「Allow third-party apps to take over mappings」をオンにしてください。オフのままだと、ほかのアプリはM1～M4、LM、RMを読めません。必要なときはOpenControllerのウィンドウがお知らせします。",
+            "旧型のApex 2、3、4は、有線でも2.4 GHzレシーバーでもAndroidモードが必要です。360モードでは通常のボタンしか読めません。Apex 2では、)))とSelectを3秒長押しすると切り替わります。",
+          ],
+        },
+        triggers: {
+          title: "押し返すトリガー",
+          body: [
+            "Apex 3、4、5では、LabのトリガーエフェクトがDualSenseと同じように使えます。抵抗、振動、クリック感を、どのゲームでも。Flydigiのアダプティブトリガー向けに作られたゲームのModは、Flydigiのアプリを閉じている間、OpenControllerにエフェクトを送ります。",
+          ],
+        },
+        "apex-2": {
+          title: "Apex 2",
+          body: [
+            "有線でもレシーバーでも、すべてのボタンが使えます。C、Z、M1～M6、Return、)))は、それぞれXboxのボタン、キー、マクロにゲームごとに割り当てられます。トリガーは最後まで押し込め、)))でオンにしたエアマウスはジャイロのように照準を合わせられます。",
+            "Apex 2への対応は、新しいバージョンが出るたびにレポートを送り、すべてのボタンが動くまで付き合ってくれたオーナーの協力で実現しました。ありがとうございます！",
+          ],
+        },
+      },
+    },
   },
 
   changelog: {

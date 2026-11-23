@@ -6,10 +6,13 @@ import { HTML_LANG, type Lang } from "./i18n";
 import { MODELS, type IndexedModel } from "./models";
 import { fmt } from "./text";
 
-/** One page per controller family, at /controllers/<slug>. Names are in messages/<lang>/guides.ts. */
-export type Guide = { slug: GuideSlug; family: Family };
+/**
+ * One page per controller family, at /controllers/<slug>, with the families of the same
+ * controllers that the app reads apart (`also`). Names are in messages/<lang>/guides.ts.
+ */
+export type Guide = { slug: GuideSlug; family: Family; also: string[] };
 
-const PAGES: { slug: GuideSlug; family: string }[] = [
+const PAGES: { slug: GuideSlug; family: string; also?: string[] }[] = [
   { slug: "dualsense", family: "DualSense" },
   { slug: "dualsense-edge", family: "DualSenseEdge" },
   { slug: "dualshock-4", family: "DualShock4" },
@@ -32,27 +35,27 @@ const PAGES: { slug: GuideSlug; family: string }[] = [
   { slug: "steam-controller", family: "SteamController" },
   { slug: "handheld-pc", family: "Handheld" },
   { slug: "flydigi-vader", family: "Flydigi" },
-  { slug: "flydigi-apex", family: "FlydigiApex" },
+  { slug: "flydigi-apex", family: "FlydigiApex", also: ["FlydigiApex2"] },
   { slug: "stadia-controller", family: "Stadia" },
   { slug: "luna-controller", family: "Luna" },
   { slug: "shield-controller", family: "Shield" },
   { slug: "generic-controllers", family: "Other" },
 ];
 
-export const GUIDES: Guide[] = PAGES.map((p) => ({ slug: p.slug, family: FAMILIES[p.family] }));
+export const GUIDES: Guide[] = PAGES.map((p) => ({ slug: p.slug, family: FAMILIES[p.family], also: p.also ?? [] }));
 
 export function guideBySlug(slug: string): Guide | undefined {
   return GUIDES.find((g) => g.slug === slug);
 }
 
 export function guideByFamily(family: string): Guide | undefined {
-  return GUIDES.find((g) => g.family.id === family);
+  return GUIDES.find((g) => g.family.id === family || g.also.includes(family));
 }
 
 export const guidePath = (g: Guide) => `/controllers/${g.slug}`;
 
 export function guideModels(g: Guide): IndexedModel[] {
-  return MODELS.filter((m) => m.family === g.family.id);
+  return MODELS.filter((m) => m.family === g.family.id || g.also.includes(m.family));
 }
 
 /** The controller's name in a language, with what its sentences need to agree with it. */

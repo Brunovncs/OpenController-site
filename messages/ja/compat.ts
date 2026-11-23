@@ -58,6 +58,7 @@ const compat: CompatMessages = {
     EightBitDo: { label: "8BitDo SN30 Pro、Lite、Zero、M30とレトロシリーズ", short: "8BitDo", extras: "", note: "" },
     Flydigi: { label: "Flydigi Vader", short: "Flydigi Vader", extras: "M1～M4、C、Z、LM、RM", note: "" },
     FlydigiApex: { label: "Flydigi Apex 5と6", short: "Flydigi Apex", extras: "M1～M4、LMとRM", note: "" },
+    FlydigiApex2: { label: "Flydigi Apex 2", short: "Flydigi Apex 2", extras: "M1～M6、C、Z、Return、)))", note: "" },
     Stadia: { label: "Google Stadia", short: "Stadia", extras: "キャプチャーとアシスタント", note: "" },
     Luna: { label: "Amazon Luna", short: "Luna", extras: "マイク", note: "" },
     Shield: { label: "NVIDIA Shield", short: "Shield", extras: "共有、音量の上げ下げ", note: "" },

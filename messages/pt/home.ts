@@ -255,7 +255,7 @@ const home: HomeMessages = {
       {
         id: "offListMapping",
         q: "Meu controle não está na lista, ou funciona errado.",
-        a: "A maioria dos controles funciona mesmo fora da lista, porque muitos dizem ser um controle de Xbox, PlayStation ou Switch. Se o app não consegue ler os botões, a página dele mostra Mapear os botões: aperte cada parte quando for pedida e ele funciona como um controle de Xbox. Para incluir ou corrigir o seu para todos, abra-o no app, vá em Informações e aperte Reportar um problema.",
+        a: "A maioria dos controles funciona mesmo fora da lista, porque muitos dizem ser um controle de Xbox, PlayStation ou Switch. Se o app não consegue ler os botões, a página dele mostra Mapear os botões: aperte cada parte quando for pedida e ele funciona como um controle de Xbox. Se os botões ou os analógicos saem trocados, em Informações há Mapear você mesmo, que funciona do mesmo jeito. Para incluir ou corrigir o seu para todos, abra-o no app, vá em Informações e aperte Reportar um problema.",
       },
       {
         id: "finished",

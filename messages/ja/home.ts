@@ -255,7 +255,7 @@ const home: HomeMessages = {
       {
         id: "offListMapping",
         q: "コントローラーがリストにない、または正しく動きません。",
-        a: "多くのコントローラーはXbox、PlayStation、Switchのコントローラーだと名乗るので、リストになくてもたいてい動きます。アプリがボタンを読み取れない場合は、コントローラーのページに「Map the buttons」が表示されます。指示に従って各部分を押すと、Xboxコントローラーとして使えるようになります。みんなのために追加や修正を希望する場合は、アプリでコントローラーを開き、「Information」で「Report a problem」を押してください。",
+        a: "多くのコントローラーはXbox、PlayStation、Switchのコントローラーだと名乗るので、リストになくてもたいてい動きます。アプリがボタンを読み取れない場合は、コントローラーのページに「Map the buttons」が表示されます。指示に従って各部分を押すと、Xboxコントローラーとして使えるようになります。ボタンやスティックがずれている場合は、「Information」の「Map it yourself」で同じように設定し直せます。みんなのために追加や修正を希望する場合は、アプリでコントローラーを開き、「Information」で「Report a problem」を押してください。",
       },
       {
         id: "finished",

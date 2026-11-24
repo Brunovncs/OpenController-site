@@ -255,7 +255,7 @@ const home: HomeMessages = {
       {
         id: "offListMapping",
         q: "Ma manette n'est pas dans la liste, ou se comporte mal.",
-        a: "La plupart des manettes marchent même hors de la liste, car beaucoup se présentent comme une manette Xbox, PlayStation ou Switch. Si l'app ne sait pas lire ses boutons, sa page affiche « Map the buttons » : appuie sur chaque élément quand on te le demande et elle marche comme une manette Xbox. Pour faire ajouter ou corriger la tienne pour tout le monde, ouvre-la dans l'app, va dans « Information » et appuie sur « Report a problem ».",
+        a: "La plupart des manettes marchent même hors de la liste, car beaucoup se présentent comme une manette Xbox, PlayStation ou Switch. Si l'app ne sait pas lire ses boutons, sa page affiche « Map the buttons » : appuie sur chaque élément quand on te le demande et elle marche comme une manette Xbox. Si ses boutons ou ses sticks sortent mal, « Information » propose « Map it yourself », qui marche pareil. Pour faire ajouter ou corriger la tienne pour tout le monde, ouvre-la dans l'app, va dans « Information » et appuie sur « Report a problem ».",
       },
       {
         id: "finished",

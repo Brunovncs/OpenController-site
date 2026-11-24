@@ -255,7 +255,7 @@ const home: HomeMessages = {
       {
         id: "offListMapping",
         q: "Mi mando no está en la lista, o no funciona bien.",
-        a: "La mayoría de los mandos funcionan aunque no estén en la lista, porque muchos dicen ser un mando de Xbox, PlayStation o Switch. Si la app no puede leer sus botones, su página muestra \"Map the buttons\": pulsa cada parte cuando te lo pida y funcionará como un mando de Xbox. Para que añadan o arreglen el tuyo para todos, ábrelo en la app, ve a \"Information\" y pulsa \"Report a problem\".",
+        a: "La mayoría de los mandos funcionan aunque no estén en la lista, porque muchos dicen ser un mando de Xbox, PlayStation o Switch. Si la app no puede leer sus botones, su página muestra \"Map the buttons\": pulsa cada parte cuando te lo pida y funcionará como un mando de Xbox. Si sus botones o sticks salen cambiados, en \"Information\" está \"Map it yourself\", que funciona igual. Para que añadan o arreglen el tuyo para todos, ábrelo en la app, ve a \"Information\" y pulsa \"Report a problem\".",
       },
       {
         id: "finished",

@@ -256,7 +256,7 @@ const home = {
       {
         id: "offListMapping",
         q: "My controller is not on the list, or misbehaves.",
-        a: "Most controllers work even off the list, because many say they are an Xbox, PlayStation or Switch controller. If the app can't read its buttons, its page shows Map the buttons: press each part when asked and it works as an Xbox controller. To get yours added or fixed for everyone, open it in the app, go to Information and press Report a problem.",
+        a: "Most controllers work even off the list, because many say they are an Xbox, PlayStation or Switch controller. If the app can't read its buttons, its page shows Map the buttons: press each part when asked and it works as an Xbox controller. If its buttons or sticks come out wrong, Information offers Map it yourself, which works the same way. To get yours added or fixed for everyone, open it in the app, go to Information and press Report a problem.",
       },
       {
         id: "finished",
